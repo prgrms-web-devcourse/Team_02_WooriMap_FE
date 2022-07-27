@@ -16,6 +16,7 @@
     "@typescript-eslint"
   ],
   "extends": [
+    "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb-typescript",
     "next/core-web-vitals",
