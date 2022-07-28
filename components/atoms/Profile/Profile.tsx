@@ -10,9 +10,9 @@ interface IProfileProps {
   isLink: boolean;
 }
 
-function Avatar({ width, height, path }: Omit<IProfileProps, 'isLink'>) {
+function Avatar({ width, height, path, isLink }: IProfileProps) {
   return (
-    <S.Container width={width} height={height}>
+    <S.Container width={width} height={height} isLink={isLink}>
       <Image
         src={path || defaultImg}
         width={width}
@@ -23,15 +23,16 @@ function Avatar({ width, height, path }: Omit<IProfileProps, 'isLink'>) {
   );
 }
 
-export function Profile({ width, height, path, isLink }: IProfileProps) {
+export function Profile(props: IProfileProps) {
+  const { isLink } = props;
   return isLink ? (
     <Link href="/profile">
       <span style={{ cursor: 'pointer' }}>
-        <Avatar width={width} height={height} path={path} />
+        <Avatar {...props} />
       </span>
     </Link>
   ) : (
-    <Avatar width={width} height={height} path={path} />
+    <Avatar {...props} />
   );
 }
 
