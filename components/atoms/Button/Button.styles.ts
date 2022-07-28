@@ -41,7 +41,7 @@ export const Button = styled.button<IButtonStyleProps>`
   font-size: 16px;
   font-weight: bold;
   padding: 8px 32px;
-  border-radius: 25px;
+  border-radius: 8px;
 
   ${({ variant }) => {
     switch (variant) {
