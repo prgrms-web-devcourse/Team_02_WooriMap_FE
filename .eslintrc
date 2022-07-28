@@ -24,14 +24,14 @@
   ],
   "rules": {
     "react/jsx-props-no-spreading": "off",
-    "react/require-default-props": "off"
+    "react/require-default-props": "off",
+    "import/prefer-default-export": "off"
   },
   "overrides": [
     {
       "files": ["*.stories.tsx", "styles.ts", "*.styles.ts"],
       "rules": {
         "react/function-component-definition": "off",
-        "import/prefer-default-export": "off"
       }
     }
   ]
