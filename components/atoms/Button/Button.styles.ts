@@ -32,8 +32,8 @@ export const Button = styled.button<IButtonStyleProps>`
   // example
   //color: ${({ theme }) => theme.colors.black};
 
-  width: ${({ width }) => width}px;
-  height: ${({ height }) => height}px;
+  width: ${({ width }) => width}rem;
+  height: ${({ height }) => height}rem;
 
   cursor: pointer;
   appearance: none;

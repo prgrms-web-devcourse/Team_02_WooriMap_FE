@@ -25,5 +25,5 @@ export const Wrapper = styled.section`
 
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
 `;
