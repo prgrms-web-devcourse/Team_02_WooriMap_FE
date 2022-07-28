@@ -7,17 +7,21 @@ export default {
 
   argTypes: {
     width: {
-      defaultValue: '100px',
-      control: { type: 'range', min: '0', max: '200' },
+      defaultValue: 100,
+      control: { type: 'range', min: 50, max: 200 },
+      options: { range: true },
     },
     height: {
-      defaultValue: '100px',
-      control: { type: 'range', min: '0', max: '200' },
+      defaultValue: 100,
+      control: { type: 'range', min: 50, max: 200 },
+      options: { range: true },
     },
     path: {
-      defaultValue: '',
+      defaultValue: null,
       control: { type: 'text' },
+      options: { text: true },
     },
+    isLink: { defaultValue: false, control: { type: 'boolean' } },
   },
 } as ComponentMeta<typeof Profile>;
 

@@ -1,24 +1,41 @@
-import Avatar from 'public/image/avatar.svg';
 import Image from 'next/image';
+import Link from 'next/link';
+import defaultImg from 'public/image/avatar.svg';
 import * as S from './Profile.styles';
 
 interface IProfileProps {
   width: number;
   height: number;
   path: string | null;
+  isLink: boolean;
 }
 
-export function Profile({ width, height, path }: IProfileProps) {
+function Avatar({ width, height, path }: Omit<IProfileProps, 'isLink'>) {
   return (
     <S.Container width={width} height={height}>
       <Image
-        src={path || Avatar}
+        src={path || defaultImg}
         width={width}
         height={height}
         alt="Profile Image"
       />
     </S.Container>
   );
-
-  //   { path }: { path: string | undefined }
 }
+
+export function Profile({ width, height, path, isLink }: IProfileProps) {
+  return isLink ? (
+    <Link href="/profile">
+      <Avatar width={width} height={height} path={path} />
+    </Link>
+  ) : (
+    <Avatar width={width} height={height} path={path} />
+  );
+}
+
+Profile.defaultProps = {
+  width: 100,
+  height: 100,
+  path: null,
+  isLink: false,
+};
