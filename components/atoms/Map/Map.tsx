@@ -13,7 +13,7 @@ function Map({ children, width, height, ...props }: Props) {
   return (
     <>
       <Script
-        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_API_KEY}&libraries=services&libraries=clusterer&autoload=false`}
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}&libraries=services&libraries=clusterer&autoload=false`}
         onLoad={() => {
           window.kakao.maps.load(() => {
             setLoaded(true);
