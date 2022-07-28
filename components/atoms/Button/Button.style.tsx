@@ -5,11 +5,6 @@ interface buttonStyleProps {
   variant?: string;
 }
 
-const themeButtonStyle = ({ theme }: ThemeProps) => css`
-  // example
-  color: ${theme.colors.white};
-`;
-
 const blackButtonStyle = ({ theme }: ThemeProps) => css`
   color: ${theme.colors.white};
   background-color: ${theme.colors.black};
@@ -34,7 +29,6 @@ const grayOutlinedButtonStyle = ({ theme }: ThemeProps) => css`
 export const Button = styled.button<buttonStyleProps>`
   // example
   //color: ${({ theme }) => theme.colors.black};
-  //${themeButtonStyle}
 
   cursor: pointer;
   appearance: none;
