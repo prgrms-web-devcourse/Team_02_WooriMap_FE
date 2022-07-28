@@ -10,6 +10,16 @@ export default {
       control: { type: 'radio' },
       options: ['black', 'grayOutlined', 'blackOutlined'],
     },
+    width: {
+      defaultValue: 100,
+      control: { type: 'range', min: 50, max: 200 },
+      options: { range: true },
+    },
+    height: {
+      defaultValue: 100,
+      control: { type: 'range', min: 50, max: 200 },
+      options: { range: true },
+    },
   },
 } as ComponentMeta<typeof Button>;
 

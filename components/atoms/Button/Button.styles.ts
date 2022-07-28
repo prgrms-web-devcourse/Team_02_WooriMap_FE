@@ -3,6 +3,8 @@ import { css } from '@emotion/react';
 
 interface IButtonStyleProps {
   variant?: string;
+  width: number;
+  height: number;
 }
 
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
@@ -30,6 +32,9 @@ export const Button = styled.button<IButtonStyleProps>`
   // example
   //color: ${({ theme }) => theme.colors.black};
 
+  width: ${({ width }) => width}px;
+  height: ${({ height }) => height}px;
+
   cursor: pointer;
   appearance: none;
   text-align: center;
@@ -40,10 +45,9 @@ export const Button = styled.button<IButtonStyleProps>`
   // 임시
   font-size: 16px;
   font-weight: bold;
-  padding: 8px 32px;
   border-radius: 8px;
 
-  ${({ variant }) => {
+  width: ${({ variant }) => {
     switch (variant) {
       case 'black':
         return blackButtonStyle;
