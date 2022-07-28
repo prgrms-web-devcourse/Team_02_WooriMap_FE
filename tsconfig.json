@@ -19,7 +19,7 @@
     "paths": {
       "@pages/*": ["pages/*"],
       "@components/*": ["components/*"],
-
+      "@hooks/*": ["hooks/*"]
     },
     "types": [
       "kakao.maps.d.ts"
