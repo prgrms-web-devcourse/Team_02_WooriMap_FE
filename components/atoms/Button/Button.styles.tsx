@@ -1,16 +1,16 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
-interface buttonStyleProps {
+interface IButtonStyleProps {
   variant?: string;
 }
 
-const blackButtonStyle = ({ theme }: ThemeProps) => css`
+const blackButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.white};
   background-color: ${theme.colors.black};
 `;
 
-const blackOutlinedButtonStyle = ({ theme }: ThemeProps) => css`
+const blackOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   border: 0;
   outline: 0;
   color: ${theme.colors.black};
@@ -18,7 +18,7 @@ const blackOutlinedButtonStyle = ({ theme }: ThemeProps) => css`
   border: 3px solid ${theme.colors.black};
 `;
 
-const grayOutlinedButtonStyle = ({ theme }: ThemeProps) => css`
+const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   border: 0;
   outline: 0;
   color: ${theme.colors.black};
@@ -26,7 +26,7 @@ const grayOutlinedButtonStyle = ({ theme }: ThemeProps) => css`
   border: 3px solid ${theme.colors.gray};
 `;
 
-export const Button = styled.button<buttonStyleProps>`
+export const Button = styled.button<IButtonStyleProps>`
   // example
   //color: ${({ theme }) => theme.colors.black};
 

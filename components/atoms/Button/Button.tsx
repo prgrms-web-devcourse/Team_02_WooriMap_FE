@@ -1,16 +1,16 @@
-import * as S from './Button.style';
+import * as S from './Button.styles';
 
-interface ButtonProps {
+interface IButtonProps {
   children: React.ReactNode;
-  variant: string;
+  variant?: string;
 }
 
-const Button = ({ variant, children }: ButtonProps) => {
+function Button({ variant, children }: IButtonProps) {
   return <S.Button variant={variant}>{children}</S.Button>;
-};
+}
 
-// Button.defaultProps = {
-//   variant: 'black',
-// };
+Button.defaultProps = {
+  variant: 'black',
+};
 
 export default Button;

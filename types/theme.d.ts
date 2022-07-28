@@ -2,7 +2,7 @@ import '@emotion/react';
 
 declare global {
   // for css``
-  interface ThemeProps {
+  interface IThemeProps {
     theme: Theme;
   }
 }
@@ -13,7 +13,7 @@ declare module '@emotion/react' {
   }
 }
 
-interface Colors {
+interface IColors {
   black: string;
   gray: string;
   white: string;
