@@ -26,7 +26,9 @@ function Avatar({ width, height, path }: Omit<IProfileProps, 'isLink'>) {
 export function Profile({ width, height, path, isLink }: IProfileProps) {
   return isLink ? (
     <Link href="/profile">
-      <Avatar width={width} height={height} path={path} />
+      <span style={{ cursor: 'pointer' }}>
+        <Avatar width={width} height={height} path={path} />
+      </span>
     </Link>
   ) : (
     <Avatar width={width} height={height} path={path} />
