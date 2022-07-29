@@ -9,7 +9,7 @@ export function LoggedInSection() {
       <Button width={6} height={3.2} variant="blackOutlined" onClick={onLogout}>
         log out
       </Button>
-      <Profile width={48} height={48} />
+      <Profile width={48} height={48} isLink />
     </S.Container>
   );
 }

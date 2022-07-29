@@ -9,6 +9,6 @@ interface IContainerProps {
 export const Container = styled.div<IContainerProps>`
   width: ${({ width }) => width}px;
   height: ${({ height }) => height}px;
-  border: ${({ isLink }) => (isLink ? '1px solid #000' : 'none')};
+  border: ${({ isLink }) => (!isLink ? '1px solid #000' : 'none')};
   border-radius: 50%;
 `;
