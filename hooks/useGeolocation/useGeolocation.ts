@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import getCurrentCoordinates from '@utils/geolocation';
 
 function useGeolocation() {
   const [coords, setCoords] = useState({
@@ -7,10 +8,6 @@ function useGeolocation() {
   });
 
   useEffect(() => {
-    if (!navigator.geolocation) {
-      return;
-    }
-
     const onSuccess: PositionCallback = (position) => {
       setCoords((prev) => ({
         ...prev,
@@ -19,7 +16,7 @@ function useGeolocation() {
       }));
     };
 
-    navigator.geolocation.getCurrentPosition(onSuccess);
+    getCurrentCoordinates(onSuccess);
   }, []);
 
   return { coords };
