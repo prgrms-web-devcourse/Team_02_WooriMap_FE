@@ -3,14 +3,13 @@ import * as S from './Button.styles';
 interface IButtonProps {
   children: React.ReactNode;
   variant?: string;
-  width: number;
-  height: number;
+  size: string;
   onClick: () => void;
 }
 
-function Button({ variant, children, width, height, onClick }: IButtonProps) {
+function Button({ variant, children, size, onClick }: IButtonProps) {
   return (
-    <S.Button variant={variant} width={width} height={height} onClick={onClick}>
+    <S.Button variant={variant} size={size} onClick={onClick}>
       {children}
     </S.Button>
   );

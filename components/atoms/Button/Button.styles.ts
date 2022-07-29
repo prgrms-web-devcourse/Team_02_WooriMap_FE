@@ -3,8 +3,7 @@ import { css } from '@emotion/react';
 
 interface IButtonStyleProps {
   variant?: string;
-  width: number;
-  height: number;
+  size: string;
 }
 
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
@@ -29,12 +28,6 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
 `;
 
 export const Button = styled.button<IButtonStyleProps>`
-  // example
-  //color: ${({ theme }) => theme.colors.black};
-
-  width: ${({ width }) => width}rem;
-  height: ${({ height }) => height}rem;
-
   cursor: pointer;
   appearance: none;
   text-align: center;
@@ -42,12 +35,32 @@ export const Button = styled.button<IButtonStyleProps>`
   margin: 0;
   box-sizing: border-box;
 
-  // 임시
-  font-size: 16px;
   font-weight: bold;
   border-radius: 8px;
 
-  width: ${({ variant }) => {
+  ${({
+    size,
+    theme: {
+      sizes: { buttons },
+    },
+  }) => {
+    switch (size) {
+      case 'xsmall':
+        return buttons.xsmall;
+      case 'small':
+        return buttons.small;
+      case 'medium':
+        return buttons.medium;
+      case 'large':
+        return buttons.large;
+      case 'xlarge':
+        return buttons.xlarge;
+      default:
+        return null;
+    }
+  }}
+
+  ${({ variant }) => {
     switch (variant) {
       case 'black':
         return blackButtonStyle;
