@@ -15,6 +15,7 @@ module.exports = {
     const alias = {
       '@components': path.resolve(__dirname, 'components'),
       '@pages': path.resolve(__dirname, 'pages'),
+      '@hooks': path.resolve(__dirname, 'hooks'),
     };
     config.resolve.alias = {
       ...config.resolve.alias,
