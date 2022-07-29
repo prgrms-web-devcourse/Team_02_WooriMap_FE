@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import { LoggedInSection } from 'components';
 import mainLogo from 'public/image/main-logo.svg';
-import * as S from './GNB.styles';
+import * as S from './NavBar.styles';
 
-export function GNB() {
+export function NavBar() {
   return (
     <S.Container>
       <S.Wrapper>

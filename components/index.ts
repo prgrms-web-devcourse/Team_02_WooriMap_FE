@@ -1,10 +1,12 @@
 // atoms
 export { default as Button } from './atoms/Button';
-export { Profile } from 'components/atoms/Profile';
+export { Profile } from '@components/atoms/Profile';
+
 // molecules
-export { GNB } from 'components/organisms/GNB';
+export { NavBar } from '@components/organisms/NavBar';
+
 // organisms
-export { LoggedInSection } from 'components/molecules/LoggedInSection';
+export { LoggedInSection } from '@components/molecules/LoggedInSection';
 
 // templates
-export { Layout } from 'components/templates/Layout';
+export { Layout } from '@components/templates/Layout';
