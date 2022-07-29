@@ -16,6 +16,7 @@ module.exports = {
       '@components': path.resolve(__dirname, 'components'),
       '@pages': path.resolve(__dirname, 'pages'),
       '@hooks': path.resolve(__dirname, 'hooks'),
+      '@utils': path.resolve(__dirname, 'utils'),
     };
     config.resolve.alias = {
       ...config.resolve.alias,
