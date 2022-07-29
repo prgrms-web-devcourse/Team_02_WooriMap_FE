@@ -5,11 +5,12 @@ interface IButtonProps {
   variant?: string;
   width: number;
   height: number;
+  onClick: () => void;
 }
 
-function Button({ variant, children, width, height }: IButtonProps) {
+function Button({ variant, children, width, height, onClick }: IButtonProps) {
   return (
-    <S.Button variant={variant} width={width} height={height}>
+    <S.Button variant={variant} width={width} height={height} onClick={onClick}>
       {children}
     </S.Button>
   );
