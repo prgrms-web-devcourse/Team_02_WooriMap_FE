@@ -7,3 +7,4 @@ export { GNB } from 'components/organisms/GNB';
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
 
 // templates
+export { Layout } from 'components/templates/Layout';
