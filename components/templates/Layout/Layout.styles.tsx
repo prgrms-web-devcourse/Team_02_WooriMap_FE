@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const Wrapper = styled.main`
   width: 100%;
   max-width: 75rem;
-  height: 100%;
+  height: ;
 
   margin-top: 5rem;
 
