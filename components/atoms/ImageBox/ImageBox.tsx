@@ -1,6 +1,6 @@
-import * as S from './ImageViewer.styles';
+import * as S from './ImageBox.styles';
 
-interface IImageViewerProps {
+interface IImageBoxProps {
   size: string;
   src: string;
   isSelected?: boolean;
@@ -12,12 +12,12 @@ interface ISetSize {
   height: number;
 }
 
-export function ImageViewer({
+export function ImageBox({
   size,
   src,
   isSelected = false,
   onClick,
-}: IImageViewerProps) {
+}: IImageBoxProps) {
   const setSize = (): ISetSize =>
     size === 'medium' ? { width: 96, height: 96 } : { width: 624, height: 624 };
 

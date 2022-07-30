@@ -1,9 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ImageViewerContainer } from './ImageViewerContainer';
+import { ImageList } from './ImageList';
 
 export default {
-  title: 'Components/Molecules/ImageViewerContainer',
-  component: ImageViewerContainer,
+  title: 'Components/Molecules/ImageList',
+  component: ImageList,
   argTypes: {
     size: {
       defaultValue: 'medium',
@@ -18,8 +18,8 @@ export default {
       control: { type: 'array' },
     },
   },
-} as ComponentMeta<typeof ImageViewerContainer>;
+} as ComponentMeta<typeof ImageList>;
 
-export const Default: ComponentStory<typeof ImageViewerContainer> = (args) => {
-  return <ImageViewerContainer {...args} />;
+export const Default: ComponentStory<typeof ImageList> = (args) => {
+  return <ImageList {...args} />;
 };

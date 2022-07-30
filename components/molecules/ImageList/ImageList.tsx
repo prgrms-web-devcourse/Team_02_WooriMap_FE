@@ -1,22 +1,18 @@
 import { IImageSource } from 'types';
-import { ImageViewer } from 'components/atoms/ImageViewer';
-import * as S from './ImageViewerContainer.styles';
+import { ImageBox } from 'components';
+import * as S from './ImageList.styles';
 
-interface IImageViewerContainerProps {
+interface IImageListProps {
   size: string;
   sources: Array<IImageSource>;
   onClick: (key: string) => void;
 }
 
-export function ImageViewerContainer({
-  size,
-  sources,
-  onClick,
-}: IImageViewerContainerProps) {
+export function ImageList({ size, sources, onClick }: IImageListProps) {
   return (
     <S.Container>
       {sources.map(({ key, src, isSelected }: IImageSource) => (
-        <ImageViewer
+        <ImageBox
           key={key}
           size={size}
           src={src}
