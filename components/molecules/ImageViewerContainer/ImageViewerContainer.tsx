@@ -7,7 +7,7 @@ export function ImageViewerContainer() {
   return (
     <S.Container>
       {dummyImages.map((src: string) => (
-        <ImageViewer key={nanoid()} width={64} height={64} src={src} />
+        <ImageViewer key={nanoid()} size="medium" src={src} />
       ))}
     </S.Container>
   );
