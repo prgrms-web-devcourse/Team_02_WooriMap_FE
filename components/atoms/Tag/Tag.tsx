@@ -6,7 +6,12 @@ interface ITagProps {
 }
 
 function Tag({ children, deletable, ...props }: ITagProps) {
-  return <S.Tag {...props}>{children}</S.Tag>;
+  return (
+    <S.Tag {...props}>
+      {children}
+      {deletable && <S.DeleteButton>X</S.DeleteButton>}
+    </S.Tag>
+  );
 }
 
 Tag.defaultProps = {
