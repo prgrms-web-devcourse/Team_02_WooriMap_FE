@@ -1,5 +1,5 @@
 // atoms
-export { default as Button } from './atoms/Button';
+export { Button } from './atoms/Button';
 export { Profile } from '@components/atoms/Profile';
 
 // molecules
