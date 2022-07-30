@@ -9,6 +9,7 @@ export { NavBar } from '@components/organisms/NavBar';
 
 // organisms
 export { LoggedInSection } from '@components/molecules/LoggedInSection';
+export { ImageSection } from 'components/organisms/ImageSection';
 
 // templates
 export { Layout } from '@components/templates/Layout';
