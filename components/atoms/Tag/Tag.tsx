@@ -1,5 +1,7 @@
+import * as S from './Tag.styles';
+
 function Tag() {
-  return <div>가나다</div>;
+  return <S.Tag>가나다</S.Tag>;
 }
 
 export default Tag;
