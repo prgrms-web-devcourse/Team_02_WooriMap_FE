@@ -7,14 +7,9 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "tsconfigRootDir": "./",
-    "project": [
-      "./tsconfig.json"
-    ]
+    "project": ["./tsconfig.json"]
   },
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "extends": [
     "plugin:@typescript-eslint/recommended",
     "airbnb",
@@ -25,13 +20,14 @@
   "rules": {
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
-    "import/prefer-default-export": "off"
+    "import/prefer-default-export": "off",
+    "react/default-props-match-prop-types": "off"
   },
   "overrides": [
     {
       "files": ["*.stories.tsx", "styles.ts", "*.styles.ts"],
       "rules": {
-        "react/function-component-definition": "off",
+        "react/function-component-definition": "off"
       }
     }
   ]

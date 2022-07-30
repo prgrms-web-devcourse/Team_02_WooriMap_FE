@@ -9,7 +9,8 @@ declare global {
 
 declare module '@emotion/react' {
   export interface Theme {
-    colors: Colors;
+    colors: IColors;
+    sizes: ISizes;
   }
 }
 
@@ -17,4 +18,15 @@ interface IColors {
   black: string;
   gray: string;
   white: string;
+  skyblue: string;
+}
+
+interface ISizes {
+  buttons: {
+    xsmall: SerializedStyles;
+    small: SerializedStyles;
+    medium: SerializedStyles;
+    large: SerializedStyles;
+    xlarge: SerializedStyles;
+  };
 }
