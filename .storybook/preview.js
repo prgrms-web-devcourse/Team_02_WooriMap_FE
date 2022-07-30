@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
+import * as nextImage from 'next/image';
 import theme from '../styles/theme';
 import GlobalStyle from '../styles/GlobalStyle';
 
@@ -20,3 +21,8 @@ export const parameters = {
     },
   },
 };
+
+Object.defineProperty(nextImage, 'default', {
+  configurable: true,
+  value: (props) => <img {...props} />,
+});
