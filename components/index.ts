@@ -10,7 +10,11 @@ export { default as TextInput } from './molecules/TextInput';
 
 // organisms
 export { LoggedInSection } from '@components/molecules/LoggedInSection';
+<<<<<<< HEAD
 export { NavBar } from '@components/organisms/NavBar';
+=======
+export { ImageSection } from 'components/organisms/ImageSection';
+>>>>>>> cf7295e (feat: image section 구성)
 
 // templates
 export { Layout } from '@components/templates/Layout';
