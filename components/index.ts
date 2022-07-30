@@ -1,9 +1,8 @@
 // atoms
-export { Button } from './atoms/Button';
-export { Profile } from '@components/atoms/Profile';
-
+export { default as Button } from './atoms/Button';
+export { default as Input } from './atoms/Input';
 // molecules
-export { NavBar } from '@components/organisms/NavBar';
+export { default as TextInput } from './molecules/TextInput';
 
 // organisms
 export { LoggedInSection } from '@components/molecules/LoggedInSection';

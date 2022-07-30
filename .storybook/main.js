@@ -13,10 +13,9 @@ module.exports = {
   },
   webpackFinal: async (config) => {
     const alias = {
-      '@components': path.resolve(__dirname, 'components'),
-      '@pages': path.resolve(__dirname, 'pages'),
-      '@hooks': path.resolve(__dirname, 'hooks'),
-      '@utils': path.resolve(__dirname, 'utils'),
+      components: path.resolve(__dirname, '../components'),
+      '@pages': path.resolve(__dirname, '../pages'),
+      public: path.resolve(__dirname, '../public'),
     };
     config.resolve.alias = {
       ...config.resolve.alias,
