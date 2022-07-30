@@ -1,7 +1,11 @@
 import * as S from './Tag.styles';
 
-function Tag() {
-  return <S.Tag>가나다</S.Tag>;
+interface ITagProps {
+  children: React.ReactNode;
+}
+
+function Tag({ children, ...props }: ITagProps) {
+  return <S.Tag {...props}>{children}</S.Tag>;
 }
 
 export default Tag;
