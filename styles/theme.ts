@@ -5,7 +5,7 @@ const theme: Theme = {
     black: '#000000',
     gray: '#D9D9D9',
     white: '#FFFFFF',
-    skyblue: '97BAFF',
+    skyblue: '#97BAFF',
   },
   sizes: {
     buttons: {

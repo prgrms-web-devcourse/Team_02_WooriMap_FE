@@ -3,7 +3,7 @@ import { css } from '@emotion/react';
 
 interface IButtonStyleProps {
   variant?: string;
-  size: string;
+  size: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 }
 
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
