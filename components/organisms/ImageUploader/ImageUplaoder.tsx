@@ -18,6 +18,32 @@ export function ImageUploader() {
     },
   ]);
 
+  const onUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      try {
+        const formData = new FormData();
+
+        formData.append('file', file);
+        formData.append('upload_preset', 'my-uploads');
+
+        const res = await fetch(
+          'https://api.cloudinary.com/v1_1/dq4j0pffj/image/upload',
+          {
+            method: 'POST',
+            body: formData,
+          },
+        );
+
+        const data = await res.json();
+
+        setUploadSrc([...uploadSrc, { key: nanoid(), src: data.secure_url }]);
+      } catch (error: unknown) {
+        console.error(e);
+      }
+    }
+  };
+
   const onDelete = (key: string) => {
     const nextSources = uploadSrc.filter(
       (source: Omit<IImageSource, 'isSelected'>) => {
@@ -30,7 +56,7 @@ export function ImageUploader() {
 
   return (
     <S.Container>
-      <UploadArea />
+      <UploadArea onUploadImage={onUploadImage} />
       <ImageList
         type="upload"
         sources={uploadSrc}
