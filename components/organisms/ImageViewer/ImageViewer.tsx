@@ -48,7 +48,7 @@ export function ImageViewer() {
   return (
     <S.Container>
       <ImageBox size="large" src={selectedImage} />
-      <ImageList size="medium" sources={sources} onClick={onSelectImage} />
+      <ImageList size="small" sources={sources} onClick={onSelectImage} />
     </S.Container>
   );
 }

@@ -1,7 +1,7 @@
 import * as S from './ImageBox.styles';
 
 interface IImageBoxProps {
-  size: string;
+  size: 'small' | 'medium' | 'large';
   src: string;
   isSelected?: boolean;
   onClick?: () => void;
@@ -18,9 +18,18 @@ export function ImageBox({
   isSelected = false,
   onClick,
 }: IImageBoxProps) {
-  const setSize = (): ISetSize =>
-    size === 'medium' ? { width: 96, height: 96 } : { width: 624, height: 624 };
-
+  const setSize = (): ISetSize => {
+    switch (size) {
+      case 'small':
+        return { width: 96, height: 96 };
+      case 'medium':
+        return { width: 136, height: 136 };
+      case 'large':
+        return { width: 624, height: 624 };
+      default:
+        return { width: 96, height: 96 };
+    }
+  };
   return (
     <S.Wrapper size={size} isSelected={isSelected}>
       <S.Viewer

@@ -6,4 +6,9 @@ export const Container = styled.div`
   height: 26.25rem;
 
   border: 4px dashed ${({ theme }) => theme.colors.gray};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 `;
