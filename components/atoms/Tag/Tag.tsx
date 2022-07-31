@@ -1,21 +1,17 @@
 import * as S from './Tag.styles';
 
 interface ITagProps {
-  children: React.ReactNode;
-  deletable?: boolean;
+  name: string;
+  onDelete?: () => void;
 }
 
-function Tag({ children, deletable, ...props }: ITagProps) {
+function Tag({ name, onDelete, ...props }: ITagProps) {
   return (
     <S.Tag {...props}>
-      {children}
-      {deletable && <S.DeleteButton>X</S.DeleteButton>}
+      {name}
+      {onDelete && <S.DeleteButton onClick={onDelete}>X</S.DeleteButton>}
     </S.Tag>
   );
 }
-
-Tag.defaultProps = {
-  deletable: false,
-};
 
 export default Tag;
