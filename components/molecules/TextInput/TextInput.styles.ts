@@ -1,5 +1,5 @@
-import styled from '@emotion/styled';
 import Image from 'next/image';
+import styled from '@emotion/styled';
 import Input from '../../atoms/Input';
 
 export const TextInputWrapper = styled.div`
