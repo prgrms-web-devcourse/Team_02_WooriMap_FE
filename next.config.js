@@ -4,7 +4,7 @@ const path = require('path');
 const nextConfig = {
   swcMinify: true,
   images: {
-    domains: ['wooriemap.s3.ap-northeast-2.amazonaws.com', 'cdn.pixabay.com'],
+    domains: ['wooriemap.s3.ap-northeast-2.amazonaws.com', 'cdn.pixabay.com', 'res.cloudinary.com'],
   },
   webpack(config) {
     config.resolve = {
