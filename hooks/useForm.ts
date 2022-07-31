@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 
 interface IUseForm<T> {
   initialValues: T;
@@ -27,9 +27,12 @@ const useForm = <T>({ initialValues, onSubmit, validate }: IUseForm<T>) => {
     setIsLoading(false);
   };
 
-  const removeAll = (name: string) => {
-    setValues({ ...values, [name]: '' });
-  };
+  const removeAll = useCallback(
+    (name: string) => {
+      setValues({ ...values, [name]: '' });
+    },
+    [values],
+  );
 
   return {
     values,

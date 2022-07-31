@@ -6,7 +6,6 @@ interface IInputProps {
   value?: string;
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  deleteAll?: () => void;
 }
 
 function Input({
@@ -15,7 +14,6 @@ function Input({
   value,
   placeholder,
   onChange,
-  deleteAll,
   ...styles
 }: IInputProps) {
   return (
