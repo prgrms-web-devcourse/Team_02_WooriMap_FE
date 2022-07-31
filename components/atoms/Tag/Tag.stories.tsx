@@ -15,8 +15,8 @@ export default {
 export const Default: ComponentStory<typeof Tag> = () => {
   return (
     <Box>
-      <Tag name="태그1" />
-      <Tag name="태그2" onDelete={() => alert('clicked')} />
+      <Tag name="태그1" tagColor="#FCF8E8" />
+      <Tag name="태그2" tagColor="#94B49F" onDelete={() => alert('clicked')} />
     </Box>
   );
 };

@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 
-export const Tag = styled.div`
+interface ITagStyleProps {
+  tagColor: string;
+}
+
+export const Tag = styled.div<ITagStyleProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +15,7 @@ export const Tag = styled.div`
   padding: 8px 12px;
   border-radius: 25px;
   border: 1px solid black;
+  background-color: ${(props) => props.tagColor};
 `;
 
 export const DeleteButton = styled.button`
@@ -23,6 +28,6 @@ export const DeleteButton = styled.button`
   font-size: 14px;
   border-radius: 50%;
 
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0);
   border: none;
 `;
