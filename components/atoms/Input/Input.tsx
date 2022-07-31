@@ -7,6 +7,7 @@ interface IInputProps {
   defaultValue?: string;
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  deleteAll?: () => void;
 }
 
 function Input({
@@ -15,6 +16,7 @@ function Input({
   defaultValue,
   placeholder,
   onChange,
+  deleteAll,
   ...styles
 }: IInputProps) {
   const [inputValue, setInputValue] = useState('');
@@ -22,6 +24,11 @@ function Input({
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
     if (onChange) onChange(e);
+  };
+
+  const deleteAllInput = () => {
+    setInputValue('');
+    // deleteAll(name);
   };
 
   useEffect(() => {

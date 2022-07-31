@@ -3,18 +3,27 @@ import * as S from './TextInput.styles';
 
 interface ITextInputProps {
   onChange?: () => void;
-  errors?: string;
+  name: string;
+  placeholder: string;
 }
 
-function TextInput({ onChange, errors, ...styles }: ITextInputProps) {
+function TextInput({
+  onChange,
+  name,
+  placeholder,
+  ...styles
+}: ITextInputProps) {
+  const deleteAll = (name: string) => {};
+
   return (
     <S.TextInputWrapper {...styles}>
-      <S.TextInput onChange={onChange} />
+      <S.TextInput onChange={onChange} name={name} placeholder={placeholder} />
       <S.DeleteButton
         src={deleteIcon}
         alt="Delete All"
-        width="16px"
-        height="16px"
+        width={16}
+        height={16}
+        onClick={() => deleteAll(name)}
       />
     </S.TextInputWrapper>
   );
