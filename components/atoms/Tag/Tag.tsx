@@ -1,18 +1,16 @@
 import * as S from './Tag.styles';
 
 interface ITagProps {
-  name: string;
+  value: string;
   tagColor: string;
   onDelete?: () => void;
 }
 
-function Tag({ name, tagColor, onDelete, ...props }: ITagProps) {
+export function Tag({ value, tagColor, onDelete, ...props }: ITagProps) {
   return (
     <S.Tag tagColor={tagColor} {...props}>
-      {name}
+      {value}
       {onDelete && <S.DeleteButton onClick={onDelete}>X</S.DeleteButton>}
     </S.Tag>
   );
 }
-
-export default Tag;
