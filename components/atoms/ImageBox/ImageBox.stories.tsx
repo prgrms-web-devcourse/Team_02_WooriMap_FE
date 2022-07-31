@@ -12,7 +12,7 @@ export default {
     },
     src: {
       defaultValue:
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/imageBoxs/test+5.png',
+        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
       control: { type: 'text' },
     },
   },
