@@ -1,5 +1,6 @@
 // atoms
-export { Button } from './atoms/Button';
+export { Button } from '@components/atoms/Button';
+export { DeleteButton } from '@components/atoms/DeleteButton';
 export { Profile } from '@components/atoms/Profile';
 export { ImageBox } from '@components/atoms/ImageBox';
 

@@ -3,7 +3,7 @@ import { ImageBox } from 'components';
 import * as S from './ImageList.styles';
 
 interface IImageListProps {
-  size: string;
+  size: 'small' | 'medium' | 'large';
   sources: Array<IImageSource>;
   onClick: (key: string) => void;
 }
