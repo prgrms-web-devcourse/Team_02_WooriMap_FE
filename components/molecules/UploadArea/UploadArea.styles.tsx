@@ -12,3 +12,16 @@ export const Container = styled.div`
   justify-content: center;
   flex-direction: column;
 `;
+
+export const UploadArea = styled.label`
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+
+  border: 1px solid #ccc;
+  border-radius: 4px;
+`;
+
+export const UploadAreaInput = styled.input`
+  display: none;
+`;
