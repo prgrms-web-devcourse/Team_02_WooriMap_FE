@@ -14,7 +14,6 @@ export interface ITagListProp {
 
 const Container = styled.div`
   display: inline-flex;
-  width: 300px;
 `;
 
 const PaddedTag = styled(Tag)`
