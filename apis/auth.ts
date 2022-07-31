@@ -1,30 +1,11 @@
 import { HeadersDefaults } from 'axios';
 import instance from 'apis/instance';
-import { IApiResponse } from 'types/api';
 import { setCookie } from 'utils/cookie';
+import { IApiResponse } from 'types/api';
+import { ILoginFormData, ILoginResponse } from 'types/auth';
 
 interface HeaderProperties extends HeadersDefaults {
   Authorization: string;
-}
-
-interface IEmail {
-  email: string;
-}
-interface ILoginFormData extends IEmail {
-  password: string;
-}
-
-interface ITokenSet {
-  accessToken: string;
-  refreshToken: string;
-}
-
-interface IUserResponse extends IEmail {
-  nickName: string;
-}
-
-interface ILoginResponse extends ITokenSet {
-  member: IUserResponse;
 }
 
 export function setToken(token: string) {
@@ -43,7 +24,8 @@ export async function login(formData: ILoginFormData) {
     const data = await instance
       .post<IApiResponse<ILoginResponse>>('/signin', formData)
       .then((response) => response.data.data);
-    setToken(data.accessToken);
+    setCookie('accessToken', data.accessToken, { path: '/' });
+    setCookie('refreshToken', data.refreshToken, { path: '/' });
     return data;
   } catch (error) {
     throw new Error('error occurred at login.');
