@@ -18,6 +18,8 @@ export function ImageUploader() {
         formData.append('file', file);
         formData.append('upload_preset', 'my-uploads');
 
+        // 임시로 aws가 아닌 cloudinary로 이미지 업로드 처리했습니다.
+        // 나중에 api 완료 되면 url만 변경하여 처리할 예정입니다.
         const res = await fetch(
           'https://api.cloudinary.com/v1_1/dq4j0pffj/image/upload',
           {
