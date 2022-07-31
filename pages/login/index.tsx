@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import instance from 'apis/instance';
+import { login } from 'apis/auth';
 
 function Login() {
   const [data, setData] = useState({
@@ -8,13 +8,7 @@ function Login() {
   });
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await instance({
-      method: 'POST',
-      url: '/signin',
-      data,
-    });
-    // accessToken을 쿠키에 저장해야 한다.
-    console.log(response);
+    login(data);
   };
   return (
     <form onSubmit={onSubmit}>
