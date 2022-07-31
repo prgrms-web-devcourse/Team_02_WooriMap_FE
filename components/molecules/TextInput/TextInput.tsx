@@ -3,16 +3,18 @@ import deleteIcon from 'public/image/delete.svg';
 import * as S from './TextInput.styles';
 
 interface ITextInputProps {
-  name: string;
-  placeholder: string;
+  name?: string;
+  type?: string;
+  placeholder?: string;
   onChange?: () => void;
   deleteAll?: (name: string) => void;
 }
 
 function TextInput({
-  onChange,
   name,
+  type,
   placeholder,
+  onChange,
   deleteAll,
   ...styles
 }: ITextInputProps) {
@@ -25,15 +27,16 @@ function TextInput({
 
   const onClickDeleteButton = () => {
     setInputValue('');
-    if (deleteAll) deleteAll(name);
+    if (deleteAll && name) deleteAll(name);
   };
 
   return (
     <S.TextInputWrapper {...styles}>
       <S.TextInput
         name={name}
-        value={inputValue}
+        type={type}
         placeholder={placeholder}
+        value={inputValue}
         onChange={onChangeInput}
       />
       <S.DeleteButton
