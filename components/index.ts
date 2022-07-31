@@ -1,6 +1,6 @@
 // atoms
 export { Button } from '@components/atoms/Button';
-export { DeleteButton } from '@components/atoms/DeleteButton';
+export { DeleteBox } from '@components/atoms/DeleteBox';
 export { Profile } from '@components/atoms/Profile';
 export { ImageBox } from '@components/atoms/ImageBox';
 
@@ -12,6 +12,7 @@ export { UploadArea } from '@components/molecules/UploadArea';
 // organisms
 export { LoggedInSection } from '@components/molecules/LoggedInSection';
 export { ImageViewer } from '@components/organisms/ImageViewer';
+export { ImageUploader } from '@components/organisms/ImageUploader';
 
 // templates
 export { Layout } from '@components/templates/Layout';

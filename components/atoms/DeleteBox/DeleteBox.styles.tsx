@@ -5,6 +5,10 @@ export const Container = styled.div`
   position: relative;
   width: fit-content;
   height: fit-content;
+
+  &:not(last-child) {
+    margin-right: 1rem;
+  }
 `;
 
 export const Wrapper = styled.button`
@@ -26,4 +30,6 @@ export const Wrapper = styled.button`
   padding: 0.625rem;
 
   box-sizing: border-box;
+
+  cursor: pointer;
 `;
