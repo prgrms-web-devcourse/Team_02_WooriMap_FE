@@ -6,7 +6,7 @@ interface IUseForm<T> {
   validate: (values: T) => object;
 }
 
-const useForm = <T>({ initialValues, onSubmit, validate }: IUseForm<T>) => {
+function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
   const [isLoading, setIsLoading] = useState(false);
@@ -42,6 +42,6 @@ const useForm = <T>({ initialValues, onSubmit, validate }: IUseForm<T>) => {
     handleSubmit,
     removeAll,
   };
-};
+}
 
 export default useForm;
