@@ -1,9 +1,16 @@
 import { useForm } from 'hooks';
-import { ITextInputProps } from 'types';
+// import { ITextInputProps } from 'types';
 import { FormBackground, TextInputWithLabel } from 'components';
 import { validateValues } from './helper';
 
 import * as S from './SignUpForm.styles';
+
+interface IValidate {
+  email: string;
+  nickname: string;
+  password: string;
+  confirmPassword: string;
+}
 
 export function SignUpForm() {
   const onSubmit = () => {
@@ -14,27 +21,26 @@ export function SignUpForm() {
     email: '',
     nickname: '',
     password: '',
-    passwordConfirm: '',
+    confirmPassword: '',
   };
 
-  const { values, handleChange, handleSubmit, errors, removeAll } = useForm<{
-    name: string;
-  }>({
-    initialValues,
-    onSubmit,
-    validate: validateValues,
-  });
+  const { values, handleChange, handleSubmit, errors, removeAll } =
+    useForm<IValidate>({
+      initialValues,
+      onSubmit,
+      validate: validateValues,
+    });
 
-  const { email, nickname, password, passwordConfirm } = values;
+  const { email, nickname, password, confirmPassword } = values;
   const {
     email: emailError,
     nickname: nicknameError,
     password: passwordError,
-    passwordConfirm: passwordConfirmError,
-  } = errors as any;
+    confirmPassword: confirmPasswordError,
+  } = errors as IValidate;
 
   return (
-    <FormBackground onSubmit={handleSubmit}>
+    <FormBackground onSubmit={handleSubmit} noValidate>
       <S.Container>
         <TextInputWithLabel
           name="email"
@@ -69,12 +75,12 @@ export function SignUpForm() {
         <TextInputWithLabel
           name="passwordConfirm"
           type="password"
-          value={passwordConfirm}
+          value={confirmPassword}
           text="비밀번호 확인"
           placeholder="비밀번호를 한번 더 입력해주세요"
           onChange={handleChange}
           deleteAll={() => removeAll('passwordConfirm')}
-          error={passwordConfirmError}
+          error={confirmPasswordError}
         />
         <input type="submit" />
       </S.Container>

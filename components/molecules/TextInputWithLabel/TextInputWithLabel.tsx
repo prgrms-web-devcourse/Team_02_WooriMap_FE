@@ -12,9 +12,13 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
 
   return (
     <S.Container>
-      <label htmlFor={name}>{text}</label>
-      <TextInput {...props} />
-      <p>{error}</p>
+      <S.Wrapper>
+        <label htmlFor={name}>{text}</label>
+        <TextInput {...props} />
+      </S.Wrapper>
+      <S.Inner>
+        <S.ValidationError>{error}</S.ValidationError>
+      </S.Inner>
     </S.Container>
   );
 }
