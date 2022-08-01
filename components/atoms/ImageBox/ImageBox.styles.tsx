@@ -7,11 +7,10 @@ interface IWrapper {
 }
 
 export const Wrapper = styled.span<IWrapper>`
-  width: fit-content;
-  height: fit-content;
-
   box-sizing: border-box;
-  border 1px solid ${({ isSelected }) => (isSelected ? '#00bcd4' : '#fff')};
+  border-radius: 0.5rem;
+  border: 3px solid
+    ${({ isSelected }) => (isSelected ? '#00bcd4' : 'transparent')};
 `;
 
 export const Viewer = styled(Image)`

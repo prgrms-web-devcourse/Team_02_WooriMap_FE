@@ -6,6 +6,6 @@ export default {
   component: UploadArea,
 } as ComponentMeta<typeof UploadArea>;
 
-export const Default: ComponentStory<typeof UploadArea> = () => {
-  return <UploadArea />;
+export const Default: ComponentStory<typeof UploadArea> = (args) => {
+  return <UploadArea {...args} />;
 };

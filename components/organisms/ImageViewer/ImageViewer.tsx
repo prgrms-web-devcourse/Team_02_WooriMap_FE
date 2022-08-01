@@ -26,13 +26,13 @@ export function ImageViewer() {
         if (curr.key === key) {
           return {
             selectedSource: curr.src,
-            nextSources: [...acc.nextSources, { ...curr, isSeleced: true }],
+            nextSources: [...acc.nextSources, { ...curr, isSelected: true }],
           };
         }
 
         return {
           ...acc,
-          nextSources: [...acc.nextSources, { ...curr, isSeleced: false }],
+          nextSources: [...acc.nextSources, { ...curr, isSelected: false }],
         };
       },
       {

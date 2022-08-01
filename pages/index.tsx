@@ -3,7 +3,7 @@ import { ImageViewer, ImageUploader } from 'components';
 function Home() {
   return (
     <div>
-      <ImageUploader />
+      <ImageViewer />
     </div>
   );
 }

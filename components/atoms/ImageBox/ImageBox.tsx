@@ -12,12 +12,7 @@ interface ISetSize {
   height: number;
 }
 
-export function ImageBox({
-  size,
-  src,
-  isSelected = false,
-  onClick,
-}: IImageBoxProps) {
+export function ImageBox({ size, src, isSelected, onClick }: IImageBoxProps) {
   const setSize = (): ISetSize => {
     switch (size) {
       case 'small':
@@ -30,6 +25,9 @@ export function ImageBox({
         return { width: 96, height: 96 };
     }
   };
+
+  console.log(isSelected);
+
   return (
     <S.Wrapper size={size} isSelected={isSelected}>
       <S.Viewer
