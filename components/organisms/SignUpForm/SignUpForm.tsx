@@ -1,6 +1,5 @@
 import { useForm } from 'hooks';
-// import { ITextInputProps } from 'types';
-import { FormBackground, TextInputWithLabel } from 'components';
+import { FormBackground, TextInputWithLabel, SubmitButton } from 'components';
 import { validateValues } from './helper';
 
 import * as S from './SignUpForm.styles';
@@ -82,7 +81,7 @@ export function SignUpForm() {
           deleteAll={() => removeAll('passwordConfirm')}
           error={confirmPasswordError}
         />
-        <input type="submit" />
+        <SubmitButton text="회원가입" />
       </S.Container>
     </FormBackground>
   );
