@@ -1,7 +1,9 @@
+import { TextInputWithLabel } from 'components';
+
 function SignUp() {
   return (
     <div>
-      <h1>Sign Up</h1>
+      <TextInputWithLabel />
     </div>
   );
 }
