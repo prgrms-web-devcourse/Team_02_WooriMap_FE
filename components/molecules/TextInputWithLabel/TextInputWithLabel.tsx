@@ -3,17 +3,13 @@ import { ITextInputProps } from 'types';
 import { TextInput } from 'components';
 import * as S from './TextInputWithLabel.styles';
 
-export function TextInputWithLabel({
-  name,
-  type,
-  placeholder,
-  onChange,
-  deleteAll,
-}: ITextInputProps) {
+export function TextInputWithLabel(props: ITextInputProps) {
+  const { name, text } = props;
+
   return (
     <S.Container>
-      <label htmlFor={name}>비밀번호 확인</label>
-      <TextInput name={name} />
+      <label htmlFor={name}>{text}</label>
+      <TextInput {...props} />
     </S.Container>
   );
 }
