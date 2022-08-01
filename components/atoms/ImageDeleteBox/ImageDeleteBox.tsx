@@ -3,7 +3,8 @@ import { ImageBox } from 'components';
 import deleteSvg from 'public/image/deleteImage.svg';
 import * as S from './ImageDeleteBox.styles';
 
-interface IDeleteBoxProps {
+interface IDeleteBoxProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size: 'small' | 'medium' | 'large';
   src: string;
   onClick: () => void;
