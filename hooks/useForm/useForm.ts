@@ -22,7 +22,6 @@ function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
     e.preventDefault();
     const newErrors = validate ? validate(values) : {};
 
-    console.log(newErrors);
     if (Object.keys(newErrors).length === 0) {
       await onSubmit(values);
     }
