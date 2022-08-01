@@ -8,6 +8,7 @@ export { FormBackground } from 'components/atoms/FormBackground';
 export { Tag } from 'components/atoms/Tag';
 export { CalendarInput } from 'components/atoms/CalendarInput';
 export { SubmitButton } from 'components/atoms/SubmitButton';
+export { AuthPageRoutingButton } from 'components/atoms/AuthPageRoutingButton';
 
 // molecules
 export { ImageList } from 'components/molecules/ImageList';

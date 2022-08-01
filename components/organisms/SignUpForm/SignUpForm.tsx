@@ -1,5 +1,10 @@
 import { useForm } from 'hooks';
-import { FormBackground, TextInputWithLabel, SubmitButton } from 'components';
+import {
+  FormBackground,
+  TextInputWithLabel,
+  SubmitButton,
+  AuthPageRoutingButton,
+} from 'components';
 import { validateValues } from './helper';
 
 import * as S from './SignUpForm.styles';
@@ -82,6 +87,7 @@ export function SignUpForm() {
           error={confirmPasswordError}
         />
         <SubmitButton text="회원가입" />
+        <AuthPageRoutingButton type="signup" />
       </S.Container>
     </FormBackground>
   );
