@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import { useForm } from 'hooks';
 import {
   FormBackground,
@@ -5,6 +6,7 @@ import {
   SubmitButton,
   AuthPageRoutingButton,
 } from 'components';
+import MainLogo from 'public/image/main-logo-auth.svg';
 import { validateValues } from './helper';
 
 import * as S from './SignUpForm.styles';
@@ -17,8 +19,40 @@ interface IValidate {
 }
 
 export function SignUpForm() {
-  const onSubmit = () => {
-    console.log('submit');
+  const router = useRouter();
+
+  const onSubmit = async (values: IValidate) => {
+    console.log('sd');
+    const { email, nickname, password } = values;
+
+    console.log(
+      JSON.stringify({
+        email,
+        password,
+        nickName: nickname,
+      }),
+    );
+    try {
+      const res = await fetch('http://52.79.88.242/api/members/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          nickName: nickname,
+        }),
+      });
+
+      if (res.status === 201) {
+        router.push('/signin');
+      }
+
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const initialValues = {
@@ -46,6 +80,8 @@ export function SignUpForm() {
   return (
     <FormBackground onSubmit={handleSubmit} noValidate>
       <S.Container>
+        <S.LogoImage src={MainLogo} width={60} height={120} alt="main-logo" />
+
         <TextInputWithLabel
           name="email"
           type="email"
@@ -77,13 +113,13 @@ export function SignUpForm() {
           error={passwordError}
         />
         <TextInputWithLabel
-          name="passwordConfirm"
+          name="confirmPassword"
           type="password"
           value={confirmPassword}
           text="비밀번호 확인"
           placeholder="비밀번호를 한번 더 입력해주세요"
           onChange={handleChange}
-          deleteAll={() => removeAll('passwordConfirm')}
+          deleteAll={() => removeAll('confirmPassword')}
           error={confirmPasswordError}
         />
         <SubmitButton text="회원가입" />

@@ -6,7 +6,7 @@ export const TextInputWrapper = styled.div`
   flex: 1;
   border-radius: 10px;
   border: 2px solid ${({ theme }) => theme.colors.gray};
-  padding: 13px 16px;
+  padding: 8px 12px;
 `;
 
 export const TextInput = styled.input`
