@@ -1,6 +1,6 @@
 // atoms
 export { Button } from './atoms/Button';
-export { default as Input } from './atoms/Input';
+export { Input } from './atoms/Input';
 export { Profile } from './atoms/Profile';
 
 // molecules
