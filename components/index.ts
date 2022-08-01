@@ -1,18 +1,16 @@
 // atoms
-export { Button } from '@components/atoms/Button';
-export { DeleteBox } from '@components/atoms/DeleteBox';
-export { Profile } from '@components/atoms/Profile';
-export { ImageBox } from '@components/atoms/ImageBox';
+export { Button } from 'components/atoms/Button';
+export { Input } from 'components/atoms/Input';
+export { DeleteBox } from 'components/atoms/DeleteBox';
+export { Profile } from 'components/atoms/Profile';
 
 // molecules
-export { NavBar } from '@components/organisms/NavBar';
-export { ImageList } from '@components/molecules/ImageList';
-export { UploadArea } from '@components/molecules/UploadArea';
+export { default as TextInput } from 'components/molecules/TextInput';
 
 // organisms
-export { LoggedInSection } from '@components/molecules/LoggedInSection';
-export { ImageViewer } from '@components/organisms/ImageViewer';
-export { ImageUploader } from '@components/organisms/ImageUploader';
+export { LoggedInSection } from 'components/molecules/LoggedInSection';
+export { ImageViewer } from 'components/organisms/ImageViewer';
+export { ImageUploader } from 'components/organisms/ImageUploader';
 
 // templates
-export { Layout } from '@components/templates/Layout';
+export { Layout } from 'components/templates/Layout';

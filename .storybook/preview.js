@@ -2,6 +2,7 @@ import { ThemeProvider } from '@emotion/react';
 import * as nextImage from 'next/image';
 import theme from '../styles/theme';
 import GlobalStyle from '../styles/GlobalStyle';
+import * as NextImage from 'next/image';
 
 export const decorators = [
   (Story) => (
@@ -21,8 +22,10 @@ export const parameters = {
     },
   },
 };
+// for stroybook next/image
+const OriginalNextImage = NextImage.default;
 
-Object.defineProperty(nextImage, 'default', {
+Object.defineProperty(NextImage, 'default', {
   configurable: true,
-  value: (props) => <img {...props} />,
+  value: (props) => <OriginalNextImage {...props} unoptimized />,
 });
