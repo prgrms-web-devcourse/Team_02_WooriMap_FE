@@ -1,25 +1,25 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { TagList, ITagListProp } from './TagList';
+import TagList from './TagList';
 
 export default {
   title: 'Components/Molecules/TagList',
   component: TagList,
 } as ComponentMeta<typeof TagList>;
 
-const sampleInput1: ITagListProp = {
+const sampleInput1 = {
   tagList: [
-    { value: '바다', tagColor: '#0096FF' },
-    { value: '산', tagColor: '#2B7A0B' },
-    { value: '들', tagColor: '#7DCE13' },
+    { tagName: '바다', tagColor: '#0096FF' },
+    { tagName: '산', tagColor: '#2B7A0B' },
+    { tagName: '들', tagColor: '#7DCE13' },
   ],
   deletable: true,
 };
 
-const sampleInput2: ITagListProp = {
+const sampleInput2 = {
   tagList: [
-    { value: '벨벳', tagColor: '#B93160' },
-    { value: '오렌지', tagColor: '#EF5B0C' },
-    { value: '복숭아', tagColor: '#FFF9CA' },
+    { tagName: '벨벳', tagColor: '#B93160' },
+    { tagName: '오렌지', tagColor: '#EF5B0C' },
+    { tagName: '복숭아', tagColor: '#FFF9CA' },
   ],
   deletable: false,
 };

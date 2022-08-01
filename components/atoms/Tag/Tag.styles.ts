@@ -14,7 +14,7 @@ export const Tag = styled.div<ITagStyleProps>`
   font-size: 16px;
   padding: 8px 12px;
   border-radius: 25px;
-  border: 1px solid black;
+  border: none;
   background-color: ${(props) => props.tagColor};
 `;
 
@@ -24,10 +24,10 @@ export const DeleteButton = styled.button`
   text-align: center;
   text-decoration: none;
   margin: 0;
-
-  font-size: 14px;
+  padding: none;
+  border: none;
   border-radius: 50%;
 
+  font-size: 14px;
   background-color: rgba(0, 0, 0, 0);
-  border: none;
 `;

@@ -1,42 +1,35 @@
-import { Tag } from 'components';
-import styled from '@emotion/styled';
 import { useState } from 'react';
+import * as S from './TagList.styles';
 
 interface ITag {
-  value: string;
+  tagName: string;
   tagColor: string;
 }
 
-export interface ITagListProp {
+interface ITagListProp {
   tagList: ITag[];
   deletable?: boolean;
 }
 
-const Container = styled.div`
-  display: inline-flex;
-`;
-
-const PaddedTag = styled(Tag)`
-  margin: 0px 16px;
-`;
-
-export function TagList({ tagList, deletable }: ITagListProp) {
+export default function TagList({ tagList, deletable }: ITagListProp) {
   const [list, setList] = useState<ITag[]>(tagList);
   const handleDelete = (tagValue: string) => () => {
-    const newList: ITag[] = [...list].filter(({ value }) => value !== tagValue);
+    const newList: ITag[] = [...list].filter(
+      ({ tagName }) => tagName !== tagValue,
+    );
     setList(newList);
   };
 
   return (
-    <Container>
-      {list.map(({ value, tagColor }) => (
-        <PaddedTag
-          key={value}
-          value={value}
+    <S.TagListContainer>
+      {list.map(({ tagName, tagColor }) => (
+        <S.PaddedTag
+          key={tagName}
+          tagName={tagName}
           tagColor={tagColor}
-          onDelete={deletable ? handleDelete(value) : undefined}
+          onDelete={deletable ? handleDelete(tagName) : undefined}
         />
       ))}
-    </Container>
+    </S.TagListContainer>
   );
 }
