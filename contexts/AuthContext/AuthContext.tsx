@@ -2,7 +2,6 @@ import React, {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useMemo,
   useState,
 } from 'react';
@@ -60,19 +59,6 @@ function AuthProvider({ children }: IProps) {
     } finally {
       setUser(null);
     }
-  }, []);
-
-  useEffect(() => {
-    // TODO: connect api after backend is ready
-    (async () => {
-      try {
-        setLoading(true);
-      } catch (error) {
-        console.error(error);
-      } finally {
-        setLoading(false);
-      }
-    })();
   }, []);
 
   return (
