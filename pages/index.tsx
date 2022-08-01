@@ -1,10 +1,4 @@
-import { ImageViewer, ImageUploader } from 'components';
-
 function Home() {
-  return (
-    <div>
-      <ImageViewer />
-    </div>
-  );
+  return <div />;
 }
 export default Home;
