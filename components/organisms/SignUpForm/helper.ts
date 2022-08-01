@@ -26,7 +26,7 @@ export const validateValues = ({
     errors.email = '이메일을 입력해주세요';
   }
 
-  if (/^[a-zA-Z0-9]{4,20}$/.test(nickname) === false) {
+  if (/^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9]{1,15}$/.test(nickname) === false) {
     errors.nickname = '닉네임은 4자 이상 20자 이하로 입력해주세요';
   }
 
@@ -38,8 +38,9 @@ export const validateValues = ({
     errors.password = '비밀번호를 입력해주세요';
   }
 
-  if (/^[a-zA-Z0-9]{6,20}$/.test(password) === false) {
-    errors.password = '비밀번호는 6자 이상이어야 합니다';
+  if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/.test(password) === false) {
+    errors.password =
+      '비밀번호는 대소문자, 숫자, 특수 문자를 하나라도 포함하여 8자 이상으로 입력해주세요';
   }
 
   if (!confirmPassword) {

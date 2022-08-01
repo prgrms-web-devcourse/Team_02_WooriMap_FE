@@ -22,16 +22,8 @@ export function SignUpForm() {
   const router = useRouter();
 
   const onSubmit = async (values: IValidate) => {
-    console.log('sd');
     const { email, nickname, password } = values;
 
-    console.log(
-      JSON.stringify({
-        email,
-        password,
-        nickName: nickname,
-      }),
-    );
     try {
       const res = await fetch('http://52.79.88.242/api/members/signup', {
         method: 'POST',
@@ -49,9 +41,15 @@ export function SignUpForm() {
         router.push('/signin');
       }
 
-      console.log(res);
+      const body = await res.json();
+
+      return body;
     } catch (e) {
-      console.log(e);
+      console.error(e);
+
+      return {
+        message: '서버에러',
+      };
     }
   };
 
