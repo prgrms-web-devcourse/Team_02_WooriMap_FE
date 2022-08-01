@@ -12,7 +12,7 @@ export function TextInputWithLabel({
 }: ITextInputProps) {
   return (
     <S.Container>
-      <label htmlFor={name}>hello</label>
+      <label htmlFor={name}>비밀번호 확인</label>
       <TextInput name={name} />
     </S.Container>
   );
