@@ -1,4 +1,5 @@
 import { ThemeProvider } from '@emotion/react';
+import * as nextImage from 'next/image';
 import theme from '../styles/theme';
 import GlobalStyle from '../styles/GlobalStyle';
 import * as NextImage from 'next/image';
@@ -21,7 +22,6 @@ export const parameters = {
     },
   },
 };
-
 // for stroybook next/image
 const OriginalNextImage = NextImage.default;
 

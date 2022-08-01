@@ -1,5 +1,25 @@
 import '@emotion/react';
 
+interface IColors {
+  black: string;
+  gray: string;
+  white: string;
+  skyblue: string;
+}
+
+interface ISizes {
+  images: {
+    medium: SerializedStyles;
+    large: SerializedStyles;
+  };
+  buttons: {
+    xsmall: SerializedStyles;
+    small: SerializedStyles;
+    medium: SerializedStyles;
+    large: SerializedStyles;
+    xlarge: SerializedStyles;
+  };
+}
 declare global {
   // for css``
   interface IThemeProps {
@@ -12,21 +32,4 @@ declare module '@emotion/react' {
     colors: IColors;
     sizes: ISizes;
   }
-}
-
-interface IColors {
-  black: string;
-  gray: string;
-  white: string;
-  skyblue: string;
-}
-
-interface ISizes {
-  buttons: {
-    xsmall: SerializedStyles;
-    small: SerializedStyles;
-    medium: SerializedStyles;
-    large: SerializedStyles;
-    xlarge: SerializedStyles;
-  };
 }

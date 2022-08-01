@@ -1,0 +1,1 @@
+export { ImageDeleteBox } from './ImageDeleteBox';

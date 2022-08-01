@@ -1,4 +1,4 @@
-import { css, Theme } from '@emotion/react';
+import { Theme, css } from '@emotion/react';
 
 const theme: Theme = {
   colors: {
@@ -33,6 +33,16 @@ const theme: Theme = {
         width: 21.8rem;
         height: 4.5rem;
         font-size: 1.25rem;
+      `,
+    },
+    images: {
+      medium: css`
+        width: 4.5rem;
+        height: 4.5rem;
+      `,
+      large: css`
+        width: 37rem;
+        height: 37.5rem;
       `,
     },
   },
