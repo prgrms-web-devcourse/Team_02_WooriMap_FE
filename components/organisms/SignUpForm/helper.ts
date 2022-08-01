@@ -1,92 +1,69 @@
-interface IValidate {
-  email: string;
-  nickname: string;
+import { IInputState } from 'types';
+import { emailRegx, nickNameRegx, passwordRegx } from 'utils';
+
+const validateEmail = ({ email }: { email: string }) => {
+  if (!email) return '이메일을 입력해주세요';
+
+  if (!emailRegx.test(email)) return '이메일 형식이 올바르지 않습니다.';
+
+  return '';
+};
+
+const validateNickName = ({ nickName }: { nickName: string }) => {
+  if (!nickName) return '닉네임을 입력해주세요';
+
+  if (!nickNameRegx.test(nickName))
+    return '닉네임은 4자 이상 20자 이하로 입력해주세요';
+
+  return '';
+};
+
+const validatePassword = ({ password }: { password: string }) => {
+  if (!password) return '비밀번호를 입력해주세요';
+
+  if (passwordRegx.test(password))
+    return '비밀번호는 대소문자, 숫자, 특수 문자를 하나라도 포함하여 8자 이상으로 입력해주세요';
+
+  return '';
+};
+
+const validateConfirmPassword = ({
+  password,
+  confirmPassword,
+}: {
   password: string;
   confirmPassword: string;
-}
+}) => {
+  if (!confirmPassword) return '비밀번호를 입력해주세요';
+
+  if (password !== confirmPassword) return '비밀번호가 일치하지 않습니다';
+
+  return '';
+};
 
 export const validateValues = ({
   email,
-  nickname,
+  nickName,
   password,
   confirmPassword,
-}: IValidate) => {
-  const errors: IValidate = {
+}: IInputState) => {
+  const errors: IInputState = {
     email: '',
-    nickname: '',
+    nickName: '',
     password: '',
     confirmPassword: '',
   };
 
-  if (/^\w+([\\.-]?\w+)*@\w+([\\.-]?\w+)*(\.\w{2,3})+$/.test(email) === false) {
-    errors.email = '이메일 형식이 올바르지 않습니다.';
-  }
+  errors.email = validateEmail({ email });
 
-  if (!email) {
-    errors.email = '이메일을 입력해주세요';
-  }
+  errors.nickName = validateNickName({ nickName });
 
-  if (/^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9]{1,15}$/.test(nickname) === false) {
-    errors.nickname = '닉네임은 4자 이상 20자 이하로 입력해주세요';
-  }
+  errors.password = validatePassword({ password });
 
-  if (!nickname) {
-    errors.nickname = '닉네임을 입력해주세요';
-  }
-
-  if (!password) {
-    errors.password = '비밀번호를 입력해주세요';
-  }
-
-  if (/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/.test(password) === false) {
-    errors.password =
-      '비밀번호는 대소문자, 숫자, 특수 문자를 하나라도 포함하여 8자 이상으로 입력해주세요';
-  }
-
-  if (!confirmPassword) {
-    errors.confirmPassword = '비밀번호를 입력해주세요';
-  }
-
-  if (password !== confirmPassword) {
-    errors.confirmPassword = '비밀번호가 일치하지 않습니다';
-  }
+  errors.confirmPassword = validateConfirmPassword({
+    password,
+    confirmPassword,
+  });
 
   return errors;
 };
-// import { nanoid } from 'nanoid';
-// import { ITextInputProps } from 'types';
-
-// export const initialValues: Array<ITextInputProps> = [
-//   {
-//     key: nanoid(),
-//     name: 'email',
-//     text: '이메일',
-//     type: 'email',
-//     placeholder: '이메일 주소를 입력해주세요',
-//     deleteAll: () => {},
-//   },
-//   {
-//     key: nanoid(),
-//     name: 'nickname',
-//     text: '닉네임',
-//     type: 'text',
-//     placeholder: '닉네임을 입력해주세요',
-//     deleteAll: () => {},
-//   },
-//   {
-//     key: nanoid(),
-//     name: 'password',
-//     text: '비밀번호',
-//     type: 'password',
-//     placeholder: '비밀번호를 입력해주세요',
-//     deleteAll: () => {},
-//   },
-//   {
-//     key: nanoid(),
-//     name: 'passwordConfirm',
-//     text: '비밀번호 확인',
-//     type: 'password',
-//     placeholder: '비밀번호를 한번 더 입력해주세요',
-//     deleteAll: () => {},
-//   },
-// ];

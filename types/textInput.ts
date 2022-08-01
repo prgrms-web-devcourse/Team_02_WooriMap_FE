@@ -8,3 +8,10 @@ export interface ITextInputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   deleteAll?: (name: string) => void;
 }
+
+export interface IInputState {
+  email: string;
+  nickName: string;
+  password: string;
+  confirmPassword: string;
+}

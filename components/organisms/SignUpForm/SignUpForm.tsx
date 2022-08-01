@@ -8,7 +8,6 @@ import {
 } from 'components';
 import MainLogo from 'public/image/main-logo-auth.svg';
 import { validateValues } from './helper';
-
 import * as S from './SignUpForm.styles';
 
 interface IValidate {
