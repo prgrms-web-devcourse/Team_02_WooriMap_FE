@@ -3,13 +3,18 @@ import { ITextInputProps } from 'types';
 import { TextInput } from 'components';
 import * as S from './TextInputWithLabel.styles';
 
-export function TextInputWithLabel(props: ITextInputProps) {
-  const { name, text } = props;
+interface ITextInputWithLabelProps extends ITextInputProps {
+  error: string;
+}
+
+export function TextInputWithLabel(props: ITextInputWithLabelProps) {
+  const { name, text, error } = props;
 
   return (
     <S.Container>
       <label htmlFor={name}>{text}</label>
       <TextInput {...props} />
+      <p>{error}</p>
     </S.Container>
   );
 }

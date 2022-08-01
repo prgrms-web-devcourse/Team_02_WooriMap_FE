@@ -13,13 +13,16 @@ function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+    errors[name] = '';
     setValues({ ...values, [name]: value });
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<Element>) => {
     setIsLoading(true);
     e.preventDefault();
     const newErrors = validate ? validate(values) : {};
+
+    console.log(newErrors);
     if (Object.keys(newErrors).length === 0) {
       await onSubmit(values);
     }
