@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
-// import { Input } from 'components';
 
 export const TextInputWrapper = styled.div`
   display: flex;
