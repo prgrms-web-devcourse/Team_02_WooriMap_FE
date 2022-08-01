@@ -7,6 +7,7 @@ export { ImageBox } from 'components/atoms/ImageBox';
 export { FormBackground } from 'components/atoms/FormBackground';
 export { Tag } from 'components/atoms/Tag';
 export { CalendarInput } from 'components/atoms/CalendarInput';
+export { SubmitButton } from 'components/atoms/SubmitButton';
 
 // molecules
 export { ImageList } from 'components/molecules/ImageList';
