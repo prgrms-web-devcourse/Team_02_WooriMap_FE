@@ -10,7 +10,7 @@ interface ITextInputProps {
   deleteAll?: (name: string) => void;
 }
 
-function TextInput({
+export function TextInput({
   name,
   type,
   placeholder,
@@ -49,5 +49,3 @@ function TextInput({
     </S.TextInputWrapper>
   );
 }
-
-export default TextInput;

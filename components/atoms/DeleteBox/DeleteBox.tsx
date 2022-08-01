@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { ImageBox } from 'components';
-import deleteSvg from 'public/image/delete.svg';
+import deleteSvg from 'public/image/deleteImage.svg';
 import * as S from './DeleteBox.styles';
 
 interface IDeleteBoxProps {
