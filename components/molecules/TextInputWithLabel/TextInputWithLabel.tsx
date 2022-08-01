@@ -6,7 +6,7 @@ export function TextInputWithLabel() {
   return (
     <S.Container>
       <label htmlFor="frist">hello</label>
-      <TextInput name="first" />
+      <TextInput name="frist" />
     </S.Container>
   );
 }

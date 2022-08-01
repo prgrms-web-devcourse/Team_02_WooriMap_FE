@@ -1,9 +1,9 @@
-import { TextInputWithLabel } from 'components';
+import { SignUpForm } from 'components';
 
 function SignUp() {
   return (
     <div>
-      <TextInputWithLabel />
+      <SignUpForm />
     </div>
   );
 }

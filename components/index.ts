@@ -18,6 +18,7 @@ export { LoggedInSection } from 'components/molecules/LoggedInSection';
 export { ImageViewer } from 'components/organisms/ImageViewer';
 export { ImageUploader } from 'components/organisms/ImageUploader';
 export { NavBar } from 'components/organisms/NavBar';
+export { SignUpForm } from 'components/organisms/SignUpForm';
 
 // templates
 export { Layout } from 'components/templates/Layout';
