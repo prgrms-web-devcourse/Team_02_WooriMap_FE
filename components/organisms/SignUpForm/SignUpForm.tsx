@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router';
+import { IInputState } from 'types';
 import { useForm } from 'hooks';
 import {
   FormBackground,
@@ -10,18 +11,11 @@ import MainLogo from 'public/image/main-logo-auth.svg';
 import { validateValues } from './helper';
 import * as S from './SignUpForm.styles';
 
-interface IValidate {
-  email: string;
-  nickname: string;
-  password: string;
-  confirmPassword: string;
-}
-
 export function SignUpForm() {
   const router = useRouter();
 
-  const onSubmit = async (values: IValidate) => {
-    const { email, nickname, password } = values;
+  const onSubmit = async (values: IInputState) => {
+    const { email, nickName, password } = values;
 
     try {
       const res = await fetch('http://52.79.88.242/api/members/signup', {
@@ -32,7 +26,7 @@ export function SignUpForm() {
         body: JSON.stringify({
           email,
           password,
-          nickName: nickname,
+          nickName,
         }),
       });
 
@@ -54,25 +48,25 @@ export function SignUpForm() {
 
   const initialValues = {
     email: '',
-    nickname: '',
+    nickName: '',
     password: '',
     confirmPassword: '',
   };
 
   const { values, handleChange, handleSubmit, errors, removeAll } =
-    useForm<IValidate>({
+    useForm<IInputState>({
       initialValues,
       onSubmit,
       validate: validateValues,
     });
 
-  const { email, nickname, password, confirmPassword } = values;
+  const { email, nickName, password, confirmPassword } = values;
   const {
     email: emailError,
-    nickname: nicknameError,
+    nickName: nicknameError,
     password: passwordError,
     confirmPassword: confirmPasswordError,
-  } = errors as IValidate;
+  } = errors as IInputState;
 
   return (
     <FormBackground onSubmit={handleSubmit} noValidate>
@@ -90,13 +84,13 @@ export function SignUpForm() {
           error={emailError}
         />
         <TextInputWithLabel
-          name="nickname"
+          name="nickName"
           type="text"
-          value={nickname}
+          value={nickName}
           text="닉네임"
           placeholder="닉네임을 입력해주세요"
           onChange={handleChange}
-          deleteAll={() => removeAll('nickname')}
+          deleteAll={() => removeAll('nickName')}
           error={nicknameError}
         />
         <TextInputWithLabel
