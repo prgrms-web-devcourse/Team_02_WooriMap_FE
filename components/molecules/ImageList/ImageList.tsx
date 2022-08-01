@@ -1,5 +1,5 @@
 import { IImageSource } from 'types';
-import { ImageBox, DeleteBox } from 'components';
+import { ImageBox, ImageDeleteBox } from 'components';
 import * as S from './ImageList.styles';
 
 interface IImageListProps {
@@ -22,7 +22,7 @@ export function ImageList({ type, size, sources, onClick }: IImageListProps) {
             onClick={() => onClick(key)}
           />
         ) : (
-          <DeleteBox
+          <ImageDeleteBox
             key={key}
             size={size}
             src={src}

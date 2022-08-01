@@ -1,7 +1,7 @@
 // atoms
 export { Button } from 'components/atoms/Button';
 export { Input } from 'components/atoms/Input';
-export { DeleteBox } from 'components/atoms/DeleteBox';
+export { ImageDeleteBox } from '@components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
 

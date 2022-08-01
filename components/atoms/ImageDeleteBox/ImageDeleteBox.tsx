@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { ImageBox } from 'components';
 import deleteSvg from 'public/image/deleteImage.svg';
-import * as S from './DeleteBox.styles';
+import * as S from './ImageDeleteBox.styles';
 
 interface IDeleteBoxProps {
   size: 'small' | 'medium' | 'large';
@@ -17,7 +17,7 @@ function DeleteIcon({ onClick }: { onClick: () => void }) {
   );
 }
 
-export function DeleteBox({ size, src, onClick }: IDeleteBoxProps) {
+export function ImageDeleteBox({ size, src, onClick }: IDeleteBoxProps) {
   return (
     <S.Container>
       <ImageBox size={size} src={src} />

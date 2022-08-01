@@ -1,1 +1,0 @@
-export { DeleteBox } from './DeleteBox';
