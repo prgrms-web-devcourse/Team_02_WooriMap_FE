@@ -14,8 +14,8 @@ function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    setErrors({ ...errors, [name]: '' });
-    setValues({ ...values, [name]: value });
+    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setValues((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<Element>) => {
@@ -31,12 +31,9 @@ function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
     setIsLoading(false);
   };
 
-  const removeAll = useCallback(
-    (name: string) => {
-      setValues({ ...values, [name]: '' });
-    },
-    [values],
-  );
+  const removeAll = useCallback((name: string) => {
+    setValues((prev) => ({ ...prev, [name]: '' }));
+  }, []);
 
   return {
     values,
