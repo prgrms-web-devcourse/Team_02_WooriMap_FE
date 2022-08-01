@@ -8,7 +8,7 @@ import React, {
 import instance from 'apis/instance';
 import { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
-import { setCookie } from 'utils/cookie';
+import LocalStorage from '@utils/storage';
 
 interface IAuthContext {
   isAuthenticated: false;
@@ -41,8 +41,7 @@ function AuthProvider({ children }: IProps) {
           password,
         })
         .then((response) => response.data.data);
-      setCookie('accessToken', data.accessToken);
-      setCookie('refreshToken', data.refreshToken, { httpOnly: true });
+      LocalStorage.setItem('accessToken', data.accessToken);
       setUser(() => data.member);
     } catch (error) {
       throw new Error('error occurred at login.');
