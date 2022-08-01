@@ -1,9 +1,10 @@
 // atoms
 export { Button } from 'components/atoms/Button';
 export { Input } from 'components/atoms/Input';
-export { ImageDeleteBox } from '@components/atoms/ImageDeleteBox';
+export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
+export { FormBackground } from 'components/atoms/FormBackground';
 
 // molecules
 export { TextInput } from 'components/molecules/TextInput';

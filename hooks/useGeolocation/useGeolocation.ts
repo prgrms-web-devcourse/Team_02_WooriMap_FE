@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import getCurrentCoordinates from '@utils/geolocation';
+import getCurrentCoordinates from 'utils/geolocation';
 
 function useGeolocation() {
   const [coords, setCoords] = useState({

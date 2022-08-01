@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import styled from '@emotion/styled';
-import TextInput from './TextInput';
+import { TextInput } from './TextInput';
 
 export default {
   title: 'Components/Molecules/TextInput',
