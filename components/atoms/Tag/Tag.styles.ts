@@ -8,11 +8,12 @@ export const Tag = styled.div<ITagStyleProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  text-decoration: none;
   margin: 0;
-
-  font-size: 16px;
   padding: 8px 12px;
+
+  text-decoration: none;
+  font-size: 16px;
+
   border-radius: 25px;
   border: none;
   background-color: ${(props) => props.tagColor};
