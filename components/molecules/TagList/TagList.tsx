@@ -11,7 +11,7 @@ interface ITagListProp {
   tagList: ITag[];
 }
 
-export default function TagList({ tagList }: ITagListProp) {
+export function TagList({ tagList }: ITagListProp) {
   const [list, setList] = useState<ITag[]>(tagList);
   const handleDelete = (tagValue: string) => () => {
     const newList: ITag[] = [...list].filter(
@@ -23,7 +23,7 @@ export default function TagList({ tagList }: ITagListProp) {
   return (
     <S.TagListContainer>
       {list.map(({ tagName, tagColor, deletable }) => (
-        <S.PaddedTag
+        <S.MarginTag
           key={tagName}
           tagName={tagName}
           tagColor={tagColor}

@@ -8,6 +8,7 @@ export const Tag = styled.div<ITagStyleProps>`
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  height: 2rem;
   margin: 0;
   padding: 0.5rem 1rem;
   border: none;

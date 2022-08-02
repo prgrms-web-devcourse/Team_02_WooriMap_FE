@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import TagList from './TagList';
+import { TagList } from './TagList';
 
 export default {
   title: 'Components/Molecules/TagList',
@@ -12,29 +12,21 @@ const sampleInput1 = {
     { tagName: '산', tagColor: '#2B7A0B' },
     { tagName: '들', tagColor: '#7DCE13' },
   ],
-  deletable: true,
 };
 
 const sampleInput2 = {
   tagList: [
-    { tagName: '벨벳', tagColor: '#B93160' },
-    { tagName: '오렌지', tagColor: '#EF5B0C' },
-    { tagName: '복숭아', tagColor: '#FFF9CA' },
+    { tagName: '벨벳', tagColor: '#B93160', deletable: true },
+    { tagName: '오렌지', tagColor: '#EF5B0C', deletable: true },
+    { tagName: '복숭아', tagColor: '#FFF9CA', deletable: true },
   ],
-  deletable: false,
 };
 
 export const Default: ComponentStory<typeof TagList> = () => {
   return (
     <>
-      <TagList
-        tagList={sampleInput1.tagList}
-        deletable={sampleInput1.deletable}
-      />
-      <TagList
-        tagList={sampleInput2.tagList}
-        deletable={sampleInput2.deletable}
-      />
+      <TagList tagList={sampleInput1.tagList} />
+      <TagList tagList={sampleInput2.tagList} />
     </>
   );
 };
