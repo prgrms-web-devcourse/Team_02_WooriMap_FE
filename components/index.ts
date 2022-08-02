@@ -15,6 +15,7 @@ export { AuthLogoImage } from 'components/atoms/AuthLogoImage';
 export { ImageList } from 'components/molecules/ImageList';
 export { UploadArea } from 'components/molecules/UploadArea';
 export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';
+export { CoupleProfile } from 'components/molecules/CoupleProfile';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
