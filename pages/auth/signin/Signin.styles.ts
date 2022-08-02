@@ -50,8 +50,13 @@ export const InputWrapper = styled(Wrapper)`
 `;
 
 export const FooterWrapper = styled(Wrapper)`
-  * {
+  button {
     display: block;
     width: 100%;
+  }
+
+  p {
+    margin: 1rem 0;
+    text-align: center;
   }
 `;

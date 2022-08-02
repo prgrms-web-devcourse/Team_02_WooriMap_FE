@@ -22,8 +22,7 @@ function Signin() {
     setData((prev) => ({ ...prev, [key]: '' }));
   }, []);
   return (
-    <FormBackground>
-      {data.email}
+    <FormBackground style={{ margin: '2rem auto' }}>
       <S.FlexWrapper justify="center" padding="2rem">
         <Image
           src={mainLogoVertical}
@@ -48,10 +47,13 @@ function Signin() {
           />
         </S.InputWrapper>
       </S.Wrapper>
-      <S.FooterWrapper margin="auto 0 0 0">
-        <Button size="large" type="button">
+      <S.FooterWrapper margin="7rem 0">
+        <Button size="large" type="submit">
           로그인
         </Button>
+        <p>
+          회원이 아니신가요? <span>회원 가입</span>
+        </p>
       </S.FooterWrapper>
     </FormBackground>
   );
