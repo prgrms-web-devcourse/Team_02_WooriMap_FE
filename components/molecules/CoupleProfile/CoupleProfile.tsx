@@ -2,14 +2,21 @@ import * as S from './CoupleProfile.styles';
 import { Profile } from 'components';
 
 interface ICoupleProfileProps {
-  userName: string;
+  nickname: string;
+  coupleNickname: string;
+  coupleStartingDate: string;
 }
 
-export function CoupleProfile({ userName }: ICoupleProfileProps) {
+function EachProfile(nickname: string) {
   return (
-    <S.Container>
+    <S.EachProfileContainer>
       <Profile width={128} height={128} path={null} isLink={false} />
-      <S.UserName>{userName}</S.UserName>
-    </S.Container>
+      <S.Nickname>{nickname}</S.Nickname>
+    </S.EachProfileContainer>
   );
 }
+export function CoupleProfile({
+  nickname,
+  coupleNickname,
+  coupleStartingDate,
+}: ICoupleProfileProps) {}

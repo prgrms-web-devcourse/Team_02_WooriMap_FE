@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
+export const EachProfileContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,7 @@ export const Container = styled.div`
   min-height: 176px;
 `;
 
-export const UserName = styled.div`
+export const Nickname = styled.div`
   width: 80%;
   height: 50px;
   padding-top: 16px;
