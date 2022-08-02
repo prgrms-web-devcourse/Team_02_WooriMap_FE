@@ -21,6 +21,5 @@ export default {
 } as ComponentMeta<typeof CoupleProfile>;
 
 export const Default: ComponentStory<typeof CoupleProfile> = (args) => {
-  console.log(args);
   return <CoupleProfile {...args} />;
 };
