@@ -1,50 +1,21 @@
-import { useState } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import deleteIcon from 'public/image/delete.svg';
 import * as S from './TextInput.styles';
 
-interface ITextInputProps {
-  name?: string;
-  type?: string;
-  placeholder?: string;
-  onChange?: () => void;
-  deleteAll?: (name: string) => void;
+interface ITextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  onClickButton?: (e: React.MouseEvent<HTMLImageElement>) => void;
 }
 
-export function TextInput({
-  name,
-  type,
-  placeholder,
-  onChange,
-  deleteAll,
-  ...styles
-}: ITextInputProps) {
-  const [inputValue, setInputValue] = useState<string>('');
-
-  const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
-    if (onChange) onChange();
-  };
-
-  const onClickDeleteButton = () => {
-    setInputValue('');
-    if (deleteAll && name) deleteAll(name);
-  };
-
+export function TextInput({ onClickButton, ...props }: ITextInputProps) {
   return (
-    <S.TextInputWrapper {...styles}>
-      <S.TextInput
-        name={name}
-        type={type}
-        placeholder={placeholder}
-        value={inputValue}
-        onChange={onChangeInput}
-      />
+    <S.TextInputWrapper>
+      <S.TextInput {...props} />
       <S.DeleteButton
         src={deleteIcon}
         alt="Delete All"
         width={16}
         height={16}
-        onClick={onClickDeleteButton}
+        onClick={onClickButton}
       />
     </S.TextInputWrapper>
   );
