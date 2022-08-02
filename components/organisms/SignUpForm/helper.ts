@@ -1,4 +1,5 @@
-import { IInputState } from 'types';
+import { nanoid } from 'nanoid';
+import { IInputState, ITextInputProps } from 'types';
 import { emailRegx, nickNameRegx, passwordRegx } from 'utils';
 
 const validateEmail = ({ email }: { email: string }) => {
@@ -66,4 +67,56 @@ export const validateValues = ({
   });
 
   return errors;
+};
+
+export const textInputsProps: Array<ITextInputProps> = [
+  {
+    key: nanoid(),
+    name: 'email',
+    type: 'email',
+    text: '이메일',
+    placeholder: '이메일 주소를 입력해주세요',
+  },
+  {
+    key: nanoid(),
+    name: 'nickName',
+    type: 'text',
+    text: '닉네임',
+    placeholder: '닉네임을 입력해주세요',
+  },
+  {
+    key: nanoid(),
+    name: 'password',
+    type: 'password',
+    text: '비밀번호',
+    placeholder: '비밀번호를 입력해주세요',
+  },
+  {
+    key: nanoid(),
+    name: 'confirmPassword',
+    type: 'password',
+    text: '비밀번호 확인',
+    placeholder: '비밀번호를 한번 더 입력해주세요',
+  },
+];
+
+export const parseSignUpFormValues = ({
+  handleChange,
+  removeAll,
+  value,
+  error,
+  name,
+}: {
+  handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  removeAll: (name: string) => void;
+  value: string;
+  error: string;
+  name: string | undefined;
+}) => {
+  return {
+    value,
+    onChange: handleChange,
+    error,
+    deleteAll: () => removeAll(`${name}`),
+  };
 };

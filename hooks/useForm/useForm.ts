@@ -3,16 +3,18 @@ import { useState, useCallback } from 'react';
 interface IUseForm<T> {
   initialValues: T;
   onSubmit: (values: T) => void;
-  validate: (values: T) => T;
+  validateValues: (values: T) => T;
 }
 
-function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
+function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState(initialValues);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
+
+    console.log(name, value);
 
     setErrors((prev) => ({ ...prev, [name]: '' }));
     setValues((prev) => ({ ...prev, [name]: value }));
@@ -21,7 +23,7 @@ function useForm<T>({ initialValues, onSubmit, validate }: IUseForm<T>) {
   const handleSubmit = async (e: React.FormEvent<Element>) => {
     setIsLoading(true);
     e.preventDefault();
-    const newErrors = validate(values);
+    const newErrors = validateValues(values);
 
     if (Object.values(newErrors).every((x) => !x)) {
       onSubmit(values);

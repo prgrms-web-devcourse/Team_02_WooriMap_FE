@@ -1,5 +1,6 @@
+import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
-import { IInputState } from 'types';
+import { IInputState, ITextInputProps } from 'types';
 import { useForm } from 'hooks';
 import {
   FormBackground,
@@ -8,7 +9,11 @@ import {
   AuthPageRoutingButton,
 } from 'components';
 import MainLogo from 'public/image/main-logo-auth.svg';
-import { validateValues } from './helper';
+import {
+  validateValues,
+  textInputsProps,
+  parseSignUpFormValues,
+} from './helper';
 import * as S from './SignUpForm.styles';
 
 export function SignUpForm() {
@@ -57,62 +62,31 @@ export function SignUpForm() {
     useForm<IInputState>({
       initialValues,
       onSubmit,
-      validate: validateValues,
+      validateValues,
     });
-
-  const { email, nickName, password, confirmPassword } = values;
-  const {
-    email: emailError,
-    nickName: nicknameError,
-    password: passwordError,
-    confirmPassword: confirmPasswordError,
-  } = errors as IInputState;
 
   return (
     <FormBackground onSubmit={handleSubmit} noValidate>
       <S.Container>
         <S.LogoImage src={MainLogo} width={60} height={120} alt="main-logo" />
 
-        <TextInputWithLabel
-          name="email"
-          type="email"
-          value={email}
-          text="이메일"
-          placeholder="이메일 주소를 입력해주세요"
-          onChange={handleChange}
-          deleteAll={() => removeAll('email')}
-          error={emailError}
-        />
-        <TextInputWithLabel
-          name="nickName"
-          type="text"
-          value={nickName}
-          text="닉네임"
-          placeholder="닉네임을 입력해주세요"
-          onChange={handleChange}
-          deleteAll={() => removeAll('nickName')}
-          error={nicknameError}
-        />
-        <TextInputWithLabel
-          name="password"
-          type="password"
-          value={password}
-          text="비밀번호"
-          placeholder="비밀번호를 입력해주세요"
-          onChange={handleChange}
-          deleteAll={() => removeAll('password')}
-          error={passwordError}
-        />
-        <TextInputWithLabel
-          name="confirmPassword"
-          type="password"
-          value={confirmPassword}
-          text="비밀번호 확인"
-          placeholder="비밀번호를 한번 더 입력해주세요"
-          onChange={handleChange}
-          deleteAll={() => removeAll('confirmPassword')}
-          error={confirmPasswordError}
-        />
+        {textInputsProps.map((input: ITextInputProps) => {
+          const { name } = input;
+
+          return (
+            // eslint-disable-next-line react/jsx-key
+            <TextInputWithLabel
+              {...input}
+              {...parseSignUpFormValues({
+                handleChange,
+                removeAll,
+                value: values[name as keyof IInputState],
+                error: errors[name as keyof IInputState],
+                name,
+              })}
+            />
+          );
+        })}
         <SubmitButton text="회원가입" />
         <AuthPageRoutingButton type="signup" />
       </S.Container>

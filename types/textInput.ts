@@ -1,6 +1,6 @@
 export interface ITextInputProps {
-  key?: string;
-  value: string;
+  key: string;
+  value?: string;
   name?: string;
   text?: string;
   type?: string;
