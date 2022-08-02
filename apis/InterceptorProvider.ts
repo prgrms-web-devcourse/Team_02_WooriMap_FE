@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import LocalStorage from 'utils/storage';
 import instance from './instance';
 
 interface IInterceptor {
@@ -7,7 +8,13 @@ interface IInterceptor {
 
 function InterceptorProvider({ children }: IInterceptor) {
   useEffect(() => {
-    const requestInterceptor = instance.interceptors.request.use((config) => {
+    const requestInterceptor = instance.interceptors.request.use((_config) => {
+      const token = LocalStorage.getItem<string>('accessToken', '');
+      const config = { ..._config };
+      if (!config.headers) {
+        config.headers = {};
+      }
+      config.headers.Authorization = token ? `Bearer ${token}` : '';
       return config;
     });
 
