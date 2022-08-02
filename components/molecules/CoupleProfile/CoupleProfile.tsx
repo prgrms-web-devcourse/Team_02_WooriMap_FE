@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import * as S from './CoupleProfile.styles';
 import { Profile } from 'components';
 
