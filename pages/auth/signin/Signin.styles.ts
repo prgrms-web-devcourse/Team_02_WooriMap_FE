@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 
 interface IWrapper {
+  margin: string;
   padding: string;
 }
 
@@ -9,9 +10,12 @@ interface IFlexWrapper extends IWrapper {
   align: 'center' | 'flex-start' | 'flex-end' | 'stretch';
 }
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div<Partial<IWrapper>>`
+  margin: ${({ margin }) => margin};
+  padding: ${({ padding }) => padding};
+`;
 
-export const FlexWrapper = styled.div<Partial<IFlexWrapper>>`
+export const FlexWrapper = styled(Wrapper)<Partial<IFlexWrapper>>`
   display: flex;
   justify-content: ${({ justify = 'flex-start' }) => {
     if (justify === 'center') return 'center';
@@ -31,12 +35,12 @@ export const FlexWrapper = styled.div<Partial<IFlexWrapper>>`
   }};
 `;
 
-export const LogoWrapper = styled(FlexWrapper)`
-  padding: 2rem;
-`;
+export const InputWrapper = styled(Wrapper)`
+  div {
+    margin: 2rem 0;
 
-export const InputWrapper = styled(FlexWrapper)`
-  + div {
-    margin: 2rem;
+    :last-of-type {
+      margin-bottom: 0;
+    }
   }
 `;
