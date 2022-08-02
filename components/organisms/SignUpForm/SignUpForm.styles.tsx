@@ -14,3 +14,15 @@ export const Container = styled.div`
 export const LogoImage = styled(Image)`
   display: none;
 `;
+
+export const FinalValidationError = styled.p`
+  display: flex;
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  margin-bottom: 10px;
+
+  color: ${({ theme }) => theme.colors.alert};
+`;

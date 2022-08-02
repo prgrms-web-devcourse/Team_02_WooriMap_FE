@@ -37,6 +37,9 @@ export const Inner = styled.div`
 `;
 
 export const ValidationError = styled.p`
+  position: relative;
+  top: 5px;
+  left: -120px;
   font-size: 10px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.alert};

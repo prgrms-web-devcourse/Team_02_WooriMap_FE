@@ -88,9 +88,9 @@ export function SignUpForm() {
             />
           );
         })}
+        <S.FinalValidationError>{errors.finalError}</S.FinalValidationError>
         <SubmitButton text="회원가입" />
         <AuthPageRoutingButton type="signup" />
-        {errors.finalError}
       </S.Container>
     </FormBackground>
   );
