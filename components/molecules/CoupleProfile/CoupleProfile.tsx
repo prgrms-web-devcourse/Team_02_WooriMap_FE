@@ -8,7 +8,7 @@ interface ICoupleProfileProps {
 export function CoupleProfile({ userName }: ICoupleProfileProps) {
   return (
     <S.Container>
-      <Profile width={50} height={50} path={null} isLink={false} />
+      <Profile width={128} height={128} path={null} isLink={false} />
       <S.UserName>{userName}</S.UserName>
     </S.Container>
   );
