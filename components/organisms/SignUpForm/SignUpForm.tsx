@@ -36,11 +36,10 @@ export function SignUpForm() {
 
       if (res.status === 201) {
         router.push('/signin');
+        return { message: '' };
       }
 
       const body = await res.json();
-
-      console.log(body);
 
       return body;
     } catch (e) {
