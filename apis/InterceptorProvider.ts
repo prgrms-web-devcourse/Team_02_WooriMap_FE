@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { AxiosRequestConfig } from 'axios';
 import { IApiResponse } from 'types/api';
-import { IToken } from 'types/auth';
+import { ITokenSet } from 'types/auth';
 import LocalStorage from 'utils/storage';
 import { useAuthContext } from 'contexts/AuthContext';
 import instance from './instance';
@@ -24,7 +24,6 @@ function InterceptorProvider({ children }: IInterceptor) {
         config.headers = {};
       }
       config.headers.Authorization = token ? `Bearer ${token}` : '';
-      console.log(config);
       return config;
     });
 
@@ -45,7 +44,7 @@ function InterceptorProvider({ children }: IInterceptor) {
         if (!config.retry) {
           config.retry = true;
           return instance
-            .post<IApiResponse<IToken>>('/auth/token')
+            .post<IApiResponse<ITokenSet>>('/fake/token')
             .then((response) => response.data.data)
             .then((token) => {
               const { accessToken } = token;

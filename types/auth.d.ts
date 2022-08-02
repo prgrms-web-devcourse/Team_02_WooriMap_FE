@@ -5,8 +5,9 @@ export interface ILoginFormData extends IEmail {
   password: string;
 }
 
-interface IToken {
+interface ITokenSet {
   accessToken: string;
+  refreshToken: string;
 }
 
 export interface IUserResponse extends IEmail {
@@ -14,6 +15,6 @@ export interface IUserResponse extends IEmail {
   couple: string;
 }
 
-export interface ILoginResponse extends IToken {
+export interface ILoginResponse extends ITokenSet {
   member: IUserResponse;
 }
