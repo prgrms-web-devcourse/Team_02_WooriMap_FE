@@ -9,26 +9,23 @@ export const Tag = styled.div<ITagStyleProps>`
   justify-content: center;
   align-items: center;
   margin: 0;
-  padding: 8px 12px;
-
-  text-decoration: none;
-  font-size: 16px;
-
-  border-radius: 25px;
+  padding: 0.5rem 1rem;
   border: none;
+  border-radius: 1rem;
   background-color: ${(props) => props.tagColor};
+  font-size: 1rem;
+  text-decoration: none;
 `;
 
 export const DeleteButton = styled.button`
-  cursor: pointer;
-  appearance: none;
-  text-align: center;
-  text-decoration: none;
   margin: 0;
   padding: none;
   border: none;
   border-radius: 50%;
-
-  font-size: 14px;
   background-color: rgba(0, 0, 0, 0);
+  text-decoration: none;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  appearance: none;
 `;
