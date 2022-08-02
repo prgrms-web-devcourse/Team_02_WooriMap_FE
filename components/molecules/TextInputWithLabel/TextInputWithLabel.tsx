@@ -8,13 +8,17 @@ interface ITextInputWithLabelProps extends ITextInputProps {
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, text, error } = props;
+  const { name, text, error, deleteAll } = props;
+
+  const onClickDeleteButton = () => {
+    if (deleteAll && name) deleteAll(name);
+  };
 
   return (
     <S.Container>
       <S.Wrapper>
         <label htmlFor={name}>{text}</label>
-        <TextInput {...props} />
+        <TextInput onClickButton={onClickDeleteButton} {...props} />
       </S.Wrapper>
       <S.ValidationError>{error}</S.ValidationError>
     </S.Container>

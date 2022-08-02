@@ -72,18 +72,16 @@ export const parseSignUpFormValues = ({
   removeAll,
   value,
   error,
-  name,
 }: {
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   removeAll: (name: string) => void;
   value: string;
   error: string;
-  name: string | undefined;
 }) => {
   return {
     value,
     onChange: handleChange,
     error,
-    deleteAll: () => removeAll(`${name}`),
+    deleteAll: removeAll,
   };
 };

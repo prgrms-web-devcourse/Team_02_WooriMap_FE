@@ -81,7 +81,6 @@ export function SignUpForm() {
                 removeAll,
                 value: values[name as keyof IInputState] as string,
                 error: errors[name as keyof IInputState] as string,
-                name,
               })}
             />
           );
