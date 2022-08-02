@@ -7,6 +7,7 @@ const theme: Theme = {
     white: '#FFFFFF',
     skyblue: '#97BAFF',
     alert: '#FF3737',
+    pink: 'rgba(255, 143, 143, 0.5)',
   },
   sizes: {
     buttons: {
