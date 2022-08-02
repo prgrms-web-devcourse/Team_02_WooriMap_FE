@@ -7,5 +7,5 @@ export const Wrapper = styled.span`
   align-items: center;
   justify-content: center;
 
-  margin: 42px 0;
+  margin: 32px 0;
 `;

@@ -8,7 +8,7 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  padding: 0 20px;
+  padding: 0 80px;
 `;
 
 export const LogoImage = styled(Image)``;
@@ -16,6 +16,8 @@ export const LogoImage = styled(Image)``;
 export const FinalValidationError = styled.p`
   display: flex;
   justify-content: center;
+
+  height: 1rem;
 
   font-size: 1rem;
   font-weight: bold;
