@@ -1,5 +1,4 @@
-import { useRouter } from 'next/router';
-import { IInputState, ITextInputProps, ISingnUpRes } from 'types';
+import { IInputState, ITextInputProps } from 'types';
 import { useForm } from 'hooks';
 import {
   FormBackground,
@@ -8,6 +7,7 @@ import {
   AuthPageRoutingButton,
   AuthLogoImage,
 } from 'components';
+import { signup } from 'apis/auth';
 import {
   validateValues,
   textInputsProps,
@@ -16,41 +16,6 @@ import {
 import * as S from './SignUpForm.styles';
 
 export function SignUpForm() {
-  const router = useRouter();
-
-  const onSubmit = async (values: IInputState): Promise<ISingnUpRes> => {
-    const { email, nickName, password } = values;
-
-    try {
-      const res = await fetch('http://52.79.88.242/api/members/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          email,
-          password,
-          nickName,
-        }),
-      });
-
-      if (res.status === 201) {
-        router.push('/signin');
-        return { message: '' };
-      }
-
-      const body = await res.json();
-
-      return body;
-    } catch (e) {
-      console.error(e);
-
-      return {
-        message: '서버에러',
-      };
-    }
-  };
-
   const initialValues = {
     email: '',
     nickName: '',
@@ -61,7 +26,7 @@ export function SignUpForm() {
   const { values, handleChange, handleSubmit, errors, removeAll } =
     useForm<IInputState>({
       initialValues,
-      onSubmit,
+      onSubmit: signup,
       validateValues,
     });
 
