@@ -5,5 +5,5 @@ export const FormBackground = styled.form`
   border-radius: 24px;
   padding: 2rem;
   width: 500px;
-  height: 624px;
+  min-height: 624px;
 `;
