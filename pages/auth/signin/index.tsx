@@ -34,6 +34,7 @@ function Signin() {
           />
           <TextInput
             value={data.password}
+            type="password"
             onChange={changeValue('password')}
             onClickButton={() => resetValue('password')}
             className="input-wrapper"
