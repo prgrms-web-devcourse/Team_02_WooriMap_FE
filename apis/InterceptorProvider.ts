@@ -7,13 +7,18 @@ interface IInterceptor {
 
 function InterceptorProvider({ children }: IInterceptor) {
   useEffect(() => {
-    instance.interceptors.request.use((config) => {
+    const requestInterceptor = instance.interceptors.request.use((config) => {
       return config;
     });
-    instance.interceptors.response.use(
+
+    const responseInterceptor = instance.interceptors.response.use(
       (config) => config,
       (error) => error,
     );
+    return () => {
+      instance.interceptors.request.eject(requestInterceptor);
+      instance.interceptors.response.eject(responseInterceptor);
+    };
   }, []);
   return children;
 }
