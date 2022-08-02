@@ -22,7 +22,7 @@ const validateNickName = ({ nickName }: { nickName: string }) => {
 const validatePassword = ({ password }: { password: string }) => {
   if (!password) return '비밀번호를 입력해주세요';
 
-  if (passwordRegx.test(password))
+  if (!passwordRegx.test(password))
     return '비밀번호는 대소문자, 숫자, 특수 문자를 하나라도 포함하여 8자 이상으로 입력해주세요';
 
   return '';
