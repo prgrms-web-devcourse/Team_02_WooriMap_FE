@@ -35,16 +35,21 @@ function AuthProvider({ children }: IProps) {
   const login = useCallback(async ({ email, password }: ILoginFormData) => {
     try {
       setLoading(true);
+
       const data = await instance
-        .post<IApiResponse<ILoginResponse>>('/auth/signin', {
+        .post<IApiResponse<ILoginResponse>>('/fake/signin', {
           email,
           password,
         })
         .then((response) => response.data.data);
+
       LocalStorage.setItem('accessToken', data.accessToken);
+      LocalStorage.setItem('refreshToken', data.refreshToken);
+
       setUser(() => data.member);
+      return await Promise.resolve(data);
     } catch (error) {
-      throw new Error('error occurred at login.');
+      return await Promise.reject(error);
     } finally {
       setLoading(false);
     }

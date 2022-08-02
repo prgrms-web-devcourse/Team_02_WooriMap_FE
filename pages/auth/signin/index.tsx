@@ -12,7 +12,7 @@ type LoginFormType = {
 
 function Signin() {
   const [data, setData] = useState<LoginFormType>({ email: '', password: '' });
-  const { login, isAuthenticated } = useAuthContext();
+  const { login, user } = useAuthContext();
   const changeValue = useCallback(
     (key: LoginFormKeyType) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setData((prev) => ({ ...prev, [key]: e.target.value }));
@@ -56,14 +56,14 @@ function Signin() {
             <p>
               회원이 아니신가요? <span>회원 가입</span>
             </p>
-            <p>{String(isAuthenticated)}</p>
+            <p>{JSON.stringify(user)}</p>
           </>
         }
       />
       <button
         type="button"
         onClick={() => {
-          instance.post('/auth/token').then((fake) => console.log(fake));
+          instance.post('/couples/invite').then((fake) => console.log(fake));
         }}
       >
         클릭

@@ -16,7 +16,30 @@ interface IRetryAxiosInstanceConfig extends AxiosRequestConfig {
 
 function InterceptorProvider({ children }: IInterceptor) {
   const { setUser } = useAuthContext();
+
   useEffect(() => {
+    const retry = async (_config: IRetryAxiosInstanceConfig) => {
+      const config = { ..._config };
+      return instance
+        .post<IApiResponse<ITokenSet>>('/fake/token', {
+          refreshToken: LocalStorage.getItem<string>('refreshToken', ''),
+        })
+        .then((response) => response.data.data.accessToken)
+        .then((accessToken) => {
+          LocalStorage.setItem('accessToken', accessToken);
+          if (!config.headers) {
+            config.headers = {};
+          }
+          config.headers.Authorization = `Bearer ${accessToken}`;
+          return instance(config);
+        })
+        .catch((_error) => {
+          setUser(null);
+          LocalStorage.removeItem('accessToken');
+          LocalStorage.removeItem('refreshToken');
+          return Promise.reject(_error);
+        });
+    };
     const requestInterceptor = instance.interceptors.request.use((_config) => {
       const token = LocalStorage.getItem<string>('accessToken', '');
       const config = { ..._config };
@@ -34,35 +57,17 @@ function InterceptorProvider({ children }: IInterceptor) {
       async (error) => {
         const config = error.config as IRetryAxiosInstanceConfig;
         if (!error.response) return Promise.reject(error);
-        if (error.response.status === 401) return Promise.reject(error);
+        if (error.response.status !== 401) return Promise.reject(error);
         if (
           config.url === '/auth/token' ||
-          config.url === '/auth/sigin' ||
-          config.url === '/fake/signin'
+          config.url === '/auth/signin' ||
+          config.url === '/fake/signin' ||
+          config.url === '/fake/token'
         )
           return Promise.reject(error);
         if (!config.retry) {
           config.retry = true;
-          return instance
-            .post<IApiResponse<ITokenSet>>('/fake/token')
-            .then((response) => response.data.data)
-            .then((token) => {
-              const { accessToken } = token;
-              LocalStorage.setItem('accessToken', accessToken);
-              if (!config.headers) {
-                config.headers = {};
-              }
-              config.headers.Authorization = `Bearer ${accessToken}`;
-              return instance(config);
-            })
-            .catch(() => {
-              setUser(null);
-              if (!config.headers) {
-                config.headers = {};
-              }
-              config.headers.Authorization = '';
-              return instance(config);
-            });
+          return retry(config);
         }
         return Promise.reject(error);
       },
