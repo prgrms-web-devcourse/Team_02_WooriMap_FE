@@ -39,8 +39,19 @@ export const InputWrapper = styled(Wrapper)`
   div {
     margin: 2rem 0;
 
+    :first-of-type {
+      margin-top: 0;
+    }
+
     :last-of-type {
       margin-bottom: 0;
     }
+  }
+`;
+
+export const FooterWrapper = styled(Wrapper)`
+  * {
+    display: block;
+    width: 100%;
   }
 `;
