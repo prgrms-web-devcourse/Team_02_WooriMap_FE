@@ -1,0 +1,1 @@
+export { MainSearchBar } from './MainSearchBar';
