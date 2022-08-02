@@ -1,4 +1,5 @@
 // atoms
+import { MainSearchBar } from './molecules/MainSearchBar/MainSearchBar';
 export { Button } from 'components/atoms/Button';
 export { TextInput } from 'components/atoms/TextInput';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
@@ -16,6 +17,7 @@ export { ImageList } from 'components/molecules/ImageList';
 export { UploadArea } from 'components/molecules/UploadArea';
 export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';
 export { CoupleProfile } from 'components/molecules/CoupleProfile';
+export { MainSearchBar } from 'components/molecules/MainSearchBar';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
