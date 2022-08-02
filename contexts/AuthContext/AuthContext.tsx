@@ -36,7 +36,7 @@ function AuthProvider({ children }: IProps) {
     try {
       setLoading(true);
       const data = await instance
-        .post<IApiResponse<ILoginResponse>>('/signin', {
+        .post<IApiResponse<ILoginResponse>>('/auth/signin', {
           email,
           password,
         })

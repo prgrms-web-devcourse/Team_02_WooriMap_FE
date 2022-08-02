@@ -7,11 +7,11 @@ export interface ILoginFormData extends IEmail {
 
 interface ITokenSet {
   accessToken: string;
-  refreshToken: string;
 }
 
 export interface IUserResponse extends IEmail {
   nickName: string;
+  couple: string;
 }
 
 export interface ILoginResponse extends ITokenSet {
