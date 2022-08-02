@@ -17,8 +17,6 @@ export const CalendarInput = styled.input`
   width: 98%;
   font-size: 16px;
   font-weight: 600;
-  //min-width: 90%;
-  //width: auto !important;
 `;
 
 export const CalendarButton = styled.button`
