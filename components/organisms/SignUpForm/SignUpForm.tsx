@@ -1,6 +1,5 @@
-import { nanoid } from 'nanoid';
 import { useRouter } from 'next/router';
-import { IInputState, ITextInputProps } from 'types';
+import { IInputState, ITextInputProps, ISingnUpRes } from 'types';
 import { useForm } from 'hooks';
 import {
   FormBackground,
@@ -19,7 +18,7 @@ import * as S from './SignUpForm.styles';
 export function SignUpForm() {
   const router = useRouter();
 
-  const onSubmit = async (values: IInputState) => {
+  const onSubmit = async (values: IInputState): Promise<ISingnUpRes> => {
     const { email, nickName, password } = values;
 
     try {
@@ -40,6 +39,8 @@ export function SignUpForm() {
       }
 
       const body = await res.json();
+
+      console.log(body);
 
       return body;
     } catch (e) {
@@ -80,8 +81,8 @@ export function SignUpForm() {
               {...parseSignUpFormValues({
                 handleChange,
                 removeAll,
-                value: values[name as keyof IInputState],
-                error: errors[name as keyof IInputState],
+                value: values[name as keyof IInputState] as string,
+                error: errors[name as keyof IInputState] as string,
                 name,
               })}
             />
@@ -89,6 +90,7 @@ export function SignUpForm() {
         })}
         <SubmitButton text="회원가입" />
         <AuthPageRoutingButton type="signup" />
+        {errors.finalError}
       </S.Container>
     </FormBackground>
   );

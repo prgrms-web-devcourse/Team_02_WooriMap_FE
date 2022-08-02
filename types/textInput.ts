@@ -14,4 +14,5 @@ export interface IInputState {
   nickName: string;
   password: string;
   confirmPassword: string;
+  finalError?: string;
 }

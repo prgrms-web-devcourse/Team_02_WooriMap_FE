@@ -1,22 +1,24 @@
 import { useState, useCallback } from 'react';
+import { ISingnUpRes } from 'types';
 
 interface IUseForm<T> {
   initialValues: T;
-  onSubmit: (values: T) => void;
+  onSubmit: (values: T) => Promise<ISingnUpRes>;
   validateValues: (values: T) => T;
 }
 
 function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
-  const [values, setValues] = useState(initialValues);
-  const [errors, setErrors] = useState(initialValues);
+  const [values, setValues] = useState<T>(initialValues);
+  const [errors, setErrors] = useState<T>({
+    ...initialValues,
+    finalError: '',
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
-    console.log(name, value);
-
-    setErrors((prev) => ({ ...prev, [name]: '' }));
+    setErrors((prev) => ({ ...prev, finalError: '', [name]: '' }));
     setValues((prev) => ({ ...prev, [name]: value }));
   };
 
@@ -26,7 +28,12 @@ function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
     const newErrors = validateValues(values);
 
     if (Object.values(newErrors).every((x) => !x)) {
-      onSubmit(values);
+      const response = await onSubmit(values);
+
+      if (response.message) {
+        setErrors((prev) => ({ ...prev, finalError: response.message }));
+        return;
+      }
     }
 
     setErrors(newErrors);

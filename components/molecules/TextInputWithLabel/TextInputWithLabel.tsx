@@ -16,9 +16,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
         <label htmlFor={name}>{text}</label>
         <TextInput {...props} />
       </S.Wrapper>
-      <S.Inner>
-        <S.ValidationError>{error}</S.ValidationError>
-      </S.Inner>
+      <S.ValidationError>{error}</S.ValidationError>
     </S.Container>
   );
 }
