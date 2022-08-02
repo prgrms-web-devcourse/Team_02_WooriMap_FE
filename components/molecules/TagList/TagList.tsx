@@ -4,14 +4,14 @@ import * as S from './TagList.styles';
 interface ITag {
   tagName: string;
   tagColor: string;
+  deletable?: boolean;
 }
 
 interface ITagListProp {
   tagList: ITag[];
-  deletable?: boolean;
 }
 
-export default function TagList({ tagList, deletable }: ITagListProp) {
+export default function TagList({ tagList }: ITagListProp) {
   const [list, setList] = useState<ITag[]>(tagList);
   const handleDelete = (tagValue: string) => () => {
     const newList: ITag[] = [...list].filter(
@@ -22,7 +22,7 @@ export default function TagList({ tagList, deletable }: ITagListProp) {
 
   return (
     <S.TagListContainer>
-      {list.map(({ tagName, tagColor }) => (
+      {list.map(({ tagName, tagColor, deletable }) => (
         <S.PaddedTag
           key={tagName}
           tagName={tagName}
