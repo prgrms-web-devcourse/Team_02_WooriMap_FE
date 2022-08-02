@@ -6,12 +6,7 @@ interface ITagProps {
   onDelete?: () => void;
 }
 
-export default function Tag({
-  tagName,
-  tagColor,
-  onDelete,
-  ...props
-}: ITagProps) {
+export function Tag({ tagName, tagColor, onDelete, ...props }: ITagProps) {
   return (
     <S.Tag tagColor={tagColor} {...props}>
       {tagName}
