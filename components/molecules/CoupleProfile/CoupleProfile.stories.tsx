@@ -5,14 +5,22 @@ export default {
   title: 'Components/Molecules/CoupleProfile',
   component: CoupleProfile,
   argTypes: {
-    userName: {
-      defaultValue: 'userName',
+    nickname: {
+      defaultValue: 'nickname',
       control: { type: 'text' },
-      options: { text: true },
+    },
+    coupleNickname: {
+      defaultValue: 'coupleNick',
+      control: { type: 'text' },
+    },
+    coupleStartingDate: {
+      defaultValue: '2022-03-18',
+      control: { type: 'text' },
     },
   },
 } as ComponentMeta<typeof CoupleProfile>;
 
 export const Default: ComponentStory<typeof CoupleProfile> = (args) => {
+  console.log(args);
   return <CoupleProfile {...args} />;
 };
