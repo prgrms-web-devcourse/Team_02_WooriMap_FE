@@ -66,8 +66,6 @@ export async function signup({
         return response.response.data;
       });
 
-    console.log(data);
-
     return data;
   } catch (error) {
     console.error(error);

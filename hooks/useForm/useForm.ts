@@ -38,8 +38,6 @@ function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
     if (Object.values(newErrors).every((x) => !x)) {
       const response = await onSubmit({ values, router });
 
-      console.log(response);
-
       if (response.message) {
         setErrors((prev) => ({ ...prev, finalError: response.message }));
         return;

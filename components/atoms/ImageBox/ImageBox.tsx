@@ -26,8 +26,6 @@ export function ImageBox({ size, src, isSelected, onClick }: IImageBoxProps) {
     }
   };
 
-  console.log(isSelected);
-
   return (
     <S.Wrapper size={size} isSelected={isSelected}>
       <S.Viewer
