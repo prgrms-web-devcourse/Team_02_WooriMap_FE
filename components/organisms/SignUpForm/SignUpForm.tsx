@@ -6,8 +6,8 @@ import {
   TextInputWithLabel,
   SubmitButton,
   AuthPageRoutingButton,
+  AuthLogoImage,
 } from 'components';
-import MainLogo from 'public/image/main-logo-auth.svg';
 import {
   validateValues,
   textInputsProps,
@@ -69,8 +69,7 @@ export function SignUpForm() {
   return (
     <FormBackground onSubmit={handleSubmit} noValidate>
       <S.Container>
-        <S.LogoImage src={MainLogo} width={60} height={120} alt="main-logo" />
-
+        <AuthLogoImage />
         {textInputsProps.map((input: ITextInputProps) => {
           const { name } = input;
 
