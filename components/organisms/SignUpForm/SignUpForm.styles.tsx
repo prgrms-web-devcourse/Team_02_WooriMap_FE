@@ -11,9 +11,7 @@ export const Container = styled.div`
   padding: 0 20px;
 `;
 
-export const LogoImage = styled(Image)`
-  display: none;
-`;
+export const LogoImage = styled(Image)``;
 
 export const FinalValidationError = styled.p`
   display: flex;

@@ -4,9 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
-
-  margin-bottom: 29px;
+  /* align-items: center; */
 
   box-sizing: border-box;
 `;
@@ -37,10 +35,10 @@ export const Inner = styled.div`
 `;
 
 export const ValidationError = styled.p`
-  position: relative;
-  top: 5px;
-  left: -120px;
+  height: 12px;
   font-size: 10px;
   font-weight: bold;
+
+  margin: 4px 0 12px 56px;
   color: ${({ theme }) => theme.colors.alert};
 `;

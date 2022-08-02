@@ -1,11 +1,7 @@
-import { SignUpForm } from 'components';
+import { SignUpTemplate } from 'components';
 
 function SignUp() {
-  return (
-    <div>
-      <SignUpForm />
-    </div>
-  );
+  return <SignUpTemplate />;
 }
 
 export default SignUp;
