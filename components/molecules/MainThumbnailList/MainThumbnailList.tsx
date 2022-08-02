@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { arrayBuffer } from 'stream/consumers';
 import * as S from './MainThumbnailList.styles';
 
 interface IThumbnailCardProps {
@@ -15,8 +13,13 @@ function ThumbnailCard({
   title,
   createDate,
 }: IThumbnailCardProps) {
+  const onClick = (postId: string) => {
+    //postId별 라우팅 관련 로직 추가 예정
+    alert(`${postId}를 클릭하셨군여 (๑•̀ㅂ•́)و✧`);
+  };
+
   return (
-    <S.CardContainer url={postThumbnailPath}>
+    <S.CardContainer url={postThumbnailPath} onClick={() => onClick(postId)}>
       <div>
         <S.Title>{title}</S.Title>
         <S.CreateDate>{createDate}</S.CreateDate>
@@ -24,16 +27,7 @@ function ThumbnailCard({
     </S.CardContainer>
   );
 }
-/*
-postList = [
-  {
-    "postId": 1L,
-    "postThumbnailPath": "path",
-    "title": "제목",
-    "createDate":"2022-07-26"
-  },
-];
-*/
+
 export function MainThumbnailList({
   postList,
 }: {
