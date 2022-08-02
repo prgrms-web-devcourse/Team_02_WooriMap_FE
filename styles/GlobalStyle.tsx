@@ -16,6 +16,12 @@ const globalStyles = css`
   * {
     box-sizing: border-box;
   }
+
+  input[type='date']::-webkit-calendar-picker-indicator {
+    background: transparent;
+    z-index: 99;
+    opacity: 0;
+  }
 `;
 
 export default function GlobalStyle() {

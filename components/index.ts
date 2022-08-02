@@ -6,6 +6,7 @@ export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
 export { FormBackground } from 'components/atoms/FormBackground';
 export { Tag } from 'components/atoms/Tag';
+export { CalendarInput } from 'components/atoms/CalendarInput';
 
 // molecules
 export { ImageList } from 'components/molecules/ImageList';
