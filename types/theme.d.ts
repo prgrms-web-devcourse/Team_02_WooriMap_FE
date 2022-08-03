@@ -5,6 +5,7 @@ interface IColors {
   gray: string;
   white: string;
   skyblue: string;
+  alert: string;
 }
 
 interface ISizes {

@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
-// import { Input } from 'components';
 
 export const TextInputWrapper = styled.div`
   display: flex;
   flex: 1;
   border-radius: 10px;
   border: 2px solid ${({ theme }) => theme.colors.gray};
-  padding: 13px 16px;
+  padding: 8px 12px;
 `;
 
 export const TextInput = styled.input`

@@ -1,0 +1,1 @@
+export { AuthPageRoutingButton } from './AuthPageRoutingButton';

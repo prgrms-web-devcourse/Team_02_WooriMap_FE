@@ -1,8 +1,14 @@
-import { HeadersDefaults } from 'axios';
+import { NextRouter } from 'next/router';
+import { HeadersDefaults, AxiosError } from 'axios';
 import instance from 'apis/instance';
 import { setCookie } from 'utils/cookie';
 import { IApiResponse } from 'types/api';
-import { ILoginFormData, ILoginResponse } from 'types/auth';
+import {
+  IInputState,
+  ISingnUpRes,
+  ILoginFormData,
+  ILoginResponse,
+} from 'types';
 
 interface HeaderProperties extends HeadersDefaults {
   Authorization: string;
@@ -29,5 +35,45 @@ export async function login(formData: ILoginFormData) {
     return data;
   } catch (error) {
     throw new Error('error occurred at login.');
+  }
+}
+export async function signup({
+  values,
+  router,
+}: {
+  values: IInputState;
+  router: NextRouter;
+}): Promise<ISingnUpRes> {
+  try {
+    const { email, nickName, password } = values;
+
+    const reqBody = {
+      email,
+      nickName,
+      password,
+    };
+
+    const data = await instance
+      .post<''>('/members/signup', reqBody)
+      .then((response) => {
+        if (response.status === 201) {
+          router.push('/auth/signin');
+          return {
+            message: '',
+          };
+        }
+
+        // throw new Error(response);
+        const error = response as unknown as AxiosError;
+        return error.response?.data;
+      });
+
+    return data as ISingnUpRes;
+  } catch (error) {
+    console.error(error);
+
+    return {
+      message: '서버에러',
+    };
   }
 }

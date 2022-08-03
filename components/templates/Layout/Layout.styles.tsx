@@ -11,12 +11,12 @@ export const Container = styled.div`
   overflow-y: auto;
 `;
 
-export const Wrapper = styled.main<{ isLoggedIn: boolean }>`
+export const Wrapper = styled.main<{ isAuthPage: boolean }>`
   width: 100%;
   max-width: 75rem;
   flex: 1;
 
-  ${({ isLoggedIn }) => isLoggedIn && `margin-top: 5rem;`})}
+  ${({ isAuthPage }) => !isAuthPage && `margin-top: 5rem;`})}
 
   box-sizing: border-box;
 `;

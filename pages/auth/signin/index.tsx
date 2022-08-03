@@ -23,7 +23,6 @@ function Signin() {
     <AuthPageTemplate
       onSubmit={(e) => {
         e.preventDefault();
-        console.log('on Submit');
       }}
       inputs={
         <>

@@ -6,6 +6,7 @@ const theme: Theme = {
     gray: '#D9D9D9',
     white: '#FFFFFF',
     skyblue: '#97BAFF',
+    alert: '#FF3737',
   },
   sizes: {
     buttons: {
