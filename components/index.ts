@@ -1,6 +1,4 @@
 // atoms
-import { MainSearchBar } from './molecules/MainSearchBar/MainSearchBar';
-import { MainThumbnailList } from './molecules/MainThumbnailList/MainThumbnailList';
 export { Button } from 'components/atoms/Button';
 export { TextInput } from 'components/atoms/TextInput';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
