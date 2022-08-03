@@ -1,5 +1,5 @@
 import { NextRouter } from 'next/router';
-import { HeadersDefaults } from 'axios';
+import { HeadersDefaults, AxiosError } from 'axios';
 import instance from 'apis/instance';
 import { setCookie } from 'utils/cookie';
 import { IApiResponse } from 'types/api';
@@ -54,19 +54,22 @@ export async function signup({
     };
 
     const data = await instance
-      .post('/members/signup', reqBody)
+      .post<''>('/members/signup', reqBody)
       .then((response) => {
         if (response.status === 201) {
-          router.push('/signin');
+          console.log(response);
+          router.push('/auth/signin');
           return {
             message: '',
           };
         }
 
-        return response.response.data;
+        // throw new Error(response);
+        const error = response as unknown as AxiosError;
+        return error.response?.data;
       });
 
-    return data;
+    return data as ISingnUpRes;
   } catch (error) {
     console.error(error);
 
