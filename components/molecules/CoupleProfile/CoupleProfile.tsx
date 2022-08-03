@@ -1,5 +1,6 @@
 import * as S from './CoupleProfile.styles';
 import { Profile } from 'components';
+import { calculatingDDay } from 'utils';
 
 interface INickname {
   nickname: string | null;
@@ -21,19 +22,14 @@ function EachProfile({ nickname }: INickname) {
 }
 
 function CoupleInfo({ coupleStartingDate }: ICoupleStartingDate) {
-  const startingDate = new Date(coupleStartingDate);
-  const currentDate = new Date();
-  const plusDay = Math.floor(
-    (currentDate.getTime() - startingDate.getTime()) / (1000 * 60 * 60 * 24),
-  );
+  const calculatedDDay = calculatingDDay(coupleStartingDate);
 
   return (
     <S.CoupleInfoContainer>
-      <S.DDay>{`D + ${plusDay}`}</S.DDay>
+      <S.DDay>{`D + ${calculatedDDay}`}</S.DDay>
       <S.StartingDate>{`
-      ${startingDate.getFullYear()} 
-      ${startingDate.getMonth() + 1} 
-      ${startingDate.getDate()}`}</S.StartingDate>
+      ${coupleStartingDate}
+      `}</S.StartingDate>
     </S.CoupleInfoContainer>
   );
 }

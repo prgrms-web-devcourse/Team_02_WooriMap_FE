@@ -37,6 +37,7 @@ export function MainThumbnailList({
     <S.MainThumbnailListContainer>
       {postList.map(({ postId, postThumbnailPath, title, createDate }) => (
         <ThumbnailCard
+          key={postId}
           postId={postId}
           postThumbnailPath={postThumbnailPath}
           title={title}
