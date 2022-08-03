@@ -4,6 +4,7 @@ export interface ITextInputProps {
   name?: string;
   text?: string;
   type?: string;
+  variant?: 'input' | 'calendar' | 'textarea';
   placeholder?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   deleteAll?: (name: string) => void;
