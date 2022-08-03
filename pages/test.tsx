@@ -1,4 +1,4 @@
-import { Button, PostTemplate } from 'components';
+import { PostTemplate } from 'components';
 
 export default function Test() {
   return (
