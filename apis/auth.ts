@@ -93,7 +93,7 @@ export async function getNewAccessToken() {
   }
 }
 
-export function getHeadersWithAuthorizationToken(
+export function getConfigWithAuthorizedHeadersBy(
   _config: IRetryAxiosInstanceConfig,
 ) {
   const config = { ..._config };
@@ -107,7 +107,7 @@ export function getHeadersWithAuthorizationToken(
   return config;
 }
 
-export function isAuthorizationUrl(url: string | undefined) {
+export function isAuthorization(url: string | undefined) {
   const authorizationUrlList = [
     '/auth/token',
     '/auth/login',

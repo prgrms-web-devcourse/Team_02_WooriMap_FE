@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { AxiosResponse, AxiosError } from 'axios';
 import {
   getNewAccessToken,
-  getHeadersWithAuthorizationToken,
-  isAuthorizationUrl,
+  getConfigWithAuthorizedHeadersBy,
+  isAuthorization,
 } from 'apis/auth';
 import LocalStorage from 'utils/storage';
 import { useAuthContext } from 'contexts/AuthContext';
@@ -22,7 +22,7 @@ function InterceptorProvider({ children }: IInterceptor) {
       try {
         const accessToken = await getNewAccessToken();
         LocalStorage.setItem('accessToken', accessToken);
-        const config = getHeadersWithAuthorizationToken(_config);
+        const config = getConfigWithAuthorizedHeadersBy(_config);
         return await instance(config);
       } catch (error) {
         setUser(null);
@@ -38,7 +38,7 @@ function InterceptorProvider({ children }: IInterceptor) {
       const config = error.config as IRetryAxiosInstanceConfig;
       if (!error.response) return Promise.reject(error);
       if (error.response.status !== 401) return Promise.reject(error);
-      if (isAuthorizationUrl(config.url)) return Promise.reject(error);
+      if (isAuthorization(config.url)) return Promise.reject(error);
       if (!config.retry) {
         config.retry = true;
         return retry(config);
@@ -47,7 +47,7 @@ function InterceptorProvider({ children }: IInterceptor) {
     };
 
     const requestInterceptor = instance.interceptors.request.use(
-      getHeadersWithAuthorizationToken,
+      getConfigWithAuthorizedHeadersBy,
     );
 
     const responseInterceptor = instance.interceptors.response.use(
