@@ -1,5 +1,6 @@
+/* eslint-disable react/destructuring-assignment */
 import { ITextInputProps } from 'types';
-import { TextInput } from 'components';
+import { TextInput, CalendarInput, TextArea } from 'components';
 import * as S from './TextInputWithLabel.styles';
 
 interface ITextInputWithLabelProps extends ITextInputProps {
@@ -7,7 +8,7 @@ interface ITextInputWithLabelProps extends ITextInputProps {
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, text, error, deleteAll, variant } = props;
+  const { name, text, deleteAll, variant } = props;
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -15,13 +16,19 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
 
   return (
     <S.Container>
-      <S.Wrapper>
+      <S.Wrapper isValidationNotUsed={props.error === undefined}>
         <label htmlFor={name}>{text}</label>
         {variant === 'input' && (
           <TextInput onClickButton={onClickDeleteButton} {...props} />
         )}
+        {variant === 'calendar' && <CalendarInput {...props} />}
+        {variant === 'textarea' && (
+          <TextArea onClickButton={onClickDeleteButton} {...props} />
+        )}
       </S.Wrapper>
-      <S.ValidationError>{error}</S.ValidationError>
+      {props.error !== undefined && (
+        <S.ValidationError>{props.error}</S.ValidationError>
+      )}
     </S.Container>
   );
 }

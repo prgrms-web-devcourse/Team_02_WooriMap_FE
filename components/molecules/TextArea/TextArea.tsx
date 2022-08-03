@@ -1,15 +1,25 @@
 import { DeleteAllBtn } from 'components';
 import * as S from './TextArea.styles';
 
-export function TextArea() {
-  const onChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log(e.target.value);
-  };
+interface ITextAreaProps {
+  id?: string;
+  name?: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  onClickButton: (e: React.MouseEvent<HTMLImageElement>) => void;
+}
 
+export function TextArea({
+  id,
+  name,
+  value,
+  onChange,
+  onClickButton,
+}: ITextAreaProps) {
   return (
     <S.TextAreaWrapper>
-      <S.TextArea onChange={onChange} />
-      <DeleteAllBtn onClick={() => {}} />
+      <S.TextArea id={id} name={name} value={value} onChange={onChange} />
+      <DeleteAllBtn onClick={onClickButton} />
     </S.TextAreaWrapper>
   );
 }
