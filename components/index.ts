@@ -25,6 +25,7 @@ export { ImageViewer } from 'components/organisms/ImageViewer';
 export { ImageUploader } from 'components/organisms/ImageUploader';
 export { NavBar } from 'components/organisms/NavBar';
 export { SignUpForm } from 'components/organisms/SignUpForm';
+export { PostWrite } from 'components/organisms/PostWrite';
 
 // templates
 export { Layout } from 'components/templates/Layout';

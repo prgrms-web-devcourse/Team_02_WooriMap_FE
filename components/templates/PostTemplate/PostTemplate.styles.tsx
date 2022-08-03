@@ -14,7 +14,7 @@ export const Container = styled.section`
 `;
 
 export const ImageSection = styled.div`
-  background: red;
+  /* background: red; */
   overflow: auto;
 `;
 
