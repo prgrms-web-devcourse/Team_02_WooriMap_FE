@@ -15,18 +15,17 @@ function InterceptorProvider({ children }: IInterceptor) {
 
   useEffect(() => {
     const retry = async (_config: IRetryAxiosInstanceConfig) => {
-      return getNewAccessToken()
-        .then((accessToken) => {
-          LocalStorage.setItem('accessToken', accessToken);
-          const config = getHeadersWithAuthorizationToken(_config);
-          return instance(config);
-        })
-        .catch((_error: AxiosError) => {
-          setUser(null);
-          LocalStorage.removeItem('accessToken');
-          LocalStorage.removeItem('refreshToken');
-          return Promise.reject(_error);
-        });
+      try {
+        const accessToken = await getNewAccessToken();
+        LocalStorage.setItem('accessToken', accessToken);
+        const config = getHeadersWithAuthorizationToken(_config);
+        return await instance(config);
+      } catch (error) {
+        setUser(null);
+        LocalStorage.removeItem('accessToken');
+        LocalStorage.removeItem('refreshToken');
+        return Promise.reject(error);
+      }
     };
 
     const onResponseFulfilled = (config: AxiosResponse) => config;
