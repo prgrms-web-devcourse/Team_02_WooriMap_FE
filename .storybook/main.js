@@ -18,6 +18,7 @@ module.exports = {
       public: path.resolve(__dirname, '../public'),
       hooks: path.resolve(__dirname, '../hooks'),
       utils: path.resolve(__dirname, '../utils'),
+      apis: path.resolve(__dirname, '../apis')
     };
     config.resolve.alias = {
       ...config.resolve.alias,

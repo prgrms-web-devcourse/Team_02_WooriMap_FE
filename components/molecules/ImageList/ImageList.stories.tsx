@@ -11,11 +11,19 @@ export default {
       options: ['medium', 'large'],
     },
     sources: {
-      defaultValue: [
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+6.png',
-      ],
       control: { type: 'array' },
+      defaultValue: [
+        {
+          key: '1',
+          src: 'https://picsum.photos/200/300',
+          isSelected: false,
+        },
+        {
+          key: '2',
+          src: 'https://picsum.photos/200/300',
+          isSelected: false,
+        },
+      ],
     },
   },
 } as ComponentMeta<typeof ImageList>;
