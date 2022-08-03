@@ -1,3 +1,5 @@
+import { AxiosRequestConfig } from 'axios';
+
 interface IEmail {
   email: string;
 }
@@ -17,4 +19,8 @@ export interface IUserResponse extends IEmail {
 
 export interface ILoginResponse extends ITokenSet {
   member: IUserResponse;
+}
+
+export interface IRetryAxiosInstanceConfig extends AxiosRequestConfig {
+  retry?: boolean;
 }

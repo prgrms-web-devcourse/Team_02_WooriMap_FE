@@ -1,17 +1,12 @@
 import React, { useEffect } from 'react';
-import { AxiosRequestConfig } from 'axios';
-import { IApiResponse } from 'types/api';
-import { ITokenSet } from 'types/auth';
+import { getNewAccessToken, getHeadersWithAuthorizationToken } from 'apis/auth';
 import LocalStorage from 'utils/storage';
 import { useAuthContext } from 'contexts/AuthContext';
+import { IRetryAxiosInstanceConfig } from 'types/auth';
 import instance from './instance';
 
 interface IInterceptor {
   children: React.ReactElement | null;
-}
-
-interface IRetryAxiosInstanceConfig extends AxiosRequestConfig {
-  retry?: boolean;
 }
 
 function InterceptorProvider({ children }: IInterceptor) {
@@ -19,18 +14,10 @@ function InterceptorProvider({ children }: IInterceptor) {
 
   useEffect(() => {
     const retry = async (_config: IRetryAxiosInstanceConfig) => {
-      const config = { ..._config };
-      return instance
-        .post<IApiResponse<ITokenSet>>('/fake/token', {
-          refreshToken: LocalStorage.getItem<string>('refreshToken', ''),
-        })
-        .then((response) => response.data.data.accessToken)
+      return getNewAccessToken()
         .then((accessToken) => {
           LocalStorage.setItem('accessToken', accessToken);
-          if (!config.headers) {
-            config.headers = {};
-          }
-          config.headers.Authorization = `Bearer ${accessToken}`;
+          const config = getHeadersWithAuthorizationToken(_config);
           return instance(config);
         })
         .catch((_error) => {
@@ -40,15 +27,10 @@ function InterceptorProvider({ children }: IInterceptor) {
           return Promise.reject(_error);
         });
     };
-    const requestInterceptor = instance.interceptors.request.use((_config) => {
-      const token = LocalStorage.getItem<string>('accessToken', '');
-      const config = { ..._config };
-      if (!config.headers) {
-        config.headers = {};
-      }
-      config.headers.Authorization = token ? `Bearer ${token}` : '';
-      return config;
-    });
+
+    const requestInterceptor = instance.interceptors.request.use(
+      getHeadersWithAuthorizationToken,
+    );
 
     const responseInterceptor = instance.interceptors.response.use(
       (config) => {
