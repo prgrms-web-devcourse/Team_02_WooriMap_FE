@@ -9,6 +9,5 @@ export const Container = styled.div`
   height: 1037px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0, 0, 16, rgba(0, 0, 0, 0.25);
-  border: 1px solid;
   overflow: auto;
 `;
