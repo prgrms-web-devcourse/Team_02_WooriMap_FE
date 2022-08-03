@@ -1,4 +1,4 @@
-import { TagList } from 'components';
+import { TagList } from 'components/molecules/TagList';
 import * as S from './PostBody.styles';
 
 interface ITag {
