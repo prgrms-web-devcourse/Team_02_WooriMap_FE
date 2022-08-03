@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+interface ICardContainerProps {
+  url: string;
+}
+
 export const MainThumbnailListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -10,13 +14,12 @@ export const MainThumbnailListContainer = styled.div`
   overflow: auto;
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled.div<ICardContainerProps>`
   width: 184px;
   height: 160px;
   border-radius: 8px;
-  background-image: url('https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png');
+  background-image: ${({ url }) => `url(${url})`};
   background-size: cover;
-  /* background-image: url(${({ url }: { url: string }) => url}); */
   > div {
     display: flex;
     flex-direction: column-reverse;
