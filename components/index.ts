@@ -1,16 +1,17 @@
 // atoms
 export { Button } from 'components/atoms/Button';
-export { Input } from 'components/atoms/Input';
+export { TextInput } from 'components/atoms/TextInput';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
 export { FormBackground } from 'components/atoms/FormBackground';
 export { Tag } from 'components/atoms/Tag';
+export { CalendarInput } from 'components/atoms/CalendarInput';
 
 // molecules
-export { TextInput } from 'components/molecules/TextInput';
 export { ImageList } from 'components/molecules/ImageList';
 export { UploadArea } from 'components/molecules/UploadArea';
+export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';

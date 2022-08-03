@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { Input } from 'components';
+// import { Input } from 'components';
 
 export const TextInputWrapper = styled.div`
   display: flex;
@@ -10,7 +10,7 @@ export const TextInputWrapper = styled.div`
   padding: 13px 16px;
 `;
 
-export const TextInput = styled(Input)`
+export const TextInput = styled.input`
   outline-style: none;
   border: 0;
   outline: 0;

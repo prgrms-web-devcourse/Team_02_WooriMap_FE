@@ -3,13 +3,13 @@ import styled from '@emotion/styled';
 import { TextInput } from './TextInput';
 
 export default {
-  title: 'Components/Molecules/TextInput',
+  title: 'Components/Atoms/TextInput',
   component: TextInput,
   argTypes: {},
 } as ComponentMeta<typeof TextInput>;
 
 const Wrapper = styled.div`
-  width: 366px;
+  width: 1000px;
 `;
 
 export const Default: ComponentStory<typeof TextInput> = (args) => {
