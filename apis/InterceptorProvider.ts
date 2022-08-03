@@ -4,7 +4,7 @@ import {
   getNewAccessToken,
   getConfigWithAuthorizedHeadersBy,
   isAuthorization,
-} from 'apis/signin';
+} from 'apis/auth';
 import LocalStorage from 'utils/storage';
 import { useAuthContext } from 'contexts/AuthContext';
 import { IRetryAxiosInstanceConfig } from 'types/auth';
