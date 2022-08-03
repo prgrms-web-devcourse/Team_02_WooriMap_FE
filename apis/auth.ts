@@ -57,7 +57,6 @@ export async function signup({
       .post<''>('/members/signup', reqBody)
       .then((response) => {
         if (response.status === 201) {
-          console.log(response);
           router.push('/auth/signin');
           return {
             message: '',
