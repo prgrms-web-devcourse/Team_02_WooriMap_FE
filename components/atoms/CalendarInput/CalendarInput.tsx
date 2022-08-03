@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useRef } from 'react';
 import { formatDate } from 'utils';
 import calendar from 'public/image/calendar.png';
 import * as S from './CalendarInput.styles';
@@ -13,15 +13,10 @@ export function CalendarInput({
   defaultValue,
   ...props
 }: ICalenderInputProps) {
-  const [date, setDate] = useState(formatDate(new Date()));
+  const [date, setDate] = useState(defaultValue || formatDate(new Date()));
   const calendarInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (defaultValue) setDate(defaultValue);
-  }, []);
-
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(typeof e.target.value);
     setDate(e.target.value);
   };
 
