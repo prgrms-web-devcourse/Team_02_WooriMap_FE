@@ -1,5 +1,5 @@
-import { TextArea } from 'components';
+import { CalendarInput } from 'components';
 
 export default function Test() {
-  return <TextArea />;
+  return <CalendarInput />;
 }

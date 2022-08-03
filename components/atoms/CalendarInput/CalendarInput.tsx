@@ -23,6 +23,7 @@ export function CalendarInput({
   const onClickCalendarButton = () => {
     if (calendarInputRef.current) calendarInputRef.current.focus();
   };
+
   return (
     <S.CalendarInputWrapper {...props}>
       <S.CalendarButton>
