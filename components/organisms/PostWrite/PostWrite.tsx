@@ -1,12 +1,7 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import dayjs from 'dayjs';
-import {
-  TextInput,
-  TextArea,
-  CalendarInput,
-  TextInputWithLabel,
-} from 'components';
+import { TextInputWithLabel } from 'components';
 import * as S from './PostWrite.styles';
 
 interface IPostInitialState {
@@ -53,9 +48,7 @@ export function PostWrite() {
   const [values, setValues] = useState<IPostInitialState>(initialValues);
 
   const onChange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setValues((prev) => ({
@@ -79,16 +72,3 @@ export function PostWrite() {
     </S.Container>
   );
 }
-//       }
-//       <TextInput
-//         name="title"
-//         value={values.title}
-//         type="text"
-//         onChange={onChange}
-//         onClickButton={() => {}}
-//       />
-//       <CalendarInput name="date" value={values.date} onChange={onChange} />
-//       <TextArea name="content" value={values.content} onChange={onChange} />
-//     </S.Container>
-//   );
-// }

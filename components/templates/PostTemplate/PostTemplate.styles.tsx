@@ -7,7 +7,7 @@ export const Container = styled.section`
   width: 100%;
   height: 100%;
 
-  gap: 1rem;
+  gap: 2rem;
   padding: 2rem 1.5rem;
 
   box-sizing: border-box;
@@ -19,6 +19,6 @@ export const ImageSection = styled.div`
 `;
 
 export const ContentSection = styled.div`
-  background: blue;
+  /* background: blue; */
   overflow: auto;
 `;
