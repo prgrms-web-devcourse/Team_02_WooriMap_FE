@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { AxiosResponse, AxiosError } from 'axios';
 import { getNewAccessToken, getHeadersWithAuthorizationToken } from 'apis/auth';
 import LocalStorage from 'utils/storage';
 import { useAuthContext } from 'contexts/AuthContext';
@@ -28,32 +29,35 @@ function InterceptorProvider({ children }: IInterceptor) {
         });
     };
 
+    const onResponseFulfilled = (config: AxiosResponse) => config;
+
+    const onResponseRejected = async (error: AxiosError) => {
+      const config = error.config as IRetryAxiosInstanceConfig;
+      if (!error.response) return Promise.reject(error);
+      if (error.response.status !== 401) return Promise.reject(error);
+      if (
+        config.url === '/auth/token' ||
+        config.url === '/auth/signin' ||
+        config.url === '/fake/signin' ||
+        config.url === '/fake/token'
+      )
+        return Promise.reject(error);
+      if (!config.retry) {
+        config.retry = true;
+        return retry(config);
+      }
+      return Promise.reject(error);
+    };
+
     const requestInterceptor = instance.interceptors.request.use(
       getHeadersWithAuthorizationToken,
     );
 
     const responseInterceptor = instance.interceptors.response.use(
-      (config) => {
-        return config;
-      },
-      async (error) => {
-        const config = error.config as IRetryAxiosInstanceConfig;
-        if (!error.response) return Promise.reject(error);
-        if (error.response.status !== 401) return Promise.reject(error);
-        if (
-          config.url === '/auth/token' ||
-          config.url === '/auth/signin' ||
-          config.url === '/fake/signin' ||
-          config.url === '/fake/token'
-        )
-          return Promise.reject(error);
-        if (!config.retry) {
-          config.retry = true;
-          return retry(config);
-        }
-        return Promise.reject(error);
-      },
+      onResponseFulfilled,
+      onResponseRejected,
     );
+
     return () => {
       instance.interceptors.request.eject(requestInterceptor);
       instance.interceptors.response.eject(responseInterceptor);
