@@ -1,31 +1,23 @@
-import { useState, useRef } from 'react';
-import { formatDate } from 'utils';
+import { useRef } from 'react';
+
 import calendar from 'public/image/calendar.png';
 import * as S from './CalendarInput.styles';
 
 interface ICalenderInputProps {
-  name?: string;
-  defaultValue?: string;
+  name: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function CalendarInput({
-  name,
-  defaultValue,
-  ...props
-}: ICalenderInputProps) {
-  const [date, setDate] = useState(defaultValue || formatDate(new Date()));
+export function CalendarInput({ name, value, onChange }: ICalenderInputProps) {
   const calendarInputRef = useRef<HTMLInputElement>(null);
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDate(e.target.value);
-  };
 
   const onClickCalendarButton = () => {
     if (calendarInputRef.current) calendarInputRef.current.focus();
   };
 
   return (
-    <S.CalendarInputWrapper {...props}>
+    <S.CalendarInputWrapper>
       <S.CalendarButton>
         <S.CalendarImage
           src={calendar}
@@ -39,7 +31,7 @@ export function CalendarInput({
       <S.CalendarInput
         type="date"
         name={name}
-        value={date}
+        value={value}
         onChange={onChange}
         ref={calendarInputRef}
       />
