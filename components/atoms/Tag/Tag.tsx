@@ -8,7 +8,7 @@ interface ITagProps extends ITagBase {
   onDelete?: () => void;
 }
 
-export function Tag({ tagName, tagColor, onDelete, ...props }: ITagProps) {
+export function Tag({ name, color, onDelete, ...props }: ITagProps) {
   return (
     <S.Tag tagColor={tagColor} isDelete={!!onDelete} {...props}>
       {tagName}

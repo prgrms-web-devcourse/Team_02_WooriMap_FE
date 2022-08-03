@@ -9,7 +9,7 @@ export default {
 export const Default: ComponentStory<typeof Tag> = () => {
   return (
     <>
-      <Tag tagName="태그1" tagColor="#FCF8E8" />
+      <Tag name="태그1" color="#FCF8E8" />
       <br />
       <Tag
         tagName="태그2"
