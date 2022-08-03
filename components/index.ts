@@ -1,6 +1,7 @@
 // atoms
 export { Button } from 'components/atoms/Button';
-export { TextInput } from 'components/atoms/TextInput';
+export { TextInput } from '@components/molecules/TextInput';
+export { TextArea } from '@components/molecules/TextArea';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
