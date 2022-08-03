@@ -18,7 +18,7 @@ export const ImageSection = styled.div`
   overflow: auto;
 `;
 
-export const ContentSecion = styled.div`
+export const ContentSection = styled.div`
   background: blue;
   overflow: auto;
 `;

@@ -10,7 +10,7 @@ export function PostTemplate({
   return (
     <S.Container>
       <S.ImageSection>{imageSection}</S.ImageSection>
-      <S.ContentSecion>{contentSection}</S.ContentSecion>
+      <S.ContentSection>{contentSection}</S.ContentSection>
     </S.Container>
   );
 }
