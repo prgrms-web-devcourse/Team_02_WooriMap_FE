@@ -1,7 +1,21 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { MainThumbnailList } from '.';
+import { MainSidebar } from './MainSidebar';
 
-const dummyData = [
+const coupleDummyData = {
+  startDate: '2021-08-17',
+  me: {
+    profileImagePath:
+      'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
+    nickname: 'mynick',
+  },
+  you: {
+    profileImagePath:
+      'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
+    nickname: 'yournick',
+  },
+};
+
+const postDummyData = [
   {
     postId: '1',
     postThumbnailPath:
@@ -75,15 +89,18 @@ const dummyData = [
 ];
 
 export default {
-  title: 'Components/Molecules/MainThumbnailList',
-  component: MainThumbnailList,
+  title: 'Components/Organisms/MainSidebar',
+  component: MainSidebar,
   argTypes: {
+    coupleData: {
+      defaultValue: coupleDummyData,
+    },
     postList: {
-      defaultValue: dummyData,
+      defaultValue: postDummyData,
     },
   },
-} as ComponentMeta<typeof MainThumbnailList>;
+} as ComponentMeta<typeof MainSidebar>;
 
-export const Default: ComponentStory<typeof MainThumbnailList> = (args) => {
-  return <MainThumbnailList {...args} />;
+export const Default: ComponentStory<typeof MainSidebar> = (args) => {
+  return <MainSidebar {...args} />;
 };

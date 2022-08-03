@@ -1,6 +1,6 @@
 import * as S from './MainThumbnailList.styles';
 
-interface IThumbnailCardProps {
+export interface IThumbnailCardProps {
   postId: string;
   postThumbnailPath: string;
   title: string;
