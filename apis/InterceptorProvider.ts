@@ -21,7 +21,7 @@ function InterceptorProvider({ children }: IInterceptor) {
           const config = getHeadersWithAuthorizationToken(_config);
           return instance(config);
         })
-        .catch((_error) => {
+        .catch((_error: AxiosError) => {
           setUser(null);
           LocalStorage.removeItem('accessToken');
           LocalStorage.removeItem('refreshToken');
