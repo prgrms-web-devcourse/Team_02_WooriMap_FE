@@ -1,21 +1,24 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.section`
-  width: 100%;
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 
+  width: 100%;
+  height: 100%;
+
   gap: 1rem;
-  padding: 32px 24px;
+  padding: 2rem 1.5rem;
 
   box-sizing: border-box;
 `;
 
 export const ImageSection = styled.div`
   background: red;
+  overflow: auto;
 `;
 
 export const ContentSecion = styled.div`
   background: blue;
+  overflow: auto;
 `;

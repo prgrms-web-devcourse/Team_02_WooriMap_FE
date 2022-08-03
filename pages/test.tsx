@@ -1,7 +1,10 @@
-import { PostTemplate } from 'components';
+import { PostTemplate, ImageViewer } from 'components';
 
 export default function Test() {
   return (
-    <PostTemplate imageSection={<div>A</div>} contentSection={<div>B</div>} />
+    <PostTemplate
+      imageSection={<ImageViewer />}
+      contentSection={<div>B</div>}
+    />
   );
 }
