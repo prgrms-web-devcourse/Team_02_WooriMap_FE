@@ -1,5 +1,6 @@
 // atoms
 import { MainSearchBar } from './molecules/MainSearchBar/MainSearchBar';
+import { MainThumbnailList } from './molecules/MainThumbnailList/MainThumbnailList';
 export { Button } from 'components/atoms/Button';
 export { TextInput } from 'components/atoms/TextInput';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
@@ -18,6 +19,7 @@ export { UploadArea } from 'components/molecules/UploadArea';
 export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';
 export { CoupleProfile } from 'components/molecules/CoupleProfile';
 export { MainSearchBar } from 'components/molecules/MainSearchBar';
+export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
