@@ -1,4 +1,5 @@
 import { Button } from 'components';
+import { Map } from 'components/atoms/Map';
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
@@ -6,8 +7,6 @@ export const Container = styled.div`
   flex-direction: column;
   width: 44rem;
   border-top: 2px solid black;
-
-  margin: 10rem; //나중에 반드시 지울 것
 `;
 
 export const Header = styled.div`
@@ -61,4 +60,8 @@ export const PostContent = styled.div`
   margin: 1rem 0;
   font-size: 1.25rem;
   overflow-y: auto;
+`;
+
+export const PostLocation = styled(Map)`
+  border-radius: 1rem;
 `;

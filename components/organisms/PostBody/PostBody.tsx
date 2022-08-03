@@ -7,14 +7,26 @@ interface ITag {
   deletable?: boolean;
 }
 
+interface ILocation {
+  lat: number;
+  lng: number;
+}
+
 interface IPostBodyProps {
   title: string;
   date: string;
   tagList: ITag[];
   content: string;
+  location: ILocation;
 }
 
-export function PostBody({ title, date, tagList, content }: IPostBodyProps) {
+export function PostBody({
+  title,
+  date,
+  tagList,
+  content,
+  location,
+}: IPostBodyProps) {
   return (
     <S.Container>
       <S.Header>
@@ -31,6 +43,7 @@ export function PostBody({ title, date, tagList, content }: IPostBodyProps) {
         <TagList tagList={tagList} />
       </S.PostTags>
       <S.PostContent>{content}</S.PostContent>
+      <S.PostLocation width={704} height={304} center={location} />
     </S.Container>
   );
 }
