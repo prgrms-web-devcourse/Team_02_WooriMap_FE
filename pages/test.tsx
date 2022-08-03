@@ -1,10 +1,5 @@
-import { PostTemplate, ImageViewer } from 'components';
+import { TextArea } from 'components';
 
 export default function Test() {
-  return (
-    <PostTemplate
-      imageSection={<ImageViewer />}
-      contentSection={<div>B</div>}
-    />
-  );
+  return <TextArea />;
 }

@@ -10,7 +10,6 @@ export function TextInput({ onClickButton, ...props }: ITextInputProps) {
   return (
     <S.TextInputWrapper>
       <S.TextInput {...props} />
-
       <S.DeleteButton
         src={deleteIcon}
         alt="Delete All"

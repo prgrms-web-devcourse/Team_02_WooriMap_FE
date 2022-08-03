@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 
 export const TextInputWrapper = styled.div`
+  position: relative;
   display: flex;
   flex: 1;
   border-radius: 10px;

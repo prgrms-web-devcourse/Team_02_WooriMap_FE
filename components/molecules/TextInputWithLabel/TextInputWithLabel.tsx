@@ -4,7 +4,6 @@ import * as S from './TextInputWithLabel.styles';
 
 interface ITextInputWithLabelProps extends ITextInputProps {
   error?: string;
-  variant: 'input' | 'calendar' | 'textarea';
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
