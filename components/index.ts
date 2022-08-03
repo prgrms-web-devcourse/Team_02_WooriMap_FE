@@ -21,3 +21,4 @@ export { NavBar } from 'components/organisms/NavBar';
 
 // templates
 export { Layout } from 'components/templates/Layout';
+export { PostTemplate } from 'components/templates/PostTemplate';

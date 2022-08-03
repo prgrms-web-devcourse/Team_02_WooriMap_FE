@@ -1,10 +1,7 @@
-import { Button, TextInput } from 'components';
+import { Button, PostTemplate } from 'components';
 
 export default function Test() {
   return (
-    <div>
-      <TextInput />
-      <Button>Test</Button>
-    </div>
+    <PostTemplate imageSection={<div>A</div>} contentSection={<div>B</div>} />
   );
 }
