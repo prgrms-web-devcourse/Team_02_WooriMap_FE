@@ -6,5 +6,5 @@ export const TagListContainer = styled.div`
 `;
 
 export const MarginTag = styled(Tag)`
-  margin: 0rem 1rem;
+  margin-right: 0.5rem;
 `;
