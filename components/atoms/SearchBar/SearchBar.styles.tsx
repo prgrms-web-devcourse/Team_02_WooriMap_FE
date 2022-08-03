@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div<{ isSearching: boolean }>`
+export const Container = styled.div`
+  position: absolute;
+`;
+
+export const Wrapper = styled.div<{ isSearching: boolean }>`
   position: relative;
 
   width: 392px;

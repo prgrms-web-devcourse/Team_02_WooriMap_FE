@@ -4,12 +4,12 @@ import * as S from './SearchBar.styles';
 
 export function SearchBar() {
   return (
-    <>
-      <S.Container isSearching>
+    <S.Container>
+      <S.Wrapper isSearching>
         <S.Input />
         <Image src={search} width={16} height={16} alt="search" />
-      </S.Container>
+      </S.Wrapper>
       <S.SearchResultBox />
-    </>
+    </S.Container>
   );
 }
