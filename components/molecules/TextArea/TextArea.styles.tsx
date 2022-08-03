@@ -9,7 +9,7 @@ export const TextAreaWrapper = styled.div`
 
   border-radius: 10px;
   border: 2px solid ${({ theme }) => theme.colors.gray};
-  padding: 8px 12px;
+  padding: 8px 16px;
 `;
 
 export const TextArea = styled.textarea`

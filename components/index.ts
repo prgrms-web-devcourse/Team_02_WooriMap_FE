@@ -1,7 +1,5 @@
 // atoms
 export { Button } from 'components/atoms/Button';
-export { TextInput } from '@components/molecules/TextInput';
-export { TextArea } from '@components/molecules/TextArea';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
@@ -11,8 +9,11 @@ export { CalendarInput } from 'components/atoms/CalendarInput';
 export { SubmitButton } from 'components/atoms/SubmitButton';
 export { AuthPageRoutingButton } from 'components/atoms/AuthPageRoutingButton';
 export { AuthLogoImage } from 'components/atoms/AuthLogoImage';
+export { DeleteAllBtn } from 'components/atoms/DeleteAllBtn';
 
 // molecules
+export { TextInput } from 'components/molecules/TextInput';
+export { TextArea } from 'components/molecules/TextArea';
 export { ImageList } from 'components/molecules/ImageList';
 export { UploadArea } from 'components/molecules/UploadArea';
 export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';

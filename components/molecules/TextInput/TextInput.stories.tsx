@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { TextInput } from './TextInput';
 
 export default {
-  title: 'Components/Atoms/TextInput',
+  title: 'Components/Molecules/TextInput',
   component: TextInput,
   argTypes: {},
 } as ComponentMeta<typeof TextInput>;
