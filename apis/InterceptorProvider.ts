@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { AxiosResponse, AxiosError } from 'axios';
-import { getNewAccessToken, getHeadersWithAuthorizationToken } from 'apis/auth';
+import {
+  getNewAccessToken,
+  getHeadersWithAuthorizationToken,
+  isAuthorizationUrl,
+} from 'apis/auth';
 import LocalStorage from 'utils/storage';
 import { useAuthContext } from 'contexts/AuthContext';
 import { IRetryAxiosInstanceConfig } from 'types/auth';
@@ -34,13 +38,7 @@ function InterceptorProvider({ children }: IInterceptor) {
       const config = error.config as IRetryAxiosInstanceConfig;
       if (!error.response) return Promise.reject(error);
       if (error.response.status !== 401) return Promise.reject(error);
-      if (
-        config.url === '/auth/token' ||
-        config.url === '/auth/signin' ||
-        config.url === '/fake/signin' ||
-        config.url === '/fake/token'
-      )
-        return Promise.reject(error);
+      if (isAuthorizationUrl(config.url)) return Promise.reject(error);
       if (!config.retry) {
         config.retry = true;
         return retry(config);

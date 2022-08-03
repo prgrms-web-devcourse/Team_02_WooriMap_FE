@@ -106,3 +106,14 @@ export function getHeadersWithAuthorizationToken(
   )}`;
   return config;
 }
+
+export function isAuthorizationUrl(url: string | undefined) {
+  const authorizationUrlList = [
+    '/auth/token',
+    '/auth/login',
+    '/fake/token',
+    '/fake/signin',
+  ];
+  if (!url) return false;
+  return authorizationUrlList.includes(url);
+}
