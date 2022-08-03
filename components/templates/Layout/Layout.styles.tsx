@@ -14,7 +14,7 @@ export const Container = styled.div`
 export const Wrapper = styled.main<{ isLoggedIn: boolean }>`
   width: 100%;
   max-width: 75rem;
-  height: 100%;
+  flex: 1;
 
   ${({ isLoggedIn }) => isLoggedIn && `margin-top: 5rem;`})}
 
