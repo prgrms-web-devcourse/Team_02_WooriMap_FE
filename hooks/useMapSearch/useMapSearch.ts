@@ -1,5 +1,6 @@
 import { useCallback, useState, useEffect } from 'react';
-import { getBounds, parseMarkers, ICoordinates, IMapMarker } from './helper';
+import { ICoordinates, IMapMarker } from 'types';
+import { getBounds, parseMarkers } from './helper';
 
 type ReturnType = [
   IMapMarker[],
@@ -26,9 +27,13 @@ function useMapSearch(map: kakao.maps.Map | null): ReturnType {
       if (!services) return;
 
       services.keywordSearch(keyword, (data, status) => {
-        if (status !== kakao.maps.services.Status.OK) return;
+        if (status !== kakao.maps.services.Status.OK) {
+          setMarkers([]);
+          return;
+        }
 
         const results = parseMarkers(data);
+
         setMarkers(results);
         setBounds(
           results.map(({ position }) => ({
