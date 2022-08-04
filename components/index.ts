@@ -12,6 +12,7 @@ export { AuthLogoImage } from 'components/atoms/AuthLogoImage';
 export { DeleteAllBtn } from 'components/atoms/DeleteAllBtn';
 export { SearchBar } from 'components/atoms/SearchBar';
 export { Map } from 'components/atoms/Map';
+export { Marker } from 'components/atoms/Marker';
 
 // molecules
 export { TextInput } from 'components/molecules/TextInput';

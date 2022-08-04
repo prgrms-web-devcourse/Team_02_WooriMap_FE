@@ -5,23 +5,20 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { nanoid } from 'nanoid';
-import { MapMarker } from 'react-kakao-maps-sdk';
 import { ICoordinates, IMapMarker } from 'types';
 import { getBounds, parseMarkers } from './helper';
 
-type ReturnType = [
-  IMapMarker[],
-  (keyword: string) => void,
-  () => JSX.Element[],
-  (data: ICoordinates[]) => void,
-  (params: IMapMarker) => void,
-];
+interface IReturnType {
+  markers: IMapMarker[];
+  getSearchResults: (keyword: string) => void;
+  setBounds: (data: ICoordinates[]) => void;
+  onSelectMarker: (marker: IMapMarker) => void;
+}
 
 function useMapSearch(
   map: kakao.maps.Map | null,
   setSelected: Dispatch<SetStateAction<IMapMarker>>,
-): ReturnType {
+): IReturnType {
   const [services, setServices] = useState<kakao.maps.services.Places | null>(
     null,
   );
@@ -70,38 +67,13 @@ function useMapSearch(
     setMarkers(() => [marker]);
   };
 
-  const drawMarkers = () => {
-    return markers.map((marker: IMapMarker) => {
-      const { position, content } = marker;
-      const { latitude: lat, longitude: lng } = position;
-
-      const image = {
-        src: 'https://i.imgur.com/iwOEvRP.png',
-        size: {
-          width: 24,
-          height: 35,
-        },
-      };
-
-      return (
-        <MapMarker
-          key={nanoid()}
-          position={{ lat, lng }}
-          image={image}
-          title={content}
-          onClick={() => onSelectMarker(marker)}
-        />
-      );
-    });
-  };
-
   useEffect(() => {
     if (!map) return;
     const ps = new kakao.maps.services.Places();
     setServices(ps);
   }, [map]);
 
-  return [markers, getSearchResults, drawMarkers, setBounds, onSelectMarker];
+  return { markers, getSearchResults, setBounds, onSelectMarker };
 }
 
 export default useMapSearch;

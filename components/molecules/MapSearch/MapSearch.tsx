@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMapSearch } from 'hooks';
 import { IMapMarker } from 'types';
-import { Map, SearchBar } from 'components';
+import { Map, SearchBar, Marker } from 'components';
 import * as S from './MapSearch.styles';
 
 export function MapSearch() {
@@ -13,8 +13,10 @@ export function MapSearch() {
     },
   });
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
-  const [markers, getSearchResults, drawMarkers, , onSelectMarker] =
-    useMapSearch(map, setSelected);
+  const { markers, getSearchResults, onSelectMarker } = useMapSearch(
+    map,
+    setSelected,
+  );
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -31,12 +33,12 @@ export function MapSearch() {
         results={markers}
       />
       <Map
-        width={700}
-        height={700}
+        width="100%"
+        height="100%"
         onCreate={setMap}
         center={{ lat: 37.5666805, lng: 126.9784147 }}
       >
-        {drawMarkers()}
+        <Marker markers={markers} onSelectMarker={onSelectMarker} />
       </Map>
     </S.Container>
   );
