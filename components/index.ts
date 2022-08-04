@@ -23,7 +23,7 @@ export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';
 export { CoupleProfile } from 'components/molecules/CoupleProfile';
 export { MainSearchBar } from 'components/molecules/MainSearchBar';
 export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
-export { MapSearch } from 'components/molecules/MapSearch';
+export { SearchableMap } from 'components/molecules/SearchableMap';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';

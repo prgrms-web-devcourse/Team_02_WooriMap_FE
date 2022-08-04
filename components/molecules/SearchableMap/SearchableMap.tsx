@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useMapSearch } from 'hooks';
 import { IMapMarker } from 'types';
 import { Map, SearchBar, MultiMarkerDrawer } from 'components';
-import * as S from './MapSearch.styles';
+import * as S from './SearchableMap.styles';
 
-export function MapSearch() {
+export function SearchableMap() {
   const [selected, setSelected] = useState<IMapMarker>({
     content: '',
     position: {
