@@ -1,21 +1,35 @@
 import { useState } from 'react';
 import { useMapSearch } from 'hooks';
+import { IMapMarker } from 'types';
 import { Map, SearchBar } from 'components';
 import * as S from './MapSearch.styles';
 
 export function MapSearch() {
+  const [selected, setSelected] = useState<IMapMarker>({
+    content: '',
+    position: {
+      latitude: 0,
+      longitude: 0,
+    },
+  });
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const [markers, getSearchResults, drawMarkers, , onSelectMarker] =
-    useMapSearch(map);
+    useMapSearch(map, setSelected);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     getSearchResults(value);
+    setSelected((prev) => ({ ...prev, content: value }));
   };
 
   return (
     <S.Container>
-      <SearchBar onChange={onChange} results={markers} />
+      <SearchBar
+        keyword={selected.content}
+        onChange={onChange}
+        onClick={onSelectMarker}
+        results={markers}
+      />
       <Map
         width={700}
         height={700}

@@ -1,4 +1,10 @@
-import { useCallback, useState, useEffect } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useState,
+  useEffect,
+} from 'react';
 import { nanoid } from 'nanoid';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import { ICoordinates, IMapMarker } from 'types';
@@ -9,10 +15,13 @@ type ReturnType = [
   (keyword: string) => void,
   () => JSX.Element[],
   (data: ICoordinates[]) => void,
-  (marker: IMapMarker) => void,
+  (params: IMapMarker) => void,
 ];
 
-function useMapSearch(map: kakao.maps.Map | null): ReturnType {
+function useMapSearch(
+  map: kakao.maps.Map | null,
+  setSelected: Dispatch<SetStateAction<IMapMarker>>,
+): ReturnType {
   const [services, setServices] = useState<kakao.maps.services.Places | null>(
     null,
   );
@@ -55,8 +64,10 @@ function useMapSearch(map: kakao.maps.Map | null): ReturnType {
     const { latitude: lat, longitude: lng } = position;
     const latlng = new kakao.maps.LatLng(lat, lng);
 
+    setSelected(() => ({ ...marker }));
+
     map?.setCenter(latlng);
-    setMarkers([marker]);
+    setMarkers(() => [marker]);
   };
 
   const drawMarkers = () => {
