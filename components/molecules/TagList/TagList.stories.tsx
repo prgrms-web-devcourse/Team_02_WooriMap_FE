@@ -22,11 +22,20 @@ const sampleInput2 = {
   ],
 };
 
+const sampleInput3 = {
+  tagList: [
+    { tagName: 'randomTag 1', deletable: false },
+    { tagName: 'randomTag 2', deletable: false },
+    { tagName: 'randomTag 3', deletable: true },
+  ],
+};
+
 export const Default: ComponentStory<typeof TagList> = () => {
   return (
     <>
       <TagList tagList={sampleInput1.tagList} />
       <TagList tagList={sampleInput2.tagList} />
+      <TagList tagList={sampleInput3.tagList} />
     </>
   );
 };

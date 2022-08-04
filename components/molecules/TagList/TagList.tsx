@@ -3,7 +3,7 @@ import * as S from './TagList.styles';
 
 interface ITag {
   tagName: string;
-  tagColor: string;
+  tagColor?: string;
   deletable?: boolean;
 }
 
