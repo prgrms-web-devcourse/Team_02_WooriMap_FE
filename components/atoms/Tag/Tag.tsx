@@ -8,7 +8,7 @@ interface ITagProps {
 
 export function Tag({ tagName, tagColor, onDelete, ...props }: ITagProps) {
   return (
-    <S.Tag tagColor={tagColor} {...props}>
+    <S.Tag tagColor={tagColor} isDelete={!!onDelete} {...props}>
       {tagName}
       {onDelete && <S.DeleteButton onClick={onDelete}>X</S.DeleteButton>}
     </S.Tag>
