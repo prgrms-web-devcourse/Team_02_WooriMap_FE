@@ -60,3 +60,12 @@ export const FooterWrapper = styled(Wrapper)`
     text-align: center;
   }
 `;
+
+export const InfoMessageWrapper = styled.div`
+  p {
+    color: #d9d9d9;
+  }
+  a {
+    color: #ff8f8f;
+  }
+`;

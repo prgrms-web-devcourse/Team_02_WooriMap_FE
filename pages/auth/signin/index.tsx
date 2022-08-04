@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import { AuthPageTemplate } from 'components/templates/AuthPageTemplate';
 import { Button, TextInput } from 'components';
 import { useAuthContext } from 'contexts/AuthContext';
+import Link from 'next/link';
 
 type LoginFormKeyType = 'email' | 'password';
 
@@ -51,7 +52,7 @@ function Signin() {
       }
       infoMessage={
         <p>
-          회원이 아니신가요? <span>회원 가입</span>
+          회원이 아니신가요? <Link href="/signup">회원 가입</Link>
         </p>
       }
     />
