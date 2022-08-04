@@ -1,3 +1,10 @@
+// 1. 외부 클릭시 검색 중단
+// 2. Input 아래에 Tag들 드롭다운 형식으로 출력
+// 3. Input 입력시 value에 이미 있는 태그인지 검사, 있으면 추가 안 함
+// 4. Input 입력시 tagData에 이미 있는 태그인지 검사, 있으면 tagData에 있는 태그를 추가
+// 5. 색깔 Randomize
+// 6. Deletable TagList 넣기
+
 import { ITextInputProps, ITag } from 'types';
 import { TextInput } from 'components';
 import React, { useState } from 'react';
@@ -29,8 +36,6 @@ export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
     const { elements } = e.currentTarget;
     const tagName = elements.tagName.value;
     const newValue: ITag[] = [...value];
-    // 1. input과 동일한 이름을 가진 tag가 있는지 검색
-    // 2. 없다면 새 색깔을 가진 tag를 만들어서 push
     newValue.push({ name: tagName, color: '#FFFF00' });
     setValue(newValue);
 
