@@ -15,3 +15,13 @@ export const Default: ComponentStory<typeof Tag> = () => {
     </>
   );
 };
+
+export const randomColor: ComponentStory<typeof Tag> = () => {
+  return (
+    <>
+      <Tag tagName="random tag 1" />
+      <Tag tagName="random tag 2" />
+      <Tag tagName="random tag 3" />
+    </>
+  );
+};

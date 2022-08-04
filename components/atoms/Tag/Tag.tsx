@@ -2,7 +2,7 @@ import * as S from './Tag.styles';
 
 interface ITagProps {
   tagName: string;
-  tagColor: string;
+  tagColor?: string;
   onDelete?: () => void;
 }
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface ITagStyleProps {
-  tagColor: string;
+  tagColor?: string;
 }
 
 export const Tag = styled.div<ITagStyleProps>`
@@ -13,7 +13,11 @@ export const Tag = styled.div<ITagStyleProps>`
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 1rem;
-  background-color: ${(props) => props.tagColor};
+  /* background-color: ${(props) => props.tagColor}; */
+  background-color: ${({ tagColor }) =>
+    tagColor
+      ? tagColor
+      : ({ theme }) => theme.tagColors[Math.floor(Math.random() * 8)]};
   font-size: 1rem;
   text-decoration: none;
 `;
