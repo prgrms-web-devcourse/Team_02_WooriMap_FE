@@ -50,6 +50,7 @@ function Signin() {
         <>
           <TextInput
             value={data.email}
+            type="email"
             onChange={changeValue('email')}
             onClickButton={() => resetValue('email')}
             className="input-wrapper"
@@ -76,6 +77,7 @@ function Signin() {
         </p>
       }
       error={error && <p>{error}</p>}
+      noValidate
     />
   );
 }
