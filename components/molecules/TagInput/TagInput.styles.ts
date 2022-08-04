@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { TextInput } from 'components';
 
 export const Container = styled.div`
   display: flex;
@@ -20,6 +21,29 @@ export const Wrapper = styled.div`
     font-weight: bold;
     text-align: center;
     word-break: break-all;
+  }
+`;
+
+export const TagInfoInputContainer = styled.form`
+  border: none;
+`;
+
+export const TagNameInput = styled(TextInput)`
+  width: 160px;
+`;
+
+export const DropDownContainer = styled.ul`
+  width: 160px;
+  height: 12rem;
+  border: 2px solid ${({ theme }) => theme.colors.gray};
+  border-radius: 10px;
+  & > li {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 3rem;
+    padding-left: 1rem;
+    border-bottom: 1px solid ${({ theme }) => theme.colors.gray};
   }
 `;
 
