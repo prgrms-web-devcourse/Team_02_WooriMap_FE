@@ -12,21 +12,19 @@ interface ITagListProp {
 
 export function TagList({ tagList }: ITagListProp) {
   const [list, setList] = useState<ITag[]>(tagList);
-  const handleDelete = (tagValue: string) => () => {
-    const newList: ITag[] = [...list].filter(
-      ({ tagName }) => tagName !== tagValue,
-    );
+  const handleDelete = (tagName: string) => () => {
+    const newList: ITag[] = [...list].filter(({ name }) => name !== tagName);
     setList(newList);
   };
 
   return (
     <S.TagListContainer>
-      {list.map(({ tagName, tagColor, deletable }) => (
+      {list.map(({ name, color, deletable }) => (
         <S.MarginTag
-          key={tagName}
-          tagName={tagName}
-          tagColor={tagColor}
-          onDelete={deletable ? handleDelete(tagName) : undefined}
+          key={name}
+          name={name}
+          color={color}
+          onDelete={deletable ? handleDelete(name) : undefined}
         />
       ))}
     </S.TagListContainer>

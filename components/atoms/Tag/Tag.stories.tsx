@@ -9,11 +9,11 @@ export default {
 export const Default: ComponentStory<typeof Tag> = () => {
   return (
     <>
-      <Tag tagName="태그1" tagColor="#FCF8E8" />
+      <Tag name="태그1" color="#FCF8E8" />
       <br />
       <Tag
-        tagName="태그2"
-        tagColor="#94B49F"
+        name="태그2"
+        color="#94B49F"
         onDelete={() => alert('태그 지우기 버튼을 클릭하셨군여!!(•̀ᴗ•́)و ̑̑')}
       />
     </>
@@ -23,13 +23,13 @@ export const Default: ComponentStory<typeof Tag> = () => {
 export const randomColor: ComponentStory<typeof Tag> = () => {
   return (
     <>
-      <Tag tagName="random tag 1" />
+      <Tag name="random tag 1" />
       <Tag
-        tagName="random tag 2"
+        name="random tag 2"
         onDelete={() => alert('태그 지우기 버튼을 클릭하셨군여!!(•̀ᴗ•́)و ̑̑')}
       />
       <Tag
-        tagName="random tag 3"
+        name="random tag 3"
         onDelete={() => alert('태그 지우기 버튼을 클릭하셨군여!!(•̀ᴗ•́)و ̑̑')}
       />
     </>

@@ -8,17 +8,17 @@ export default {
 
 const sampleInput1 = {
   tagList: [
-    { tagName: '바다', tagColor: '#0096FF' },
-    { tagName: '산', tagColor: '#2B7A0B' },
-    { tagName: '들', tagColor: '#7DCE13' },
+    { name: '바다', color: '#0096FF' },
+    { name: '산', color: '#2B7A0B' },
+    { name: '들', color: '#7DCE13' },
   ],
 };
 
 const sampleInput2 = {
   tagList: [
-    { tagName: '벨벳', tagColor: '#B93160', deletable: true },
-    { tagName: '오렌지', tagColor: '#EF5B0C', deletable: true },
-    { tagName: '복숭아', tagColor: '#FFF9CA', deletable: true },
+    { name: '벨벳', color: '#B93160', deletable: true },
+    { name: '오렌지', color: '#EF5B0C', deletable: true },
+    { name: '복숭아', color: '#FFF9CA', deletable: true },
   ],
 };
 
