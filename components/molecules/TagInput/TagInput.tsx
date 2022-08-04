@@ -1,6 +1,7 @@
 import { ITextInputProps, ITag } from 'types';
 import { TextInput } from 'components';
 import React, { useState } from 'react';
+import { Tag } from 'components/atoms/Tag';
 import * as S from './TagInput.styles';
 
 interface IFormElements extends HTMLFormControlsCollection {
@@ -54,6 +55,9 @@ export function TagInput({
         </form>
       </S.Wrapper>
       <S.ValidationError>{error}</S.ValidationError>
+      {value.map((tagInfo) => (
+        <Tag tagName={tagInfo.name} key={name} tagColor={tagInfo.color} />
+      ))}
     </S.Container>
   );
 }
