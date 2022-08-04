@@ -1,8 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { AuthPageTemplate } from 'components/templates/AuthPageTemplate';
-import { Button, TextInput } from 'components';
+import { AuthPageRoutingButton, Button, TextInput } from 'components';
 import { useAuthContext } from 'contexts/AuthContext';
 
 type LoginFormKeyType = 'email' | 'password';
@@ -71,11 +70,7 @@ function Signin() {
           로그인
         </Button>
       }
-      infoMessage={
-        <p>
-          회원이 아니신가요? <Link href="/auth/signup">회원 가입</Link>
-        </p>
-      }
+      infoMessage={<AuthPageRoutingButton type="signin" />}
       error={error && <p>{error}</p>}
       noValidate
     />

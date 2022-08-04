@@ -10,12 +10,12 @@ export function AuthPageRoutingButton({ type }: IAuthPageRoutingButtonProps) {
     type === 'signup'
       ? {
           text: '이미 회원이신가요?',
-          path: '/signin',
+          path: '/auth/signin',
           link: '로그인',
         }
       : {
           text: '회원이 아니신가요?',
-          path: '/signup',
+          path: '/auth/signup',
           link: '회원 가입',
         };
 

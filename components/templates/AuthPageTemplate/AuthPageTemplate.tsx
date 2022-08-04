@@ -36,7 +36,7 @@ function AuthPageTemplate({
       <S.ErrorMessage>{error}</S.ErrorMessage>
       <S.FooterWrapper margin="7rem 0 0 0">
         {trigger}
-        <S.InfoMessageWrapper>{infoMessage}</S.InfoMessageWrapper>
+        {infoMessage}
       </S.FooterWrapper>
     </FormBackground>
   );
