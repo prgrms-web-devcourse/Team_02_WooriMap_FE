@@ -10,6 +10,8 @@ export { SubmitButton } from 'components/atoms/SubmitButton';
 export { AuthPageRoutingButton } from 'components/atoms/AuthPageRoutingButton';
 export { AuthLogoImage } from 'components/atoms/AuthLogoImage';
 export { DeleteAllBtn } from 'components/atoms/DeleteAllBtn';
+export { SearchBar } from 'components/atoms/SearchBar';
+export { Map } from 'components/atoms/Map';
 
 // molecules
 export { TextInput } from 'components/molecules/TextInput';
@@ -20,6 +22,7 @@ export { TextInputWithLabel } from 'components/molecules/TextInputWithLabel';
 export { CoupleProfile } from 'components/molecules/CoupleProfile';
 export { MainSearchBar } from 'components/molecules/MainSearchBar';
 export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
+export { MapSearch } from 'components/molecules/MapSearch';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';

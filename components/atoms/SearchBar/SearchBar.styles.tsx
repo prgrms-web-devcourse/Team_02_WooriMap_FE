@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: absolute;
+  z-index: 999;
 `;
 
 export const Wrapper = styled.div<{ isSearching: boolean }>`
@@ -48,7 +49,7 @@ export const SearchResultBox = styled.ul`
   position: relative;
 
   width: 392px;
-  height: 300px;
+  max-height: 300px;
 
   padding: 8px 0;
 
@@ -57,9 +58,30 @@ export const SearchResultBox = styled.ul`
   box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px;
 
   font-size: 15px;
-  overflow: hidden;
+  overflow: auto;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+`;
+
+export const SearchResult = styled.li`
+  width: 100%;
+  min-height: 24px;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  padding: 8px 16px;
+
+  cursor: pointer;
+  color: #8c8c8c;
+
+  font-size: 16px;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    outline: 0;
   }
 `;
