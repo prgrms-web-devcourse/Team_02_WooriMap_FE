@@ -9,6 +9,8 @@ interface IColors {
   pink: string;
 }
 
+type ITagColors = string[];
+
 interface ISizes {
   images: {
     medium: SerializedStyles;
@@ -32,6 +34,7 @@ declare global {
 declare module '@emotion/react' {
   export interface Theme {
     colors: IColors;
+    tagColors: ITagColors;
     sizes: ISizes;
   }
 }
