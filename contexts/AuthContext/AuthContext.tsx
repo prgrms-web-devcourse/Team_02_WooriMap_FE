@@ -8,7 +8,7 @@ import React, {
 import instance from 'apis/instance';
 import { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
-import LocalStorage from '@utils/storage';
+import LocalStorage from 'utils/storage';
 
 interface IAuthContext {
   isAuthenticated: false;
