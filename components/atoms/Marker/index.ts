@@ -1,1 +1,1 @@
-export { Marker } from './Marker';
+export { MultiMarkerDrawer } from './Marker';

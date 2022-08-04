@@ -2,12 +2,15 @@ import { nanoid } from 'nanoid';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import { IMapMarker } from 'types';
 
-interface IMarkerProps {
+interface IMultiMarkerDrawerProps {
   markers: Array<IMapMarker>;
   onSelectMarker: (marker: IMapMarker) => void;
 }
 
-export function Marker({ markers, onSelectMarker }: IMarkerProps) {
+export function MultiMarkerDrawer({
+  markers,
+  onSelectMarker,
+}: IMultiMarkerDrawerProps) {
   return (
     <>
       {markers.map((marker: IMapMarker) => {

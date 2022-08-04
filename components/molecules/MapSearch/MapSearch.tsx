@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMapSearch } from 'hooks';
 import { IMapMarker } from 'types';
-import { Map, SearchBar, Marker } from 'components';
+import { Map, SearchBar, MultiMarkerDrawer } from 'components';
 import * as S from './MapSearch.styles';
 
 export function MapSearch() {
@@ -38,7 +38,7 @@ export function MapSearch() {
         onCreate={setMap}
         center={{ lat: 37.5666805, lng: 126.9784147 }}
       >
-        <Marker markers={markers} onSelectMarker={onSelectMarker} />
+        <MultiMarkerDrawer markers={markers} onSelectMarker={onSelectMarker} />
       </Map>
     </S.Container>
   );
