@@ -16,7 +16,7 @@ interface IAuthContext {
   user: IUserResponse | null;
   setUser: React.Dispatch<React.SetStateAction<IUserResponse | null>>;
   login: (data: ILoginFormData) => Promise<ILoginResponse>;
-  logout: () => void;
+  logout: () => Promise<void>;
 }
 
 interface IProps {
