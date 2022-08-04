@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ImageBox } from './ImageBox';
 
 export default {
-  title: 'Components/Atoms/ImageBoxViewer',
+  title: 'Components/Atoms/ImageBox',
   component: ImageBox,
   argTypes: {
     size: {

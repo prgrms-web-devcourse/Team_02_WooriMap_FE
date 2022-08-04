@@ -27,7 +27,7 @@ export function ImageBox({ size, src, isSelected, onClick }: IImageBoxProps) {
   };
 
   return (
-    <S.Wrapper size={size} isSelected={isSelected}>
+    <S.Wrapper isSelected={isSelected}>
       <S.Viewer
         src={src}
         onClick={onClick || (() => {})}
