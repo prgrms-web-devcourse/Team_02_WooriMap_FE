@@ -47,7 +47,7 @@ function AuthProvider({ children }: IProps) {
       LocalStorage.setItem('refreshToken', data.refreshToken);
 
       setUser(() => data.member);
-      return await Promise.resolve(data);
+      return data;
     } catch (error) {
       return await Promise.reject(error);
     } finally {
