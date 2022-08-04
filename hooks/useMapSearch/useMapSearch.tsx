@@ -1,10 +1,13 @@
 import { useCallback, useState, useEffect } from 'react';
+import { nanoid } from 'nanoid';
+import { MapMarker } from 'react-kakao-maps-sdk';
 import { ICoordinates, IMapMarker } from 'types';
 import { getBounds, parseMarkers } from './helper';
 
 type ReturnType = [
   IMapMarker[],
   (keyword: string) => void,
+  () => JSX.Element[],
   (data: ICoordinates[]) => void,
 ];
 
@@ -46,13 +49,36 @@ function useMapSearch(map: kakao.maps.Map | null): ReturnType {
     [services, setBounds],
   );
 
+  const drawMarkers = () => {
+    return markers.map(({ position, content }: IMapMarker) => {
+      const { latitude: lat, longitude: lng } = position;
+
+      const image = {
+        src: 'https://i.imgur.com/iwOEvRP.png',
+        size: {
+          width: 24,
+          height: 35,
+        },
+      };
+
+      return (
+        <MapMarker
+          key={nanoid()}
+          position={{ lat, lng }}
+          image={image}
+          title={content}
+        />
+      );
+    });
+  };
+
   useEffect(() => {
     if (!map) return;
     const ps = new kakao.maps.services.Places();
     setServices(ps);
   }, [map]);
 
-  return [markers, getSearchResults, setBounds];
+  return [markers, getSearchResults, drawMarkers, setBounds];
 }
 
 export default useMapSearch;
