@@ -11,7 +11,7 @@ export { AuthLogoImage } from 'components/atoms/AuthLogoImage';
 export { DeleteAllBtn } from 'components/atoms/DeleteAllBtn';
 export { SearchBar } from 'components/atoms/SearchBar';
 export { Map } from 'components/atoms/Map';
-export { MultiMarkerDrawer } from 'components/atoms/Marker';
+export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
 
 // molecules
 export { CalendarInput } from 'components/molecules/CalendarInput';
