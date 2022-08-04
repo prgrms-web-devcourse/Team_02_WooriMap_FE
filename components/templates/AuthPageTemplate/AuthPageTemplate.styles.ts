@@ -69,3 +69,8 @@ export const InfoMessageWrapper = styled.div`
     color: #ff8f8f;
   }
 `;
+
+export const ErrorMessage = styled.div`
+  color: #f44336;
+  text-align: center;
+`;
