@@ -1,4 +1,3 @@
-import { NextRouter } from 'next/router';
 import { AxiosError } from 'axios';
 import instance from 'apis/instance';
 import { IApiResponse } from 'types/api';
@@ -8,10 +7,8 @@ import { ITokenSet, IRetryAxiosInstanceConfig } from 'types/auth';
 
 export async function signup({
   values,
-  router,
 }: {
   values: IInputState;
-  router: NextRouter;
 }): Promise<ISingnUpRes> {
   try {
     const { email, nickName, password } = values;
@@ -26,13 +23,11 @@ export async function signup({
       .post<''>('/members/signup', reqBody)
       .then((response) => {
         if (response.status === 201) {
-          router.push('/auth/signin');
           return {
             message: '',
           };
         }
 
-        // throw new Error(response);
         const error = response as unknown as AxiosError;
         return error.response?.data;
       });

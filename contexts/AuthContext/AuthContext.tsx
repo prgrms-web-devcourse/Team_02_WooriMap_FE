@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import instance from 'apis/instance';
 import { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
-import { IApiResponse } from 'types/api';
+import { IApiResponse } from 'types';
 import LocalStorage from 'utils/storage';
 
 interface IAuthContext {

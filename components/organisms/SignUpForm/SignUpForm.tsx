@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+import { useRouter } from 'next/router';
 import { IInputState, ITextInputProps } from 'types';
 import { useForm } from 'hooks';
 import {
@@ -15,7 +17,13 @@ import {
 } from './helper';
 import * as S from './SignUpForm.styles';
 
+interface IOnSubmit<T> {
+  values: T;
+  setErrors?: Dispatch<SetStateAction<T>>;
+}
+
 export function SignUpForm() {
+  const router = useRouter();
   const initialValues = {
     email: '',
     nickName: '',
@@ -23,10 +31,20 @@ export function SignUpForm() {
     confirmPassword: '',
   };
 
+  const onSubmit = async ({ values, setErrors }: IOnSubmit<IInputState>) => {
+    const res = await signup({ values });
+
+    if (res.message) {
+      setErrors?.((prev) => ({ ...prev, finalError: res.message }));
+    } else {
+      router.push('/auth/signin');
+    }
+  };
+
   const { values, handleChange, handleSubmit, errors, removeAll } =
     useForm<IInputState>({
       initialValues,
-      onSubmit: signup,
+      onSubmit,
       validateValues,
     });
 
