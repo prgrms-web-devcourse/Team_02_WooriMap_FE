@@ -43,7 +43,7 @@ export function PostBody({
         <TagList tagList={tagList} />
       </S.PostTags>
       <S.PostContent>{content}</S.PostContent>
-      <S.PostLocation width={704} height={304} center={location} />
+      <S.PostLocation width="100%" height={304} center={location} />
     </S.Container>
   );
 }

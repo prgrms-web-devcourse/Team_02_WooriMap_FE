@@ -55,7 +55,6 @@ export const PostTags = styled.div`
 `;
 
 export const PostContent = styled.div`
-  width: 100%;
   height: 18rem;
   margin: 1rem 0;
   font-size: 1.25rem;
