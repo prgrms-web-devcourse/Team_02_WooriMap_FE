@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import dayjs from 'dayjs';
 import { TextInputWithLabel } from 'components';
 import * as S from './PostWrite.styles';
+import { formatDate } from '../../../utils/formatDate';
 
 interface IPostInitialState {
   title: string;
@@ -41,7 +41,7 @@ const temp: Array<Itemp> = [
 export function PostWrite() {
   const initialValues: IPostInitialState = {
     title: '',
-    date: dayjs().format('YYYY-MM-DD'),
+    date: formatDate(),
     content: '',
   };
 
