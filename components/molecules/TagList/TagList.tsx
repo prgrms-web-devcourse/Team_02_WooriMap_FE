@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import * as S from './TagList.styles';
+import { ITagBase } from '../../atoms/Tag/Tag';
 
-interface ITag {
-  tagName: string;
-  tagColor: string;
+interface ITag extends ITagBase {
   deletable?: boolean;
 }
 
