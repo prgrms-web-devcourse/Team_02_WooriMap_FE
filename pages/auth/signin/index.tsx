@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { AuthPageTemplate } from 'components/templates/AuthPageTemplate';
 import { Button, TextInput } from 'components';
+import { useAuthContext } from 'contexts/AuthContext';
 
 type LoginFormKeyType = 'email' | 'password';
 
@@ -10,6 +11,7 @@ type LoginFormType = {
 
 function Signin() {
   const [data, setData] = useState<LoginFormType>({ email: '', password: '' });
+  const { login } = useAuthContext();
   const changeValue = useCallback(
     (key: LoginFormKeyType) => (e: React.ChangeEvent<HTMLInputElement>) => {
       setData((prev) => ({ ...prev, [key]: e.target.value }));
@@ -23,6 +25,7 @@ function Signin() {
     <AuthPageTemplate
       onSubmit={(e) => {
         e.preventDefault();
+        login({ ...data });
       }}
       inputs={
         <>
@@ -34,6 +37,7 @@ function Signin() {
           />
           <TextInput
             value={data.password}
+            type="password"
             onChange={changeValue('password')}
             onClickButton={() => resetValue('password')}
             className="input-wrapper"

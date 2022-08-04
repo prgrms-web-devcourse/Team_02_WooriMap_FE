@@ -8,7 +8,7 @@ import React, {
 import instance from 'apis/instance';
 import { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
-import LocalStorage from '@utils/storage';
+import LocalStorage from 'utils/storage';
 
 interface IAuthContext {
   isAuthenticated: false;
@@ -35,16 +35,21 @@ function AuthProvider({ children }: IProps) {
   const login = useCallback(async ({ email, password }: ILoginFormData) => {
     try {
       setLoading(true);
+
       const data = await instance
-        .post<IApiResponse<ILoginResponse>>('/signin', {
+        .post<IApiResponse<ILoginResponse>>('/fake/signin', {
           email,
           password,
         })
         .then((response) => response.data.data);
+
       LocalStorage.setItem('accessToken', data.accessToken);
+      LocalStorage.setItem('refreshToken', data.refreshToken);
+
       setUser(() => data.member);
+      return await Promise.resolve(data);
     } catch (error) {
-      throw new Error('error occurred at login.');
+      return await Promise.reject(error);
     } finally {
       setLoading(false);
     }
