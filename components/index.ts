@@ -5,7 +5,6 @@ export { Profile } from 'components/atoms/Profile';
 export { ImageBox } from 'components/atoms/ImageBox';
 export { FormBackground } from 'components/atoms/FormBackground';
 export { Tag } from 'components/atoms/Tag';
-export { CalendarInput } from 'components/atoms/CalendarInput';
 export { SubmitButton } from 'components/atoms/SubmitButton';
 export { AuthPageRoutingButton } from 'components/atoms/AuthPageRoutingButton';
 export { AuthLogoImage } from 'components/atoms/AuthLogoImage';
@@ -15,6 +14,7 @@ export { Map } from 'components/atoms/Map';
 export { Marker } from 'components/atoms/Marker';
 
 // molecules
+export { CalendarInput } from 'components/molecules/CalendarInput';
 export { TextInput } from 'components/molecules/TextInput';
 export { TextArea } from 'components/molecules/TextArea';
 export { ImageList } from 'components/molecules/ImageList';

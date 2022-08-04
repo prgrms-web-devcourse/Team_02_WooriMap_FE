@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import { CalendarInput } from './CalendarInput';
 
 export default {
-  title: 'Components/Atoms/CalendarInput',
+  title: 'Components/Molecules/CalendarInput',
   component: CalendarInput,
   argTypes: {},
 } as ComponentMeta<typeof CalendarInput>;
