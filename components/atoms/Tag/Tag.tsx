@@ -1,8 +1,10 @@
 import * as S from './Tag.styles';
 
-interface ITagProps {
+export interface ITagBase {
   tagName: string;
   tagColor?: string;
+}
+interface ITagProps extends ITagBase {
   onDelete?: () => void;
 }
 
