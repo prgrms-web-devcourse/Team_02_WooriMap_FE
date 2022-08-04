@@ -17,16 +17,12 @@ interface ITagInputProps extends ITextInputProps {
   text: string;
   error: string;
   tags: ITag[];
+  tagData: ITag[];
 }
 
-export function TagInput({
-  name,
-  text,
-  error,
-  tags,
-  deleteAll,
-}: ITagInputProps) {
-  const [value, setValue] = useState(tags);
+export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
+  const [value, setValue] = useState<ITag[]>(tags);
+  const [inputOptions, setInputOptions] = useState<ITag[]>([]);
 
   const handleSubmit = (e: React.FormEvent<IFormElement>) => {
     e.preventDefault();
@@ -41,23 +37,46 @@ export function TagInput({
     elements.tagName.value = '';
   };
 
-  const onClickDeleteButton = () => {
-    if (deleteAll && name) deleteAll(name);
-  };
+  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputValue = e.target.value;
+    let newOptions: ITag[] = [];
 
+    if (inputValue !== '') {
+      const regex = new RegExp(`^${inputValue}`, 'i');
+      newOptions = tagData.filter((tag) => regex.test(tag.name));
+    }
+    setInputOptions(newOptions);
+  };
   // 추후에 form tag 내부에 colorInput 삽입하기
   return (
     <S.Container>
       <S.Wrapper>
         <label htmlFor="addTag">{text}</label>
         <form id="addTag" onSubmit={handleSubmit}>
-          <TextInput name="tagName" onClickButton={onClickDeleteButton} />
+          <TextInput
+            name="tagName"
+            onChange={onInputChange}
+            onClickButton={() => {}}
+          />
         </form>
       </S.Wrapper>
       <S.ValidationError>{error}</S.ValidationError>
-      {value.map((tagInfo) => (
-        <Tag tagName={tagInfo.name} key={name} tagColor={tagInfo.color} />
-      ))}
+      자동완성된애들
+      <ul>
+        {inputOptions.map((tag) => (
+          <li key={tag.name}>
+            <Tag tagName={tag.name} tagColor={tag.color} />
+          </li>
+        ))}
+      </ul>
+      선택된애들
+      <ul>
+        {value.map((tag) => (
+          <li key={tag.name}>
+            <Tag tagName={tag.name} key={name} tagColor={tag.color} />
+          </li>
+        ))}
+      </ul>
     </S.Container>
   );
 }
