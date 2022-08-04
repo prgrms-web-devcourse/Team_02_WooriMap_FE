@@ -13,8 +13,9 @@ interface ITokenSet {
 }
 
 export interface IUserResponse extends IEmail {
+  imageUrl: string | null;
   nickName: string;
-  couple: string;
+  isCouple: boolean;
 }
 
 export interface ILoginResponse extends ITokenSet {
