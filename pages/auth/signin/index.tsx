@@ -35,6 +35,7 @@ function Signin() {
             onChange={changeValue('email')}
             onClickButton={() => resetValue('email')}
             className="input-wrapper"
+            placeholder="your-email@email.com"
           />
           <TextInput
             value={data.password}
@@ -42,6 +43,7 @@ function Signin() {
             onChange={changeValue('password')}
             onClickButton={() => resetValue('password')}
             className="input-wrapper"
+            placeholder="your-password"
           />
         </>
       }
@@ -52,7 +54,7 @@ function Signin() {
       }
       infoMessage={
         <p>
-          회원이 아니신가요? <Link href="/signup">회원 가입</Link>
+          회원이 아니신가요? <Link href="/auth/signup">회원 가입</Link>
         </p>
       }
     />
