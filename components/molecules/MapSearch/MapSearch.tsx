@@ -5,13 +5,12 @@ import * as S from './MapSearch.styles';
 
 export function MapSearch() {
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
-  const [markers, getSearchResults, drawMarkers] = useMapSearch(map);
+  const [markers, getSearchResults, drawMarkers, , onSelectMarker] =
+    useMapSearch(map);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     getSearchResults(value);
-
-    console.log(markers);
   };
 
   return (

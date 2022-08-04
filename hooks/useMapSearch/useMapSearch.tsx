@@ -9,6 +9,7 @@ type ReturnType = [
   (keyword: string) => void,
   () => JSX.Element[],
   (data: ICoordinates[]) => void,
+  (marker: IMapMarker) => void,
 ];
 
 function useMapSearch(map: kakao.maps.Map | null): ReturnType {
@@ -49,8 +50,18 @@ function useMapSearch(map: kakao.maps.Map | null): ReturnType {
     [services, setBounds],
   );
 
+  const onSelectMarker = (marker: IMapMarker) => {
+    const { position } = marker;
+    const { latitude: lat, longitude: lng } = position;
+    const latlng = new kakao.maps.LatLng(lat, lng);
+
+    map?.setCenter(latlng);
+    setMarkers([marker]);
+  };
+
   const drawMarkers = () => {
-    return markers.map(({ position, content }: IMapMarker) => {
+    return markers.map((marker: IMapMarker) => {
+      const { position, content } = marker;
       const { latitude: lat, longitude: lng } = position;
 
       const image = {
@@ -67,6 +78,7 @@ function useMapSearch(map: kakao.maps.Map | null): ReturnType {
           position={{ lat, lng }}
           image={image}
           title={content}
+          onClick={() => onSelectMarker(marker)}
         />
       );
     });
@@ -78,7 +90,7 @@ function useMapSearch(map: kakao.maps.Map | null): ReturnType {
     setServices(ps);
   }, [map]);
 
-  return [markers, getSearchResults, drawMarkers, setBounds];
+  return [markers, getSearchResults, drawMarkers, setBounds, onSelectMarker];
 }
 
 export default useMapSearch;
