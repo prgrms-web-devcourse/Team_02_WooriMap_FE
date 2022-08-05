@@ -1,6 +1,4 @@
-// 1. 외부 클릭시 검색 중단
 // 2. 임의의 색깔 부여
-// 3. 드롭다운 메뉴에서 항목 선택 (클릭이든 엔터든)
 // 4. css
 // 5. Deletable TagList 넣기
 
@@ -56,6 +54,7 @@ export function TagForm({
       <S.NameInput
         id="tagName"
         onChange={onInputChange}
+        autoComplete="off"
         dropDownActivated={displayDropDown}
       />
       {displayDropDown && (
@@ -63,7 +62,7 @@ export function TagForm({
           {inputOptions.map((tag) => (
             <li key={tag.name}>
               <div>
-                <Tag tagName={tag.name} tagColor={tag.color} />
+                <Tag name={tag.name} color={tag.color} />
               </div>
             </li>
           ))}
@@ -94,6 +93,11 @@ export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
     setValue(newValue);
   };
 
+  const handleDelete = (tagName: string) => () => {
+    const newValue: ITag[] = [...value].filter((tag) => tag.name !== tagName);
+    setValue(newValue);
+  };
+
   // 추후에 form tag 내부에 colorInput 삽입하기
   return (
     <S.TagInput>
@@ -102,13 +106,17 @@ export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
         <TagForm name={name} onSubmit={handleSubmit} data={tagData} />
       </S.FormContainer>
       <S.ValidationError>{error}</S.ValidationError>
-      <ul>
-        {value.map((tag) => (
-          <li key={tag.name}>
-            <Tag tagName={tag.name} key={name} tagColor={tag.color} />
-          </li>
-        ))}
-      </ul>
+      <S.SelectedTags>
+        {value.length > 0 &&
+          value.map((tagInfo) => (
+            <S.SelectedTag
+              key={tagInfo.name}
+              name={tagInfo.name}
+              color={tagInfo.color}
+              onDelete={handleDelete(tagInfo.name)}
+            />
+          ))}
+      </S.SelectedTags>
     </S.TagInput>
   );
 }

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Tag } from 'components';
 
 interface INameInputProps {
   dropDownActivated: boolean;
@@ -41,6 +42,7 @@ export const NameInput = styled.input<INameInputProps>`
   z-index: 5;
   outline-style: none;
   height: 2rem;
+  padding-left: 0.5rem;
   border: 2px solid ${({ theme }) => theme.colors.gray};
   border-radius: 10px;
   outline: 0;
@@ -72,7 +74,6 @@ export const DropDown = styled.ul`
     width: 100%;
     height: 3rem;
     padding-left: 0.5rem;
-    // border-top: 1px solid ${({ theme }) => theme.colors.gray};
   }
 `;
 
@@ -82,4 +83,14 @@ export const ValidationError = styled.p`
   font-size: 10px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.alert};
+`;
+
+export const SelectedTags = styled.ul`
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+`;
+
+export const SelectedTag = styled(Tag)`
+  margin-right: 0.5rem;
 `;
