@@ -1,8 +1,3 @@
-// 1. 임의의 색깔 부여, 후에 tag.styles고치기
-// 2. 외부 클릭시 DropDown 닫히게
-// 3. 리팩토링- 로직, 컴포넌트 나누기 등
-// 2. css
-
 import { ITextInputProps, ITag } from 'types';
 import React, { useState, useRef } from 'react';
 import { Tag } from 'components/atoms/Tag';
@@ -123,7 +118,6 @@ export function TagInput({ name, text, tags, tagData }: ITagInputProps) {
     setValue(newValue);
   };
 
-  // 추후에 form tag 내부에 colorInput 삽입하기
   return (
     <S.TagInput>
       <S.FormContainer>
