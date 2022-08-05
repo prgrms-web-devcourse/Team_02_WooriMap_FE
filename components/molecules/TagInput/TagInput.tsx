@@ -4,7 +4,7 @@
 // 2. css
 
 import { ITextInputProps, ITag } from 'types';
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Tag } from 'components/atoms/Tag';
 import * as S from './TagInput.styles';
 
@@ -25,20 +25,19 @@ interface ITagFormProps {
 interface ITagInputProps extends ITextInputProps {
   name: string;
   text: string;
-  error: string;
   tags: ITag[];
   tagData: ITag[];
 }
 
 const defaultTagColors: string[] = [
-  'rgba(217, 217, 217, 1)',
-  'rgba(217, 217, 217, 0.5)',
-  'rgba(255, 143, 143, 1)',
-  'rgba(255, 143, 143, 0.5)',
-  'rgba(151, 186, 255, 1)',
-  'rgba(151, 186, 255, 0.5)',
-  'rgba(255, 234, 122, 1)',
-  'rgba(255, 234, 122, 0.5)',
+  '#d9d9d9',
+  '#d9d9d980',
+  '#ff8f8f',
+  '#ff8f8f80)',
+  '#97baff',
+  '#97baff80',
+  '#ffea7a',
+  '#ffea7a80',
 ];
 
 export function TagForm({
@@ -46,32 +45,45 @@ export function TagForm({
   data,
   onSubmit,
 }: ITagFormProps): React.ReactElement {
-  const [inputOptions, setInputOptions] = useState<ITag[]>([]);
-  const [displayDropDown, setDisplayDropDown] = useState<boolean>(false);
+  const [value, setValue] = useState<string>('');
+  const [options, setOptions] = useState<ITag[]>([]);
+  const ref = useRef<null | HTMLInputElement>(null);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const inputValue = e.target.value;
-    let newOptions: ITag[] = [];
+    const newValue = e.target.value;
+    if (newValue.length > 10) return;
 
-    if (inputValue !== '') {
-      const regex = new RegExp(`^${inputValue}`, 'i');
-      newOptions = data.filter((tag) => regex.test(tag.name));
+    if (newValue.length > 0) {
+      const regex = new RegExp(`^${newValue}`, 'i');
+      const newOptions: ITag[] = data.filter((tag) => regex.test(tag.name));
+      if (
+        options.length !== newOptions.length ||
+        options.some((tag, i) => tag.name === newOptions[i].name)
+      )
+        setOptions(newOptions);
     }
-    setInputOptions(newOptions);
-    setDisplayDropDown(newOptions.length > 0);
+    setValue(newValue);
+  };
+
+  const handleSubmit = (e: React.FormEvent<IFormElement>) => {
+    onSubmit(e);
+    setValue('');
+    setOptions([]);
   };
 
   return (
-    <S.TagForm id={name} onSubmit={onSubmit}>
+    <S.TagForm id={name} onSubmit={handleSubmit}>
       <S.NameInput
+        ref={ref}
         id="tagName"
+        value={value}
         onChange={onInputChange}
         autoComplete="off"
-        dropDownActivated={displayDropDown}
+        dropDownActivated={options.length > 0}
       />
-      {displayDropDown && (
+      {options.length > 0 && (
         <S.DropDown>
-          {inputOptions.map((tag) => (
+          {options.map((tag) => (
             <li key={tag.name}>
               <div>
                 <Tag name={tag.name} color={tag.color} />
@@ -84,7 +96,7 @@ export function TagForm({
   );
 }
 
-export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
+export function TagInput({ name, text, tags, tagData }: ITagInputProps) {
   const [value, setValue] = useState<ITag[]>(tags);
 
   const handleSubmit = (e: React.FormEvent<IFormElement>) => {
@@ -118,7 +130,6 @@ export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
         <S.InputTitle htmlFor="addTag">{text}</S.InputTitle>
         <TagForm name={name} onSubmit={handleSubmit} data={tagData} />
       </S.FormContainer>
-      <S.ValidationError>{error}</S.ValidationError>
       <S.SelectedTags>
         {value.length > 0 &&
           value.map((tagInfo) => (
