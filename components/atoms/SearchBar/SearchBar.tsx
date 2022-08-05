@@ -24,7 +24,11 @@ export function SearchBar({
   return (
     <S.Container>
       <S.Wrapper isSearching={resultLength > 0 && isResultVisible}>
-        <S.Input value={keyword} onChange={onChange} />
+        <S.Input
+          value={keyword}
+          placeholder="장소를 검색해주세요"
+          onChange={onChange}
+        />
         <Image src={search} width={16} height={16} alt="search" />
       </S.Wrapper>
       {resultLength > 0 && isResultVisible && (

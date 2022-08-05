@@ -21,7 +21,15 @@ function Map({ children, width, height, ...props }: IProps) {
     <>
       <Script src={URL} onLoad={onLoad} />
       {loaded && (
-        <KakaoMap style={{ width, height, ...props.style }} {...props}>
+        <KakaoMap
+          style={{
+            width,
+            height,
+            borderRadius: '8px',
+            ...props.style,
+          }}
+          {...props}
+        >
           {children}
         </KakaoMap>
       )}

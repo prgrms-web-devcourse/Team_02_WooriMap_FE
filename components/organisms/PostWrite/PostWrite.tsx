@@ -15,6 +15,7 @@ interface Itemp {
   text: string;
   name: string;
   variant: 'input' | 'calendar' | 'textarea' | 'tag';
+  placeholder?: string;
 }
 
 const temp: Array<Itemp> = [
@@ -23,6 +24,7 @@ const temp: Array<Itemp> = [
     text: '제목',
     name: 'title',
     variant: 'input',
+    placeholder: '제목을 입력해주세요',
   },
   {
     id: nanoid(),
@@ -35,6 +37,7 @@ const temp: Array<Itemp> = [
     text: '내용',
     name: 'content',
     variant: 'textarea',
+    placeholder: '우리의 이야기를 입력해주세요',
   },
 ];
 
@@ -63,6 +66,7 @@ export function PostWrite({ postState, onSetFormState }: IFormStateProps) {
           key={item.id}
           text={item.text}
           name={item.name}
+          placeholder={item?.placeholder}
           value={values[item.name as keyof IPostInitialState]}
           onChange={onChange}
           variant={item.variant}
