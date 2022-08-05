@@ -20,6 +20,7 @@ export function SearchableMap({
     content: '',
     position,
   });
+  const [isResultVisible, setIsResultVisible] = useState<boolean>(false);
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const { markers, getSearchResults, onSelectMarker } = useMapSearch(
     map,
@@ -30,15 +31,19 @@ export function SearchableMap({
     const { value } = e.target;
     getSearchResults(value);
     setSelected((prev) => ({ ...prev, content: value }));
+    setIsResultVisible(() => true);
   };
 
-  const onClickMarker = () => (marker: IMapMarker) =>
+  const onClickMarker = () => (marker: IMapMarker) => {
     onSelectMarker({ marker, onSetFormState });
+    setIsResultVisible(() => false);
+  };
 
   return (
     <S.Container>
       <SearchBar
         keyword={selected.content}
+        isResultVisible={isResultVisible}
         onChange={onChange}
         onClick={onClickMarker()}
         results={markers}

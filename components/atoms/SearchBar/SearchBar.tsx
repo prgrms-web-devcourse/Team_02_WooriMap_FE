@@ -6,6 +6,7 @@ import * as S from './SearchBar.styles';
 
 interface ISearchBarProps {
   keyword: string;
+  isResultVisible: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onClick: (marker: IMapMarker) => void;
   results: Array<IMapMarker>;
@@ -13,6 +14,7 @@ interface ISearchBarProps {
 
 export function SearchBar({
   keyword,
+  isResultVisible,
   onChange,
   onClick,
   results,
@@ -21,11 +23,11 @@ export function SearchBar({
 
   return (
     <S.Container>
-      <S.Wrapper isSearching={resultLength > 0}>
+      <S.Wrapper isSearching={resultLength > 0 && isResultVisible}>
         <S.Input value={keyword} onChange={onChange} />
         <Image src={search} width={16} height={16} alt="search" />
       </S.Wrapper>
-      {resultLength > 0 && (
+      {resultLength > 0 && isResultVisible && (
         <S.SearchResultBox>
           {results.map((result: IMapMarker) => (
             <S.SearchResult key={nanoid()} onClick={() => onClick(result)}>
