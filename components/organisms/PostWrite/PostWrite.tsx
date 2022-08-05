@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { TextInputWithLabel, SearchableMap } from 'components';
+import { IPostFormState, IFormStateProps } from 'types';
 import * as S from './PostWrite.styles';
-import { formatDate } from '../../../utils/formatDate';
 
 interface IPostInitialState {
   title: string;
@@ -38,12 +38,10 @@ const temp: Array<Itemp> = [
   },
 ];
 
-export function PostWrite() {
-  const initialValues: IPostInitialState = {
-    title: '',
-    date: formatDate(),
-    content: '',
-  };
+type IPostWrite = Omit<IPostFormState, 'imageUrls'>;
+
+export function PostWrite({ postState, onSetFormState }: IFormStateProps) {
+  const initialValues: IPostWrite = postState as IPostWrite;
 
   const [values, setValues] = useState<IPostInitialState>(initialValues);
 
@@ -55,6 +53,7 @@ export function PostWrite() {
       ...prev,
       [name]: value,
     }));
+    onSetFormState({ name, value });
   };
 
   return (
@@ -69,7 +68,13 @@ export function PostWrite() {
           variant={item.variant}
         />
       ))}
-      <SearchableMap />
+      <SearchableMap
+        position={{
+          latitude: postState!.latitude,
+          longitude: postState!.longitude,
+        }}
+        onSetFormState={onSetFormState}
+      />
     </S.Container>
   );
 }

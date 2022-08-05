@@ -7,7 +7,7 @@ import * as S from './SearchBar.styles';
 interface ISearchBarProps {
   keyword: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClick: (params: IMapMarker) => void;
+  onClick: (marker: IMapMarker) => void;
   results: Array<IMapMarker>;
 }
 

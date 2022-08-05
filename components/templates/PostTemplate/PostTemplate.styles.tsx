@@ -22,3 +22,10 @@ export const ContentSection = styled.div`
   /* background: blue; */
   overflow: auto;
 `;
+
+export const Wrapper = styled.div`
+  width: 100%;
+
+  display: flex;
+  align-items: end;
+`;

@@ -6,7 +6,8 @@ export interface ITagState {
 export interface IPostFormState {
   title: string;
   content: string;
-  imageUrls: Array<string>;
+  date: string;
+  imageUrls?: Array<string>;
   tags: Array<ITagState>;
   latitude: number;
   longitude: number;
@@ -14,7 +15,11 @@ export interface IPostFormState {
 
 export interface ISetValueState {
   name: string;
-  value: string | number | Array<string> | Array<ITagState>;
+  value:
+    | string
+    | Array<string>
+    | Array<ITagState>
+    | { latitude: number; longitude: number };
 }
 
 export interface IFormStateProps {

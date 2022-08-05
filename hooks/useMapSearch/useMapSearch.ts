@@ -5,14 +5,20 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { ICoordinates, IMapMarker } from 'types';
+import { ICoordinates, IMapMarker, ISetValueState } from 'types';
 import { getBounds, parseMarkers } from './helper';
 
 interface IReturnType {
   markers: IMapMarker[];
   getSearchResults: (keyword: string) => void;
   setBounds: (data: ICoordinates[]) => void;
-  onSelectMarker: (marker: IMapMarker) => void;
+  onSelectMarker: ({
+    marker,
+    onSetFormState,
+  }: {
+    marker: IMapMarker;
+    onSetFormState: ({ name, value }: ISetValueState) => void;
+  }) => void;
 }
 
 function useMapSearch(
@@ -56,12 +62,22 @@ function useMapSearch(
     [services, setBounds],
   );
 
-  const onSelectMarker = (marker: IMapMarker) => {
+  const onSelectMarker = ({
+    marker,
+    onSetFormState,
+  }: {
+    marker: IMapMarker;
+    onSetFormState: ({ name, value }: ISetValueState) => void;
+  }) => {
     const { position } = marker;
     const { latitude: lat, longitude: lng } = position;
     const latlng = new kakao.maps.LatLng(lat, lng);
 
     setSelected(() => ({ ...marker }));
+    onSetFormState({
+      name: 'position',
+      value: { latitude: lat, longitude: lng },
+    });
 
     map?.setCenter(latlng);
     setMarkers(() => [marker]);

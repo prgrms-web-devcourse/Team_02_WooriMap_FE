@@ -15,7 +15,10 @@ export function CalendarInput({
 }: ICalenderInputProps) {
   const calendarInputRef = useRef<HTMLInputElement>(null);
 
-  const onClickCalendarButton = () => {
+  const onClickCalendarButton = (
+    e: React.MouseEvent<HTMLImageElement, MouseEvent>,
+  ) => {
+    e.preventDefault();
     if (calendarInputRef.current) calendarInputRef.current.focus();
   };
 
