@@ -1,6 +1,10 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import { IButtonStyleProps } from 'types';
+
+interface IButtonStyleProps {
+  variant?: string;
+  size: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
+}
 
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.white};
@@ -8,11 +12,10 @@ const blackButtonStyle = ({ theme }: IThemeProps) => css`
 `;
 
 const blackOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
-  border: 0;
   outline: 0;
   color: ${theme.colors.black};
   background-color: ${theme.colors.white};
-  border: 3px solid ${theme.colors.black};
+  border: 1px solid ${theme.colors.black};
 `;
 
 const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
@@ -23,14 +26,6 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   border: 3px solid ${theme.colors.gray};
 `;
 
-const pinkButtonStyle = ({ theme }: IThemeProps) => css`
-  border: 0;
-  outline: 0;
-  color: ${theme.colors.black};
-  background-color: ${theme.colors.pink};
-  border: 3px solid ${theme.colors.black};
-`;
-
 export const Button = styled.button<IButtonStyleProps>`
   cursor: pointer;
   appearance: none;
@@ -39,8 +34,10 @@ export const Button = styled.button<IButtonStyleProps>`
   margin: 0;
   box-sizing: border-box;
 
-  font-weight: bold;
+  font-size: 20px;
+  font-family: 'Noto Serif KR', serif;
   border-radius: 8px;
+  font-weight: 900;
 
   ${({
     size,
@@ -71,9 +68,6 @@ export const Button = styled.button<IButtonStyleProps>`
 
       case 'grayOutlined':
         return grayOutlinedButtonStyle;
-
-      case 'pink':
-        return pinkButtonStyle;
 
       default:
         return blackOutlinedButtonStyle;

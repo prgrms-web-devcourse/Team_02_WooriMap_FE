@@ -40,6 +40,7 @@ export default function PostCreate() {
 
   return (
     <PostTemplate
+      type="create"
       onSubmit={onSubmit}
       imageSection={
         <ImageUploader

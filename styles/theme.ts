@@ -27,19 +27,16 @@ const theme: Theme = {
         font-size: 1rem;
       `,
       small: css`
-        width: 6rem;
-        height: 3.2rem;
-        font-size: 1rem;
+        width: 96px;
+        height: 48px;
       `,
       medium: css`
-        width: 9rem;
-        height: 3rem;
-        font-size: 1.25rem;
+        width: 166px;
+        height: 48px;
       `,
       large: css`
-        width: 17rem;
-        height: 3.6rem;
-        font-size: 1.5rem;
+        width: 352px;
+        height: 64px;
       `,
       xlarge: css`
         width: 21.8rem;

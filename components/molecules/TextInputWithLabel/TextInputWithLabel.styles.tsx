@@ -7,6 +7,8 @@ export const Container = styled.div`
   /* align-items: center; */
 
   box-sizing: border-box;
+
+  width: 100%;
 `;
 
 export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`

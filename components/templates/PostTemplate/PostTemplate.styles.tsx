@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Container = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: auto 48px;
 
   width: 100%;
   height: 100%;
@@ -28,6 +29,10 @@ export const Wrapper = styled.div`
 
   display: flex;
   justify-content: flex-end;
+
+  & > button:first-child {
+    margin-right: 1rem;
+  }
 
   grid-column: 1 / 3;
 `;

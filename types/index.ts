@@ -10,3 +10,4 @@ export type {
   ISetValueState,
   IFormStateProps,
 } from 'types/post';
+export type { IButtonStyleProps } from 'types/button';
