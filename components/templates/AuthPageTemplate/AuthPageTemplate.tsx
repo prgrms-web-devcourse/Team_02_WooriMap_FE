@@ -8,12 +8,14 @@ interface IProps extends FormHTMLAttributes<HTMLFormElement> {
   inputs: React.ReactNode;
   trigger: React.ReactNode;
   infoMessage: React.ReactNode;
+  error?: React.ReactNode;
 }
 
 function AuthPageTemplate({
   inputs,
   trigger,
   infoMessage,
+  error,
   ...props
 }: Partial<IProps>) {
   return (
@@ -31,6 +33,7 @@ function AuthPageTemplate({
           <S.InputWrapper margin="2rem 0">{inputs}</S.InputWrapper>
         </S.Wrapper>
       )}
+      <S.ErrorMessage>{error}</S.ErrorMessage>
       <S.FooterWrapper margin="7rem 0 0 0">
         {trigger}
         {infoMessage}
