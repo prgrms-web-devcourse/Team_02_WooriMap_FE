@@ -17,7 +17,7 @@ interface IFormElement extends HTMLFormElement {
   readonly elements: IFormElements;
 }
 
-interface ITagInfoProps {
+interface ITagFormProps {
   name: string;
   data: ITag[];
   onSubmit: (e: React.FormEvent<IFormElement>) => void;
@@ -31,12 +31,13 @@ interface ITagInputProps extends ITextInputProps {
   tagData: ITag[];
 }
 
-export function TagInfoInput({
+export function TagForm({
   name,
   data,
   onSubmit,
-}: ITagInfoProps): React.ReactElement {
+}: ITagFormProps): React.ReactElement {
   const [inputOptions, setInputOptions] = useState<ITag[]>([]);
+  const [displayDropDown, setDisplayDropDown] = useState<boolean>(false);
 
   const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
@@ -47,26 +48,28 @@ export function TagInfoInput({
       newOptions = data.filter((tag) => regex.test(tag.name));
     }
     setInputOptions(newOptions);
+    setDisplayDropDown(newOptions.length > 0);
   };
 
   return (
-    <S.TagInfoInputContainer id={name} onSubmit={onSubmit}>
-      <S.TagNameInput
-        name="tagName"
+    <S.TagForm id={name} onSubmit={onSubmit}>
+      <S.NameInput
+        id="tagName"
         onChange={onInputChange}
-        onClickButton={() => {}}
-        autoComplete="off"
+        dropDownActivated={displayDropDown}
       />
-      <S.DropDownContainer>
-        {inputOptions.map((tag) => (
-          <li key={tag.name}>
-            <div>
-              <Tag tagName={tag.name} tagColor={tag.color} />
-            </div>
-          </li>
-        ))}
-      </S.DropDownContainer>
-    </S.TagInfoInputContainer>
+      {displayDropDown && (
+        <S.DropDown>
+          {inputOptions.map((tag) => (
+            <li key={tag.name}>
+              <div>
+                <Tag tagName={tag.name} tagColor={tag.color} />
+              </div>
+            </li>
+          ))}
+        </S.DropDown>
+      )}
+    </S.TagForm>
   );
 }
 
@@ -93,11 +96,11 @@ export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
 
   // 추후에 form tag 내부에 colorInput 삽입하기
   return (
-    <S.Container>
-      <S.Wrapper>
-        <label htmlFor="addTag">{text}</label>
-        <TagInfoInput name={name} onSubmit={handleSubmit} data={tagData} />
-      </S.Wrapper>
+    <S.TagInput>
+      <S.FormContainer>
+        <S.InputTitle htmlFor="addTag">{text}</S.InputTitle>
+        <TagForm name={name} onSubmit={handleSubmit} data={tagData} />
+      </S.FormContainer>
       <S.ValidationError>{error}</S.ValidationError>
       <ul>
         {value.map((tag) => (
@@ -106,6 +109,6 @@ export function TagInput({ name, text, error, tags, tagData }: ITagInputProps) {
           </li>
         ))}
       </ul>
-    </S.Container>
+    </S.TagInput>
   );
 }
