@@ -91,6 +91,7 @@ export function TagInput({
   text,
   tags,
   tagData,
+  onChange,
   ...props
 }: ITagInputProps) {
   const [inputValue, setInputValue] = useState<ITag[]>(tags);
@@ -121,19 +122,13 @@ export function TagInput({
     setInputValue(newValue);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const aname = e.target.name;
-    const avalue = e.target.value;
-    console.log(`name: ${aname}   value: ${avalue}`);
-  };
-
   return (
     <S.TagInput>
       <input
         type="hidden"
         name={name}
         value={JSON.stringify(inputValue)}
-        onChange={handleChange}
+        onChange={onChange}
         {...props}
       />
       <S.FormContainer>
