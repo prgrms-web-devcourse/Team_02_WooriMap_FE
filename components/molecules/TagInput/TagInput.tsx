@@ -12,7 +12,6 @@ interface IFormElement extends HTMLFormElement {
 }
 
 interface ITagFormProps {
-  name: string;
   data: ITag[];
   onSubmit: (e: React.FormEvent<IFormElement>) => void;
 }
@@ -35,11 +34,7 @@ const defaultTagColors: string[] = [
   '#ffea7a80',
 ];
 
-export function TagForm({
-  name,
-  data,
-  onSubmit,
-}: ITagFormProps): React.ReactElement {
+export function TagForm({ data, onSubmit }: ITagFormProps): React.ReactElement {
   const [value, setValue] = useState<string>('');
   const [options, setOptions] = useState<ITag[]>([]);
   const ref = useRef<null | HTMLInputElement>(null);
@@ -67,7 +62,7 @@ export function TagForm({
   };
 
   return (
-    <S.TagForm id={name} onSubmit={handleSubmit}>
+    <S.TagForm onSubmit={handleSubmit}>
       <S.NameInput
         ref={ref}
         id="tagName"
@@ -91,8 +86,14 @@ export function TagForm({
   );
 }
 
-export function TagInput({ name, text, tags, tagData }: ITagInputProps) {
-  const [value, setValue] = useState<ITag[]>(tags);
+export function TagInput({
+  name,
+  text,
+  tags,
+  tagData,
+  ...props
+}: ITagInputProps) {
+  const [inputValue, setInputValue] = useState<ITag[]>(tags);
 
   const handleSubmit = (e: React.FormEvent<IFormElement>) => {
     e.preventDefault();
@@ -100,9 +101,9 @@ export function TagInput({ name, text, tags, tagData }: ITagInputProps) {
     e.currentTarget.elements.tagName.value = '';
     const tagColor = defaultTagColors[Math.floor(Math.random() * 8)];
 
-    if (value.some((tag) => tag.name === tagName)) return;
+    if (inputValue.some((tag) => tag.name === tagName)) return;
 
-    const newValue: ITag[] = [...value];
+    const newValue: ITag[] = [...inputValue];
     const newTag = { name: tagName, color: tagColor };
     tagData.forEach((tagInfo) => {
       if (newTag.name === tagInfo.name) {
@@ -110,23 +111,38 @@ export function TagInput({ name, text, tags, tagData }: ITagInputProps) {
       }
     });
     newValue.push(newTag);
-    setValue(newValue);
+    setInputValue(newValue);
   };
 
   const handleDelete = (tagName: string) => () => {
-    const newValue: ITag[] = [...value].filter((tag) => tag.name !== tagName);
-    setValue(newValue);
+    const newValue: ITag[] = [...inputValue].filter(
+      (tag) => tag.name !== tagName,
+    );
+    setInputValue(newValue);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const aname = e.target.name;
+    const avalue = e.target.value;
+    console.log(`name: ${aname}   value: ${avalue}`);
   };
 
   return (
     <S.TagInput>
+      <input
+        type="hidden"
+        name={name}
+        value={JSON.stringify(inputValue)}
+        onChange={handleChange}
+        {...props}
+      />
       <S.FormContainer>
         <S.InputTitle htmlFor="addTag">{text}</S.InputTitle>
-        <TagForm name={name} onSubmit={handleSubmit} data={tagData} />
+        <TagForm onSubmit={handleSubmit} data={tagData} />
       </S.FormContainer>
       <S.SelectedTags>
-        {value.length > 0 &&
-          value.map((tagInfo) => (
+        {inputValue.length > 0 &&
+          inputValue.map((tagInfo) => (
             <S.SelectedTag
               key={tagInfo.name}
               name={tagInfo.name}
