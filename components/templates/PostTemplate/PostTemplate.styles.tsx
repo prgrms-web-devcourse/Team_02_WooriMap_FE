@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.section`
+export const Container = styled.form`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 

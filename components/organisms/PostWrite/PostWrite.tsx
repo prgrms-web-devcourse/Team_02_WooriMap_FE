@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
-import { TextInputWithLabel } from 'components';
+import { TextInputWithLabel, SearchableMap } from 'components';
 import * as S from './PostWrite.styles';
 import { formatDate } from '../../../utils/formatDate';
 
@@ -69,6 +69,7 @@ export function PostWrite() {
           variant={item.variant}
         />
       ))}
+      <SearchableMap />
     </S.Container>
   );
 }

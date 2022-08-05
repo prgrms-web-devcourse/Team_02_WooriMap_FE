@@ -3,17 +3,22 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   position: absolute;
   z-index: 999;
+
+  top: 4px;
+  left: 4px;
 `;
 
 export const Wrapper = styled.div<{ isSearching: boolean }>`
   position: relative;
 
-  width: 392px;
+  width: 208px;
   height: 48px;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 0 8px;
 
   background-color: #fff;
   border: 1px solid ${({ theme }) => theme.colors.gray}
@@ -48,8 +53,8 @@ export const Input = styled.input`
 export const SearchResultBox = styled.ul`
   position: relative;
 
-  width: 392px;
-  max-height: 300px;
+  width: 208px;
+  max-height: 150px;
 
   padding: 8px 0;
 

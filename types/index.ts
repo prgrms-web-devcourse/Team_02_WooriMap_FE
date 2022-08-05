@@ -4,3 +4,9 @@ export type { ISingnUpRes } from 'types/signupRes';
 export type { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
 export type { IApiResponse, IOnSubmit } from 'types/api';
 export type { ICoordinates, IMapMarker } from 'types/map';
+export type {
+  ITagState,
+  IPostFormState,
+  ISetValueState,
+  IFormStateProps,
+} from 'types/post';

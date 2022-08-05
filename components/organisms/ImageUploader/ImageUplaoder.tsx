@@ -1,13 +1,19 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { ImageList, UploadArea } from 'components';
-import { IImageSource } from 'types';
+import { IImageSource, IFormStateProps } from 'types';
 import * as S from './ImageUploader.styles';
 
-export function ImageUploader() {
-  const [uploadSrc, setUploadSrc] = useState<
-    Array<Omit<IImageSource, 'isSelected'>>
-  >([]);
+type IImages = Array<Omit<IImageSource, 'isSelected'>>;
+type IImage = Omit<IImageSource, 'isSelected'>;
+
+export function ImageUploader({ imageUrls, onSetFormState }: IFormStateProps) {
+  const initialState: IImages = imageUrls?.map((src: string) => ({
+    key: nanoid(),
+    src,
+  })) as IImages;
+
+  const [uploadSrc, setUploadSrc] = useState<IImages>(initialState);
 
   const onUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -31,6 +37,10 @@ export function ImageUploader() {
         const data = await res.json();
 
         setUploadSrc([...uploadSrc, { key: nanoid(), src: data.secure_url }]);
+        onSetFormState({
+          name: 'imageUrls',
+          value: [...(imageUrls as Array<string>), data.secure_url],
+        });
       } catch (error: unknown) {
         console.error(e);
       }
@@ -38,13 +48,17 @@ export function ImageUploader() {
   };
 
   const onDelete = (key: string) => {
-    const nextSources = uploadSrc.filter(
-      (source: Omit<IImageSource, 'isSelected'>) => {
-        return source.key !== key;
-      },
-    );
+    const nextSources = uploadSrc.filter((source: IImage) => {
+      return source.key !== key;
+    });
 
     setUploadSrc(nextSources);
+    onSetFormState({
+      name: 'imageUrls',
+      value: nextSources.map((source: IImage) => {
+        return source.src;
+      }),
+    });
   };
 
   return (
