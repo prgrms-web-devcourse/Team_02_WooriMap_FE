@@ -19,19 +19,3 @@ export const Default: ComponentStory<typeof Tag> = () => {
     </>
   );
 };
-
-export const randomColor: ComponentStory<typeof Tag> = () => {
-  return (
-    <>
-      <Tag name="random tag 1" />
-      <Tag
-        name="random tag 2"
-        onDelete={() => alert('태그 지우기 버튼을 클릭하셨군여!!(•̀ᴗ•́)و ̑̑')}
-      />
-      <Tag
-        name="random tag 3"
-        onDelete={() => alert('태그 지우기 버튼을 클릭하셨군여!!(•̀ᴗ•́)و ̑̑')}
-      />
-    </>
-  );
-};
