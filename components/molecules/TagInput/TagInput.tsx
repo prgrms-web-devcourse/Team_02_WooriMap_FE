@@ -12,15 +12,12 @@ interface IFormElement extends HTMLFormElement {
 }
 
 interface ITagFormProps {
-  data: ITag[];
+  allTags: ITag[];
   onSubmit: (e: React.FormEvent<IFormElement>) => void;
 }
 
 interface ITagInputProps extends ITextInputProps {
-  name: string;
-  text: string;
-  tags: ITag[];
-  tagData: ITag[];
+  allTags: ITag[];
 }
 
 const defaultTagColors: string[] = [
@@ -34,50 +31,49 @@ const defaultTagColors: string[] = [
   '#ffea7a80',
 ];
 
-export function TagForm({ data, onSubmit }: ITagFormProps): React.ReactElement {
-  const [value, setValue] = useState<string>('');
-  const [options, setOptions] = useState<ITag[]>([]);
-  const ref = useRef<null | HTMLInputElement>(null);
+export function TagForm({
+  allTags,
+  onSubmit,
+}: ITagFormProps): React.ReactElement {
+  const [tagName, setTagName] = useState<string>('');
+  const [tagOptions, setTagOptions] = useState<ITag[]>([]);
+  const nameInputRef = useRef<null | HTMLInputElement>(null);
 
-  const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
-    if (newValue.length > 10) return;
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.target.value;
+    if (newName.length > 10) return;
 
-    if (newValue.length > 0) {
-      const regex = new RegExp(`^${newValue}`, 'i');
-      const newOptions: ITag[] = data.filter((tag) => regex.test(tag.name));
-      if (
-        options.length !== newOptions.length ||
-        options.some((tag, i) => tag.name === newOptions[i].name)
-      )
-        setOptions(newOptions);
+    if (newName.length > 0) {
+      const startsWith = new RegExp(`^${newName}`);
+      const newOptions: ITag[] = allTags.filter(({ name }) =>
+        startsWith.test(name),
+      );
+      setTagOptions(newOptions);
     }
-    setValue(newValue);
+    setTagName(newName);
   };
 
   const handleSubmit = (e: React.FormEvent<IFormElement>) => {
     onSubmit(e);
-    setValue('');
-    setOptions([]);
+    setTagName('');
+    setTagOptions([]);
   };
 
   return (
     <S.TagForm onSubmit={handleSubmit}>
       <S.NameInput
-        ref={ref}
+        ref={nameInputRef}
         id="tagName"
-        value={value}
-        onChange={onInputChange}
+        value={tagName}
+        onChange={handleChange}
         autoComplete="off"
-        dropDownActivated={options.length > 0}
+        dropDownActivated={tagOptions.length > 0}
       />
-      {options.length > 0 && (
+      {tagOptions.length > 0 && (
         <S.DropDown>
-          {options.map((tag) => (
-            <li key={tag.name}>
-              <div>
-                <Tag name={tag.name} color={tag.color} />
-              </div>
+          {tagOptions.map(({ name, color }) => (
+            <li key={name}>
+              <Tag name={name} color={color} />
             </li>
           ))}
         </S.DropDown>
@@ -86,31 +82,24 @@ export function TagForm({ data, onSubmit }: ITagFormProps): React.ReactElement {
   );
 }
 
-export function TagInput({
-  name,
-  text,
-  tags,
-  tagData,
-  onChange,
-  ...props
-}: ITagInputProps) {
-  const [inputValue, setInputValue] = useState<ITag[]>(tags);
+export function TagInput({ text, allTags }: ITagInputProps) {
+  const [inputValue, setInputValue] = useState<ITag[]>([]);
 
-  const handleSubmit = (e: React.FormEvent<IFormElement>) => {
+  const handleNewTagAdd = (e: React.FormEvent<IFormElement>) => {
     e.preventDefault();
     const tagName = e.currentTarget.elements.tagName.value;
-    e.currentTarget.elements.tagName.value = '';
     const tagColor = defaultTagColors[Math.floor(Math.random() * 8)];
 
-    if (inputValue.some((tag) => tag.name === tagName)) return;
-
-    const newValue: ITag[] = [...inputValue];
+    const newValue = [...inputValue];
     const newTag = { name: tagName, color: tagColor };
-    tagData.forEach((tagInfo) => {
+
+    if (inputValue.some((tag) => tag.name === tagName)) return;
+    allTags.forEach((tagInfo) => {
       if (newTag.name === tagInfo.name) {
         newTag.color = tagInfo.color;
       }
     });
+
     newValue.push(newTag);
     setInputValue(newValue);
   };
@@ -124,16 +113,9 @@ export function TagInput({
 
   return (
     <S.TagInput>
-      <input
-        type="hidden"
-        name={name}
-        value={JSON.stringify(inputValue)}
-        onChange={onChange}
-        {...props}
-      />
       <S.FormContainer>
         <S.InputTitle htmlFor="addTag">{text}</S.InputTitle>
-        <TagForm onSubmit={handleSubmit} data={tagData} />
+        <TagForm onSubmit={handleNewTagAdd} allTags={allTags} />
       </S.FormContainer>
       <S.SelectedTags>
         {inputValue.length > 0 &&
