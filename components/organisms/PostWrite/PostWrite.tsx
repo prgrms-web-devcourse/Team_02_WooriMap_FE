@@ -62,7 +62,7 @@ export function PostWrite({
           deleteAll={deleteAll}
         />
       ))}
-      <SearchableMap position={position} onChange={handleChange} />
+      <SearchableMap position={position} handleChange={handleChange} />
     </S.Container>
   );
 }
