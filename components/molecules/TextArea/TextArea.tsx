@@ -1,12 +1,10 @@
+import { InputHTMLAttributes } from 'react';
 import { DeleteAllBtn } from 'components';
+import { THandleChange } from 'types';
 import * as S from './TextArea.styles';
 
-interface ITextAreaProps {
-  id?: string;
-  name?: string;
-  value?: string;
-  placeholder?: string;
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+interface ITextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+  handleChange: THandleChange;
   onClickButton: (e: React.MouseEvent<HTMLImageElement>) => void;
 }
 
@@ -15,7 +13,7 @@ export function TextArea({
   name,
   value,
   placeholder,
-  onChange,
+  handleChange,
   onClickButton,
 }: ITextAreaProps) {
   return (
@@ -25,7 +23,7 @@ export function TextArea({
         name={name}
         value={value}
         placeholder={placeholder}
-        onChange={onChange}
+        onChange={(e) => handleChange({ e })}
       />
       <DeleteAllBtn onClick={onClickButton} />
     </S.TextAreaWrapper>

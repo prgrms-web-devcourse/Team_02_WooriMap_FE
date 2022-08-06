@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { ImageList, UploadArea } from 'components';
-import { IImageSource, IFormStateProps } from 'types';
+import { IImageSource, IFormImageProps } from 'types';
 import { fetchFile } from './helper';
 import * as S from './ImageUploader.styles';
 
 type IImages = Array<Omit<IImageSource, 'isSelected'>>;
 type IImage = Omit<IImageSource, 'isSelected'>;
 
-export function ImageUploader({ imageUrls, onChange }: IFormStateProps) {
+export function ImageUploader({ imageUrls, handleChange }: IFormImageProps) {
   const initialState: IImages = imageUrls?.map((src: string) => ({
     key: nanoid(),
     src,
@@ -20,7 +20,7 @@ export function ImageUploader({ imageUrls, onChange }: IFormStateProps) {
     const { name, data } = await fetchFile(e);
 
     setUploadSrc([...uploadSrc, { key: nanoid(), src: data.secure_url }]);
-    onChange({
+    handleChange({
       name,
       value: [...(imageUrls as Array<string>), data.secure_url],
     });
@@ -32,7 +32,7 @@ export function ImageUploader({ imageUrls, onChange }: IFormStateProps) {
     });
 
     setUploadSrc(nextSources);
-    onChange({
+    handleChange({
       name: 'imageUrls',
       value: nextSources.map((source: IImage) => {
         return source.src;

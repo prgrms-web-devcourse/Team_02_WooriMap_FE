@@ -1,14 +1,7 @@
-import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { TextInputWithLabel, SearchableMap } from 'components';
-import { IPostFormState, IFormStateProps } from 'types';
+import { IPostFormState, IFormInputProps } from 'types';
 import * as S from './PostWrite.styles';
-
-interface IPostInitialState {
-  title: string;
-  date: string;
-  content: string;
-}
 
 interface Itemp {
   id: string;
@@ -43,28 +36,17 @@ const temp: Array<Itemp> = [
 
 type IPostWrite = Omit<IPostFormState, 'imageUrls'>;
 
-export function PostWrite({ postState, onChange, deleteAll }: IFormStateProps) {
+export function PostWrite({
+  postState,
+  handleChange,
+  deleteAll,
+}: IFormInputProps) {
   const { latitude, longitude } = postState as IPostWrite;
 
   const position = {
     latitude,
     longitude,
   };
-
-  // const initialValues: IPostWrite = postState as IPostWrite;
-
-  // const [values, setValues] = useState<IPostInitialState>(initialValues);
-
-  // const onChange = (
-  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  // ) => {
-  //   const { name, value } = e.target;
-  //   setValues((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  //   onSetFormState({ name, value });
-  // };
 
   return (
     <S.Container>
@@ -75,12 +57,12 @@ export function PostWrite({ postState, onChange, deleteAll }: IFormStateProps) {
           name={item.name}
           placeholder={item?.placeholder}
           value={postState[item.name as keyof IPostWrite]}
-          onChange={onChange}
+          handleChange={handleChange}
           variant={item.variant}
           deleteAll={deleteAll}
         />
       ))}
-      <SearchableMap position={position} onChange={onChange} />
+      <SearchableMap position={position} onChange={handleChange} />
     </S.Container>
   );
 }

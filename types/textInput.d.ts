@@ -1,12 +1,12 @@
 export interface ITextInputProps {
   key?: string;
-  value?: string;
+  value?: string | number | ITagState[];
   name?: string;
   text?: string;
   type?: string;
   variant?: 'input' | 'calendar' | 'tag' | 'textarea';
   placeholder?: string;
-  onChange?: (e: React.ChangeEvent<T>, name?: string, value?: T) => void;
+  handleChange?: ({ e, name, value }: IPostOnChangeProps) => void;
   deleteAll?: (name: string) => void;
 }
 

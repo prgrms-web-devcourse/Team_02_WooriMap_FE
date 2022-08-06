@@ -1,17 +1,18 @@
 import { InputHTMLAttributes, useRef } from 'react';
-
+import { THandleChange } from 'types';
 import calendar from 'public/image/calendar.png';
 import * as S from './CalendarInput.styles';
 
 interface ICalenderInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id?: string;
+  handleChange: THandleChange;
 }
 
 export function CalendarInput({
   id,
   name,
   value,
-  onChange,
+  handleChange,
 }: ICalenderInputProps) {
   const calendarInputRef = useRef<HTMLInputElement>(null);
 
@@ -39,7 +40,7 @@ export function CalendarInput({
         type="date"
         name={name}
         value={value}
-        onChange={onChange}
+        onChange={(e) => handleChange({ e })}
         ref={calendarInputRef}
       />
     </S.CalendarInputWrapper>

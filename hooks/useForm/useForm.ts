@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { IOnSubmit } from 'types';
+import { IOnSubmit, IPostOnChangeProps } from 'types';
 
 interface IUseForm<T, V, K> {
   initialValues: T;
@@ -31,15 +31,7 @@ function useForm<T, V, K>({
     setErrors((prev) => ({ ...prev, finalError: '', [name]: '' }));
   }, []);
 
-  const handleChange = ({
-    e,
-    name,
-    value,
-  }: {
-    e?: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
-    name?: string;
-    value?: T;
-  }) => {
+  const handleChange = ({ e, name, value }: IPostOnChangeProps) => {
     if (name && value) {
       setStateWhenChanged(name, value);
     } else if (e) {
@@ -51,6 +43,8 @@ function useForm<T, V, K>({
   const handleSubmit = async (e: React.FormEvent<Element>) => {
     setIsLoading(true);
     e.preventDefault();
+
+    console.log(values);
 
     const stateRequiresCheckValidation = Object.keys(errors).reduce(
       (acc, key) => ({ ...acc, [key]: values[key as keyof T] }),

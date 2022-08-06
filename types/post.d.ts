@@ -19,6 +19,12 @@ export interface IPostValidationProps {
   tags: Array<string>;
 }
 
+export interface IPostOnChangeProps {
+  e?: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
+  name?: string;
+  value?: T;
+}
+
 export interface IPostValidationState {
   title: string;
   imageUrls: string;
@@ -34,13 +40,17 @@ export interface ISetValueState {
     | { latitude: number; longitude: number };
 }
 
-export interface IFormStateProps {
-  imageUrls?: Array<string>;
-  postState?: IPostFormState;
-  onChange: (
-    e?: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | undefined,
-    name?: string | undefined,
-    value?: IPostFormState | undefined,
-  ) => void;
-  deleteAll?: (name: string) => void;
+export type THandleChange = ({ e, name, value }: IPostOnChangeProps) => void;
+
+interface IFormStateProps {
+  handleChange: THandleChange;
+}
+
+export interface IFormImageProps extends IFormStateProps {
+  imageUrls: Array<string>;
+}
+
+export interface IFormInputProps extends IFormStateProps {
+  postState: IPostFormState;
+  deleteAll: (name: string) => void;
 }

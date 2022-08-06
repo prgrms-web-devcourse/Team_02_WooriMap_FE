@@ -28,7 +28,10 @@ export default function PostCreate() {
       type="create"
       onSubmit={handleSubmit}
       imageSection={
-        <ImageUploader imageUrls={values.imageUrls} onChange={handleChange} />
+        <ImageUploader
+          imageUrls={values.imageUrls as Array<string>}
+          handleChange={handleChange}
+        />
       }
       contentSection={
         <PostWrite
@@ -40,7 +43,7 @@ export default function PostCreate() {
             latitude: values.latitude,
             longitude: values.longitude,
           }}
-          onChange={handleChange}
+          handleChange={handleChange}
           deleteAll={removeAll}
         />
       }

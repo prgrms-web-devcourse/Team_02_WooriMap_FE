@@ -8,8 +8,11 @@ export type {
   ITagState,
   IPostFormState,
   ISetValueState,
-  IFormStateProps,
   IPostValidationProps,
   IPostValidationState,
+  IFormImageProps,
+  IFormInputProps,
+  IPostOnChangeProps,
+  THandleChange,
 } from 'types/post';
 export type { IButtonStyleProps } from 'types/button';
