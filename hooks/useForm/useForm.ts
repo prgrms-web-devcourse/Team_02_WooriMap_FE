@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { IOnSubmit, IPostOnChangeProps } from 'types';
+import { IOnSubmit, IPostOnChangeProps, ISetValueState } from 'types';
 
 interface IUseForm<T, V, K> {
   initialValues: T;
@@ -21,9 +21,12 @@ function useForm<T, V, K>({
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const setStateWhenChanged = useCallback((name: string, value: any) => {
+  const setStateWhenChanged = useCallback(({ name, value }: ISetValueState) => {
     if (name === 'position') {
-      setValues((prev) => ({ ...prev, ...value }));
+      setValues((prev) => ({
+        ...prev,
+        ...(value as { latitude: number; longitude: number }),
+      }));
     } else {
       setValues((prev) => ({ ...prev, [name]: value }));
     }
@@ -33,18 +36,16 @@ function useForm<T, V, K>({
 
   const handleChange = ({ e, name, value }: IPostOnChangeProps) => {
     if (name && value) {
-      setStateWhenChanged(name, value);
+      setStateWhenChanged({ name, value });
     } else if (e) {
       const { name: n, value: v } = e.target;
-      setStateWhenChanged(n, v);
+      setStateWhenChanged({ name: n, value: v });
     }
   };
 
   const handleSubmit = async (e: React.FormEvent<Element>) => {
     setIsLoading(true);
     e.preventDefault();
-
-    console.log(values);
 
     const stateRequiresCheckValidation = Object.keys(errors).reduce(
       (acc, key) => ({ ...acc, [key]: values[key as keyof T] }),
