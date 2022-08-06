@@ -8,7 +8,7 @@ export function PostTemplate({
   contentSection,
 }: {
   type: 'create' | 'edit';
-  onSubmit: React.FormEventHandler;
+  onSubmit: (e: React.FormEvent<Element>) => Promise<void>;
   imageSection: React.ReactNode;
   contentSection: React.ReactNode;
 }) {

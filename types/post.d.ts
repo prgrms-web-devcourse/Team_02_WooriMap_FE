@@ -13,6 +13,18 @@ export interface IPostFormState {
   longitude: number;
 }
 
+export interface IPostValidationProps {
+  title: string;
+  imageUrls: Array<string>;
+  tags: Array<string>;
+}
+
+export interface IPostValidationState {
+  title: string;
+  imageUrls: string;
+  tags: string;
+}
+
 export interface ISetValueState {
   name: string;
   value:
@@ -25,5 +37,9 @@ export interface ISetValueState {
 export interface IFormStateProps {
   imageUrls?: Array<string>;
   postState?: IPostFormState;
-  onSetFormState: ({ name, value }: ISetValueState) => void;
+  onChange: (
+    e?: ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | undefined,
+    name?: string | undefined,
+    value?: IPostFormState | undefined,
+  ) => void;
 }

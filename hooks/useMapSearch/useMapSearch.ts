@@ -12,13 +12,7 @@ interface IReturnType {
   markers: IMapMarker[];
   getSearchResults: (keyword: string) => void;
   setBounds: (data: ICoordinates[]) => void;
-  onSelectMarker: ({
-    marker,
-    onSetFormState,
-  }: {
-    marker: IMapMarker;
-    onSetFormState: ({ name, value }: ISetValueState) => void;
-  }) => void;
+  onSelectMarker: any;
 }
 
 function useMapSearch(
@@ -64,17 +58,17 @@ function useMapSearch(
 
   const onSelectMarker = ({
     marker,
-    onSetFormState,
+    onChanged,
   }: {
     marker: IMapMarker;
-    onSetFormState: ({ name, value }: ISetValueState) => void;
+    onChanged: any;
   }) => {
     const { position } = marker;
     const { latitude: lat, longitude: lng } = position;
     const latlng = new kakao.maps.LatLng(lat, lng);
 
     setSelected(() => ({ ...marker }));
-    onSetFormState({
+    onChanged({
       name: 'position',
       value: { latitude: lat, longitude: lng },
     });

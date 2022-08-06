@@ -41,12 +41,16 @@ export function SignUpForm() {
     }
   };
 
-  const { values, handleChange, handleSubmit, errors, removeAll } =
-    useForm<IInputState>({
-      initialValues,
-      onSubmit,
-      validateValues,
-    });
+  const { values, handleChange, handleSubmit, errors, removeAll } = useForm<
+    IInputState,
+    IInputState,
+    IInputState
+  >({
+    initialValues,
+    errorState: { ...initialValues },
+    onSubmit,
+    validateValues,
+  });
 
   return (
     <FormBackground onSubmit={handleSubmit} noValidate>

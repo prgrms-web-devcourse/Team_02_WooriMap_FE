@@ -9,5 +9,7 @@ export type {
   IPostFormState,
   ISetValueState,
   IFormStateProps,
+  IPostValidationProps,
+  IPostValidationState,
 } from 'types/post';
 export type { IButtonStyleProps } from 'types/button';

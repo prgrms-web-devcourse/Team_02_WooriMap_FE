@@ -43,21 +43,21 @@ const temp: Array<Itemp> = [
 
 type IPostWrite = Omit<IPostFormState, 'imageUrls'>;
 
-export function PostWrite({ postState, onSetFormState }: IFormStateProps) {
+export function PostWrite({ postState, onChange }: IFormStateProps) {
   const initialValues: IPostWrite = postState as IPostWrite;
 
   const [values, setValues] = useState<IPostInitialState>(initialValues);
 
-  const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-    onSetFormState({ name, value });
-  };
+  // const onChange = (
+  //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  // ) => {
+  //   const { name, value } = e.target;
+  //   setValues((prev) => ({
+  //     ...prev,
+  //     [name]: value,
+  //   }));
+  //   onSetFormState({ name, value });
+  // };
 
   return (
     <S.Container>
@@ -77,7 +77,7 @@ export function PostWrite({ postState, onSetFormState }: IFormStateProps) {
           latitude: postState!.latitude,
           longitude: postState!.longitude,
         }}
-        onSetFormState={onSetFormState}
+        onChange={onChange}
       />
     </S.Container>
   );

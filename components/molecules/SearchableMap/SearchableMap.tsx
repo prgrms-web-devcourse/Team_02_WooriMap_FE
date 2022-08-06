@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMapSearch } from 'hooks';
-import { IMapMarker, ISetValueState } from 'types';
+import { IMapMarker, IPostFormState, ISetValueState } from 'types';
 import { Map, SearchBar, MultiMarkerDrawer } from 'components';
 import * as S from './SearchableMap.styles';
 
@@ -9,13 +9,14 @@ interface ISearchableMapProps {
     latitude: number;
     longitude: number;
   };
-  onSetFormState: ({ name, value }: ISetValueState) => void;
+  onChanged: (
+    e?: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement> | undefined,
+    name?: string | undefined,
+    value?: IPostFormState | undefined,
+  ) => void;
 }
 
-export function SearchableMap({
-  position,
-  onSetFormState,
-}: ISearchableMapProps) {
+export function SearchableMap({ position, onChanged }: ISearchableMapProps) {
   const [selected, setSelected] = useState<IMapMarker>({
     content: '',
     position,
@@ -35,7 +36,7 @@ export function SearchableMap({
   };
 
   const onClickMarker = () => (marker: IMapMarker) => {
-    onSelectMarker({ marker, onSetFormState });
+    onSelectMarker({ marker, onChanged });
     setIsResultVisible(() => false);
   };
 
@@ -44,7 +45,7 @@ export function SearchableMap({
       <SearchBar
         keyword={selected.content}
         isResultVisible={isResultVisible}
-        onChange={onChange}
+        onChange={onChanged}
         onClick={onClickMarker()}
         results={markers}
       />

@@ -12,6 +12,7 @@ export function UploadArea({ onUploadImage }: IUploadAreaProps) {
       <Image src={upload} width={174} height={174} alt="upload image" />
       <S.UploadArea>
         <S.UploadAreaInput
+          name="imageUrls"
           type="file"
           accept="image/*"
           onChange={onUploadImage}

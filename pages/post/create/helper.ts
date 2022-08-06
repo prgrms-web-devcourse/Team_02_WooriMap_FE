@@ -1,22 +1,44 @@
-import { nanoid } from 'nanoid';
+import { FormValidation, formatDate } from 'utils';
+import {
+  IPostFormState,
+  IPostValidationState,
+  IPostValidationProps,
+} from 'types';
 
-export const postWriteProps = [
-  {
-    id: nanoid(),
-    text: '제목',
-    name: 'title',
-    variant: 'input',
-  },
-  {
-    id: nanoid(),
-    text: '날짜',
-    name: 'date',
-    variant: 'calendar',
-  },
-  {
-    id: nanoid(),
-    text: '내용',
-    name: 'content',
-    variant: 'textarea',
-  },
-];
+export const initialValues: IPostFormState = {
+  title: '',
+  content: '',
+  date: formatDate(),
+  imageUrls: [],
+  tags: [],
+  latitude: 0,
+  longitude: 0,
+};
+
+export const errorState: IPostValidationState = {
+  title: '',
+  imageUrls: '',
+  tags: '',
+};
+
+export const validateValues = ({
+  title,
+  imageUrls,
+  tags,
+}: IPostValidationProps) => {
+  const errors: IPostValidationState = {
+    title: '',
+    imageUrls: '',
+    tags: '',
+  };
+
+  const { validateTitle, validateImages, validateTags } = new FormValidation();
+
+  errors.title = validateTitle({ title });
+
+  errors.imageUrls = validateImages({ imageUrls });
+
+  errors.tags = validateTags({ tags });
+
+  return errors;
+};
