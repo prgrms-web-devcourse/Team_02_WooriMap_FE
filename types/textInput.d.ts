@@ -6,7 +6,7 @@ export interface ITextInputProps {
   type?: string;
   variant?: 'input' | 'calendar' | 'tag' | 'textarea';
   placeholder?: string;
-  handleChange?: ({ e, name, value }: IPostOnChangeProps) => void;
+  handleChange?: THandleChange;
   deleteAll?: (name: string) => void;
 }
 

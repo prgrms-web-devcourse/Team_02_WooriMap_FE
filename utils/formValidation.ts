@@ -45,6 +45,8 @@ export default class FormValidation {
   validateImages = ({ imageUrls }: { imageUrls: Array<string> }): string => {
     if (!imageUrls.length) return '이미지를 최소 1개 등록 해주세요';
 
+    if (imageUrls.length > 5) return '이미지는 최대 5개까지 등록 가능합니다';
+
     return '';
   };
 

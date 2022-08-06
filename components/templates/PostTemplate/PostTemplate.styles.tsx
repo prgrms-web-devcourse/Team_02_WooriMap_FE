@@ -15,12 +15,10 @@ export const Container = styled.form`
 `;
 
 export const ImageSection = styled.div`
-  /* background: red; */
   overflow: auto;
 `;
 
 export const ContentSection = styled.div`
-  /* background: blue; */
   overflow: auto;
 `;
 
