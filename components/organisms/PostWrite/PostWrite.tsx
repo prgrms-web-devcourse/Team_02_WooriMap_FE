@@ -43,10 +43,17 @@ const temp: Array<Itemp> = [
 
 type IPostWrite = Omit<IPostFormState, 'imageUrls'>;
 
-export function PostWrite({ postState, onChange }: IFormStateProps) {
-  const initialValues: IPostWrite = postState as IPostWrite;
+export function PostWrite({ postState, onChange, deleteAll }: IFormStateProps) {
+  const { latitude, longitude } = postState as IPostWrite;
 
-  const [values, setValues] = useState<IPostInitialState>(initialValues);
+  const position = {
+    latitude,
+    longitude,
+  };
+
+  // const initialValues: IPostWrite = postState as IPostWrite;
+
+  // const [values, setValues] = useState<IPostInitialState>(initialValues);
 
   // const onChange = (
   //   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -67,18 +74,13 @@ export function PostWrite({ postState, onChange }: IFormStateProps) {
           text={item.text}
           name={item.name}
           placeholder={item?.placeholder}
-          value={values[item.name as keyof IPostInitialState]}
+          value={postState[item.name as keyof IPostWrite]}
           onChange={onChange}
           variant={item.variant}
+          deleteAll={deleteAll}
         />
       ))}
-      <SearchableMap
-        position={{
-          latitude: postState!.latitude,
-          longitude: postState!.longitude,
-        }}
-        onChange={onChange}
-      />
+      <SearchableMap position={position} onChange={onChange} />
     </S.Container>
   );
 }

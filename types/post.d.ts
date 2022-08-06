@@ -42,4 +42,5 @@ export interface IFormStateProps {
     name?: string | undefined,
     value?: IPostFormState | undefined,
   ) => void;
+  deleteAll?: (name: string) => void;
 }

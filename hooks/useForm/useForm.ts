@@ -37,8 +37,8 @@ function useForm<T, V, K>({
     value,
   }: {
     e?: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
-    name: string;
-    value: T;
+    name?: string;
+    value?: T;
   }) => {
     if (name && value) {
       setStateWhenChanged(name, value);
@@ -51,8 +51,6 @@ function useForm<T, V, K>({
   const handleSubmit = async (e: React.FormEvent<Element>) => {
     setIsLoading(true);
     e.preventDefault();
-
-    console.log(values);
 
     const stateRequiresCheckValidation = Object.keys(errors).reduce(
       (acc, key) => ({ ...acc, [key]: values[key as keyof T] }),

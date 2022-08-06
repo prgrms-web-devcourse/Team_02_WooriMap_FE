@@ -41,6 +41,7 @@ export default function PostCreate() {
             longitude: values.longitude,
           }}
           onChange={handleChange}
+          deleteAll={removeAll}
         />
       }
     />
