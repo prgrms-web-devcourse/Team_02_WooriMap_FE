@@ -49,7 +49,7 @@ export function TagForm({
         startsWith.test(name),
       );
       setTagOptions(newOptions);
-    }
+    } else setTagOptions([]);
     setTagName(newName);
   };
 
