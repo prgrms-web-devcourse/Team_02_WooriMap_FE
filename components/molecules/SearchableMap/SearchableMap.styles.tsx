@@ -8,6 +8,4 @@ export const Container = styled.div`
   max-height: 250px;
 
   border-radius: 8px;
-
-  background: red;
 `;
