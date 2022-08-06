@@ -1,21 +1,13 @@
-import { NextRouter, useRouter } from 'next/router';
 import { useState, useCallback } from 'react';
-import { ISingnUpRes } from 'types';
+import { IOnSubmit } from 'types';
 
 interface IUseForm<T> {
   initialValues: T;
-  onSubmit: ({
-    values,
-    router,
-  }: {
-    values: T;
-    router: NextRouter;
-  }) => Promise<ISingnUpRes>;
+  onSubmit: ({ values, setErrors }: IOnSubmit<T>) => void;
   validateValues: (values: T) => T;
 }
 
 function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
-  const router = useRouter();
   const [values, setValues] = useState<T>(initialValues);
   const [errors, setErrors] = useState<T>({
     ...initialValues,
@@ -36,12 +28,7 @@ function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
     const newErrors = validateValues(values);
 
     if (Object.values(newErrors).every((x) => !x)) {
-      const response = await onSubmit({ values, router });
-
-      if (response.message) {
-        setErrors((prev) => ({ ...prev, finalError: response.message }));
-        return;
-      }
+      onSubmit({ values, setErrors });
     }
 
     setErrors(newErrors);
@@ -55,6 +42,7 @@ function useForm<T>({ initialValues, onSubmit, validateValues }: IUseForm<T>) {
   return {
     values,
     errors,
+    setErrors,
     isLoading,
     handleChange,
     handleSubmit,

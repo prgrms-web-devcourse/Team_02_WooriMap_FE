@@ -1,12 +1,4 @@
-export interface ICoordinates {
-  latitude: number;
-  longitude: number;
-}
-
-export interface IMapMarker {
-  position: ICoordinates;
-  content: string;
-}
+import { ICoordinates, IMapMarker } from 'types';
 
 export function getBounds(data: ICoordinates[]) {
   const bounds = new kakao.maps.LatLngBounds();

@@ -1,0 +1,1 @@
+export { DeleteAllBtn } from './DeleteAllBtn';

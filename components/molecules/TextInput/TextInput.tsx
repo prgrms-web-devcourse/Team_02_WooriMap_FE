@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from 'react';
-import deleteIcon from 'public/image/delete.svg';
+import { DeleteAllBtn } from 'components';
 import * as S from './TextInput.styles';
 
 interface ITextInputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -10,14 +10,7 @@ export function TextInput({ onClickButton, ...props }: ITextInputProps) {
   return (
     <S.TextInputWrapper>
       <S.TextInput {...props} />
-
-      <S.DeleteButton
-        src={deleteIcon}
-        alt="Delete All"
-        width={16}
-        height={16}
-        onClick={onClickButton}
-      />
+      <DeleteAllBtn onClick={onClickButton} />
     </S.TextInputWrapper>
   );
 }

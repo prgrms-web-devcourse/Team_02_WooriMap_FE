@@ -9,18 +9,22 @@ export const Container = styled.div`
   box-sizing: border-box;
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
   width: 100%;
 
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+  box-sizing: border-box;
+
+  ${({ isValidationNotUsed }) => isValidationNotUsed && `margin-bottom: 1rem;`}
 
   & > label {
     width: 52px;
     height: 20px;
 
     margin-right: 10px;
+    margin-top: 14px;
 
     font-size: 14px;
     font-weight: bold;

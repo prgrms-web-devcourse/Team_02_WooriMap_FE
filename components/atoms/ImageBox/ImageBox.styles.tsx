@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import Image from 'next/image';
 
 interface IWrapper {
-  size: string;
   isSelected?: boolean;
 }
 
