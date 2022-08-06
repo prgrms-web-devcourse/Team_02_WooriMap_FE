@@ -1,1 +1,1 @@
-export { default as AxiosContext } from './AxiosContext';
+export { default as AxiosContext, useAxiosContext } from './AxiosContext';
