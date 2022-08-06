@@ -25,7 +25,12 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             {...props}
           />
         )}
-        {variant === 'calendar' && <CalendarInput {...props} />}
+        {variant === 'calendar' && (
+          <CalendarInput
+            handleChange={handleChange as THandleChange}
+            {...props}
+          />
+        )}
         {variant === 'textarea' && (
           <TextArea
             onClickButton={onClickDeleteButton}
