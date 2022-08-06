@@ -1,16 +1,9 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
+import React, { createContext, useContext, useMemo, useState } from 'react';
 import { IUserResponse } from 'types/auth';
-import LocalStorage from 'utils/storage';
 
 type AuthContextReturnTypes = [
   IUserResponse | null,
-  (data: IUserResponse | null) => void,
+  React.Dispatch<React.SetStateAction<IUserResponse | null>>,
   boolean,
 ];
 
@@ -24,16 +17,8 @@ export const useAuthContext = () =>
   useContext(AuthContext) as AuthContextReturnTypes;
 
 function AuthProvider({ children }: IProps) {
-  const [user, handler] = useState<IUserResponse | null>(() => {
-    const userData = LocalStorage.getItem<IUserResponse, null>('user', null);
-    return userData || null;
-  });
+  const [user, setUser] = useState<IUserResponse | null>(null);
   const isAuthenticated = useMemo(() => !!user, [user]);
-
-  const setUser = useCallback((data: IUserResponse | null) => {
-    handler(data);
-    LocalStorage.setItem('user', data);
-  }, []);
 
   return (
     <AuthContext.Provider
