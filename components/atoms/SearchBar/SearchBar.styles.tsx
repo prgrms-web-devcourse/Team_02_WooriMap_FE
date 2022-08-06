@@ -16,7 +16,7 @@ export const Wrapper = styled.div<{ isSearching: boolean }>`
   align-items: center;
 
   background-color: #fff;
-  border: 1px solid #e6e6e6;
+  border: 1px solid ${({ theme }) => theme.colors.gray}
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px,
     rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
   border-bottom: 1px solid transparent;
