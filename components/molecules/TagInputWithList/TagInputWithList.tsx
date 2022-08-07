@@ -42,25 +42,15 @@ export function TagInputWithList({
     setInputValue(newInputValue);
   };
 
-  const handleDelete = (tagName: string) => () => {
-    const newValue: ITag[] = inputValue.filter(({ name }) => name !== tagName);
+  const handleDelete = (key: string) => {
+    const newValue: ITag[] = inputValue.filter(({ name }) => name !== key);
     setInputValue(newValue);
   };
 
   return (
     <S.TagInput>
       <TagInput allTags={allTags} onEnterType={handleEnterType} {...props} />
-      <S.SelectedTags>
-        {inputValue.length > 0 &&
-          inputValue.map((tagInfo) => (
-            <S.SelectedTag
-              key={tagInfo.name}
-              name={tagInfo.name}
-              color={tagInfo.color}
-              onDelete={handleDelete(tagInfo.name)}
-            />
-          ))}
-      </S.SelectedTags>
+      <S.SelectedTags tagList={inputValue} onDelete={handleDelete} />
     </S.TagInput>
   );
 }
