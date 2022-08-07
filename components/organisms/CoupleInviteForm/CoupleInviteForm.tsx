@@ -13,7 +13,7 @@ export function CoupleInviteForm({
   name,
   deleteAll,
 }: ICoupleInviteFormProps) {
-  const [isAccepted, setIsAccepted] = useState(true);
+  const [isAccepted, setIsAccepted] = useState(false);
 
   const onClickInviteButton = () => {
     // API관련 로직
