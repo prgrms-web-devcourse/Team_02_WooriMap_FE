@@ -23,6 +23,15 @@ const allTags: ITag[] = [
   { name: '저태그아닌가17', color: '#607EAA' },
 ];
 
+interface IHandleChange {
+  name: string;
+  value: ITag[];
+}
+
+const handleChange = ({ name, value }: IHandleChange) => {
+  console.log(`name: ${name}   value: ${value}`);
+};
+
 export const Default: ComponentStory<typeof TagInputWithList> = () => {
   return (
     <TagInputWithList
@@ -30,6 +39,7 @@ export const Default: ComponentStory<typeof TagInputWithList> = () => {
       key="태그"
       allTags={allTags}
       onClickButton={() => {}}
+      handleChange={handleChange}
     />
   );
 };
