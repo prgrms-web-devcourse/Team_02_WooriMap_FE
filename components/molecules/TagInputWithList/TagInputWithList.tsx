@@ -5,7 +5,7 @@ import * as S from './TagInputWithList.styles';
 
 export interface IHandleChange {
   name: string;
-  value: ITag[];
+  value: string;
 }
 interface ITagInputWithListProps extends ITextInputProps {
   allTags: ITag[];
@@ -50,13 +50,13 @@ export function TagInputWithList({
     const newInputValue = [...inputValue];
     newInputValue.push(newTag);
     setInputValue(newInputValue);
-    handleChange({ name: 'tags', value: newInputValue });
+    handleChange({ name: 'tags', value: JSON.stringify(newInputValue) });
   };
 
   const handleDelete = (key: string) => {
     const newInputValue: ITag[] = inputValue.filter(({ name }) => name !== key);
     setInputValue(newInputValue);
-    handleChange({ name: 'tags', value: newInputValue });
+    handleChange({ name: 'tags', value: JSON.stringify(newInputValue) });
   };
 
   return (
