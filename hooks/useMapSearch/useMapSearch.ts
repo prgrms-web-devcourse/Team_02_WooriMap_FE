@@ -5,7 +5,7 @@ import {
   useState,
   useEffect,
 } from 'react';
-import { ICoordinates, IMapMarker, THandleChange } from 'types';
+import { ICoordinates, IMapMarker, HandleChangeTypes } from 'types';
 import { getBounds, parseMarkers } from './helper';
 
 interface IReturnType {
@@ -17,7 +17,7 @@ interface IReturnType {
     handleChange,
   }: {
     marker: IMapMarker;
-    handleChange: THandleChange;
+    handleChange: HandleChangeTypes;
   }) => void;
 }
 
@@ -67,7 +67,7 @@ function useMapSearch(
     handleChange,
   }: {
     marker: IMapMarker;
-    handleChange: THandleChange;
+    handleChange: HandleChangeTypes;
   }) => {
     const { position } = marker;
     const { latitude: lat, longitude: lng } = position;

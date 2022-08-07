@@ -1,11 +1,11 @@
 import { InputHTMLAttributes, useRef } from 'react';
-import { THandleChange } from 'types';
+import { HandleChangeTypes } from 'types';
 import calendar from 'public/image/calendar.png';
 import * as S from './CalendarInput.styles';
 
 interface ICalenderInputProps extends InputHTMLAttributes<HTMLInputElement> {
   id?: string;
-  handleChange: THandleChange;
+  handleChange: HandleChangeTypes;
 }
 
 export function CalendarInput({

@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import { ITextInputProps, THandleChange } from 'types';
+import { ITextInputProps, HandleChangeTypes } from 'types';
 import { TextInput, CalendarInput, TextArea } from 'components';
 import * as S from './TextInputWithLabel.styles';
 
@@ -21,20 +21,20 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
         {variant === 'input' && (
           <TextInput
             onClickButton={onClickDeleteButton}
-            handleChange={handleChange as THandleChange}
+            handleChange={handleChange as HandleChangeTypes}
             {...props}
           />
         )}
         {variant === 'calendar' && (
           <CalendarInput
-            handleChange={handleChange as THandleChange}
+            handleChange={handleChange as HandleChangeTypes}
             {...props}
           />
         )}
         {variant === 'textarea' && (
           <TextArea
             onClickButton={onClickDeleteButton}
-            handleChange={handleChange as THandleChange}
+            handleChange={handleChange as HandleChangeTypes}
             {...props}
           />
         )}

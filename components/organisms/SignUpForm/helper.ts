@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 import { FormValidation } from 'utils';
-import { IInputState, ITextInputProps, THandleChange } from 'types';
+import { IInputState, ITextInputProps, HandleChangeTypes } from 'types';
 
 export const validateValues = ({
   email,
@@ -77,7 +77,7 @@ export const parseSignUpFormValues = ({
   value,
   error,
 }: {
-  handleChange: THandleChange;
+  handleChange: HandleChangeTypes;
   removeAll: (name: string) => void;
   value: string;
   error: string;

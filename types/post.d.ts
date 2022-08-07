@@ -40,10 +40,14 @@ export interface ISetValueState {
     | { latitude: number; longitude: number };
 }
 
-export type THandleChange = ({ e, name, value }: IPostOnChangeProps) => void;
+export type HandleChangeTypes = ({
+  e,
+  name,
+  value,
+}: IPostOnChangeProps) => void;
 
 interface IFormStateProps {
-  handleChange: THandleChange;
+  handleChange: HandleChangeTypes;
 }
 
 export interface IFormImageProps extends IFormStateProps {

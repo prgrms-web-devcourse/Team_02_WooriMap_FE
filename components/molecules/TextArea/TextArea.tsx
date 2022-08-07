@@ -1,10 +1,10 @@
 import { InputHTMLAttributes } from 'react';
 import { DeleteAllBtn } from 'components';
-import { THandleChange } from 'types';
+import { HandleChangeTypes } from 'types';
 import * as S from './TextArea.styles';
 
 interface ITextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
-  handleChange: THandleChange;
+  handleChange: HandleChangeTypes;
   onClickButton: (e: React.MouseEvent<HTMLImageElement>) => void;
 }
 

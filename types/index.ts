@@ -13,6 +13,6 @@ export type {
   IFormImageProps,
   IFormInputProps,
   IPostOnChangeProps,
-  THandleChange,
+  HandleChangeTypes,
 } from 'types/post';
 export type { IButtonStyleProps } from 'types/button';

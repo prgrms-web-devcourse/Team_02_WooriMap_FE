@@ -6,7 +6,7 @@ export interface ITextInputProps {
   type?: string;
   variant?: 'input' | 'calendar' | 'tag' | 'textarea';
   placeholder?: string;
-  handleChange?: THandleChange;
+  handleChange?: HandleChangeTypes;
   deleteAll?: (name: string) => void;
 }
 

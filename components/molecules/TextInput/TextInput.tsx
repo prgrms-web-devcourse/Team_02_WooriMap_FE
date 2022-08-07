@@ -1,11 +1,11 @@
 import React, { InputHTMLAttributes } from 'react';
-import { THandleChange } from 'types';
+import { HandleChangeTypes } from 'types';
 import { DeleteAllBtn } from 'components';
 import * as S from './TextInput.styles';
 
 interface ITextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
-  handleChange: THandleChange;
+  handleChange: HandleChangeTypes;
 }
 
 export function TextInput({ onClickButton, ...props }: ITextInputProps) {
