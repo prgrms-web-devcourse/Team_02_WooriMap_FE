@@ -48,6 +48,7 @@ export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
       <Map
         width="100%"
         height="100%"
+        isMain={false}
         onCreate={setMap}
         center={{ lat: 37.5666805, lng: 126.9784147 }}
       >
