@@ -34,7 +34,7 @@ export const Default: ComponentStory<typeof TagInput> = () => {
     <Wrapper>
       <TagInput
         key="1"
-        onTagComplete={(a: string) => {
+        onEnterType={(a: string) => {
           console.log(a);
         }}
         allTags={allTags}

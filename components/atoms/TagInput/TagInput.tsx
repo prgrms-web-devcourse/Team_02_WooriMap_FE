@@ -5,11 +5,11 @@ import * as S from './TagInput.styles';
 
 interface ITagInputProps extends ITextInputProps {
   allTags: ITag[];
-  onTagComplete: (newTagName: string) => void;
+  onEnterType: (newTagName: string) => void;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
 }
 
-export function TagInput({ onTagComplete, allTags, ...props }: ITagInputProps) {
+export function TagInput({ allTags, onEnterType, ...props }: ITagInputProps) {
   const [inputValue, setInputValue] = useState<string>('');
   const [options, setOptions] = useState<ITag[]>([]);
 
@@ -33,7 +33,7 @@ export function TagInput({ onTagComplete, allTags, ...props }: ITagInputProps) {
 
   const handleComplete = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code !== 'Enter') return;
-    onTagComplete(inputValue);
+    onEnterType(inputValue);
     setInputValue('');
     setOptions([]);
   };
