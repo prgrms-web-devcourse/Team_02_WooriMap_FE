@@ -5,11 +5,15 @@ class LocalStorage {
     }
   }
 
-  static getItem<T = unknown>(key: string, defaultValue: T) {
+  static getItem<T = unknown, P = T>(key: string, defaultValue: P) {
     if (typeof window !== 'undefined') {
-      const value = localStorage.getItem(key);
-      if (!value || value === 'undefined') return defaultValue;
-      return JSON.parse(value) as T;
+      try {
+        const value = localStorage.getItem(key);
+        if (!value) return defaultValue;
+        return JSON.parse(value) as T;
+      } catch {
+        return defaultValue;
+      }
     }
     return null;
   }

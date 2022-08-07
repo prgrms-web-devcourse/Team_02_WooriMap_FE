@@ -1,23 +1,11 @@
-import React, {
-  createContext,
-  useCallback,
-  useContext,
-  useMemo,
-  useState,
-} from 'react';
-import instance from 'apis/instance';
-import { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
-import { IApiResponse } from 'types';
-import LocalStorage from 'utils/storage';
+import React, { createContext, useContext, useMemo, useState } from 'react';
+import { IUserResponse } from 'types/auth';
 
-interface IAuthContext {
-  isAuthenticated: false;
-  loading: false;
-  user: IUserResponse | null;
-  setUser: React.Dispatch<React.SetStateAction<IUserResponse | null>>;
-  login: (data: ILoginFormData) => Promise<ILoginResponse>;
-  logout: () => Promise<void>;
-}
+type AuthContextReturnTypes = [
+  IUserResponse | null,
+  React.Dispatch<React.SetStateAction<IUserResponse | null>>,
+  boolean,
+];
 
 interface IProps {
   children?: React.ReactNode;
@@ -25,51 +13,18 @@ interface IProps {
 
 const AuthContext = createContext({});
 
-export const useAuthContext = () => useContext(AuthContext) as IAuthContext;
+export const useAuthContext = () =>
+  useContext(AuthContext) as AuthContextReturnTypes;
 
 function AuthProvider({ children }: IProps) {
   const [user, setUser] = useState<IUserResponse | null>(null);
-  const [loading, setLoading] = useState(false);
   const isAuthenticated = useMemo(() => !!user, [user]);
-
-  const login = useCallback(async ({ email, password }: ILoginFormData) => {
-    try {
-      setLoading(true);
-
-      const data = await instance
-        .post<IApiResponse<ILoginResponse>>('/fake/signin', {
-          email,
-          password,
-        })
-        .then((response) => response.data.data);
-
-      LocalStorage.setItem('accessToken', data.accessToken);
-      LocalStorage.setItem('refreshToken', data.refreshToken);
-
-      setUser(() => data.member);
-      return data;
-    } catch (error) {
-      return await Promise.reject(error);
-    } finally {
-      setLoading(false);
-    }
-  }, []);
-
-  const logout = useCallback(async () => {
-    try {
-      await instance.post('/logout');
-    } catch (error) {
-      throw new Error('error occurred at logout.');
-    } finally {
-      setUser(null);
-    }
-  }, []);
 
   return (
     <AuthContext.Provider
       value={useMemo(
-        () => ({ user, setUser, isAuthenticated, loading, login, logout }),
-        [isAuthenticated, loading, login, logout, user],
+        () => [user, setUser, isAuthenticated],
+        [isAuthenticated, setUser, user],
       )}
     >
       {children}

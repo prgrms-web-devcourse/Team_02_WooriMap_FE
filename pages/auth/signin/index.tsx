@@ -3,6 +3,10 @@ import { useRouter } from 'next/router';
 import { AuthPageTemplate } from 'components/templates/AuthPageTemplate';
 import { AuthPageRoutingButton, Button, TextInput } from 'components';
 import { useAuthContext } from 'contexts/AuthContext';
+import { ILoginFormData, ILoginResponse } from 'types/auth';
+import { IApiResponse } from 'types/api';
+import LocalStorage from 'utils/storage';
+import { useAxiosInstance } from 'hooks';
 
 type LoginFormKeyType = 'email' | 'password';
 
@@ -12,9 +16,10 @@ type LoginFormType = {
 
 function Signin() {
   const router = useRouter();
-  const { login } = useAuthContext();
   const [data, setData] = useState<LoginFormType>({ email: '', password: '' });
   const [, setLoading] = useState(false);
+  const [, setUser] = useAuthContext();
+  const instance = useAxiosInstance();
   const [error, setError] = useState<string>('');
   const changeValue = useCallback(
     (key: LoginFormKeyType) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -25,6 +30,22 @@ function Signin() {
   const resetValue = useCallback((key: LoginFormKeyType) => {
     setData((prev) => ({ ...prev, [key]: '' }));
   }, []);
+
+  const login = async (loginFormData: ILoginFormData) => {
+    try {
+      const userData = await instance
+        .post<IApiResponse<ILoginResponse>>('/auth/signin', {
+          ...loginFormData,
+        })
+        .then((response) => response.data.data);
+
+      setUser(userData.member);
+      LocalStorage.setItem('accessToken', userData.accessToken);
+      return userData;
+    } catch (_error) {
+      return Promise.reject(_error);
+    }
+  };
 
   const onSubmit = async () => {
     try {
@@ -42,7 +63,6 @@ function Signin() {
     <AuthPageTemplate
       onSubmit={async (e) => {
         e.preventDefault();
-        login({ ...data });
         await onSubmit();
       }}
       inputs={

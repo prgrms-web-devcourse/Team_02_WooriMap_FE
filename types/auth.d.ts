@@ -9,12 +9,12 @@ export interface ILoginFormData extends IEmail {
 
 interface ITokenSet {
   accessToken: string;
-  refreshToken: string;
 }
 
 export interface IUserResponse extends IEmail {
+  imageUrl: string | null;
   nickName: string;
-  couple: string;
+  isCouple: boolean;
 }
 
 export interface ILoginResponse extends ITokenSet {
