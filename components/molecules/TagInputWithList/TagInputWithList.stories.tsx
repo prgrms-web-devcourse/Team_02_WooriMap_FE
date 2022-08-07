@@ -1,11 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { ITag } from 'types';
-import { TagInput } from './TagInput';
+import { TagInputWithList } from './TagInputWithList';
 
 export default {
   title: 'Components/Molecules/TagInput',
-  component: TagInput,
-} as ComponentMeta<typeof TagInput>;
+  component: TagInputWithList,
+} as ComponentMeta<typeof TagInputWithList>;
 
 const allTags: ITag[] = [
   { name: '태그1', color: '#59CE8F' },
@@ -23,6 +23,13 @@ const allTags: ITag[] = [
   { name: '저태그아닌가17', color: '#607EAA' },
 ];
 
-export const Default: ComponentStory<typeof TagInput> = () => {
-  return <TagInput text="태그" key="태그" allTags={allTags} />;
+export const Default: ComponentStory<typeof TagInputWithList> = () => {
+  return (
+    <TagInputWithList
+      text="태그"
+      key="태그"
+      allTags={allTags}
+      onClickButton={() => {}}
+    />
+  );
 };
