@@ -33,6 +33,7 @@ export { NavBar } from 'components/organisms/NavBar';
 export { SignUpForm } from 'components/organisms/SignUpForm';
 export { PostWrite } from 'components/organisms/PostWrite';
 export { MainSidebar } from 'components/organisms/MainSidebar';
+export { CoupleInviteForm } from 'components/organisms/CoupleInviteForm';
 
 // templates
 export { Layout } from 'components/templates/Layout';

@@ -7,8 +7,6 @@ export const Container = styled.div`
   /* align-items: center; */
 
   box-sizing: border-box;
-
-  width: 100%;
 `;
 
 export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
@@ -22,7 +20,7 @@ export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
   ${({ isValidationNotUsed }) => isValidationNotUsed && `margin-bottom: 1rem;`}
 
   & > label {
-    width: 52px;
+    //width: 52px;
     height: 20px;
 
     margin-right: 10px;
