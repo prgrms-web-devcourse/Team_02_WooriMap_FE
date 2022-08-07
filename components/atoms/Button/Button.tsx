@@ -23,14 +23,6 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   border: 3px solid ${theme.colors.gray};
 `;
 
-const pinkButtonStyle = ({ theme }: IThemeProps) => css`
-  border: 0;
-  outline: 0;
-  color: ${theme.colors.black};
-  background-color: ${theme.colors.pink};
-  border: 3px solid ${theme.colors.black};
-`;
-
 export const Button = styled.button<IButtonStyleProps>`
   cursor: pointer;
   appearance: none;
@@ -64,7 +56,9 @@ export const Button = styled.button<IButtonStyleProps>`
     }
   }}
 
-  ${({ variant }) => {
+  ${({ variant, disabled }) => {
+    if (disabled) return disabledButtonStyle;
+
     switch (variant) {
       case 'black':
         return blackButtonStyle;

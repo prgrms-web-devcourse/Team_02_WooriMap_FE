@@ -15,7 +15,6 @@ export const Title = styled.span`
 `;
 
 export const CodeWrapper = styled.div`
-  width: 352px; //calc(512px - 160px);
   margin-bottom: 100px;
 `;
 
@@ -42,10 +41,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Label = styled.label`
-  //width: 52px;
-  //height: 20px;
-
-  margin-right: 10px;
+  margin-right: 22px;
 
   font-size: 20px;
   font-weight: bold;

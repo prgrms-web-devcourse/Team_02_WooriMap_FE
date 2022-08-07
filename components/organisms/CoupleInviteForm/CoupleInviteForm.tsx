@@ -1,21 +1,32 @@
 import { useState } from 'react';
+import { ITextInputProps } from 'types';
 import Link from 'next/link';
-import { TextInputWithLabel } from 'components';
+import { TextInput } from 'components';
 import * as S from './CoupleInviteForm.styles';
 
-interface ICoupleInviteFormProps {
+interface ICoupleInviteFormProps extends ITextInputProps {
   code: string;
 }
 
-export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
-  const [isAccepted, setIsAccepted] = useState(false);
+export function CoupleInviteForm({
+  code,
+  name,
+  deleteAll,
+}: ICoupleInviteFormProps) {
+  const [isAccepted, setIsAccepted] = useState(true);
 
   const onClickInviteButton = () => {
     // API관련 로직
     setIsAccepted(true);
   };
 
-  const checkIsCoupled = () => {};
+  const checkIsCoupled = () => {
+    // API관련 로직
+  };
+
+  const onClickDeleteButton = () => {
+    if (deleteAll && name) deleteAll(name);
+  };
 
   return (
     <S.CoupleInviteFormBackground>
@@ -28,8 +39,19 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
           </S.Wrapper>
         </S.Container>
 
-        <TextInputWithLabel error="" name="codeInput" text="상대 코드" />
-        {/* textInputWithLabel에 fontSize 넣을 수 있도록 추후 리팩토링 필요 일부분 */}
+        <S.Container>
+          <S.Wrapper>
+            <S.Label>상대 코드</S.Label>
+            <TextInput onClickButton={onClickDeleteButton} />
+          </S.Wrapper>
+        </S.Container>
+        {/*
+        <TextInputWithLabel
+          variant="input"
+          error=""
+          name="codeInput"
+          text="상대 코드"
+        /> */}
       </S.CodeWrapper>
       {isAccepted ? (
         <S.InviteButton size="xlarge" variant="black" disabled>
