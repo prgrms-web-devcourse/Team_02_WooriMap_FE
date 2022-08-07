@@ -41,7 +41,6 @@ function Signin() {
 
       setUser(userData.member);
       LocalStorage.setItem('accessToken', userData.accessToken);
-      LocalStorage.setItem('refreshToken', userData.refreshToken);
       return userData;
     } catch (_error) {
       return Promise.reject(_error);

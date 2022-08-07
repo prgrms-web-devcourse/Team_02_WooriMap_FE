@@ -6,9 +6,7 @@ import { AxiosInstance } from 'axios';
 export async function getNewAccessToken(instance: AxiosInstance) {
   try {
     const accessToken = await instance
-      .post<IApiResponse<ITokenSet>>('/fake/token', {
-        refreshToken: LocalStorage.getItem<string>('refreshToken', ''),
-      })
+      .post<IApiResponse<ITokenSet>>('/auth/token')
       .then((response) => response.data.data.accessToken);
     return accessToken;
   } catch (error) {

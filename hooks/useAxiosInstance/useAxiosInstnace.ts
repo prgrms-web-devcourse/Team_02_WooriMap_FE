@@ -30,7 +30,6 @@ function useAxiosInstance() {
       } catch (error) {
         setUser(null);
         LocalStorage.removeItem('accessToken');
-        LocalStorage.removeItem('refreshToken');
         return Promise.reject(error);
       }
     };
@@ -50,7 +49,6 @@ function useAxiosInstance() {
     };
 
     const requestInterceptor = instance.interceptors.request.use((_config) => {
-      console.log('here');
       return getConfigWithAuthorizedHeadersBy(_config);
     });
 
