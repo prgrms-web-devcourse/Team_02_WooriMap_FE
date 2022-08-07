@@ -3,7 +3,7 @@ import { ITag } from 'types';
 import { TagInputWithList } from './TagInputWithList';
 
 export default {
-  title: 'Components/Molecules/TagInput',
+  title: 'Components/Molecules/TagInputWithList',
   component: TagInputWithList,
 } as ComponentMeta<typeof TagInputWithList>;
 
