@@ -1,6 +1,7 @@
 import { ITextInputProps, ITag } from 'types';
 import React, { useState } from 'react';
 import { TagInput } from 'components/atoms/TagInput';
+
 import * as S from './TagInputWithList.styles';
 
 interface ITagInputWithListProps extends ITextInputProps {
@@ -48,9 +49,9 @@ export function TagInputWithList({
   };
 
   return (
-    <S.TagInput>
+    <S.Container>
       <TagInput allTags={allTags} onEnterType={handleEnterType} {...props} />
       <S.SelectedTags tagList={inputValue} onDelete={handleDelete} />
-    </S.TagInput>
+    </S.Container>
   );
 }

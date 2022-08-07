@@ -6,14 +6,14 @@ interface ITagListProp {
   onDelete?: (key: string) => void;
 }
 
-export function TagList({ tagList, onDelete }: ITagListProp) {
+export function TagList({ tagList, onDelete, ...props }: ITagListProp) {
   const handleDelete = onDelete
     ? (key: string) => () => {
         onDelete(key);
       }
     : undefined;
   return (
-    <S.TagListContainer>
+    <S.TagListContainer {...props}>
       {tagList.map(({ name, color }) => (
         <S.MarginTag
           key={name}
