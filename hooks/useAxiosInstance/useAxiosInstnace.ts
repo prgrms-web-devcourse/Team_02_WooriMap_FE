@@ -49,9 +49,10 @@ function useAxiosInstance() {
       return Promise.reject(error);
     };
 
-    const requestInterceptor = instance.interceptors.request.use(
-      getConfigWithAuthorizedHeadersBy,
-    );
+    const requestInterceptor = instance.interceptors.request.use((_config) => {
+      console.log('here');
+      return getConfigWithAuthorizedHeadersBy(_config);
+    });
 
     const responseInterceptor = instance.interceptors.response.use(
       onResponseFulfilled,

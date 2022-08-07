@@ -6,7 +6,7 @@ import { useAuthContext } from 'contexts/AuthContext';
 import { ILoginFormData, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
 import LocalStorage from 'utils/storage';
-import { useAxiosContext } from 'contexts/AxiosContext';
+import { useAxiosInstance } from 'hooks';
 
 type LoginFormKeyType = 'email' | 'password';
 
@@ -19,7 +19,7 @@ function Signin() {
   const [data, setData] = useState<LoginFormType>({ email: '', password: '' });
   const [, setLoading] = useState(false);
   const [, setUser] = useAuthContext();
-  const instance = useAxiosContext();
+  const instance = useAxiosInstance();
   const [error, setError] = useState<string>('');
   const changeValue = useCallback(
     (key: LoginFormKeyType) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,7 +34,7 @@ function Signin() {
   const login = async (loginFormData: ILoginFormData) => {
     try {
       const userData = await instance
-        .post<IApiResponse<ILoginResponse>>('/fake/signin', {
+        .post<IApiResponse<ILoginResponse>>('/auth/signin', {
           ...loginFormData,
         })
         .then((response) => response.data.data);
