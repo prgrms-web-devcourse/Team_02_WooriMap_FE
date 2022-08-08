@@ -2,7 +2,7 @@ import { TagList } from 'components/molecules/TagList';
 import * as S from './PostBody.styles';
 
 interface ITag {
-  tagName: string;
+  name: string;
   tagColor: string;
   deletable?: boolean;
 }

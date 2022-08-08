@@ -24,9 +24,9 @@ const sampleInput2 = {
 
 const sampleInput3 = {
   tagList: [
-    { tagName: 'randomTag 1', deletable: false },
-    { tagName: 'randomTag 2', deletable: false },
-    { tagName: 'randomTag 3', deletable: true },
+    { name: 'randomTag 1', deletable: false },
+    { name: 'randomTag 2', deletable: false },
+    { name: 'randomTag 3', deletable: true },
   ],
 };
 
