@@ -15,23 +15,20 @@ interface IReturnType {
   onSelectMarker: ({
     marker,
     handleChange,
+    setSelected,
   }: {
     marker: IMapMarker;
     handleChange: HandleChangeTypes;
+    setSelected: Dispatch<SetStateAction<IMapMarker>>;
   }) => void;
 }
 
 interface IMapSearchProps {
   initialMarker: IMapMarker[];
   map: kakao.maps.Map | null;
-  setSelected: Dispatch<SetStateAction<IMapMarker>>;
 }
 
-function useMapSearch({
-  initialMarker,
-  map,
-  setSelected,
-}: IMapSearchProps): IReturnType {
+function useMapSearch({ initialMarker, map }: IMapSearchProps): IReturnType {
   const [services, setServices] = useState<kakao.maps.services.Places | null>(
     null,
   );
@@ -72,9 +69,11 @@ function useMapSearch({
   const onSelectMarker = ({
     marker,
     handleChange,
+    setSelected,
   }: {
     marker: IMapMarker;
     handleChange: HandleChangeTypes;
+    setSelected: Dispatch<SetStateAction<IMapMarker>>;
   }) => {
     const { position } = marker;
     const { latitude: lat, longitude: lng } = position;

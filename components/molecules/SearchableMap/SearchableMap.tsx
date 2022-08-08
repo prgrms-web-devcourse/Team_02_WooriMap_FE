@@ -27,7 +27,6 @@ export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
   const { markers, getSearchResults, onSelectMarker } = useMapSearch({
     initialMarker,
     map,
-    setSelected,
   });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,7 +37,7 @@ export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
   };
 
   const onClickMarker = () => (marker: IMapMarker) => {
-    onSelectMarker({ marker, handleChange });
+    onSelectMarker({ marker, handleChange, setSelected });
     setIsResultVisible(() => false);
   };
 
