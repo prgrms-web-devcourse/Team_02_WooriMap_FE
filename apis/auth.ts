@@ -26,6 +26,9 @@ export async function signup({
         }
 
         const error = response as unknown as AxiosError;
+        throw new Error(error.message);
+      })
+      .catch((error) => {
         return error.response?.data;
       });
 
