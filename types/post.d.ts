@@ -6,7 +6,7 @@ export interface ITagState {
 export interface IPostFormState {
   title: string;
   content: string;
-  date: string;
+  datingDate: string;
   imageUrls?: Array<string>;
   tags: Array<ITagState>;
   latitude: number;

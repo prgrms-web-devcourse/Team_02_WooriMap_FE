@@ -19,7 +19,7 @@ export const inputList: Array<IInputList> = [
   {
     id: nanoid(),
     text: '날짜',
-    name: 'date',
+    name: 'datingDate',
     variant: 'calendar',
   },
   {

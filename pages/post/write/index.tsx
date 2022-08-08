@@ -10,7 +10,7 @@ import {
 export const initialValues: IPostFormState = {
   title: '',
   content: '',
-  date: formatDate(),
+  datingDate: formatDate(),
   imageUrls: [],
   tags: [],
   latitude: 0,
@@ -54,7 +54,7 @@ export default function PostCreate() {
           postState={{
             title: values.title,
             content: values.content,
-            date: values.date,
+            datingDate: values.datingDate,
             tags: values.tags,
             latitude: values.latitude,
             longitude: values.longitude,

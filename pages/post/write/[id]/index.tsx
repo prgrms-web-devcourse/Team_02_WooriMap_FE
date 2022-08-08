@@ -33,7 +33,8 @@ export default function PostEdit({
     validateValues: postValidation,
   });
 
-  const { title, content, date, tags, latitude, longitude, imageUrls } = values;
+  const { title, content, datingDate, tags, latitude, longitude, imageUrls } =
+    values;
 
   return (
     <PostTemplate
@@ -45,7 +46,7 @@ export default function PostEdit({
           postState={{
             title,
             content,
-            date,
+            datingDate,
             tags,
             latitude,
             longitude,
@@ -64,7 +65,7 @@ export function getStaticProps({ params }: { params: { id: string } }) {
     title: '너와의 첫 만남',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut blanditiis doloremque distinctio sunt repudiandae iure. Voluptate at voluptatem consequuntur reprehenderit modi, necessitatibus ipsa nulla reiciendis tenetur, aliquid voluptatum esse culpa?',
-    date: '2020-01-01',
+    datingDate: '2020-01-01',
     tags: ['여행', '친구', '여자친구'],
     imageUrls: dummyImages,
     latitude: '33.450701',
