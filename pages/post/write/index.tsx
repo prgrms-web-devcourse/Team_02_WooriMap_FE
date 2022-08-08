@@ -1,6 +1,6 @@
 import { useForm } from 'hooks';
 import { PostTemplate, ImageUploader, PostWrite } from 'components';
-import { FormValidation, formatDate } from 'utils';
+import { postValidation, formatDate } from 'utils';
 import {
   IPostValidationState,
   IPostValidationProps,
@@ -23,28 +23,6 @@ export const errorState: IPostValidationState = {
   tags: '',
 };
 
-export const validateValues = ({
-  title,
-  imageUrls,
-  tags,
-}: IPostValidationProps) => {
-  const errors: IPostValidationState = {
-    title: '',
-    imageUrls: '',
-    tags: '',
-  };
-
-  const { validateTitle, validateImages, validateTags } = new FormValidation();
-
-  errors.title = validateTitle({ title });
-
-  errors.imageUrls = validateImages({ imageUrls });
-
-  errors.tags = validateTags({ tags });
-
-  return errors;
-};
-
 export default function PostCreate() {
   const onSubmit = ({ values }: { values: IPostFormState }) => {
     console.log(values);
@@ -58,7 +36,7 @@ export default function PostCreate() {
     initialValues,
     errorState,
     onSubmit,
-    validateValues,
+    validateValues: postValidation,
   });
 
   return (

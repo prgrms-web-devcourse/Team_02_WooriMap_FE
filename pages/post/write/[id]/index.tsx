@@ -5,8 +5,13 @@ import {
   IPostValidationState,
   IPostValidationProps,
 } from 'types';
-import { errorState, validateValues } from 'pages/post/write/helper';
-import { dummyImages } from 'utils';
+import { postValidation, dummyImages } from 'utils';
+
+export const errorState: IPostValidationState = {
+  title: '',
+  imageUrls: '',
+  tags: '',
+};
 
 export default function PostEdit({
   initialValues,
@@ -25,7 +30,7 @@ export default function PostEdit({
     initialValues,
     errorState,
     onSubmit,
-    validateValues,
+    validateValues: postValidation,
   });
 
   const { title, content, date, tags, latitude, longitude, imageUrls } = values;

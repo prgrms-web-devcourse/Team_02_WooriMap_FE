@@ -1,3 +1,5 @@
+import { IPostValidationState, IPostValidationProps, IInputState } from 'types';
+
 /* eslint-disable class-methods-use-this */
 /**
  * 이메일 정규식
@@ -23,7 +25,7 @@ const nickNameRegx = /^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9]{1,15}$/;
  */
 const passwordRegx = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}/;
 
-export default class FormValidation {
+class FormValidation {
   readonly emailRegx: RegExp;
 
   readonly nickNameRegx: RegExp;
@@ -96,3 +98,59 @@ export default class FormValidation {
     return '';
   };
 }
+
+export const postValidation = ({
+  title,
+  imageUrls,
+  tags,
+}: IPostValidationProps) => {
+  const errors: IPostValidationState = {
+    title: '',
+    imageUrls: '',
+    tags: '',
+  };
+
+  const { validateTitle, validateImages, validateTags } = new FormValidation();
+
+  errors.title = validateTitle({ title });
+
+  errors.imageUrls = validateImages({ imageUrls });
+
+  errors.tags = validateTags({ tags });
+
+  return errors;
+};
+
+export const signupValidation = ({
+  email,
+  nickName,
+  password,
+  confirmPassword,
+}: IInputState) => {
+  const errors: IInputState = {
+    email: '',
+    nickName: '',
+    password: '',
+    confirmPassword: '',
+  };
+
+  const {
+    validateEmail,
+    validateNickName,
+    validatePassword,
+    validateConfirmPassword,
+  } = new FormValidation();
+
+  errors.email = validateEmail({ email });
+
+  errors.nickName = validateNickName({ nickName });
+
+  errors.password = validatePassword({ password });
+
+  errors.confirmPassword = validateConfirmPassword({
+    password,
+    confirmPassword,
+  });
+
+  return errors;
+};
