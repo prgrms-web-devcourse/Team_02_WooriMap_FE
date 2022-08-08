@@ -6,6 +6,7 @@ interface IIsTag {
   isTag: boolean;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function TagCheckbox({ isTag }: IIsTag) {
   return (
     <S.TagValidation>

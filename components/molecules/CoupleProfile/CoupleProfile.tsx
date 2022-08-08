@@ -1,6 +1,6 @@
-import * as S from './CoupleProfile.styles';
 import { Profile } from 'components';
 import { calculatingDDay } from 'utils';
+import * as S from './CoupleProfile.styles';
 
 interface INickname {
   nickname: string | null;

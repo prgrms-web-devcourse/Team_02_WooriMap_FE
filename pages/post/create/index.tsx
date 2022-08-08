@@ -12,7 +12,7 @@ export default function PostCreate() {
     console.log(values);
   };
 
-  const { values, handleChange, handleSubmit, errors, removeAll } = useForm<
+  const { values, handleChange, handleSubmit, removeAll } = useForm<
     IPostFormState,
     IPostValidationState,
     IPostValidationProps
