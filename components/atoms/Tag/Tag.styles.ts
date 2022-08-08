@@ -16,9 +16,7 @@ export const Tag = styled.div<ITagStyleProps>`
   border: ${({ isDelete }) => (isDelete ? '1px solid black' : 'none')};
   border-radius: 1rem;
   background-color: ${({ color }) =>
-    color
-      ? color
-      : ({ theme }) => theme.tagColors[Math.floor(Math.random() * 8)]};
+    color || (({ theme }) => theme.tagColors[Math.floor(Math.random() * 8)])};
   font-size: 1rem;
   text-decoration: none;
 `;

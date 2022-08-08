@@ -1,7 +1,6 @@
-import * as S from './MainSidebar.styles';
 import { CoupleProfile, MainSearchBar, MainThumbnailList } from 'components';
-
 import { IThumbnailCardProps } from 'components/molecules/MainThumbnailList';
+import * as S from './MainSidebar.styles';
 
 interface IProfile {
   profileImagePath: string;

@@ -5,7 +5,7 @@ import * as S from './TextInput.styles';
 
 interface ITextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
-  handleChange: HandleChangeTypes;
+  handleChange?: HandleChangeTypes;
 }
 
 export function TextInput({
@@ -15,7 +15,7 @@ export function TextInput({
 }: ITextInputProps) {
   return (
     <S.TextInputWrapper>
-      <S.TextInput onChange={(e) => handleChange({ e })} {...props} />
+      <S.TextInput onChange={(e) => handleChange?.({ e })} {...props} />
       <DeleteAllBtn onClick={onClickButton} />
     </S.TextInputWrapper>
   );

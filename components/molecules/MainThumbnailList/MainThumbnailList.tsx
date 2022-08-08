@@ -13,9 +13,9 @@ function ThumbnailCard({
   title,
   createDate,
 }: IThumbnailCardProps) {
-  const onClick = (postId: string) => {
-    //postId별 라우팅 관련 로직 추가 예정
-    alert(`${postId}를 클릭하셨군여 (๑•̀ㅂ•́)و✧`);
+  const onClick = (_postId: string) => {
+    // postId별 라우팅 관련 로직 추가 예정
+    alert(`${_postId}를 클릭하셨군여 (๑•̀ㅂ•́)و✧`);
   };
 
   return (
