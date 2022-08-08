@@ -68,7 +68,7 @@ export default class FormValidation {
     if (!nickName) return '닉네임을 입력해주세요';
 
     if (!this.nickNameRegx.test(nickName))
-      return '닉네임은 4자 이상 20자 이하로 입력해주세요';
+      return '닉네임은 1자 이상 15자 이하로 입력해주세요';
 
     return '';
   };

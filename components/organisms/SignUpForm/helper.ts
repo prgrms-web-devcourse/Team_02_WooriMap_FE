@@ -84,7 +84,7 @@ export const parseSignUpFormValues = ({
 }) => {
   return {
     value,
-    onChange: handleChange,
+    handleChange,
     error,
     deleteAll: removeAll,
   };
