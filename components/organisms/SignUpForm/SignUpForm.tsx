@@ -41,15 +41,19 @@ export function SignUpForm() {
     }
   };
 
-  const { values, handleChange, handleSubmit, errors, removeAll } =
-    useForm<IInputState>({
-      initialValues,
-      onSubmit,
-      validateValues,
-    });
+  const { values, handleChange, handleSubmit, errors, removeAll } = useForm<
+    IInputState,
+    IInputState,
+    IInputState
+  >({
+    initialValues,
+    errorState: { ...initialValues },
+    onSubmit,
+    validateValues,
+  });
 
   return (
-    <FormBackground onSubmit={handleSubmit} noValidate>
+    <FormBackground id="signup" onSubmit={handleSubmit} noValidate>
       <S.Container>
         <AuthLogoImage />
         {textInputsProps.map((input: ITextInputProps) => {
@@ -69,7 +73,9 @@ export function SignUpForm() {
           );
         })}
         <S.FinalValidationError>{errors.finalError}</S.FinalValidationError>
-        <SubmitButton text="회원가입" />
+        <SubmitButton id="signup" size="large" variant="grayOutlined">
+          회원가입
+        </SubmitButton>
         <AuthPageRoutingButton type="signup" />
       </S.Container>
     </FormBackground>

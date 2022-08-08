@@ -1,12 +1,14 @@
+import { HandleChangeTypes } from 'types/post';
+
 export interface ITextInputProps {
   key?: string;
-  value?: string;
+  value?: string | number | ITagState[];
   name?: string;
   text?: string;
   type?: string;
   variant?: 'input' | 'calendar' | 'tag' | 'textarea';
   placeholder?: string;
-  onChange?: (e: React.ChangeEvent<T>) => void;
+  handleChange?: HandleChangeTypes;
   deleteAll?: (name: string) => void;
 }
 

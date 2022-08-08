@@ -3,6 +3,7 @@ import Script from 'next/script';
 import { Map as KakaoMap, MapProps } from 'react-kakao-maps-sdk';
 
 interface IProps extends MapProps {
+  isMain?: boolean;
   width: number | string;
   height: number | string;
   children?: React.ReactNode;
@@ -10,18 +11,30 @@ interface IProps extends MapProps {
 
 const URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_JS_API_KEY}&libraries=services,clusterer&autoload=false`;
 
-function Map({ children, width, height, ...props }: IProps) {
+function Map({ children, isMain, width, height, ...props }: IProps) {
   const [loaded, setLoaded] = useState(false);
   const onLoad = () => {
     kakao.maps.load(() => {
       setLoaded(true);
     });
   };
+
+  const defaultStyle = {
+    width,
+    height,
+    ...props.style,
+  };
+
   return (
     <>
       <Script src={URL} onLoad={onLoad} />
       {loaded && (
-        <KakaoMap style={{ width, height, ...props.style }} {...props}>
+        <KakaoMap
+          style={
+            isMain ? defaultStyle : { ...defaultStyle, borderRadius: '8px' }
+          }
+          {...props}
+        >
           {children}
         </KakaoMap>
       )}

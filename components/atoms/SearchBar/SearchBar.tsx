@@ -6,26 +6,34 @@ import * as S from './SearchBar.styles';
 
 interface ISearchBarProps {
   keyword: string;
+  isResultVisible: boolean;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClick: (params: IMapMarker) => void;
+  onClick: (marker: IMapMarker) => void;
   results: Array<IMapMarker>;
 }
 
 export function SearchBar({
   keyword,
+  isResultVisible,
   onChange,
   onClick,
   results,
 }: ISearchBarProps) {
   const resultLength = results.length;
 
+  const isSearching = resultLength > 0 && isResultVisible;
+
   return (
     <S.Container>
-      <S.Wrapper isSearching={resultLength > 0}>
-        <S.Input value={keyword} onChange={onChange} />
+      <S.Wrapper isSearching={isSearching}>
+        <S.Input
+          value={keyword}
+          placeholder="장소를 검색해주세요"
+          onChange={onChange}
+        />
         <Image src={search} width={16} height={16} alt="search" />
       </S.Wrapper>
-      {resultLength > 0 && (
+      {isSearching && (
         <S.SearchResultBox>
           {results.map((result: IMapMarker) => (
             <S.SearchResult key={nanoid()} onClick={() => onClick(result)}>

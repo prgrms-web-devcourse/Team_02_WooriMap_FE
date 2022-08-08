@@ -1,10 +1,6 @@
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-
-interface IButtonStyleProps {
-  variant?: string;
-  size: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
-}
+import { IButtonStyleProps } from 'types';
 
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.white};

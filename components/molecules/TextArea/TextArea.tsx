@@ -1,11 +1,10 @@
+import { InputHTMLAttributes } from 'react';
 import { DeleteAllBtn } from 'components';
+import { HandleChangeTypes } from 'types';
 import * as S from './TextArea.styles';
 
-interface ITextAreaProps {
-  id?: string;
-  name?: string;
-  value?: string;
-  onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+interface ITextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+  handleChange: HandleChangeTypes;
   onClickButton: (e: React.MouseEvent<HTMLImageElement>) => void;
 }
 
@@ -13,12 +12,19 @@ export function TextArea({
   id,
   name,
   value,
-  onChange,
+  placeholder,
+  handleChange,
   onClickButton,
 }: ITextAreaProps) {
   return (
     <S.TextAreaWrapper>
-      <S.TextArea id={id} name={name} value={value} onChange={onChange} />
+      <S.TextArea
+        id={id}
+        name={name}
+        value={value}
+        placeholder={placeholder}
+        onChange={(e) => handleChange({ e })}
+      />
       <DeleteAllBtn onClick={onClickButton} />
     </S.TextAreaWrapper>
   );

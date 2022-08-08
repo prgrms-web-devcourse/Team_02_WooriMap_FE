@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 /**
  * 이메일 정규식
  *
@@ -35,6 +36,26 @@ export default class FormValidation {
     this.passwordRegx = passwordRegx;
   }
 
+  validateTitle = ({ title }: { title: string }): string => {
+    if (!title) return '제목을 입력해주세요';
+
+    return '';
+  };
+
+  validateImages = ({ imageUrls }: { imageUrls: Array<string> }): string => {
+    if (!imageUrls.length) return '이미지를 최소 1개 등록 해주세요';
+
+    if (imageUrls.length > 5) return '이미지는 최대 5개까지 등록 가능합니다';
+
+    return '';
+  };
+
+  validateTags = ({ tags }: { tags: Array<string> }): string => {
+    if (!tags.length) return '태그를 최소 1개 등록 해주세요';
+
+    return '';
+  };
+
   validateEmail = ({ email }: { email: string }) => {
     if (!email) return '이메일을 입력해주세요';
 
@@ -61,7 +82,6 @@ export default class FormValidation {
     return '';
   };
 
-  // eslint-disable-next-line class-methods-use-this
   validateConfirmPassword = ({
     password,
     confirmPassword,

@@ -4,7 +4,7 @@ import Image from 'next/image';
 export const CalendarInputWrapper = styled.div`
   display: flex;
   flex: 1;
-  border-radius: 10px;
+  border-radius: 8px;
   border: 2px solid ${({ theme }) => theme.colors.gray};
   padding: 13px 16px;
   position: relative;

@@ -1,74 +1,37 @@
-import { useState } from 'react';
-import { nanoid } from 'nanoid';
-import { TextInputWithLabel } from 'components';
+import { TextInputWithLabel, SearchableMap } from 'components';
+import { IPostFormState, IFormInputProps } from 'types';
+import { inputList } from './helper';
 import * as S from './PostWrite.styles';
-import { formatDate } from '../../../utils/formatDate';
 
-interface IPostInitialState {
-  title: string;
-  date: string;
-  content: string;
-}
+type IPostWrite = Omit<IPostFormState, 'imageUrls'>;
 
-interface Itemp {
-  id: string;
-  text: string;
-  name: string;
-  variant: 'input' | 'calendar' | 'textarea' | 'tag';
-}
+export function PostWrite({
+  postState,
+  handleChange,
+  deleteAll,
+}: IFormInputProps) {
+  const { latitude, longitude } = postState as IPostWrite;
 
-const temp: Array<Itemp> = [
-  {
-    id: nanoid(),
-    text: '제목',
-    name: 'title',
-    variant: 'input',
-  },
-  {
-    id: nanoid(),
-    text: '날짜',
-    name: 'date',
-    variant: 'calendar',
-  },
-  {
-    id: nanoid(),
-    text: '내용',
-    name: 'content',
-    variant: 'textarea',
-  },
-];
-
-export function PostWrite() {
-  const initialValues: IPostInitialState = {
-    title: '',
-    date: formatDate(),
-    content: '',
-  };
-
-  const [values, setValues] = useState<IPostInitialState>(initialValues);
-
-  const onChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
-    const { name, value } = e.target;
-    setValues((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+  const position = {
+    latitude,
+    longitude,
   };
 
   return (
     <S.Container>
-      {temp.map((item) => (
+      {inputList.map((item) => (
         <TextInputWithLabel
           key={item.id}
           text={item.text}
           name={item.name}
-          value={values[item.name as keyof IPostInitialState]}
-          onChange={onChange}
+          placeholder={item?.placeholder}
+          value={postState[item.name as keyof IPostWrite]}
+          handleChange={handleChange}
           variant={item.variant}
+          deleteAll={deleteAll}
         />
       ))}
+      <SearchableMap position={position} handleChange={handleChange} />
     </S.Container>
   );
 }

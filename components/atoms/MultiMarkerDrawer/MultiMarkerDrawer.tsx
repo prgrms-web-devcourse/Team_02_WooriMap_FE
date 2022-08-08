@@ -4,12 +4,12 @@ import { IMapMarker } from 'types';
 
 interface IMultiMarkerDrawerProps {
   markers: Array<IMapMarker>;
-  onSelectMarker: (marker: IMapMarker) => void;
+  onClick: (marker: IMapMarker) => void;
 }
 
 export function MultiMarkerDrawer({
   markers,
-  onSelectMarker,
+  onClick,
 }: IMultiMarkerDrawerProps) {
   return (
     <>
@@ -30,7 +30,7 @@ export function MultiMarkerDrawer({
             position={{ lat, lng }}
             image={image}
             title={content}
-            onClick={() => onSelectMarker(marker)}
+            onClick={() => onClick(marker)}
           />
         );
       })}

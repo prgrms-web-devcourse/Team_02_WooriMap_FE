@@ -33,6 +33,7 @@ export function ImageBox({ size, src, isSelected, onClick }: IImageBoxProps) {
         onClick={onClick || (() => {})}
         {...setSize()}
         alt="Uploaded Image"
+        quality={100}
       />
     </S.Wrapper>
   );

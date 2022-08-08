@@ -1,5 +1,5 @@
 /* eslint-disable react/destructuring-assignment */
-import { ITextInputProps } from 'types';
+import { ITextInputProps, HandleChangeTypes } from 'types';
 import { TextInput, CalendarInput, TextArea } from 'components';
 import * as S from './TextInputWithLabel.styles';
 
@@ -8,7 +8,7 @@ interface ITextInputWithLabelProps extends ITextInputProps {
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, text, deleteAll, variant } = props;
+  const { name, text, deleteAll, variant, handleChange } = props;
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -19,11 +19,24 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
       <S.Wrapper isValidationNotUsed={props.error === undefined}>
         <label htmlFor={name}>{text}</label>
         {variant === 'input' && (
-          <TextInput onClickButton={onClickDeleteButton} {...props} />
+          <TextInput
+            onClickButton={onClickDeleteButton}
+            handleChange={handleChange as HandleChangeTypes}
+            {...props}
+          />
         )}
-        {variant === 'calendar' && <CalendarInput {...props} />}
+        {variant === 'calendar' && (
+          <CalendarInput
+            handleChange={handleChange as HandleChangeTypes}
+            {...props}
+          />
+        )}
         {variant === 'textarea' && (
-          <TextArea onClickButton={onClickDeleteButton} {...props} />
+          <TextArea
+            onClickButton={onClickDeleteButton}
+            handleChange={handleChange as HandleChangeTypes}
+            {...props}
+          />
         )}
       </S.Wrapper>
       {props.error !== undefined && (

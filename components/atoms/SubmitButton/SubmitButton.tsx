@@ -1,5 +1,20 @@
+import { IButtonStyleProps } from 'types';
 import * as S from './SubmitButton.styles';
 
-export function SubmitButton({ text }: { text: string }) {
-  return <S.SubmitButton type="submit" value={text} />;
+interface ISubmitButtonProps extends IButtonStyleProps {
+  id: string;
+  children: React.ReactNode;
+}
+
+export function SubmitButton({
+  id,
+  variant,
+  size,
+  children,
+}: ISubmitButtonProps) {
+  return (
+    <S.SubmitButton form={id} variant={variant} size={size}>
+      {children}
+    </S.SubmitButton>
+  );
 }

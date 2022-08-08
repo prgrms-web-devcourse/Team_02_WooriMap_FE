@@ -1,17 +1,20 @@
 import { useState } from 'react';
 import { useMapSearch } from 'hooks';
-import { IMapMarker } from 'types';
+import { IMapMarker, HandleChangeTypes, ICoordinates } from 'types';
 import { Map, SearchBar, MultiMarkerDrawer } from 'components';
 import * as S from './SearchableMap.styles';
 
-export function SearchableMap() {
+interface ISearchableMapProps {
+  position: ICoordinates;
+  handleChange: HandleChangeTypes;
+}
+
+export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
   const [selected, setSelected] = useState<IMapMarker>({
     content: '',
-    position: {
-      latitude: 0,
-      longitude: 0,
-    },
+    position,
   });
+  const [isResultVisible, setIsResultVisible] = useState<boolean>(false);
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
   const { markers, getSearchResults, onSelectMarker } = useMapSearch(
     map,
@@ -22,23 +25,31 @@ export function SearchableMap() {
     const { value } = e.target;
     getSearchResults(value);
     setSelected((prev) => ({ ...prev, content: value }));
+    setIsResultVisible(() => true);
+  };
+
+  const onClickMarker = () => (marker: IMapMarker) => {
+    onSelectMarker({ marker, handleChange });
+    setIsResultVisible(() => false);
   };
 
   return (
     <S.Container>
       <SearchBar
         keyword={selected.content}
+        isResultVisible={isResultVisible}
         onChange={onChange}
-        onClick={onSelectMarker}
+        onClick={onClickMarker()}
         results={markers}
       />
       <Map
         width="100%"
         height="100%"
+        isMain={false}
         onCreate={setMap}
         center={{ lat: 37.5666805, lng: 126.9784147 }}
       >
-        <MultiMarkerDrawer markers={markers} onSelectMarker={onSelectMarker} />
+        <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
       </Map>
     </S.Container>
   );
