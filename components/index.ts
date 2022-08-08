@@ -32,6 +32,7 @@ export { ImageUploader } from 'components/organisms/ImageUploader';
 export { NavBar } from 'components/organisms/NavBar';
 export { SignUpForm } from 'components/organisms/SignUpForm';
 export { PostWrite } from 'components/organisms/PostWrite';
+export { MainSidebar } from 'components/organisms/MainSidebar';
 
 // templates
 export { Layout } from 'components/templates/Layout';
