@@ -1,5 +1,6 @@
-import * as S from './MainSearchBar.styles';
+import Image from 'next/image';
 import searchIcon from '../../../public/image/Search.png';
+import * as S from './MainSearchBar.styles';
 
 interface IIsTag {
   isTag: boolean;
@@ -18,8 +19,8 @@ function SearchBar() {
   return (
     <S.SearchBarForm>
       <input type="text" />
-      <button>
-        <img src={searchIcon} />
+      <button type="button">
+        <Image src={searchIcon} alt="search icon" />
       </button>
     </S.SearchBarForm>
   );
@@ -28,10 +29,10 @@ function SearchBar() {
 export function MainSearchBar() {
   return (
     <S.MainSearchBarContainer>
-      <TagCheckbox isTag={true} />
+      <TagCheckbox isTag />
       <SearchBar />
       {/* 훗날 taglist가 들어갈 자리 */}
-      <div id="taglist"></div>
+      <div id="taglist" />
     </S.MainSearchBarContainer>
   );
 }
