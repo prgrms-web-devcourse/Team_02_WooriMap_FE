@@ -5,11 +5,11 @@ import * as S from './TagInputWithList.styles';
 
 export interface IHandleChange {
   name: string;
-  value: string;
+  value: ITag[];
 }
 interface ITagInputWithListProps extends ITextInputProps {
   allTags: ITag[];
-  value?: string;
+  value?: ITag[];
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
   handleChange: ({ name, value }: IHandleChange) => void;
 }
@@ -32,7 +32,7 @@ export function TagInputWithList({
   ...props
 }: ITagInputWithListProps) {
   const [inputValue, setInputValue] = useState<ITag[]>(
-    value === undefined ? [] : JSON.parse(value),
+    value === undefined ? [] : value,
   );
 
   const handleEnterType = (newTagName: string) => {
@@ -50,13 +50,13 @@ export function TagInputWithList({
     const newInputValue = [...inputValue];
     newInputValue.push(newTag);
     setInputValue(newInputValue);
-    handleChange({ name: 'tags', value: JSON.stringify(newInputValue) });
+    handleChange({ name: 'tags', value: newInputValue });
   };
 
   const handleDelete = (key: string) => {
     const newInputValue: ITag[] = inputValue.filter(({ name }) => name !== key);
     setInputValue(newInputValue);
-    handleChange({ name: 'tags', value: JSON.stringify(newInputValue) });
+    handleChange({ name: 'tags', value: newInputValue });
   };
 
   return (
