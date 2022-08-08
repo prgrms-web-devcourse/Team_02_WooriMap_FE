@@ -17,7 +17,6 @@ function useCheckAuth() {
           .then((response) => response.data);
         setUser(data);
       } catch {
-        setUser(null);
         router.push('/auth/signin');
       } finally {
         setLoading(false);
