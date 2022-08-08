@@ -32,19 +32,23 @@ export function MainPageTemplate({
   coordinate,
 }: IMainPageTemplateProps) {
   return (
-    <S.Container>
-      <NavBar />
-      <MainSidebar coupleData={coupleData} postList={postList} />
-      <S.MapContainer>
-        <Map
-          width="100%"
-          height="100%"
-          center={{
-            lat: coordinate.lat,
-            lng: coordinate.lng,
-          }}
-        />
-      </S.MapContainer>
-    </S.Container>
+    <S.Wrapper>
+      <S.Container>
+        <NavBar />
+        <S.MainSidebarContainer>
+          <MainSidebar coupleData={coupleData} postList={postList} />
+        </S.MainSidebarContainer>
+        <S.MapContainer>
+          <Map
+            width="100%"
+            height="100%"
+            center={{
+              lat: coordinate.lat,
+              lng: coordinate.lng,
+            }}
+          />
+        </S.MapContainer>
+      </S.Container>
+    </S.Wrapper>
   );
 }
