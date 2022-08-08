@@ -6,17 +6,35 @@ export const fetchFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
 
     formData.append('file', file);
-    formData.append('upload_preset', 'my-uploads');
 
-    const res = await fetch(
-      'https://api.cloudinary.com/v1_1/dq4j0pffj/image/upload',
-      {
-        method: 'POST',
-        body: formData,
+    const response = await fetch('https://dev.woorimap.p-e.kr/api/image', {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Content-Type': 'multipart/form-data',
       },
-    );
+    })
+      .then((res) => {
+        console.log(res);
+        return res.json();
+      })
+      .catch((err) => console.log(err));
 
-    const data = await res.json();
+    console.log(response);
+
+    // const data = await response.json();
+
+    // formData.append('upload_preset', 'my-uploads');
+
+    // const res = await fetch(
+    //   'https://api.cloudinary.com/v1_1/dq4j0pffj/image/upload',
+    //   {
+    //     method: 'POST',
+    //     body: formData,
+    //   },
+    // );
+
+    // const data = await res.json();
 
     return {
       name,
