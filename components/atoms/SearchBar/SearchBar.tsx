@@ -21,9 +21,11 @@ export function SearchBar({
 }: ISearchBarProps) {
   const resultLength = results.length;
 
+  const isSearching = resultLength > 0 && isResultVisible;
+
   return (
     <S.Container>
-      <S.Wrapper isSearching={resultLength > 0 && isResultVisible}>
+      <S.Wrapper isSearching={isSearching}>
         <S.Input
           value={keyword}
           placeholder="장소를 검색해주세요"
@@ -31,7 +33,7 @@ export function SearchBar({
         />
         <Image src={search} width={16} height={16} alt="search" />
       </S.Wrapper>
-      {resultLength > 0 && isResultVisible && (
+      {isSearching && (
         <S.SearchResultBox>
           {results.map((result: IMapMarker) => (
             <S.SearchResult key={nanoid()} onClick={() => onClick(result)}>
