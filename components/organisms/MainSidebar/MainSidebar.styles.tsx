@@ -5,9 +5,9 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  width: 480px;
-  height: 1037px;
+  width: 700px;
+  height: 100%;
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0, 0, 16, rgba(0, 0, 0, 0.25);
+  box-shadow: 10px 5px 5px red;
   overflow: auto;
 `;

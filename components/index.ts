@@ -1,4 +1,5 @@
 // atoms
+import { MainPageTemplate } from './templates/MainPageTemplate/MainPageTemplate';
 export { Button } from 'components/atoms/Button';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
@@ -38,3 +39,4 @@ export { MainSidebar } from 'components/organisms/MainSidebar';
 export { Layout } from 'components/templates/Layout';
 export { PostTemplate } from 'components/templates/PostTemplate';
 export { SignUpTemplate } from 'components/templates/SignUpTemplate';
+export { MainPageTemplate } from 'components/templates/MainPageTemplate';
