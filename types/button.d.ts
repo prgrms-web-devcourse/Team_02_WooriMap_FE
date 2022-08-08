@@ -1,4 +1,4 @@
 export interface IButtonStyleProps {
-  variant?: string;
+  variant?: 'black' | 'grayOutlined' | 'pink';
   size: 'xsmall' | 'small' | 'medium' | 'large' | 'xlarge';
 }
