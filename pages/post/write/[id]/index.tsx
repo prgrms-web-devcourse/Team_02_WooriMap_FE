@@ -17,7 +17,7 @@ export default function PostEdit({
     console.log(values);
   };
 
-  const { values, handleChange, handleSubmit, errors, removeAll } = useForm<
+  const { values, handleChange, handleSubmit, removeAll } = useForm<
     IPostFormState,
     IPostValidationState,
     IPostValidationProps
@@ -54,6 +54,7 @@ export default function PostEdit({
 }
 
 export function getStaticProps({ params }: { params: { id: string } }) {
+  console.log(params);
   const initialValues = {
     title: '너와의 첫 만남',
     content:
