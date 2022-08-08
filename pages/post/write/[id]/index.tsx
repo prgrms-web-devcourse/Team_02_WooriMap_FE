@@ -1,15 +1,40 @@
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
-import { IPostFormState } from 'types';
+import { useForm } from 'hooks';
+import {
+  IPostFormState,
+  IPostValidationState,
+  IPostValidationProps,
+} from 'types';
+import { errorState, validateValues } from 'pages/post/write/helper';
 import { dummyImages } from 'utils';
 
-export default function PostEdit({ data }: IPostFormState) {
-  const { title, content, date, tags, imageUrls, latitude, longitude } = data;
+export default function PostEdit({
+  initialValues,
+}: {
+  initialValues: IPostFormState;
+}) {
+  const onSubmit = ({ values }: { values: IPostFormState }) => {
+    console.log(values);
+  };
+
+  const { values, handleChange, handleSubmit, errors, removeAll } = useForm<
+    IPostFormState,
+    IPostValidationState,
+    IPostValidationProps
+  >({
+    initialValues,
+    errorState,
+    onSubmit,
+    validateValues,
+  });
+
+  const { title, content, date, tags, latitude, longitude, imageUrls } = values;
 
   return (
     <PostTemplate
       type="edit"
-      onSubmit={() => {}}
-      imageSection={<ImageViewer images={imageUrls} />}
+      onSubmit={handleSubmit}
+      imageSection={<ImageViewer images={imageUrls as Array<string>} />}
       contentSection={
         <PostWrite
           postState={{
@@ -20,6 +45,8 @@ export default function PostEdit({ data }: IPostFormState) {
             latitude,
             longitude,
           }}
+          handleChange={handleChange}
+          deleteAll={removeAll}
         />
       }
     />
@@ -27,7 +54,7 @@ export default function PostEdit({ data }: IPostFormState) {
 }
 
 export function getStaticProps({ params }: { params: { id: string } }) {
-  const data = {
+  const initialValues = {
     title: '너와의 첫 만남',
     content:
       'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut blanditiis doloremque distinctio sunt repudiandae iure. Voluptate at voluptatem consequuntur reprehenderit modi, necessitatibus ipsa nulla reiciendis tenetur, aliquid voluptatum esse culpa?',
@@ -39,7 +66,7 @@ export function getStaticProps({ params }: { params: { id: string } }) {
   };
   return {
     props: {
-      data,
+      initialValues,
     },
   };
 }
