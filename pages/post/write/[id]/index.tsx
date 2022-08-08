@@ -61,8 +61,8 @@ export function getStaticProps({ params }: { params: { id: string } }) {
     date: '2020-01-01',
     tags: ['여행', '친구', '여자친구'],
     imageUrls: dummyImages,
-    latitude: '37.566535',
-    longitude: '126.977969',
+    latitude: '33.450701',
+    longitude: '126.570667',
   };
   return {
     props: {

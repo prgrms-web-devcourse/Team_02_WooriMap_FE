@@ -21,14 +21,21 @@ interface IReturnType {
   }) => void;
 }
 
-function useMapSearch(
-  map: kakao.maps.Map | null,
-  setSelected: Dispatch<SetStateAction<IMapMarker>>,
-): IReturnType {
+interface IMapSearchProps {
+  initialMarker: IMapMarker[];
+  map: kakao.maps.Map | null;
+  setSelected: Dispatch<SetStateAction<IMapMarker>>;
+}
+
+function useMapSearch({
+  initialMarker,
+  map,
+  setSelected,
+}: IMapSearchProps): IReturnType {
   const [services, setServices] = useState<kakao.maps.services.Places | null>(
     null,
   );
-  const [markers, setMarkers] = useState<IMapMarker[]>([]);
+  const [markers, setMarkers] = useState<IMapMarker[]>(initialMarker);
 
   const setBounds = useCallback(
     (data: ICoordinates[]) => {
