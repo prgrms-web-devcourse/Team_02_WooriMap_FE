@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { ImageList, UploadArea } from 'components';
 import { IImageSource, IFormImageProps } from 'types';
-import { fetchFile } from './helper';
+import { uploadImage } from 'apis/image';
 import * as S from './ImageUploader.styles';
 
 type IImages = Array<Omit<IImageSource, 'isSelected'>>;
@@ -17,13 +17,13 @@ export function ImageUploader({ imageUrls, handleChange }: IFormImageProps) {
   const [uploadSrc, setUploadSrc] = useState<IImages>(initialState);
 
   const onUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, data } = await fetchFile(e);
+    const { name, data } = await uploadImage(e);
 
     if (data) {
-      setUploadSrc([...uploadSrc, { key: nanoid(), src: data.secure_url }]);
+      setUploadSrc([...uploadSrc, { key: nanoid(), src: data }]);
       handleChange({
         name,
-        value: [...(imageUrls as Array<string>), data.secure_url],
+        value: [...(imageUrls as Array<string>), data],
       });
     }
   };
