@@ -23,8 +23,6 @@ export function CalendarInput({
     if (calendarInputRef.current) calendarInputRef.current.focus();
   };
 
-  console.log(name);
-
   return (
     <S.CalendarInputWrapper>
       <S.CalendarButton>

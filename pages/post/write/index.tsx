@@ -12,7 +12,12 @@ export const initialValues: IPostFormState = {
   content: '',
   datingDate: formatDate(),
   imageUrls: [],
-  tags: [],
+  tags: [
+    {
+      name: 'hello',
+      color: '#ff0000',
+    },
+  ],
   latitude: 0,
   longitude: 0,
 };
