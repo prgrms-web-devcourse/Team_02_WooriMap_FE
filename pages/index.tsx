@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { MainPageTemplate } from 'components';
 import { useGeolocation } from 'hooks';
 
@@ -20,7 +19,7 @@ function Home() {
   const dummyCoupleData = getCoupleData();
 
   const getPostList = () => {
-    //api 구현 아직..!!
+    // api 구현 아직..!!
     const dummyData = [
       {
         postId: '1',
@@ -97,7 +96,7 @@ function Home() {
   };
   const dummyPostListData = getPostList();
 
-  const getCoordinate = () => {
+  const useCoordinate = () => {
     const { coords } = useGeolocation();
     const dummyData = {
       lat: coords.latitude,
@@ -106,7 +105,7 @@ function Home() {
     return dummyData;
   };
 
-  const dummyGetCoordinate = getCoordinate();
+  const dummyGetCoordinate = useCoordinate();
 
   return (
     <MainPageTemplate

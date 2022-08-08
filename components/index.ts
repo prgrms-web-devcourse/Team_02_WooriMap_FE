@@ -1,5 +1,4 @@
 // atoms
-import { MainPageTemplate } from './templates/MainPageTemplate/MainPageTemplate';
 export { Button } from 'components/atoms/Button';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
