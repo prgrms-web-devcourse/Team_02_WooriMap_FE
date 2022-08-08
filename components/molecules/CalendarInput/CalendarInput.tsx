@@ -14,7 +14,7 @@ export function CalendarInput({
   value,
   handleChange,
 }: ICalenderInputProps) {
-  const calendarInputRef = useRef<HTMLInputElement>(null);
+  const calendarInputRef = useRef<HTMLInputElement | null>(null);
 
   const onClickCalendarButton = (
     e: React.MouseEvent<HTMLImageElement, MouseEvent>,

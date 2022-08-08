@@ -8,12 +8,14 @@ interface ITextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   handleChange: HandleChangeTypes;
 }
 
-export function TextInput({ onClickButton, ...props }: ITextInputProps) {
-  const { handleChange, ...rest } = props as ITextInputProps;
-
+export function TextInput({
+  onClickButton,
+  handleChange,
+  ...props
+}: ITextInputProps) {
   return (
     <S.TextInputWrapper>
-      <S.TextInput onChange={(e) => handleChange({ e })} {...rest} />
+      <S.TextInput onChange={(e) => handleChange({ e })} {...props} />
       <DeleteAllBtn onClick={onClickButton} />
     </S.TextInputWrapper>
   );

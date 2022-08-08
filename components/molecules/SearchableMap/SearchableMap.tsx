@@ -1,14 +1,11 @@
 import { useState } from 'react';
 import { useMapSearch } from 'hooks';
-import { IMapMarker, HandleChangeTypes } from 'types';
+import { IMapMarker, HandleChangeTypes, ICoordinates } from 'types';
 import { Map, SearchBar, MultiMarkerDrawer } from 'components';
 import * as S from './SearchableMap.styles';
 
 interface ISearchableMapProps {
-  position: {
-    latitude: number;
-    longitude: number;
-  };
+  position: ICoordinates;
   handleChange: HandleChangeTypes;
 }
 
