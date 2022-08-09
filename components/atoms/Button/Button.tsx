@@ -2,6 +2,15 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 import { IButtonStyleProps } from 'types';
 
+const disabledButtonStyle = ({ theme }: IThemeProps) => css`
+  border: 0;
+  outline: 0;
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.gray};
+  cursor: default;
+  pointer-events: none;
+`;
+
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.white};
   background-color: ${theme.colors.black};
@@ -21,6 +30,14 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.black};
   background-color: ${theme.colors.white};
   border: 3px solid ${theme.colors.gray};
+`;
+
+const pinkButtonStyle = ({ theme }: IThemeProps) => css`
+  border: 0;
+  outline: 0;
+  color: ${theme.colors.black};
+  background-color: ${theme.colors.pink};
+  border: 3px solid ${theme.colors.black};
 `;
 
 export const Button = styled.button<IButtonStyleProps>`
