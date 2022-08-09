@@ -1,2 +1,2 @@
 export { MainSidebar } from './MainSidebar';
-export type { IMainSidebar } from './MainSidebar';
+export type { IMainSidebarProps } from './MainSidebar';

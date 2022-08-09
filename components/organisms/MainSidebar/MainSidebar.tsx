@@ -7,7 +7,7 @@ interface IProfile {
   nickname: string;
 }
 
-export interface IMainSidebar {
+export interface IMainSidebarProps {
   coupleData: {
     startDate: string;
     me: IProfile;

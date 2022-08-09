@@ -16,7 +16,7 @@ export const Container = styled.nav`
   border-bottom: 2px solid ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.white};
 
-  z-index: 1000;
+  z-index: 500;
 `;
 
 export const Wrapper = styled.section`
