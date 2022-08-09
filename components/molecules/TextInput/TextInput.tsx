@@ -1,21 +1,28 @@
 import React, { InputHTMLAttributes } from 'react';
-import { HandleChangeTypes } from 'types';
+import { HandleChangeTypes, ITagState } from 'types';
 import { DeleteAllBtn } from 'components';
 import * as S from './TextInput.styles';
 
-interface ITextInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface ITextInputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
+  value: string | Array<ITagState>;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
   handleChange?: HandleChangeTypes;
 }
 
 export function TextInput({
+  value,
   onClickButton,
   handleChange,
   ...props
 }: ITextInputProps) {
   return (
     <S.TextInputWrapper>
-      <S.TextInput onChange={(e) => handleChange?.({ e })} {...props} />
+      <S.TextInput
+        value={value as string}
+        onChange={(e) => handleChange?.({ e })}
+        {...props}
+      />
       <DeleteAllBtn onClick={onClickButton} />
     </S.TextInputWrapper>
   );

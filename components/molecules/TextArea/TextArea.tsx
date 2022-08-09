@@ -1,9 +1,11 @@
 import { InputHTMLAttributes } from 'react';
 import { DeleteAllBtn } from 'components';
-import { HandleChangeTypes } from 'types';
+import { HandleChangeTypes, ITagState } from 'types';
 import * as S from './TextArea.styles';
 
-interface ITextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+interface ITextAreaProps
+  extends Omit<InputHTMLAttributes<HTMLTextAreaElement>, 'value'> {
+  value: string | Array<ITagState>;
   handleChange: HandleChangeTypes;
   onClickButton: (e: React.MouseEvent<HTMLImageElement>) => void;
 }
@@ -21,7 +23,7 @@ export function TextArea({
       <S.TextArea
         id={id}
         name={name}
-        value={value}
+        value={value as string}
         placeholder={placeholder}
         onChange={(e) => handleChange({ e })}
       />
