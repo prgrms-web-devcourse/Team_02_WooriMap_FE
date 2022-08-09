@@ -6,6 +6,8 @@ import {
   IPostValidationProps,
   IPostFormState,
 } from 'types';
+import { postCreate } from 'apis/post';
+import useAxiosInstance from '../../../hooks/useAxiosInstance/useAxiosInstnace';
 
 export const initialValues: IPostFormState = {
   title: '',
@@ -29,8 +31,20 @@ export const errorState: IPostValidationState = {
 };
 
 export default function PostCreate() {
-  const onSubmit = ({ values }: { values: IPostFormState }) => {
-    console.log(values);
+  const instance = useAxiosInstance();
+
+  const onSubmit = async ({ values }: { values: IPostFormState }) => {
+    try {
+      const response = await postCreate({ data: values, instance });
+
+      if (response) {
+        console.log(response);
+      } else {
+        console.log('정상 성공!');
+      }
+    } catch (error: unknown) {
+      console.error(error);
+    }
   };
 
   const { values, handleChange, handleSubmit, removeAll } = useForm<
