@@ -1,19 +1,23 @@
-import LocalStorage from 'utils/storage';
 import { atom, AtomEffect } from 'recoil';
+import LocalStorage from 'utils/storage';
 import { IUserResponse } from 'types/auth';
+import { validateUser } from './helper';
 
-const LocalStorageEffect: AtomEffect<string | null> = ({ setSelf, onSet }) => {
-  const savedValue = LocalStorage.getItem<string, null>('accessToken', null);
-  setSelf(savedValue);
+const LocalStorageEffect: AtomEffect<IUserResponse | null> = ({
+  setSelf,
+  onSet,
+}) => {
+  const savedValue = LocalStorage.getItem('user', null);
+  setSelf(validateUser(savedValue) ? savedValue : null);
 
   onSet((newValue, _, isReset) =>
     isReset
-      ? LocalStorage.removeItem('accessToken')
-      : LocalStorage.setItem('accessToken', newValue),
+      ? LocalStorage.removeItem('user')
+      : LocalStorage.setItem('user', newValue),
   );
 };
 
-const userState = atom<string | null>({
+const userState = atom<IUserResponse | null>({
   key: 'user',
   default: null,
   effects: [LocalStorageEffect],
