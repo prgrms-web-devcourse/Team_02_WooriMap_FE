@@ -1,7 +1,11 @@
 export type { IImageSource } from 'types/imageSource';
 export type { ITextInputProps, IInputState } from 'types/textInput';
 export type { ISingnUpRes } from 'types/signupRes';
-export type { ILoginFormData, IUserResponse, ILoginResponse } from 'types/auth';
+export type {
+  LoginFormDataTypes as ILoginFormData,
+  UserResponseType as IUserResponse,
+  ILoginResponse,
+} from 'types/auth';
 export type { IApiResponse, IOnSubmit } from 'types/api';
 export type { ICoordinates, IMapMarker } from 'types/map';
 export type {

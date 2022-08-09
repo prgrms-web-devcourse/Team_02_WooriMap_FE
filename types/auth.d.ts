@@ -1,24 +1,26 @@
 import { AxiosRequestConfig } from 'axios';
 
-interface IEmail {
+interface User {
   email: string;
-}
-export interface ILoginFormData extends IEmail {
   password: string;
+  imageUrl: string | null;
+  nickName: string;
+  isCouple: boolean;
 }
 
 interface ITokenSet {
   accessToken: string;
 }
 
-export interface IUserResponse extends IEmail {
-  imageUrl: string | null;
-  nickName: string;
-  isCouple: boolean;
-}
+export type LoginFormDataTypes = Pick<User, 'email' | 'password'>;
+
+export type UserResponseType = Pick<
+  User,
+  'email' | 'imageUrl' | 'nickName' | 'isCouple'
+>;
 
 export interface ILoginResponse extends ITokenSet {
-  member: IUserResponse;
+  member: UserResponseType;
 }
 
 export interface IRetryAxiosInstanceConfig extends AxiosRequestConfig {

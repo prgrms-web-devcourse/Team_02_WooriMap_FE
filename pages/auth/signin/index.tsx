@@ -8,7 +8,7 @@ import {
   TextInput,
 } from 'components';
 import { useAxiosInstance } from 'hooks';
-import { ILoginFormData, ILoginResponse } from 'types/auth';
+import { LoginFormDataTypes, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
 import LocalStorage from 'utils/storage';
 import userState from 'core';
@@ -36,7 +36,7 @@ function Signin() {
     setData((prev) => ({ ...prev, [key]: '' }));
   }, []);
 
-  const login = async (loginFormData: ILoginFormData) => {
+  const login = async (loginFormData: LoginFormDataTypes) => {
     try {
       const userData = await instance
         .post<IApiResponse<ILoginResponse>>('/auth/signin', {

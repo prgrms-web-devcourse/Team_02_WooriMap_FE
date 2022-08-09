@@ -1,9 +1,9 @@
 import { atom, AtomEffect } from 'recoil';
 import LocalStorage from 'utils/storage';
-import { IUserResponse } from 'types/auth';
+import { UserResponseType } from 'types/auth';
 import { validateUser } from './helper';
 
-const LocalStorageEffect: AtomEffect<IUserResponse | null> = ({
+const LocalStorageEffect: AtomEffect<UserResponseType | null> = ({
   setSelf,
   onSet,
 }) => {
@@ -17,7 +17,7 @@ const LocalStorageEffect: AtomEffect<IUserResponse | null> = ({
   );
 };
 
-const userState = atom<IUserResponse | null>({
+const userState = atom<UserResponseType | null>({
   key: 'user',
   default: null,
   effects: [LocalStorageEffect],
