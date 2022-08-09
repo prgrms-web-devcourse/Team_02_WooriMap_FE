@@ -1,5 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { ITag } from 'types';
+import { ITag, HandleChangeTypes } from 'types';
 import { TagInputWithList } from './TagInputWithList';
 
 export default {
@@ -23,12 +23,7 @@ const allTags: ITag[] = [
   { name: '저태그아닌가17', color: '#607EAA' },
 ];
 
-interface IHandleChange {
-  name: string;
-  value: ITag[];
-}
-
-const handleChange = ({ name, value }: IHandleChange) => {
+const handleChange: HandleChangeTypes = ({ name, value }) => {
   console.log(`name: ${name}   value: ${value}`);
 };
 

@@ -3,15 +3,10 @@ import React, { useState } from 'react';
 import { TagInput } from 'components/atoms/TagInput';
 import * as S from './TagInputWithList.styles';
 
-export interface IHandleChange {
-  name: string;
-  value: ITag[];
-}
 interface ITagInputWithListProps extends ITextInputProps {
   allTags: ITag[];
   value?: ITag[];
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
-  handleChange: ({ name, value }: IHandleChange) => void;
 }
 
 const defaultTagColors: string[] = [
@@ -50,13 +45,13 @@ export function TagInputWithList({
     const newInputValue = [...inputValue];
     newInputValue.push(newTag);
     setInputValue(newInputValue);
-    handleChange({ name: 'tags', value: newInputValue });
+    if (handleChange) handleChange({ name: 'tags', value: newInputValue });
   };
 
   const handleDelete = (key: string) => {
     const newInputValue: ITag[] = inputValue.filter(({ name }) => name !== key);
     setInputValue(newInputValue);
-    handleChange({ name: 'tags', value: newInputValue });
+    if (handleChange) handleChange({ name: 'tags', value: newInputValue });
   };
 
   return (

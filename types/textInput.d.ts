@@ -2,7 +2,7 @@ import { HandleChangeTypes, ITagState } from 'types/post';
 
 export interface ITextInputProps {
   key?: string;
-  value?: string | ITag[] | number;
+  value?: string | ITagState[] | number;
   name?: string;
   text?: string;
   type?: string;

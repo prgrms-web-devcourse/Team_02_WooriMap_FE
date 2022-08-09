@@ -1,9 +1,9 @@
-import { ITextInputProps, ITag } from 'types';
-import React, { useState } from 'react';
+import { ITag } from 'types';
+import React, { useState, InputHTMLAttributes } from 'react';
 import { Tag } from 'components';
 import * as S from './TagInput.styles';
 
-interface ITagInputProps extends ITextInputProps {
+interface ITagInputProps extends InputHTMLAttributes<HTMLInputElement> {
   allTags: ITag[];
   onEnterType: (newTagName: string) => void;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;

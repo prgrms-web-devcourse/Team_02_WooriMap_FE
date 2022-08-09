@@ -2,6 +2,7 @@
 import { ITextInputProps, HandleChangeTypes } from 'types';
 import { TextInput, CalendarInput, TextArea } from 'components';
 import * as S from './TextInputWithLabel.styles';
+import { TagInputWithList } from '../TagInputWithList';
 
 interface ITextInputWithLabelProps extends ITextInputProps {
   error?: string;
@@ -23,6 +24,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             value={value as string}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
+            value={value as string}
             {...props}
           />
         )}
@@ -30,12 +32,21 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
           <CalendarInput
             value={value as string}
             handleChange={handleChange as HandleChangeTypes}
+            value={value as string}
             {...props}
           />
         )}
         {variant === 'textarea' && (
           <TextArea
             value={value as string}
+            onClickButton={onClickDeleteButton}
+            handleChange={handleChange as HandleChangeTypes}
+            {...props}
+          />
+        )}
+        {variant === 'textarea' && (
+          <TagInputWithList
+            value={value}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
             {...props}
