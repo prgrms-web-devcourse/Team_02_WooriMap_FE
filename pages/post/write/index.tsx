@@ -32,7 +32,13 @@ export const errorState: IPostValidationState = {
 export default function PostCreate() {
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
-      const status = await postCreate({ data: values });
+      const response = await postCreate({ data: values });
+
+      if (response) {
+        console.log(response);
+      } else {
+        console.log('정상 성공!');
+      }
     } catch (error: unknown) {
       console.error(error);
     }

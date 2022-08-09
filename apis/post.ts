@@ -19,11 +19,13 @@ export const postCreate = async ({ data }: { data: IPostFormState }) => {
         return response?.data;
       });
 
+    if (res.message) {
+      return res.message;
+    }
+
     return res.data;
   } catch (error: unknown) {
     console.error(error);
-    return {
-      data: {},
-    };
+    return '서버에러';
   }
 };
