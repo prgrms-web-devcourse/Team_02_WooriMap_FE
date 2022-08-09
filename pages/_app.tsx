@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
+import { RecoilRoot } from 'recoil';
 import { Layout } from 'components';
 import { AuthProvider } from 'contexts/AuthContext';
 import { GlobalStyle, theme } from '../styles';
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       <AuthProvider>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
+          <RecoilRoot>
+            <Layout>
+              <Component {...pageProps} />
+            </Layout>
+          </RecoilRoot>
         </ThemeProvider>
       </AuthProvider>
     </>
