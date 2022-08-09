@@ -1,6 +1,6 @@
 import { useForm } from 'hooks';
 import { PostTemplate, ImageUploader, PostWrite } from 'components';
-import { FormValidation, formatDate } from 'utils';
+import { postValidation, formatDate } from 'utils';
 import {
   IPostValidationState,
   IPostValidationProps,
@@ -10,9 +10,14 @@ import {
 export const initialValues: IPostFormState = {
   title: '',
   content: '',
-  date: formatDate(),
+  datingDate: formatDate(),
   imageUrls: [],
-  tags: [],
+  tags: [
+    {
+      name: 'hello',
+      color: '#ff0000',
+    },
+  ],
   latitude: 0,
   longitude: 0,
 };
@@ -21,28 +26,6 @@ export const errorState: IPostValidationState = {
   title: '',
   imageUrls: '',
   tags: '',
-};
-
-export const validateValues = ({
-  title,
-  imageUrls,
-  tags,
-}: IPostValidationProps) => {
-  const errors: IPostValidationState = {
-    title: '',
-    imageUrls: '',
-    tags: '',
-  };
-
-  const { validateTitle, validateImages, validateTags } = new FormValidation();
-
-  errors.title = validateTitle({ title });
-
-  errors.imageUrls = validateImages({ imageUrls });
-
-  errors.tags = validateTags({ tags });
-
-  return errors;
 };
 
 export default function PostCreate() {
@@ -58,7 +41,7 @@ export default function PostCreate() {
     initialValues,
     errorState,
     onSubmit,
-    validateValues,
+    validateValues: postValidation,
   });
 
   return (
@@ -76,7 +59,7 @@ export default function PostCreate() {
           postState={{
             title: values.title,
             content: values.content,
-            date: values.date,
+            datingDate: values.datingDate,
             tags: values.tags,
             latitude: values.latitude,
             longitude: values.longitude,

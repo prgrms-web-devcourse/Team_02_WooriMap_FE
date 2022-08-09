@@ -9,12 +9,9 @@ import {
   AuthPageRoutingButton,
   AuthLogoImage,
 } from 'components';
+import { signupValidation } from 'utils';
 import { signup } from 'apis/auth';
-import {
-  validateValues,
-  textInputsProps,
-  parseSignUpFormValues,
-} from './helper';
+import { textInputsProps, parseSignUpFormValues } from './helper';
 import * as S from './SignUpForm.styles';
 
 interface IOnSubmit<T> {
@@ -49,7 +46,7 @@ export function SignUpForm() {
     initialValues,
     errorState: { ...initialValues },
     onSubmit,
-    validateValues,
+    validateValues: signupValidation,
   });
 
   return (

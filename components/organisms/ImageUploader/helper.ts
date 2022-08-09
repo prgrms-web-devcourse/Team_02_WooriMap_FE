@@ -6,6 +6,7 @@ export const fetchFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const formData = new FormData();
 
     formData.append('file', file);
+
     formData.append('upload_preset', 'my-uploads');
 
     const res = await fetch(

@@ -1,40 +1,6 @@
 import { nanoid } from 'nanoid';
-import { FormValidation } from 'utils';
-import { IInputState, ITextInputProps, HandleChangeTypes } from 'types';
 
-export const validateValues = ({
-  email,
-  nickName,
-  password,
-  confirmPassword,
-}: IInputState) => {
-  const errors: IInputState = {
-    email: '',
-    nickName: '',
-    password: '',
-    confirmPassword: '',
-  };
-
-  const {
-    validateEmail,
-    validateNickName,
-    validatePassword,
-    validateConfirmPassword,
-  } = new FormValidation();
-
-  errors.email = validateEmail({ email });
-
-  errors.nickName = validateNickName({ nickName });
-
-  errors.password = validatePassword({ password });
-
-  errors.confirmPassword = validateConfirmPassword({
-    password,
-    confirmPassword,
-  });
-
-  return errors;
-};
+import { ITextInputProps, HandleChangeTypes } from 'types';
 
 export const textInputsProps: Array<ITextInputProps> = [
   {

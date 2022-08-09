@@ -19,11 +19,13 @@ export function ImageUploader({ imageUrls, handleChange }: IFormImageProps) {
   const onUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, data } = await fetchFile(e);
 
-    setUploadSrc([...uploadSrc, { key: nanoid(), src: data.secure_url }]);
-    handleChange({
-      name,
-      value: [...(imageUrls as Array<string>), data.secure_url],
-    });
+    if (data) {
+      setUploadSrc([...uploadSrc, { key: nanoid(), src: data.secure_url }]);
+      handleChange({
+        name,
+        value: [...(imageUrls as Array<string>), data.secure_url],
+      });
+    }
   };
 
   const onDelete = (key: string) => {

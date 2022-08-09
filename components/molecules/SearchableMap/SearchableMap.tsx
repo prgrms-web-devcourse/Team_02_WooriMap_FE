@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useMapSearch } from 'hooks';
 import { IMapMarker, HandleChangeTypes, ICoordinates } from 'types';
 import { Map, SearchBar, MultiMarkerDrawer } from 'components';
+import { setInitialPositionState } from './helper';
 import * as S from './SearchableMap.styles';
 
 interface ISearchableMapProps {
@@ -10,16 +11,23 @@ interface ISearchableMapProps {
 }
 
 export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
+  const { initialMarker, initialMapCenter } = setInitialPositionState({
+    marker: {
+      position: { ...position },
+      content: '',
+    },
+  });
+
   const [selected, setSelected] = useState<IMapMarker>({
     content: '',
     position,
   });
   const [isResultVisible, setIsResultVisible] = useState<boolean>(false);
   const [map, setMap] = useState<kakao.maps.Map | null>(null);
-  const { markers, getSearchResults, onSelectMarker } = useMapSearch(
+  const { markers, getSearchResults, onSelectMarker } = useMapSearch({
+    initialMarker,
     map,
-    setSelected,
-  );
+  });
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -29,7 +37,7 @@ export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
   };
 
   const onClickMarker = () => (marker: IMapMarker) => {
-    onSelectMarker({ marker, handleChange });
+    onSelectMarker({ marker, handleChange, setSelected });
     setIsResultVisible(() => false);
   };
 
@@ -47,7 +55,7 @@ export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
         height="100%"
         isMain={false}
         onCreate={setMap}
-        center={{ lat: 37.5666805, lng: 126.9784147 }}
+        center={{ ...initialMapCenter }}
       >
         <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
       </Map>
