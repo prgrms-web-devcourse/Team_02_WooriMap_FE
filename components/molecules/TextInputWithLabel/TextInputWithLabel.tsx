@@ -8,7 +8,7 @@ interface ITextInputWithLabelProps extends ITextInputProps {
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, label, deleteAll, variant, handleChange } = props;
+  const { name, text, deleteAll, variant, handleChange, value } = props;
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -17,7 +17,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
   return (
     <S.Container>
       <S.Wrapper isValidationNotUsed={props.error === undefined}>
-        <label htmlFor={name}>{label}</label>
+        <label htmlFor={name}>{text}</label>
         {variant === 'input' && (
           <TextInput
             value={value as string}

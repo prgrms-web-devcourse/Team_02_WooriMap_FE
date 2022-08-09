@@ -8,7 +8,7 @@ export const textInputsProps: Array<ITextInputProps> = [
     name: 'email',
     type: 'email',
     variant: 'input',
-    label: '이메일',
+    text: '이메일',
     placeholder: '이메일 주소를 입력해주세요',
   },
   {
@@ -16,7 +16,7 @@ export const textInputsProps: Array<ITextInputProps> = [
     name: 'nickName',
     type: 'text',
     variant: 'input',
-    label: '닉네임',
+    text: '닉네임',
     placeholder: '닉네임을 입력해주세요',
   },
   {
@@ -24,7 +24,7 @@ export const textInputsProps: Array<ITextInputProps> = [
     name: 'password',
     type: 'password',
     variant: 'input',
-    label: '비밀번호',
+    text: '비밀번호',
     placeholder: '비밀번호를 입력해주세요',
   },
   {
@@ -32,7 +32,7 @@ export const textInputsProps: Array<ITextInputProps> = [
     name: 'confirmPassword',
     type: 'password',
     variant: 'input',
-    label: '비밀번호 확인',
+    text: '비밀번호 확인',
     placeholder: '비밀번호를 한번 더 입력해주세요',
   },
 ];
