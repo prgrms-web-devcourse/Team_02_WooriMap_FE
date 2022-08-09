@@ -22,7 +22,7 @@ export function PostWrite({
       {inputList.map((item) => (
         <TextInputWithLabel
           key={item.id}
-          text={item.text}
+          label={item.text}
           name={item.name}
           placeholder={item?.placeholder}
           value={postState[item.name as keyof IPostWrite] as string}
