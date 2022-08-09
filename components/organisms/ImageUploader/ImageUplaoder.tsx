@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import { ImageList, UploadArea } from 'components';
 import { IImageSource, IFormImageProps } from 'types';
+import { useAxiosInstance } from 'hooks';
 import { uploadImage } from 'apis/image';
 import * as S from './ImageUploader.styles';
 
@@ -14,10 +15,11 @@ export function ImageUploader({ imageUrls, handleChange }: IFormImageProps) {
     src,
   })) as IImages;
 
+  const instance = useAxiosInstance();
   const [uploadSrc, setUploadSrc] = useState<IImages>(initialState);
 
   const onUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, data } = await uploadImage(e);
+    const { name, data } = await uploadImage({ e, instance });
 
     if (data) {
       setUploadSrc([...uploadSrc, { key: nanoid(), src: data }]);

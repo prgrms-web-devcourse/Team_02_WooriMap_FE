@@ -1,12 +1,19 @@
-import instance from 'apis/instance';
+// import instance from 'apis/instance';
 import LocalStorage from 'utils/storage';
+import { AxiosInstance } from 'axios';
 
-export async function uploadImage(e: React.ChangeEvent<HTMLInputElement>) {
+interface IUploadImageProps {
+  e: React.ChangeEvent<HTMLInputElement>;
+  instance: AxiosInstance;
+}
+
+export async function uploadImage({ e, instance }: IUploadImageProps) {
   const { name } = e.target;
   const file = e.target.files![0];
 
   try {
     const formData = new FormData();
+
     formData.append('file', file);
 
     const accessToken = LocalStorage.getItem('accessToken', '');
