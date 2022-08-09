@@ -1,9 +1,14 @@
+import { AxiosInstance } from 'axios';
 import LocalStorage from 'utils/storage';
 import { IPostFormState } from 'types';
 import { IApiResponse } from 'types/api';
-import instance from 'apis/instance';
 
-export const postCreate = async ({ data }: { data: IPostFormState }) => {
+interface IPostCreateProps {
+  data: IPostFormState;
+  instance: AxiosInstance;
+}
+
+export const postCreate = async ({ data, instance }: IPostCreateProps) => {
   try {
     const accessToken = LocalStorage.getItem('accessToken', '');
 

@@ -7,6 +7,7 @@ import {
   IPostFormState,
 } from 'types';
 import { postCreate } from 'apis/post';
+import useAxiosInstance from '../../../hooks/useAxiosInstance/useAxiosInstnace';
 
 export const initialValues: IPostFormState = {
   title: '',
@@ -30,9 +31,11 @@ export const errorState: IPostValidationState = {
 };
 
 export default function PostCreate() {
+  const instance = useAxiosInstance();
+
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
-      const response = await postCreate({ data: values });
+      const response = await postCreate({ data: values, instance });
 
       if (response) {
         console.log(response);
