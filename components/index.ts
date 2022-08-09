@@ -39,3 +39,4 @@ export { Layout } from 'components/templates/Layout';
 export { PostTemplate } from 'components/templates/PostTemplate';
 export { SignUpTemplate } from 'components/templates/SignUpTemplate';
 export { MainPageTemplate } from 'components/templates/MainPageTemplate';
+export { AuthPageTemplate } from 'components/templates/AuthPageTemplate';

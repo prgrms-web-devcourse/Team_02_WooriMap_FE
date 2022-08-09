@@ -1,12 +1,17 @@
 import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
-import { AuthPageTemplate } from 'components/templates/AuthPageTemplate';
-import { AuthPageRoutingButton, Button, TextInput } from 'components';
-import { useAuthContext } from 'contexts/AuthContext';
-import { ILoginFormData, ILoginResponse } from 'types/auth';
+import { useSetRecoilState } from 'recoil';
+import {
+  AuthPageTemplate,
+  AuthPageRoutingButton,
+  Button,
+  TextInput,
+} from 'components';
+import { useAxiosInstance } from 'hooks';
+import { LoginFormDataTypes, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
 import LocalStorage from 'utils/storage';
-import { useAxiosInstance } from 'hooks';
+import userState from 'core';
 
 type LoginFormKeyType = 'email' | 'password';
 
@@ -18,7 +23,7 @@ function Signin() {
   const router = useRouter();
   const [data, setData] = useState<LoginFormType>({ email: '', password: '' });
   const [, setLoading] = useState(false);
-  const [, setUser] = useAuthContext();
+  const setUser = useSetRecoilState(userState);
   const instance = useAxiosInstance();
   const [error, setError] = useState<string>('');
   const changeValue = useCallback(
@@ -31,7 +36,7 @@ function Signin() {
     setData((prev) => ({ ...prev, [key]: '' }));
   }, []);
 
-  const login = async (loginFormData: ILoginFormData) => {
+  const login = async (loginFormData: LoginFormDataTypes) => {
     try {
       const userData = await instance
         .post<IApiResponse<ILoginResponse>>('/auth/signin', {

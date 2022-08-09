@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
+import { useSetRecoilState } from 'recoil';
 import LocalStorage from 'utils/storage';
-import { useAuthContext } from 'contexts/AuthContext';
 import { IRetryAxiosInstanceConfig } from 'types/auth';
+import userState from 'core';
 import {
   getNewAccessToken,
   getConfigWithAuthorizedHeadersBy,
@@ -10,7 +11,7 @@ import {
 } from './helper';
 
 function useAxiosInstance() {
-  const [, setUser] = useAuthContext();
+  const setUser = useSetRecoilState(userState);
   const instanceRef = useRef(
     axios.create({
       baseURL: process.env.NEXT_PUBLIC_BASE_URL,
