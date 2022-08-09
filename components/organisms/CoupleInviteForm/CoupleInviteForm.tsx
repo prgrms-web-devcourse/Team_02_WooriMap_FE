@@ -42,7 +42,10 @@ export function CoupleInviteForm({
         <S.Container>
           <S.Wrapper>
             <S.Label>상대 코드</S.Label>
-            <TextInput onClickButton={onClickDeleteButton} />
+            <TextInput
+              value={code as string}
+              onClickButton={onClickDeleteButton}
+            />
           </S.Wrapper>
         </S.Container>
         {/*
