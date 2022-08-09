@@ -12,6 +12,7 @@ export { DeleteAllBtn } from 'components/atoms/DeleteAllBtn';
 export { SearchBar } from 'components/atoms/SearchBar';
 export { Map } from 'components/atoms/Map';
 export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
+export { FormLabel } from 'components/atoms/FormLabel';
 
 // molecules
 export { CalendarInput } from 'components/molecules/CalendarInput';
