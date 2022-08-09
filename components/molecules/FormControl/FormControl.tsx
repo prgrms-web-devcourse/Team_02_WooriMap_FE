@@ -1,5 +1,5 @@
 import React, { LabelHTMLAttributes } from 'react';
-import { FormLabel } from 'components';
+import { FormLabel, FlexWrapper } from 'components';
 
 interface IFormControlProps extends LabelHTMLAttributes<HTMLLabelElement> {
   label: string | number;
@@ -8,10 +8,10 @@ interface IFormControlProps extends LabelHTMLAttributes<HTMLLabelElement> {
 
 function FormControl({ label, input }: IFormControlProps) {
   return (
-    <>
+    <FlexWrapper align="center" gap="1rem">
       <FormLabel label={label} />
       {input}
-    </>
+    </FlexWrapper>
   );
 }
 

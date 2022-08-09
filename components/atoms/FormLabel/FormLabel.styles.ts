@@ -4,8 +4,8 @@ export const FormLabel = styled.label`
   width: 52px;
   height: 20px;
 
-  margin-right: 10px;
-  margin-top: 14px;
+  margin-top: auto;
+  margin-bottom: auto;
 
   font-size: 14px;
   font-weight: bold;
