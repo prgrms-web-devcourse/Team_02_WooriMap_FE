@@ -13,6 +13,7 @@ export { SearchBar } from 'components/atoms/SearchBar';
 export { Map } from 'components/atoms/Map';
 export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
 export { FormLabel } from 'components/atoms/FormLabel';
+export { Wrapper, FlexWrapper } from 'components/atoms/Wrapper';
 
 // molecules
 export { CalendarInput } from 'components/molecules/CalendarInput';
