@@ -1,5 +1,6 @@
-import { useComponentDidMount } from '@hooks/useComponentDidMount';
+import { useMemo } from 'react';
 import { useRecoilValue, RecoilValue } from 'recoil';
+import { useComponentDidMount } from 'hooks/useComponentDidMount';
 
 function useRecoilValueAfterMount<T>(
   recoilValue: RecoilValue<T>,
@@ -7,7 +8,10 @@ function useRecoilValueAfterMount<T>(
 ) {
   const didMount = useComponentDidMount();
   const realValue = useRecoilValue(recoilValue);
-  return didMount ? realValue : valueBeforeMount;
+  return useMemo(
+    () => (didMount ? realValue : valueBeforeMount),
+    [didMount, realValue, valueBeforeMount],
+  );
 }
 
 export default useRecoilValueAfterMount;

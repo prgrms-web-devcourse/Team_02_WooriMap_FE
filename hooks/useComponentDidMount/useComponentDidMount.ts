@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 function useComponentDidMount() {
   const [componentDidMount, setComponentDidMount] = useState(false);
   useEffect(() => {
     setComponentDidMount(true);
   }, []);
-  return componentDidMount;
+  return useMemo(() => componentDidMount, [componentDidMount]);
 }
 
 export default useComponentDidMount;
