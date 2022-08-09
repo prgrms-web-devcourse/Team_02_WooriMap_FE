@@ -28,3 +28,4 @@ export type {
   IMainSidebarProps,
   IMainPageTemplateProps,
 } from 'types/mainPage';
+export type { ITag } from 'types/tag';
