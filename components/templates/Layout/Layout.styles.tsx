@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
+  z-index: 0;
 
   display: flex;
   align-items: top;
@@ -13,10 +14,10 @@ export const Container = styled.div`
 
 export const Wrapper = styled.main<{ isAuthPage: boolean }>`
   width: 100%;
-  max-width: 75rem;
+  max-width: 100rem;
   flex: 1;
 
-  ${({ isAuthPage }) => !isAuthPage && `margin-top: 5rem;`})}
+  ${({ isAuthPage }) => !isAuthPage && `margin-top: 5rem;`};
 
   box-sizing: border-box;
 `;

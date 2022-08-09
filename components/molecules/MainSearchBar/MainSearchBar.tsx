@@ -17,8 +17,13 @@ function TagCheckbox({ isTag }: IIsTag) {
 }
 
 function SearchBar() {
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert('searchbar를 클릭하셨군요!');
+  };
+
   return (
-    <S.SearchBarForm>
+    <S.SearchBarForm onSubmit={onSubmit}>
       <input type="text" />
       <button type="button">
         <Image src={searchIcon} alt="search icon" />

@@ -7,7 +7,7 @@ interface IProfile {
   nickname: string;
 }
 
-interface IMainSidebar {
+export interface IMainSidebarProps {
   coupleData: {
     startDate: string;
     me: IProfile;
@@ -16,7 +16,7 @@ interface IMainSidebar {
   postList: IThumbnailCardProps[];
 }
 
-export function MainSidebar({ coupleData, postList }: IMainSidebar) {
+export function MainSidebar({ coupleData, postList }: IMainSidebarProps) {
   const { startDate, me, you } = coupleData;
 
   return (

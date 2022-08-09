@@ -4,6 +4,7 @@ export const Container = styled.nav`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1000;
 
   width: 100%;
   height: 5rem;
@@ -15,12 +16,12 @@ export const Container = styled.nav`
   border-bottom: 2px solid ${({ theme }) => theme.colors.black};
   background-color: ${({ theme }) => theme.colors.white};
 
-  z-index: 1;
+  z-index: 500;
 `;
 
 export const Wrapper = styled.section`
   width: 100%;
-  max-width: 75rem;
+  max-width: 100rem;
   height: 100%;
 
   padding: 0 2rem;
