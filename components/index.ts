@@ -25,6 +25,7 @@ export { CoupleProfile } from 'components/molecules/CoupleProfile';
 export { MainSearchBar } from 'components/molecules/MainSearchBar';
 export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
 export { SearchableMap } from 'components/molecules/SearchableMap';
+export { FormControl } from 'components/molecules/FormControl';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
