@@ -12,7 +12,7 @@ function EachProfile({ nickName, profileImagePath }: ICoupleUserProps) {
         path={profileImagePath}
         isLink={false}
       />
-      <S.Nickname>{nickName}</S.Nickname>
+      <S.NickName>{nickName}</S.NickName>
     </S.EachProfileContainer>
   );
 }
@@ -23,9 +23,9 @@ function CoupleInfo({ startDate }: IStartDateProps) {
   return (
     <S.CoupleInfoContainer>
       <S.DDay>{`D + ${calculatedDDay}`}</S.DDay>
-      <S.StartingDate>{`
+      <S.StartDate>{`
       ${startDate}
-      `}</S.StartingDate>
+      `}</S.StartDate>
     </S.CoupleInfoContainer>
   );
 }
