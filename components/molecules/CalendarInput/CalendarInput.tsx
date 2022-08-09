@@ -1,10 +1,12 @@
 import { InputHTMLAttributes, useRef } from 'react';
-import { HandleChangeTypes } from 'types';
+import { HandleChangeTypes, ITagState } from 'types';
 import calendar from 'public/image/calendar.png';
 import * as S from './CalendarInput.styles';
 
-interface ICalenderInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface ICalenderInputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
   id?: string;
+  value: string | Array<ITagState>;
   handleChange: HandleChangeTypes;
 }
 
@@ -39,7 +41,7 @@ export function CalendarInput({
         id={id}
         type="date"
         name={name}
-        value={value}
+        value={value as string}
         onChange={(e) => handleChange({ e })}
         ref={calendarInputRef}
       />

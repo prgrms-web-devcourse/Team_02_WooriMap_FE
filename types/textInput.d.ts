@@ -1,8 +1,8 @@
-import { HandleChangeTypes } from 'types/post';
+import { HandleChangeTypes, ITagState } from 'types/post';
 
 export interface ITextInputProps {
   key?: string;
-  value?: string | number | ITagState[];
+  value?: string | ITagState[];
   name?: string;
   text?: string;
   type?: string;

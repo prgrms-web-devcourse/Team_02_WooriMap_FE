@@ -8,7 +8,7 @@ interface ITextInputWithLabelProps extends ITextInputProps {
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, text, deleteAll, variant, handleChange } = props;
+  const { name, text, deleteAll, variant, handleChange, value } = props;
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -20,6 +20,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
         <label htmlFor={name}>{text}</label>
         {variant === 'input' && (
           <TextInput
+            value={value as string}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
             {...props}
@@ -27,12 +28,14 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
         )}
         {variant === 'calendar' && (
           <CalendarInput
+            value={value as string}
             handleChange={handleChange as HandleChangeTypes}
             {...props}
           />
         )}
         {variant === 'textarea' && (
           <TextArea
+            value={value as string}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
             {...props}

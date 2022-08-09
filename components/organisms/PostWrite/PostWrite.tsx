@@ -25,7 +25,7 @@ export function PostWrite({
           text={item.text}
           name={item.name}
           placeholder={item?.placeholder}
-          value={postState[item.name as keyof IPostWrite]}
+          value={postState[item.name as keyof IPostWrite] as string}
           handleChange={handleChange}
           variant={item.variant}
           deleteAll={deleteAll}
