@@ -2,6 +2,7 @@ import { MainPageTemplate } from 'components';
 import { useGeolocation } from 'hooks';
 
 function Home() {
+  // coupleData를 fetch하는 로직, 추후 고도화 예정
   const getCoupleData = () => {
     const dummyData = {
       startDate: '2021-11-19',
@@ -18,6 +19,7 @@ function Home() {
   };
   const dummyCoupleData = getCoupleData();
 
+  // postList를 fetch하는 로직, 추후 고도화 예정
   const getPostList = () => {
     // api 구현 아직..!!
     const dummyData = [
@@ -96,22 +98,16 @@ function Home() {
   };
   const dummyPostListData = getPostList();
 
-  const useCoordinate = () => {
-    const { coords } = useGeolocation();
-    const dummyData = {
-      lat: coords.latitude,
-      lng: coords.longitude,
-    };
-    return dummyData;
-  };
-
-  const dummyGetCoordinate = useCoordinate();
+  // 지도 첫 렌더링 중심점을 잡는 로직
+  const {
+    coords: { latitude: lat, longitude: lng },
+  } = useGeolocation();
 
   return (
     <MainPageTemplate
       coupleData={dummyCoupleData}
       postList={dummyPostListData}
-      coordinate={dummyGetCoordinate}
+      coordinate={{ lat, lng }}
     />
   );
 }
