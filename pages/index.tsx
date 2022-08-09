@@ -7,12 +7,12 @@ function Home() {
     const dummyData = {
       startDate: '2021-11-19',
       me: {
-        profileImagePath: '#',
-        nickname: 'myname',
+        profileImagePath: null,
+        nickName: 'myname',
       },
       you: {
-        profileImagePath: '#',
-        nickname: 'yourname',
+        profileImagePath: null,
+        nickName: 'yourname',
       },
     };
     return dummyData;
@@ -107,7 +107,7 @@ function Home() {
     <MainPageTemplate
       coupleData={dummyCoupleData}
       postList={dummyPostListData}
-      coordinate={{ lat, lng }}
+      coordinate={{ latitude: lat, longitude: lng }}
     />
   );
 }
