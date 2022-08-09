@@ -6,6 +6,7 @@ import {
   IPostValidationProps,
   IPostFormState,
 } from 'types';
+import { postCreate } from 'apis/post';
 
 export const initialValues: IPostFormState = {
   title: '',
@@ -29,8 +30,12 @@ export const errorState: IPostValidationState = {
 };
 
 export default function PostCreate() {
-  const onSubmit = ({ values }: { values: IPostFormState }) => {
-    console.log(values);
+  const onSubmit = async ({ values }: { values: IPostFormState }) => {
+    try {
+      const status = await postCreate({ data: values });
+    } catch (error: unknown) {
+      console.error(error);
+    }
   };
 
   const { values, handleChange, handleSubmit, removeAll } = useForm<
