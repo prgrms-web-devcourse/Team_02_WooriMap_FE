@@ -16,7 +16,7 @@ export interface IMainSidebarProps {
   postList: IThumbnailCardProps[];
 }
 
-export function MainSidebar({ coupleData, postList }: IMainSidebar) {
+export function MainSidebar({ coupleData, postList }: IMainSidebarProps) {
   const { startDate, me, you } = coupleData;
 
   return (
