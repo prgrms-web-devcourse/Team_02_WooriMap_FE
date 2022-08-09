@@ -14,9 +14,9 @@ const tagList1: ITag[] = [
 ];
 
 const tagList2: ITag[] = [
-  { name: '벨벳', color: '#B93160', onDelete: () => {} },
-  { name: '오렌지', color: '#EF5B0C', onDelete: () => {} },
-  { name: '복숭아', color: '#FFF9CA', onDelete: () => {} },
+  { name: '벨벳', color: '#B93160' },
+  { name: '오렌지', color: '#EF5B0C' },
+  { name: '복숭아', color: '#FFF9CA' },
 ];
 
 export const Default: ComponentStory<typeof TagList> = () => {
