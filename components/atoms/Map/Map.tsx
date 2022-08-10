@@ -34,16 +34,14 @@ function Map({ children, isMain, width, height, ...props }: IProps) {
     };
   }, []);
 
-  return (
-    loaded && (
-      <KakaoMap
-        style={isMain ? defaultStyle : { ...defaultStyle, borderRadius: '8px' }}
-        {...props}
-      >
-        {children}
-      </KakaoMap>
-    )
-  );
+  return loaded ? (
+    <KakaoMap
+      style={isMain ? defaultStyle : { ...defaultStyle, borderRadius: '8px' }}
+      {...props}
+    >
+      {children}
+    </KakaoMap>
+  ) : null;
 }
 
 export default Map;
