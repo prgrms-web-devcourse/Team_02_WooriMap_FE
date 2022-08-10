@@ -1,39 +1,66 @@
 import { useState, ChangeEvent } from 'react';
-import { ITextInputProps } from 'types';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ITextInputProps } from 'types';
 import { TextInput } from 'components';
+import { useAxiosInstance } from 'hooks';
+import LocalStorage from 'utils/storage';
+import { getLinkCouple, getCheckIsCoupled } from 'apis/couple';
 import * as S from './CoupleInviteForm.styles';
 
 interface ICoupleInviteFormProps extends ITextInputProps {
   code: string | null;
 }
 
-export function CoupleInviteForm({
-  code,
-  name,
-  deleteAll,
-}: ICoupleInviteFormProps) {
+export function CoupleInviteForm({ code, name }: ICoupleInviteFormProps) {
+  const router = useRouter();
   const [inputCode, setInputCode] = useState<string>('');
-  const [isAccepted, setIsAccepted] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+  const instance = useAxiosInstance();
 
-  const onClickInviteButton = () => {
-    // API관련 로직
-    setIsAccepted(true);
+  const onClickInviteButton = async () => {
+    const {
+      data: { accessToken },
+    } = await getLinkCouple({
+      instance,
+      code: inputCode,
+    });
+
+    if (!accessToken) setError('유효하지 않은 코드입니다.');
+    else {
+      LocalStorage.setItem('accessToken', accessToken);
+      router.replace('/');
+    }
   };
 
-  const checkIsCoupled = () => {
-    // API관련 로직
+  const checkIsCoupled = async () => {
+    const {
+      data: { accessToken },
+    } = await getCheckIsCoupled({
+      instance,
+    });
+
+    if (!accessToken)
+      setError('상대방이 아직 수락하지 않았습니다. 조금만 기다려주세요!');
+    else {
+      LocalStorage.setItem('accessToken', accessToken);
+      router.replace('/');
+    }
   };
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) =>
     setInputCode(e.target.value);
 
-  const onClickDeleteButton = () => {
-    if (deleteAll && name) deleteAll(name);
+  const onClickDeleteButton = () => setInputCode('');
+
+  const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault();
   };
 
+  console.log(error);
+
   return (
-    <S.CoupleInviteFormBackground>
+    <S.CoupleInviteFormBackground onSubmit={onSubmit}>
       <S.Title>커플 맺기</S.Title>
       <S.CodeWrapper>
         <S.Container>
@@ -54,20 +81,15 @@ export function CoupleInviteForm({
           </S.Wrapper>
         </S.Container>
       </S.CodeWrapper>
-      {isAccepted ? (
-        <S.InviteButton size="xlarge" variant="black" disabled>
-          커플 맺기
-        </S.InviteButton>
-      ) : (
-        <S.InviteButton
-          size="xlarge"
-          variant="black"
-          onClick={onClickInviteButton}
-        >
-          커플 맺기
-        </S.InviteButton>
-      )}
 
+      <S.InviteButton
+        size="xlarge"
+        variant="black"
+        onClick={onClickInviteButton}
+        disabled={inputCode.length === 0}
+      >
+        커플 맺기
+      </S.InviteButton>
       <S.InviteConfrimButton size="xlarge" onClick={checkIsCoupled}>
         커플 맺음 확인하기
       </S.InviteConfrimButton>
