@@ -17,6 +17,7 @@ export type {
   IFormInputProps,
   IPostOnChangeProps,
   HandleChangeTypes,
+  IPostDetailProps,
 } from 'types/post';
 export type { IButtonStyleProps } from 'types/button';
 export type {

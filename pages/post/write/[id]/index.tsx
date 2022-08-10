@@ -1,14 +1,19 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+import { GetServerSidePropsContext } from 'next';
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
-import { useForm } from 'hooks';
+import {
+  useForm,
+  useAxiosInstance,
+  useAxiosInstance as axiosInstance2,
+} from 'hooks';
 import {
   IPostFormState,
   IPostValidationState,
   IPostValidationProps,
+  IPostDetailProps,
 } from 'types';
-import { postValidation, parseCookise } from 'utils';
+import { postValidation, parseCookise, parsePostData } from 'utils';
 import instance from 'apis/instance';
-import { GetServerSidePropsContext } from 'next';
+import { postEdit } from 'apis/post';
 
 export const errorState: IPostValidationState = {
   title: '',
@@ -17,12 +22,19 @@ export const errorState: IPostValidationState = {
 };
 
 export default function PostEdit({
+  id,
   data: initialValues,
 }: {
-  data: IPostFormState;
+  id: string;
+  data: IPostDetailProps;
 }) {
-  const onSubmit = ({ values }: { values: IPostFormState }) => {
+  const axiosInstance = useAxiosInstance();
+
+  const onSubmit = async ({ values }: { values: IPostFormState }) => {
     console.log(values);
+    const res = await postEdit({ instance: axiosInstance, data: values, id });
+
+    console.log(res);
   };
 
   const { values, handleChange, handleSubmit, removeAll } = useForm<
@@ -30,7 +42,9 @@ export default function PostEdit({
     IPostValidationState,
     IPostValidationProps
   >({
-    initialValues,
+    initialValues: parsePostData({
+      postData: initialValues,
+    }),
     errorState,
     onSubmit,
     validateValues: postValidation,
@@ -80,10 +94,12 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
 
     return {
       props: {
+        id,
         data,
       },
     };
   } catch (error: unknown) {
+    console.log(error);
     // 에러나면, 404
     return {
       notFound: true,

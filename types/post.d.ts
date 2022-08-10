@@ -55,3 +55,14 @@ export interface IFormInputProps extends IFormStateProps {
   postState: IPostFormState;
   deleteAll: (name: string) => void;
 }
+
+export interface IPostDetailProps {
+  id: number;
+  title: string;
+  content: string;
+  imageUrls: Array<string>;
+  tags: Array<ITag>;
+  datingDate: string;
+  createdDate: string;
+  location: { latitude: number; longitude: number };
+}
