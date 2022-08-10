@@ -1,3 +1,4 @@
+import { countDateFromNow } from 'utils';
 import { IUserProfileProps } from 'types/couple';
 import * as S from './UserProfile.styles';
 
@@ -5,13 +6,14 @@ export function IsCoupleProfile({
   isCouple,
   nickName,
   coupleNickName,
-  coupleStartingDate,
+  startDate,
+  imageUrl,
   ...props
 }: IUserProfileProps) {
   return (
     <S.UserProfileBackground {...props}>
       <S.ProfileWrapper>
-        <S.UserProfile width={128} height={128} />
+        <S.UserProfile path={imageUrl} width={128} height={128} />
         <S.UserNameWrapper>
           <S.UserName>{nickName && nickName}</S.UserName>
         </S.UserNameWrapper>
@@ -24,12 +26,9 @@ export function IsCoupleProfile({
         <S.CoupleInfoRow>
           <S.CoupleInfoLabel isCoupleDateInfo>연애 기간</S.CoupleInfoLabel>
           <S.CoupleInfo>
-            D + 237
-            {/* D + {coupleStartingDate && calculatFunc(coupleStartingDate)} */}
+            D + {startDate && countDateFromNow({ date: startDate })}
           </S.CoupleInfo>
-          <S.StartringDate>
-            {coupleStartingDate && coupleStartingDate}
-          </S.StartringDate>
+          <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
       </S.CoupleInfoWrapper>
       <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>

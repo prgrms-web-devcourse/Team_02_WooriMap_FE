@@ -36,6 +36,7 @@ export { NavBar } from 'components/organisms/NavBar';
 export { SignUpForm } from 'components/organisms/SignUpForm';
 export { PostWrite } from 'components/organisms/PostWrite';
 export { MainSidebar } from 'components/organisms/MainSidebar';
+export { UserProfile } from 'components/organisms/UserProfile';
 export { CoupleInviteForm } from 'components/organisms/CoupleInviteForm';
 
 // templates
@@ -44,3 +45,4 @@ export { PostTemplate } from 'components/templates/PostTemplate';
 export { SignUpTemplate } from 'components/templates/SignUpTemplate';
 export { MainPageTemplate } from 'components/templates/MainPageTemplate';
 export { AuthPageTemplate } from 'components/templates/AuthPageTemplate';
+export { ProfileTemplate } from 'components/templates/ProfileTemplate';
