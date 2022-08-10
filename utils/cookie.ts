@@ -8,11 +8,11 @@ export function setCookie<T = unknown>(
   value: T,
   option?: CookieSetOptions,
 ) {
-  cookies.set(name, value, { ...option });
+  cookies.set(name, value, { ...option, path: '/' });
 }
 
-export function getCookie(name: string) {
-  return cookies.get(name);
+export function getCookie<T = unknown>(name: string) {
+  return cookies.get(name) as T;
 }
 
 export function removeCookie(name: string) {

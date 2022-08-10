@@ -17,7 +17,9 @@ const nextConfig = {
         pages: path.resolve(__dirname, 'pages'),
         hooks: path.resolve(__dirname, 'hooks'),
         utils: path.resolve(__dirname, 'utils'),
-        providers: path.resolve(__dirname, 'providers'),
+        apis: path.resolve(__dirname, 'apis'),
+        hocs: path.resolve(__dirname, 'hocs'),
+        core: path.resolve(__dirname, 'core'),
       },
       ...config.resolve,
     };
