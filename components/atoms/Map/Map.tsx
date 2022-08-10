@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Script from 'next/script';
 import { Map as KakaoMap, MapProps } from 'react-kakao-maps-sdk';
 
@@ -24,6 +24,16 @@ function Map({ children, isMain, width, height, ...props }: IProps) {
     height,
     ...props.style,
   };
+
+  useEffect(() => {
+    const $script = document.createElement('script');
+    $script.src = URL;
+    $script.addEventListener('load', onLoad);
+    document.head.appendChild($script);
+    return () => {
+      $script.remove();
+    };
+  }, []);
 
   return (
     <>
