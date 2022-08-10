@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, ChangeEvent } from 'react';
 import { ITextInputProps } from 'types';
 import Link from 'next/link';
 import { TextInput } from 'components';
@@ -13,7 +13,8 @@ export function CoupleInviteForm({
   name,
   deleteAll,
 }: ICoupleInviteFormProps) {
-  const [isAccepted, setIsAccepted] = useState(false);
+  const [inputCode, setInputCode] = useState<string>('');
+  const [isAccepted, setIsAccepted] = useState<boolean>(false);
 
   const onClickInviteButton = () => {
     // API관련 로직
@@ -23,6 +24,9 @@ export function CoupleInviteForm({
   const checkIsCoupled = () => {
     // API관련 로직
   };
+
+  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setInputCode(e.target.value);
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -42,7 +46,11 @@ export function CoupleInviteForm({
         <S.Container>
           <S.Wrapper>
             <S.Label>상대 코드</S.Label>
-            <TextInput value="" onClickButton={onClickDeleteButton} />
+            <TextInput
+              value={inputCode}
+              onClickButton={onClickDeleteButton}
+              onChange={onChange}
+            />
           </S.Wrapper>
         </S.Container>
       </S.CodeWrapper>
