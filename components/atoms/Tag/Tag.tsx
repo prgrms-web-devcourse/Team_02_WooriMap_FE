@@ -6,9 +6,6 @@ interface ITagProps extends ITag {
 }
 
 export function Tag({ name, color, onDelete, ...props }: ITagProps) {
-  if (name.length > 10 || color.length > 10) {
-    console.error('Tag Name Length or Color Length is too Long!');
-  }
   return (
     <S.Tag color={color} isDelete={!!onDelete} {...props}>
       {name}
