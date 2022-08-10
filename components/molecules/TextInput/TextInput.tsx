@@ -1,11 +1,11 @@
 import React, { InputHTMLAttributes } from 'react';
-import { HandleChangeTypes, ITagState } from 'types';
+import { HandleChangeTypes, ITag } from 'types';
 import { DeleteAllBtn } from 'components';
 import * as S from './TextInput.styles';
 
 interface ITextInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
-  value: string | Array<ITagState>;
+  value: string | Array<ITag>;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
   handleChange?: HandleChangeTypes;
 }

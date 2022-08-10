@@ -42,7 +42,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             {...props}
           />
         )}
-        {variant === 'textarea' && (
+        {variant === 'tags' && (
           <TagInputWithList
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}

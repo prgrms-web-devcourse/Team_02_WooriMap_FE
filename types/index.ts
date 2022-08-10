@@ -9,7 +9,6 @@ export type {
 export type { IApiResponse, IOnSubmit } from 'types/api';
 export type { ICoordinates, IMapMarker } from 'types/map';
 export type {
-  ITagState,
   IPostFormState,
   ISetValueState,
   IPostValidationProps,
