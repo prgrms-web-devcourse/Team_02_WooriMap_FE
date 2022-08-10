@@ -19,7 +19,8 @@ module.exports = {
       hooks: path.resolve(__dirname, '../hooks'),
       utils: path.resolve(__dirname, '../utils'),
       apis: path.resolve(__dirname, '../apis'),
-      contexts: path.resolve(__dirname, '../contexts'),
+      hocs: path.resolve(__dirname, '../hocs'),
+      core: path.resolve(__dirname, '../core'),
     };
     config.resolve.alias = {
       ...config.resolve.alias,
