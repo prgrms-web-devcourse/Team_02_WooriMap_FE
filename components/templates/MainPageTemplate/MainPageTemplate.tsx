@@ -1,24 +1,17 @@
-import { IMainPageTemplateProps } from 'types';
-import { Map, MainSidebar } from 'components';
+import { useState } from 'react';
+import { IMainPageTemplateProps, IThumbnailCardProps } from 'types';
+import { Map, MapMarkerOverlay, MainSidebar } from 'components';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import * as S from './MainPageTemplate.styles';
-
-// 지금 Dependency cycle 에러가 나서 types import를 다 빼고 일일히 하드코딩 해 놓은 상태입니다. 해당 커밋 이후에 관련 types는 모두 추상화해서 types 폴더에 따로 빼 놓을 계획입니다.
 
 export function MainPageTemplate({
   coupleData,
   postList,
   coordinate,
 }: IMainPageTemplateProps) {
-  const onMapMarkerClick = (
-    postId: string,
-    title: string,
-    createDate: string,
-  ) => {
-    alert(
-      `지금 클릭한 곳의 아이디는 ${postId}, 제목은 ${title}, 생성날짜는 ${createDate}입니다.`,
-    );
-  };
+  const [isOverlayShown, setIsOverlayShown] = useState(false);
+
+  const onMapMarkerClick = (post: IThumbnailCardProps) => {};
   return (
     <S.Container>
       <S.MainSidebarContainer>
@@ -35,14 +28,27 @@ export function MainPageTemplate({
         >
           {postList.map((post) => (
             <MapMarker
+              key={post.postId}
               position={{
                 lat: Number(post.latitude),
                 lng: Number(post.longitude),
               }}
-              onClick={() =>
-                onMapMarkerClick(post.postId, post.title, post.createDate)
-              }
-            />
+              clickable={true}
+              onClick={(e) => {
+                setIsOverlayShown(true);
+              }}
+            >
+              {isOverlayShown && (
+                <div onClick={() => setIsOverlayShown(false)}>
+                  <MapMarkerOverlay
+                    postId={post.postId}
+                    postThumbnailPath={post.postThumbnailPath}
+                    title={post.title}
+                    createDate={post.createDate}
+                  />
+                </div>
+              )}
+            </MapMarker>
           ))}
         </Map>
       </S.MapContainer>

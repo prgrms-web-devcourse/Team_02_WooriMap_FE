@@ -28,6 +28,7 @@ export { MainSearchBar } from 'components/molecules/MainSearchBar';
 export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
 export { SearchableMap } from 'components/molecules/SearchableMap';
 export { FormControl } from 'components/molecules/FormControl';
+export { MapMarkerOverlay } from 'components/molecules/MapMarkerOverlay';
 export { TagInput } from 'components/molecules/TagInput';
 export { TagInputWithList } from 'components/molecules/TagInputWithList';
 // organisms
