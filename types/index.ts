@@ -18,6 +18,7 @@ export type {
   IPostOnChangeProps,
   HandleChangeTypes,
   IPostDetailProps,
+  IInitialPostState,
 } from 'types/post';
 export type { IButtonStyleProps } from 'types/button';
 export type {

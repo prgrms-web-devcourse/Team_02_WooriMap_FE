@@ -3,13 +3,13 @@ import LocalStorage from 'utils/storage';
 import { IPostFormState } from 'types';
 import { IApiResponse } from 'types/api';
 
-interface IPostCreateProps {
-  data: IPostFormState;
+interface IPostWriteProps {
+  data?: IPostFormState;
   instance: AxiosInstance;
   id?: string;
 }
 
-export const postCreate = async ({ data, instance }: IPostCreateProps) => {
+export const postCreate = async ({ data, instance }: IPostWriteProps) => {
   try {
     const accessToken = LocalStorage.getItem('accessToken', '');
 
@@ -36,7 +36,7 @@ export const postCreate = async ({ data, instance }: IPostCreateProps) => {
   }
 };
 
-export const postEdit = async ({ instance, data, id }: IPostCreateProps) => {
+export const updatePost = async ({ instance, data, id }: IPostWriteProps) => {
   const accessToken = LocalStorage.getItem('accessToken', '');
 
   const response = instance
@@ -55,4 +55,22 @@ export const postEdit = async ({ instance, data, id }: IPostCreateProps) => {
     });
 
   return response;
+};
+
+export const getOnePost = async ({ instance, id }: IPostWriteProps) => {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+  try {
+    const res = await instance.get(`/couples/posts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+
+    const { data } = res.data;
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
 };

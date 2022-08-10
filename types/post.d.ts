@@ -66,3 +66,13 @@ export interface IPostDetailProps {
   createdDate: string;
   location: { latitude: number; longitude: number };
 }
+
+export interface IInitialPostState {
+  title: string;
+  content: string;
+  datingDate: string;
+  imageUrls: Array<string>;
+  tags: Array<ITag>;
+  latitude: number;
+  longitude: number;
+}

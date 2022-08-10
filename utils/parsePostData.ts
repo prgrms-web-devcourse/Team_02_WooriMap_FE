@@ -1,14 +1,4 @@
-import { IPostDetailProps, IPostFormState, ITag } from 'types';
-
-interface IAcc {
-  title: string;
-  content: string;
-  datingDate: string;
-  imageUrls: Array<string>;
-  tags: Array<ITag>;
-  latitude: number;
-  longitude: number;
-}
+import { IPostDetailProps, IPostFormState, IInitialPostState } from 'types';
 
 const initalValue = {
   title: '',
@@ -35,7 +25,7 @@ export const parsePostData = ({
 }: {
   postData: IPostDetailProps;
 }): IPostFormState => {
-  return Object.keys(postData).reduce((acc: IAcc, key: string) => {
+  return Object.keys(postData).reduce((acc: IInitialPostState, key: string) => {
     if (key === 'id' || key === 'createdDate') return acc;
 
     if (key === 'location') {

@@ -1,3 +1,4 @@
+export { postInitialValue } from 'utils/postInitialValue';
 export { dummyImages } from 'utils/dummyImages';
 export { calculatingDDay } from 'utils/calculatingDDay';
 export { formatDate } from 'utils/formatDate';

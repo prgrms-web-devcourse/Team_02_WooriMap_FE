@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { IOnSubmit, IPostOnChangeProps, ISetValueState } from 'types';
 
 interface IUseForm<T, V, K> {
@@ -20,6 +20,10 @@ function useForm<T, V, K>({
     finalError: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setValues(initialValues);
+  }, [initialValues]);
 
   const setStateWhenChanged = useCallback(({ name, value }: ISetValueState) => {
     if (name === 'position') {

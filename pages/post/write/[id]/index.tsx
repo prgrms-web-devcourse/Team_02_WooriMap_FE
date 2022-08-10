@@ -1,19 +1,15 @@
-import { GetServerSidePropsContext } from 'next';
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
-import {
-  useForm,
-  useAxiosInstance,
-  useAxiosInstance as axiosInstance2,
-} from 'hooks';
+import { useForm, useAxiosInstance } from 'hooks';
 import {
   IPostFormState,
   IPostValidationState,
   IPostValidationProps,
-  IPostDetailProps,
+  IInitialPostState,
 } from 'types';
-import { postValidation, parseCookise, parsePostData } from 'utils';
-import instance from 'apis/instance';
-import { postEdit } from 'apis/post';
+import { postValidation, parsePostData, postInitialValue } from 'utils';
+import { updatePost, getOnePost } from 'apis/post';
 
 export const errorState: IPostValidationState = {
   title: '',
@@ -21,18 +17,22 @@ export const errorState: IPostValidationState = {
   tags: '',
 };
 
-export default function PostEdit({
-  id,
-  data: initialValues,
-}: {
-  id: string;
-  data: IPostDetailProps;
-}) {
+export default function PostEdit() {
+  const router = useRouter();
+  const { id } = router.query as { id: string };
+
+  const [postState, setPostState] = useState<{
+    initalValue: IInitialPostState;
+    status: 'initial' | 'settled';
+  }>({
+    initalValue: postInitialValue,
+    status: 'initial',
+  });
+
   const axiosInstance = useAxiosInstance();
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
-    console.log(values);
-    const res = await postEdit({ instance: axiosInstance, data: values, id });
+    const res = await updatePost({ instance: axiosInstance, data: values, id });
 
     console.log(res);
   };
@@ -42,16 +42,32 @@ export default function PostEdit({
     IPostValidationState,
     IPostValidationProps
   >({
-    initialValues: parsePostData({
-      postData: initialValues,
-    }),
+    initialValues: postState.initalValue,
     errorState,
     onSubmit,
     validateValues: postValidation,
   });
 
+  useEffect(() => {
+    (async () => {
+      if (!router.isReady) return;
+
+      const res = await getOnePost({ instance: axiosInstance, id });
+
+      setPostState((prev) => ({
+        ...prev,
+        initalValue: parsePostData({ postData: res }) as IInitialPostState,
+        status: 'settled',
+      }));
+    })();
+  }, [router]);
+
+  if (postState.status === 'initial') return null;
+
   const { title, content, datingDate, tags, latitude, longitude, imageUrls } =
     values;
+
+  console.log(values);
 
   return (
     <PostTemplate
@@ -74,35 +90,4 @@ export default function PostEdit({
       }
     />
   );
-}
-
-export async function getServerSideProps(context: GetServerSidePropsContext) {
-  const { id } = context.query;
-  const { cookie: cookieString } = context.req.headers;
-
-  const { accessToken } = parseCookise({ cookieString: String(cookieString) });
-
-  try {
-    const res = await instance.get(`/couples/posts/${id}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-
-    // 정상이라면 처리
-    const { data } = res.data;
-
-    return {
-      props: {
-        id,
-        data,
-      },
-    };
-  } catch (error: unknown) {
-    console.log(error);
-    // 에러나면, 404
-    return {
-      notFound: true,
-    };
-  }
 }
