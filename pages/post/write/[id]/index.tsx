@@ -52,13 +52,24 @@ export default function PostEdit() {
     (async () => {
       if (!router.isReady) return;
 
-      const res = await getOnePost({ instance: axiosInstance, id });
+      try {
+        const res = await getOnePost({ instance: axiosInstance, id });
 
-      setPostState((prev) => ({
-        ...prev,
-        initalValue: parsePostData({ postData: res }) as IInitialPostState,
-        status: 'settled',
-      }));
+        if (res) {
+          setPostState((prev) => ({
+            ...prev,
+            initalValue: parsePostData({ postData: res }) as IInitialPostState,
+            status: 'settled',
+          }));
+
+          return;
+        }
+
+        throw new Error('존재하지 않는 포스트입니다.');
+      } catch (e: unknown) {
+        console.error(e);
+        router.push('/404');
+      }
     })();
   }, [router]);
 
