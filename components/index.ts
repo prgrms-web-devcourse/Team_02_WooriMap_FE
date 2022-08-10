@@ -12,6 +12,8 @@ export { DeleteAllBtn } from 'components/atoms/DeleteAllBtn';
 export { SearchBar } from 'components/atoms/SearchBar';
 export { Map } from 'components/atoms/Map';
 export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
+export { FormLabel } from 'components/atoms/FormLabel';
+export { Wrapper, FlexWrapper } from 'components/atoms/Wrapper';
 
 // molecules
 export { CalendarInput } from 'components/molecules/CalendarInput';
@@ -24,6 +26,7 @@ export { CoupleProfile } from 'components/molecules/CoupleProfile';
 export { MainSearchBar } from 'components/molecules/MainSearchBar';
 export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
 export { SearchableMap } from 'components/molecules/SearchableMap';
+export { FormControl } from 'components/molecules/FormControl';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';

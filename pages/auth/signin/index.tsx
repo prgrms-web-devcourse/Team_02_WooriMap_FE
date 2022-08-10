@@ -6,6 +6,7 @@ import {
   AuthPageRoutingButton,
   Button,
   TextInput,
+  FormControl,
 } from 'components';
 import { useAxiosInstance } from 'hooks';
 import { LoginFormDataTypes, ILoginResponse } from 'types/auth';
@@ -70,23 +71,33 @@ function Signin() {
         e.preventDefault();
         await onSubmit();
       }}
-      inputs={
+      controls={
         <>
-          <TextInput
-            value={data.email}
-            type="email"
-            onChange={changeValue('email')}
-            onClickButton={() => resetValue('email')}
-            className="input-wrapper"
-            placeholder="your-email@email.com"
+          <FormControl
+            label="email"
+            input={
+              <TextInput
+                value={data.email}
+                type="email"
+                onChange={changeValue('email')}
+                onClickButton={() => resetValue('email')}
+                className="input-wrapper"
+                placeholder="your-email@email.com"
+              />
+            }
           />
-          <TextInput
-            value={data.password}
-            type="password"
-            onChange={changeValue('password')}
-            onClickButton={() => resetValue('password')}
-            className="input-wrapper"
-            placeholder="your-password"
+          <FormControl
+            label="password"
+            input={
+              <TextInput
+                value={data.password}
+                type="password"
+                onChange={changeValue('password')}
+                onClickButton={() => resetValue('password')}
+                className="input-wrapper"
+                placeholder="your-password"
+              />
+            }
           />
         </>
       }

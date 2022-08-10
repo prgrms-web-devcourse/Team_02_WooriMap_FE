@@ -5,14 +5,14 @@ import mainLogoVertical from 'public/image/main-logo-vertical.svg';
 import * as S from './AuthPageTemplate.styles';
 
 interface IProps extends FormHTMLAttributes<HTMLFormElement> {
-  inputs: React.ReactNode;
+  controls: React.ReactNode;
   trigger: React.ReactNode;
   infoMessage: React.ReactNode;
   error?: React.ReactNode;
 }
 
 function AuthPageTemplate({
-  inputs,
+  controls,
   trigger,
   infoMessage,
   error,
@@ -28,9 +28,9 @@ function AuthPageTemplate({
           height={145}
         />
       </S.FlexWrapper>
-      {inputs && (
+      {controls && (
         <S.Wrapper>
-          <S.InputWrapper margin="2rem 0">{inputs}</S.InputWrapper>
+          <S.InputWrapper margin="2rem 0">{controls}</S.InputWrapper>
         </S.Wrapper>
       )}
       <S.ErrorMessage>{error}</S.ErrorMessage>
