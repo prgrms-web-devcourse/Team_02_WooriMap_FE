@@ -1,4 +1,5 @@
 import { IThumbnailCardProps } from 'types';
+import Link from 'next/link';
 import * as S from './MainThumbnailList.styles';
 
 function ThumbnailCard({
@@ -7,18 +8,17 @@ function ThumbnailCard({
   title,
   createDate,
 }: IThumbnailCardProps) {
-  const onClick = (_postId: string) => {
-    // postId별 라우팅 관련 로직 추가 예정
-    alert(`${_postId}를 클릭하셨군여 (๑•̀ㅂ•́)و✧`);
-  };
-
   return (
-    <S.CardContainer url={postThumbnailPath} onClick={() => onClick(postId)}>
-      <div>
-        <S.Title>{title}</S.Title>
-        <S.CreateDate>{createDate}</S.CreateDate>
-      </div>
-    </S.CardContainer>
+    <Link href={`/post/${postId}`}>
+      <a href="#!">
+        <S.CardContainer url={postThumbnailPath}>
+          <div>
+            <S.Title>{title}</S.Title>
+            <S.CreateDate>{createDate}</S.CreateDate>
+          </div>
+        </S.CardContainer>
+      </a>
+    </Link>
   );
 }
 
