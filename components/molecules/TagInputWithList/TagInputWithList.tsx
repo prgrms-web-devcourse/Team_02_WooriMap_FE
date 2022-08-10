@@ -1,8 +1,8 @@
 import { ITextInputProps, ITag, IApiResponse, IResponseTag } from 'types';
 import React, { useState, useEffect } from 'react';
-import { TagInput } from 'components/atoms/TagInput';
-import { useAxiosInstance } from '@hooks/useAxiosInstance';
-import LocalStorage from '@utils/storage';
+import { TagInput } from 'components';
+import { useAxiosInstance } from 'hooks';
+import LocalStorage from 'utils/storage';
 import * as S from './TagInputWithList.styles';
 
 interface ITagInputWithListProps extends ITextInputProps {
