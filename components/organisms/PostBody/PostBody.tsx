@@ -6,7 +6,6 @@ import * as S from './PostBody.styles';
 interface ITag {
   name: string;
   color: string;
-  onDelete?: () => void;
 }
 interface IPostBodyProps {
   title: string;
