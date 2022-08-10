@@ -34,7 +34,7 @@ export function TagInput({ allTags, onEnterType, ...props }: ITagInputProps) {
 
   const handleComplete = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.code !== 'Enter') return;
-    onEnterType(inputValue);
+    if (inputValue.length > 0) onEnterType(inputValue);
     setInputValue('');
     setOptions([]);
   };
@@ -44,8 +44,9 @@ export function TagInput({ allTags, onEnterType, ...props }: ITagInputProps) {
       <S.TagInput
         value={inputValue}
         onChange={handleChange}
-        onKeyDown={handleComplete}
+        onKeyUp={handleComplete}
         hasOption={options.length > 0}
+        autoComplete="off"
         {...props}
       />
       {options.length > 0 && (

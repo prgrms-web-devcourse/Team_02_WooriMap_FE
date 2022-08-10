@@ -24,6 +24,7 @@ export function TagInputWithList({
   allTags,
   value,
   handleChange,
+  onClickButton,
   ...props
 }: ITagInputWithListProps) {
   const [inputValue, setInputValue] = useState<ITag[]>(
@@ -54,9 +55,19 @@ export function TagInputWithList({
     if (handleChange) handleChange({ name: 'tags', value: newInputValue });
   };
 
+  const handleClickButton = (e?: React.MouseEvent<HTMLImageElement>) => {
+    setInputValue([]);
+    onClickButton(e);
+  };
+
   return (
     <S.Container>
-      <TagInput allTags={allTags} onEnterType={handleEnterType} {...props} />
+      <TagInput
+        allTags={allTags}
+        onEnterType={handleEnterType}
+        onClickButton={handleClickButton}
+        {...props}
+      />
       <S.SelectedTags tagList={inputValue} onDelete={handleDelete} />
     </S.Container>
   );

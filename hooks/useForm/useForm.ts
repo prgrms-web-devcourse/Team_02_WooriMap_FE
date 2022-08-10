@@ -30,7 +30,6 @@ function useForm<T, V, K>({
     } else {
       setValues((prev) => ({ ...prev, [name]: value }));
     }
-
     setErrors((prev) => ({ ...prev, finalError: '', [name]: '' }));
   }, []);
 
@@ -64,7 +63,8 @@ function useForm<T, V, K>({
   };
 
   const removeAll = useCallback((name: string) => {
-    setValues((prev) => ({ ...prev, [name]: '' }));
+    if (name === 'tags') setValues((prev) => ({ ...prev, [name]: [] }));
+    else setValues((prev) => ({ ...prev, [name]: '' }));
   }, []);
 
   return {
