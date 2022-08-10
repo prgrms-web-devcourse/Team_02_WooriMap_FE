@@ -16,7 +16,7 @@ export const PostContent = styled.article`
   display: flex;
   justify-content: space-between;
   width: 100%;
-  height: 55%;
+  min-height: 55%;
 `;
 
 export const ImageSection = styled.div`
