@@ -5,7 +5,7 @@ import * as S from './TagInputWithList.styles';
 
 interface ITagInputWithListProps extends ITextInputProps {
   allTags: ITag[];
-  value?: ITag[];
+  value?: ITag[] | string;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
 }
 
@@ -27,7 +27,7 @@ export function TagInputWithList({
   ...props
 }: ITagInputWithListProps) {
   const [inputValue, setInputValue] = useState<ITag[]>(
-    value === undefined ? [] : value,
+    value === undefined ? [] : (value as ITag[]),
   );
 
   const handleEnterType = (newTagName: string) => {

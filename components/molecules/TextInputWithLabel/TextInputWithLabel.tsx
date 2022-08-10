@@ -1,15 +1,17 @@
 /* eslint-disable react/destructuring-assignment */
-import { ITextInputProps, HandleChangeTypes } from 'types';
+import { ITextInputProps, HandleChangeTypes, ITag } from 'types';
 import { TextInput, CalendarInput, TextArea } from 'components';
 import * as S from './TextInputWithLabel.styles';
 import { TagInputWithList } from '../TagInputWithList';
 
 interface ITextInputWithLabelProps extends ITextInputProps {
   error?: string;
+  allTags?: ITag[];
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, text, deleteAll, variant, handleChange, value } = props;
+  const { name, text, deleteAll, variant, handleChange, value, allTags } =
+    props;
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -42,10 +44,12 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             {...props}
           />
         )}
-        {variant === 'tags' && (
+        {variant === 'tag' && allTags && (
           <TagInputWithList
+            value={value as ITag[]}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
+            allTags={allTags}
             {...props}
           />
         )}

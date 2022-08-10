@@ -3,7 +3,7 @@ import { ITag } from 'types/tag';
 
 export interface ITextInputProps {
   key?: string;
-  value?: string | number | ITag[];
+  value?: string | ITag[];
   name?: string;
   text?: string;
   type?: string;
