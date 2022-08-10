@@ -13,8 +13,6 @@ export async function updateUserInfoWhenCoupleLinked({
   accessToken,
   setUser,
 }: IUploadUserProps) {
-  LocalStorage.setItem('accessToken', accessToken);
-
   const res = instance
     .get('/members', {
       headers: {
@@ -33,7 +31,10 @@ export async function updateUserInfoWhenCoupleLinked({
 
   const { data } = await res;
 
-  setUser(data);
+  if (data) {
+    LocalStorage.setItem('accessToken', accessToken);
+    setUser(data);
+  }
 }
 
 export function getLinkCouple({

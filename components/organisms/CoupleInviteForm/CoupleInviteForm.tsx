@@ -26,6 +26,7 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
   const instance = useAxiosInstance();
 
   const onClickInviteButton = async () => {
+    // 커플 맺기 버튼 눌렀을 때,
     const {
       data: { accessToken },
     } = await getLinkCouple({
@@ -46,6 +47,7 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
   };
 
   const checkIsCoupled = async () => {
+    // 커플 연결 확인 눌렀을 때,
     const {
       data: { accessToken },
     } = await getCheckIsCoupled({
