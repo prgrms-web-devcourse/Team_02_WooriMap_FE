@@ -10,6 +10,15 @@ export function MainPageTemplate({
   postList,
   coordinate,
 }: IMainPageTemplateProps) {
+  const onMapMarkerClick = (
+    postId: string,
+    title: string,
+    createDate: string,
+  ) => {
+    alert(
+      `지금 클릭한 곳의 아이디는 ${postId}, 제목은 ${title}, 생성날짜는 ${createDate}입니다.`,
+    );
+  };
   return (
     <S.Container>
       <S.MainSidebarContainer>
@@ -30,6 +39,9 @@ export function MainPageTemplate({
                 lat: Number(post.latitude),
                 lng: Number(post.longitude),
               }}
+              onClick={() =>
+                onMapMarkerClick(post.postId, post.title, post.createDate)
+              }
             />
           ))}
         </Map>
