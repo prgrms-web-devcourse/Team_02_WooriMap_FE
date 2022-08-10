@@ -14,6 +14,7 @@ export { Map } from 'components/atoms/Map';
 export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
 export { FormLabel } from 'components/atoms/FormLabel';
 export { Wrapper, FlexWrapper } from 'components/atoms/Wrapper';
+export { CircularIcon } from 'components/atoms/CircularIcon';
 
 // molecules
 export { CalendarInput } from 'components/molecules/CalendarInput';

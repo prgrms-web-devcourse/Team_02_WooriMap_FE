@@ -1,0 +1,1 @@
+export { CircularIcon } from './CircularIcon';
