@@ -7,17 +7,9 @@ interface ICircularIconProps {
 }
 
 export function CircularIcon({ icon, color }: ICircularIconProps) {
-  const onCircularIconClick = () => {
-    alert('동글동글 아이콘을 클릭하셨군여! (ง˙∇˙)ว');
-  };
   return (
-    <S.Container
-      color={color}
-      onClick={() => {
-        onCircularIconClick();
-      }}
-    >
-      <Image src={icon} alt="icon" width={24} height={24} />
+    <S.Container color={color}>
+      <Image src={icon} alt="icon" width={20} height={20} />
     </S.Container>
   );
 }

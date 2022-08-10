@@ -12,7 +12,6 @@ export function MainPageTemplate({
   const [isOverlayShown, setIsOverlayShown] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState<string | null>(null);
 
-  const onMapMarkerClick = (post: IThumbnailCardProps) => {};
   return (
     <S.Container>
       <S.MainSidebarContainer>
