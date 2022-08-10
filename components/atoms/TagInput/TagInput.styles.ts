@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { TextInput } from 'components';
+import { TextInput } from 'components/molecules/TextInput';
 
 interface ITagInputStyleProps {
   hasOption: boolean;
