@@ -4,6 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
   /* align-items: center; */
 
   box-sizing: border-box;
@@ -20,7 +21,7 @@ export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
   ${({ isValidationNotUsed }) => isValidationNotUsed && `margin-bottom: 1rem;`}
 
   & > label {
-    //width: 52px;
+    width: 52px;
     height: 20px;
 
     margin-right: 10px;
