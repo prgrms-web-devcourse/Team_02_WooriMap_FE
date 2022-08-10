@@ -4,7 +4,7 @@ function useSSE(url: string) {
   const [source, setSource] = useState<EventSource | null>(null);
 
   useEffect(() => {
-    const eventSource = new EventSource(url);
+    const eventSource = new EventSource(url, { withCredentials: true });
 
     eventSource.addEventListener('error', () => {
       if (eventSource.readyState === EventSource.CLOSED) {
