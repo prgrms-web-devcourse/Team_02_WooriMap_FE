@@ -10,6 +10,7 @@ export function MainPageTemplate({
   coordinate,
 }: IMainPageTemplateProps) {
   const [isOverlayShown, setIsOverlayShown] = useState(false);
+  const [selectedMarker, setSelectedMarker] = useState<string | null>(null);
 
   const onMapMarkerClick = (post: IThumbnailCardProps) => {};
   return (
@@ -36,10 +37,15 @@ export function MainPageTemplate({
               clickable={true}
               onClick={(e) => {
                 setIsOverlayShown(true);
+                setSelectedMarker(post.postId);
               }}
             >
-              {isOverlayShown && (
-                <div onClick={() => setIsOverlayShown(false)}>
+              {isOverlayShown && selectedMarker === post.postId && (
+                <div
+                  onClick={() => {
+                    setIsOverlayShown(false);
+                  }}
+                >
                   <MapMarkerOverlay
                     postId={post.postId}
                     postThumbnailPath={post.postThumbnailPath}
