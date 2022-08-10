@@ -6,12 +6,10 @@ import { TagInputWithList } from '../TagInputWithList';
 
 interface ITextInputWithLabelProps extends ITextInputProps {
   error?: string;
-  allTags?: ITag[];
 }
 
 export function TextInputWithLabel(props: ITextInputWithLabelProps) {
-  const { name, text, deleteAll, variant, handleChange, value, allTags } =
-    props;
+  const { name, text, deleteAll, variant, handleChange, value } = props;
 
   const onClickDeleteButton = () => {
     if (deleteAll && name) deleteAll(name);
@@ -44,12 +42,11 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             {...props}
           />
         )}
-        {variant === 'tag' && allTags && (
+        {variant === 'tag' && (
           <TagInputWithList
             value={value as ITag[]}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
-            allTags={allTags}
             {...props}
           />
         )}

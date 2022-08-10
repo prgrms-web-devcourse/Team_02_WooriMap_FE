@@ -27,4 +27,4 @@ export type {
   IMainSidebarProps,
   IMainPageTemplateProps,
 } from 'types/mainPage';
-export type { ITag } from 'types/tag';
+export type { ITag, IResponseTag } from 'types/tag';
