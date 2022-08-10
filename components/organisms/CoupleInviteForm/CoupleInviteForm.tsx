@@ -72,7 +72,7 @@ export function CoupleInviteForm({
         커플 맺음 확인하기
       </S.InviteConfrimButton>
 
-      <Link href="/">
+      <Link href="/profile">
         <S.Back>돌아가기</S.Back>
       </Link>
     </S.CoupleInviteFormBackground>
