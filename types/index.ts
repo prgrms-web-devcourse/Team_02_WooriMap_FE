@@ -20,3 +20,11 @@ export type {
   HandleChangeTypes,
 } from 'types/post';
 export type { IButtonStyleProps } from 'types/button';
+export type {
+  ICoupleUserProps,
+  IStartDateProps,
+  ICoupleProfileProps,
+  IThumbnailCardProps,
+  IMainSidebarProps,
+  IMainPageTemplateProps,
+} from 'types/mainPage';

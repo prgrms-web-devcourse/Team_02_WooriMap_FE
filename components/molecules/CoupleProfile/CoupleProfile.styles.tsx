@@ -18,7 +18,7 @@ export const EachProfileContainer = styled.div`
   min-height: 176px;
 `;
 
-export const Nickname = styled.div`
+export const NickName = styled.div`
   width: 80%;
   height: 50px;
   padding-top: 16px;
@@ -52,7 +52,7 @@ export const DDay = styled.div`
   color: ${({ theme }) => theme.colors.white};
 `;
 
-export const StartingDate = styled.div`
+export const StartDate = styled.div`
   text-align: center;
   font-size: 14px;
   font-weight: 500;

@@ -1,11 +1,5 @@
+import { IThumbnailCardProps } from 'types';
 import * as S from './MainThumbnailList.styles';
-
-export interface IThumbnailCardProps {
-  postId: string;
-  postThumbnailPath: string;
-  title: string;
-  createDate: string;
-}
 
 function ThumbnailCard({
   postId,
