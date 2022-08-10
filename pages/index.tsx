@@ -2,8 +2,11 @@ import { useState, useEffect } from 'react';
 import { IApiResponse, ICoupleProfileProps } from 'types';
 import { MainPageTemplate } from 'components';
 import { useGeolocation, useAxiosInstance } from 'hooks';
+import { IPostFilterProps } from 'types';
+import { useState } from 'react';
 
 function Home() {
+  const [postFilter, setPostFilter] = useState<IPostFilterProps | null>(null);
   const instance = useAxiosInstance();
   const [coupleData, setCoupleData] = useState<ICoupleProfileProps>({
     startDate: '0000-00-00',
@@ -136,11 +139,16 @@ function Home() {
     coords: { latitude: lat, longitude: lng },
   } = useGeolocation();
 
+  const handlePostFilter = (postFilter: IPostFilterProps) => {
+    setPostFilter(postFilter);
+  };
+
   return (
     <MainPageTemplate
       coupleData={coupleData}
       postList={dummyPostListData}
       coordinate={{ latitude: lat, longitude: lng }}
+      handlePostFilter={handlePostFilter}
     />
   );
 }
