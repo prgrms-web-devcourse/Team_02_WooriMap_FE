@@ -1,11 +1,6 @@
 import { TagList } from 'components/molecules/TagList';
+import { ITag } from 'types';
 import * as S from './PostBody.styles';
-
-interface ITag {
-  name: string;
-  tagColor: string;
-  deletable?: boolean;
-}
 
 interface ILocation {
   lat: number;

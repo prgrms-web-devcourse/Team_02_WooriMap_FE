@@ -3,7 +3,8 @@ import React, { useState, InputHTMLAttributes } from 'react';
 import { Tag } from 'components';
 import * as S from './TagInput.styles';
 
-interface ITagInputProps extends InputHTMLAttributes<HTMLInputElement> {
+interface ITagInputProps
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
   allTags: ITag[];
   onEnterType: (newTagName: string) => void;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
