@@ -78,8 +78,6 @@ export default function PostEdit() {
   const { title, content, datingDate, tags, latitude, longitude, imageUrls } =
     values;
 
-  console.log(values);
-
   return (
     <PostTemplate
       type="edit"
