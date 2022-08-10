@@ -5,12 +5,17 @@ import { getCoupleInfo } from 'apis/couple';
 import { IsCoupleProfile } from './IsCoupleProfile';
 import { IsNotCoupleProfile } from './IsNotCoupleProfile';
 
+interface ICoupleInfo {
+  coupleNickName: string;
+  startDate: string;
+}
+
 export function UserProfile({
   isCouple,
   nickName,
   ...props
 }: IUserProfileProps) {
-  const [coupleInfo, setCoupleInfo] = useState<any>({
+  const [coupleInfo, setCoupleInfo] = useState<ICoupleInfo>({
     coupleNickName: '',
     startDate: '',
   });
