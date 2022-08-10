@@ -23,4 +23,5 @@ export const DeleteButton = styled(Image)`
   cursor: pointer;
   position: absolute;
   right: 16px;
+  z-index: 10;
 `;

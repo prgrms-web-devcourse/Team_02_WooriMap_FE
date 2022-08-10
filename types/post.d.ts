@@ -1,14 +1,11 @@
-export interface ITagState {
-  name: string;
-  color: string;
-}
+import { ITag } from 'types/tag';
 
 export interface IPostFormState {
   title: string;
   content: string;
   datingDate: string;
   imageUrls?: Array<string>;
-  tags: Array<ITagState>;
+  tags: Array<ITag>;
   latitude: number;
   longitude: number;
 }
@@ -36,7 +33,7 @@ export interface ISetValueState {
   value:
     | string
     | Array<string>
-    | Array<ITagState>
+    | Array<ITag>
     | { latitude: number; longitude: number };
 }
 

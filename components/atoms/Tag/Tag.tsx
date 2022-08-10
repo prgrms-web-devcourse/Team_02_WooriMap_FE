@@ -1,10 +1,7 @@
+import { ITag } from 'types';
 import * as S from './Tag.styles';
 
-export interface ITagBase {
-  name: string;
-  color?: string;
-}
-interface ITagProps extends ITagBase {
+interface ITagProps extends ITag {
   onDelete?: () => void;
 }
 

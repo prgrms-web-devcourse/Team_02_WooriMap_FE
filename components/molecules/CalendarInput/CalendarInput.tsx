@@ -1,12 +1,12 @@
 import { InputHTMLAttributes, useRef } from 'react';
-import { HandleChangeTypes, ITagState } from 'types';
+import { HandleChangeTypes, ITag } from 'types';
 import calendar from 'public/image/calendar.png';
 import * as S from './CalendarInput.styles';
 
 interface ICalenderInputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value'> {
   id?: string;
-  value: string | Array<ITagState>;
+  value: string | Array<ITag>;
   handleChange: HandleChangeTypes;
 }
 

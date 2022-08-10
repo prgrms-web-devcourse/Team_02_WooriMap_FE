@@ -1,30 +1,25 @@
-import { useState } from 'react';
+import { ITag } from 'types';
 import * as S from './TagList.styles';
-import { ITagBase } from '../../atoms/Tag/Tag';
-
-interface ITag extends ITagBase {
-  deletable?: boolean;
-}
 
 interface ITagListProp {
   tagList: ITag[];
+  onDelete?: (key: string) => void;
 }
 
-export function TagList({ tagList }: ITagListProp) {
-  const [list, setList] = useState<ITag[]>(tagList);
-  const handleDelete = (tagName: string) => () => {
-    const newList: ITag[] = [...list].filter(({ name }) => name !== tagName);
-    setList(newList);
-  };
-
+export function TagList({ tagList, onDelete, ...props }: ITagListProp) {
+  const handleDelete = onDelete
+    ? (key: string) => () => {
+        onDelete(key);
+      }
+    : undefined;
   return (
-    <S.TagListContainer>
-      {list.map(({ name, color, deletable }) => (
+    <S.TagListContainer {...props}>
+      {tagList.map(({ name, color }) => (
         <S.MarginTag
           key={name}
           name={name}
           color={color}
-          onDelete={deletable ? handleDelete(name) : undefined}
+          onDelete={handleDelete && handleDelete(name)}
         />
       ))}
     </S.TagListContainer>

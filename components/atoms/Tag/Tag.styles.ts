@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 interface ITagStyleProps {
-  color?: string;
+  color: string;
   isDelete: boolean;
 }
 
@@ -15,8 +15,7 @@ export const Tag = styled.div<ITagStyleProps>`
   border: none;
   border: ${({ isDelete }) => (isDelete ? '1px solid black' : 'none')};
   border-radius: 1rem;
-  background-color: ${({ color }) =>
-    color || (({ theme }) => theme.tagColors[Math.floor(Math.random() * 8)])};
+  background-color: ${({ color }) => color};
   font-size: 1rem;
   text-decoration: none;
 `;
