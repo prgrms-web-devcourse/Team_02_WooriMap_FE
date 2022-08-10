@@ -17,7 +17,7 @@ export function CircularIcon({ icon, color }: ICircularIconProps) {
         onCircularIconClick();
       }}
     >
-      <Image src={icon} alt="icon" width={16} height={16} />
+      <Image src={icon} alt="icon" width={24} height={24} />
     </S.Container>
   );
 }

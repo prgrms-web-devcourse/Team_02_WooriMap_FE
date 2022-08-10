@@ -4,8 +4,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
   background-color: ${({ color }) => color};
 `;
