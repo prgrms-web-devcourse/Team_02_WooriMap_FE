@@ -20,3 +20,5 @@ export const MapContainer = styled.div`
   align-self: stretch;
   background-color: lightgray;
 `;
+
+export const OverlayContainer = styled.div``;

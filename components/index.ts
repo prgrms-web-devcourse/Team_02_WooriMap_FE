@@ -1,4 +1,8 @@
 // atoms
+<<<<<<< HEAD
+=======
+
+>>>>>>> refactor : 컴포넌트 수정
 export { Button } from 'components/atoms/Button';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';

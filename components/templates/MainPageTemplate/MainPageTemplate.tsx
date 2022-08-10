@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { IMainPageTemplateProps, IThumbnailCardProps } from 'types';
+import { IMainPageTemplateProps } from 'types';
 import { Map, MapMarkerOverlay, MainSidebar } from 'components';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import * as S from './MainPageTemplate.styles';
@@ -33,14 +33,14 @@ export function MainPageTemplate({
                 lat: Number(post.latitude),
                 lng: Number(post.longitude),
               }}
-              clickable={true}
-              onClick={(e) => {
+              clickable
+              onClick={() => {
                 setIsOverlayShown(true);
                 setSelectedMarker(post.postId);
               }}
             >
               {isOverlayShown && selectedMarker === post.postId && (
-                <div
+                <S.OverlayContainer
                   onClick={() => {
                     setIsOverlayShown(false);
                   }}
@@ -51,7 +51,7 @@ export function MainPageTemplate({
                     title={post.title}
                     createDate={post.createDate}
                   />
-                </div>
+                </S.OverlayContainer>
               )}
             </MapMarker>
           ))}
