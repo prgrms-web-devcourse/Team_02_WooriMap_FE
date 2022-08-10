@@ -24,6 +24,12 @@ export const inputList: Array<IInputList> = [
   },
   {
     id: nanoid(),
+    text: '태그',
+    name: 'tags',
+    variant: 'tag',
+  },
+  {
+    id: nanoid(),
     text: '내용',
     name: 'content',
     variant: 'textarea',

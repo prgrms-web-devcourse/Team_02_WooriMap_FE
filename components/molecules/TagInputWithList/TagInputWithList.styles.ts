@@ -4,6 +4,7 @@ import { TagList } from 'components/molecules/TagList';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  width: 98%;
   height: 104px;
 `;
 
