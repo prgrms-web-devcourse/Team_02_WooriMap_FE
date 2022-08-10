@@ -1,5 +1,40 @@
 import LocalStorage from 'utils/storage';
 import { AxiosInstance } from 'axios';
+import { SetterOrUpdater } from 'recoil';
+import { UserResponseType } from 'types/auth';
+
+interface IUploadUserProps {
+  instance: AxiosInstance;
+  accessToken: string;
+  setUser: SetterOrUpdater<UserResponseType | null>;
+}
+export async function updateUserInfoWhenCoupleLinked({
+  instance,
+  accessToken,
+  setUser,
+}: IUploadUserProps) {
+  LocalStorage.setItem('accessToken', accessToken);
+
+  const res = instance
+    .get('/members', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return {
+        data: null,
+      };
+    });
+
+  const { data } = await res;
+
+  setUser(data);
+}
 
 export function getLinkCouple({
   instance,

@@ -1,21 +1,28 @@
 import { useState, ChangeEvent } from 'react';
+import { useSetRecoilState } from 'recoil';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { ITextInputProps } from 'types';
+import userState from 'core';
 import { TextInput } from 'components';
 import { useAxiosInstance } from 'hooks';
-import LocalStorage from 'utils/storage';
-import { getLinkCouple, getCheckIsCoupled } from 'apis/couple';
+import {
+  getLinkCouple,
+  getCheckIsCoupled,
+  updateUserInfoWhenCoupleLinked,
+} from 'apis/couple';
+
 import * as S from './CoupleInviteForm.styles';
 
 interface ICoupleInviteFormProps extends ITextInputProps {
   code: string | null;
 }
 
-export function CoupleInviteForm({ code, name }: ICoupleInviteFormProps) {
+export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
   const router = useRouter();
   const [inputCode, setInputCode] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const setUser = useSetRecoilState(userState);
   const instance = useAxiosInstance();
 
   const onClickInviteButton = async () => {
@@ -28,7 +35,12 @@ export function CoupleInviteForm({ code, name }: ICoupleInviteFormProps) {
 
     if (!accessToken) setError('유효하지 않은 코드입니다.');
     else {
-      LocalStorage.setItem('accessToken', accessToken);
+      await updateUserInfoWhenCoupleLinked({
+        instance,
+        accessToken,
+        setUser,
+      });
+
       router.replace('/');
     }
   };
@@ -43,7 +55,11 @@ export function CoupleInviteForm({ code, name }: ICoupleInviteFormProps) {
     if (!accessToken)
       setError('상대방이 아직 수락하지 않았습니다. 조금만 기다려주세요!');
     else {
-      LocalStorage.setItem('accessToken', accessToken);
+      updateUserInfoWhenCoupleLinked({
+        instance,
+        accessToken,
+        setUser,
+      });
       router.replace('/');
     }
   };

@@ -12,7 +12,6 @@ function CoupleInvite() {
       const {
         data: { code: coupleCode },
       } = await getCoupleCode({ instance });
-
       setCode(coupleCode);
     })();
   }, []);
