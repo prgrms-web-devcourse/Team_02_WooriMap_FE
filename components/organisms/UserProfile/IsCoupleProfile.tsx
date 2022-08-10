@@ -5,7 +5,7 @@ export function IsCoupleProfile({
   isCouple,
   nickName,
   coupleNickName,
-  coupleStartingDate,
+  startDate,
   ...props
 }: IUserProfileProps) {
   return (
@@ -27,9 +27,7 @@ export function IsCoupleProfile({
             D + 237
             {/* D + {coupleStartingDate && calculatFunc(coupleStartingDate)} */}
           </S.CoupleInfo>
-          <S.StartringDate>
-            {coupleStartingDate && coupleStartingDate}
-          </S.StartringDate>
+          <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
       </S.CoupleInfoWrapper>
       <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>

@@ -5,5 +5,5 @@ export interface IUserProfile {
 export interface IUserProfileProps extends IUserProfile {
   nickName: string;
   coupleNickName?: string;
-  coupleStartingDate?: string;
+  startDate?: string;
 }

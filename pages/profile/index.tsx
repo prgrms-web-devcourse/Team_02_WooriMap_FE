@@ -1,9 +1,19 @@
+import userState from 'core';
+import { withAuthRoute } from 'hocs';
 import { ProfileTemplate, UserProfile } from 'components';
+import { useRecoilValueAfterMount } from 'hooks';
 
-export default function Profile() {
+function Profile() {
+  const user = useRecoilValueAfterMount(userState, null);
+
+  if (!user) return null;
+
+  const { isCouple, nickName } = user;
   return (
     <ProfileTemplate>
-      <UserProfile />
+      <UserProfile isCouple={isCouple} nickName={nickName} />
     </ProfileTemplate>
   );
 }
+
+export default withAuthRoute(Profile);
