@@ -1,6 +1,25 @@
 import LocalStorage from 'utils/storage';
 import { AxiosInstance } from 'axios';
 
+export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+
+  try {
+    const res = instance
+      .post('/couples/invite', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => response.data);
+
+    return res;
+  } catch (error: unknown) {
+    console.error(error);
+    return { code: '' };
+  }
+}
+
 export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
   const accessToken = LocalStorage.getItem('accessToken', '');
 

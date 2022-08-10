@@ -5,7 +5,7 @@ import { TextInput } from 'components';
 import * as S from './CoupleInviteForm.styles';
 
 interface ICoupleInviteFormProps extends ITextInputProps {
-  code: string;
+  code: string | null;
 }
 
 export function CoupleInviteForm({
@@ -42,19 +42,9 @@ export function CoupleInviteForm({
         <S.Container>
           <S.Wrapper>
             <S.Label>상대 코드</S.Label>
-            <TextInput
-              value={code as string}
-              onClickButton={onClickDeleteButton}
-            />
+            <TextInput value="" onClickButton={onClickDeleteButton} />
           </S.Wrapper>
         </S.Container>
-        {/*
-        <TextInputWithLabel
-          variant="input"
-          error=""
-          name="codeInput"
-          text="상대 코드"
-        /> */}
       </S.CodeWrapper>
       {isAccepted ? (
         <S.InviteButton size="xlarge" variant="black" disabled>

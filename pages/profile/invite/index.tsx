@@ -1,8 +1,26 @@
+import { useEffect, useState } from 'react';
+import { ProfileTemplate, CoupleInviteForm } from 'components';
+import { getCoupleCode } from 'apis/couple';
+import { useAxiosInstance } from 'hooks';
+
 function CoupleInvite() {
+  const [code, setCode] = useState<string | null>(null);
+  const instance = useAxiosInstance();
+
+  useEffect(() => {
+    (async () => {
+      const {
+        data: { code: coupleCode },
+      } = await getCoupleCode({ instance });
+
+      setCode(coupleCode);
+    })();
+  }, []);
+
   return (
-    <div>
-      <p>hello</p>
-    </div>
+    <ProfileTemplate>
+      <CoupleInviteForm code={code} />
+    </ProfileTemplate>
   );
 }
 
