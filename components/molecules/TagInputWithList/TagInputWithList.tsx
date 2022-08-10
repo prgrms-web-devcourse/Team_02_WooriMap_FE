@@ -1,7 +1,8 @@
 import { ITextInputProps, ITag, IApiResponse, IResponseTag } from 'types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { TagInput } from 'components/atoms/TagInput';
 import { useAxiosInstance } from '@hooks/useAxiosInstance';
+import LocalStorage from '@utils/storage';
 import * as S from './TagInputWithList.styles';
 
 interface ITagInputWithListProps extends ITextInputProps {
@@ -34,23 +35,30 @@ export function TagInputWithList({
 
   const instance = useAxiosInstance();
 
-  const getAllTags = async () => {
-    try {
-      const data = await instance
-        .get<IApiResponse<IResponseTag[]>>('/couples/tags', {})
-        .then((response) => response.data.data);
-      const tags = data.map(({ name, color }) => ({
-        name,
-        color,
-      }));
-      setAllTags(tags);
-      return tags;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
+  useEffect(() => {
+    const getAllTags = async () => {
+      try {
+        const accessToken = LocalStorage.getItem('accessToekn', '');
 
-  getAllTags();
+        const data = await instance
+          .get<IApiResponse<IResponseTag[]>>('/couples/tags', {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+          })
+          .then((response) => response.data.data);
+        const tags = data.map(({ name, color }) => ({
+          name,
+          color,
+        }));
+        setAllTags(tags);
+        return tags;
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    };
+    console.log(getAllTags());
+  }, [instance]);
 
   const handleEnterType = (newTagName: string) => {
     if (inputValue.some((tag) => tag.name === newTagName)) return;
