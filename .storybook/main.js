@@ -21,6 +21,7 @@ module.exports = {
       apis: path.resolve(__dirname, '../apis'),
       hocs: path.resolve(__dirname, '../hocs'),
       core: path.resolve(__dirname, '../core'),
+      providers: path.resolve(__dirname, '../providers'),
     };
     config.resolve.alias = {
       ...config.resolve.alias,
