@@ -21,8 +21,10 @@ export function PostTemplate({
 
   return (
     <S.Container onSubmit={onSubmit} id="post-write">
-      <S.ImageSection>{imageSection}</S.ImageSection>
-      <S.ContentSection>{contentSection}</S.ContentSection>
+      <S.PostContent>
+        <S.ImageSection>{imageSection}</S.ImageSection>
+        <S.ContentSection>{contentSection}</S.ContentSection>
+      </S.PostContent>
       {type !== 'detail' && (
         <S.Wrapper>
           <Button id="post-write" size="small" onClick={onCancel}>

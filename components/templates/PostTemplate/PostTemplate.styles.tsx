@@ -1,24 +1,31 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.form`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: auto 48px;
+  display: flex;
+  flex-direction: column;
 
   width: 100%;
   height: 100%;
 
-  gap: 2rem;
-  padding: 2rem 1.5rem;
+  padding: 2rem 5%;
 
   box-sizing: border-box;
 `;
 
+export const PostContent = styled.article`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 55%;
+`;
+
 export const ImageSection = styled.div`
+  width: 45%;
   overflow: auto;
 `;
 
 export const ContentSection = styled.div`
+  width: 45%;
   overflow: auto;
 `;
 
