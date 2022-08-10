@@ -16,9 +16,11 @@ export function IsNotCoupleProfile({
         </S.UserNameWrapper>
       </S.ProfileWrapper>
       <S.ButtonWrapper>
-        <S.MakeCoupleButton variant="pink" size="xlarge">
-          <Link href="/profile/invite">커플 맺기</Link>
-        </S.MakeCoupleButton>
+        <Link href="/profile/invite">
+          <S.MakeCoupleButton variant="pink" size="xlarge">
+            커플 맺기
+          </S.MakeCoupleButton>
+        </Link>
         <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
       </S.ButtonWrapper>
       <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
