@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import axios, { AxiosResponse, AxiosError } from 'axios';
 import { useSetRecoilState } from 'recoil';
+import { setCookie, removeCookie } from 'utils/cookie';
 import LocalStorage from 'utils/storage';
 import { IRetryAxiosInstanceConfig } from 'types/auth';
 import userState from 'core';
@@ -26,11 +27,13 @@ function useAxiosInstance() {
       try {
         const accessToken = await getNewAccessToken(instance);
         LocalStorage.setItem('accessToken', accessToken);
+        setCookie('accessToken', accessToken);
         const config = getConfigWithAuthorizedHeadersBy(_config);
         return await instance(config);
       } catch (error) {
         setUser(null);
         LocalStorage.removeItem('accessToken');
+        removeCookie('accessToken');
         return Promise.reject(error);
       }
     };

@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSetRecoilState } from 'recoil';
+import { setCookie } from 'utils/cookie';
 import {
   AuthPageTemplate,
   AuthPageRoutingButton,
@@ -47,6 +48,7 @@ function Signin() {
 
       setUser(userData.member);
       LocalStorage.setItem('accessToken', userData.accessToken);
+      setCookie('accessToken', userData.accessToken);
       return userData;
     } catch (_error) {
       return Promise.reject(_error);
