@@ -7,12 +7,13 @@ export function IsCoupleProfile({
   nickName,
   coupleNickName,
   startDate,
+  imageUrl,
   ...props
 }: IUserProfileProps) {
   return (
     <S.UserProfileBackground {...props}>
       <S.ProfileWrapper>
-        <S.UserProfile width={128} height={128} />
+        <S.UserProfile path={imageUrl} width={128} height={128} />
         <S.UserNameWrapper>
           <S.UserName>{nickName && nickName}</S.UserName>
         </S.UserNameWrapper>

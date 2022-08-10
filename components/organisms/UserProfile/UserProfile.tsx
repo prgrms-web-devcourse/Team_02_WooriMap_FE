@@ -13,6 +13,7 @@ interface ICoupleInfo {
 export function UserProfile({
   isCouple,
   nickName,
+  imageUrl,
   ...props
 }: IUserProfileProps) {
   const [coupleInfo, setCoupleInfo] = useState<ICoupleInfo>({
@@ -47,6 +48,7 @@ export function UserProfile({
         nickName={nickName}
         coupleNickName={coupleNickName}
         startDate={startDate}
+        imageUrl={imageUrl}
         {...props}
       />
     );

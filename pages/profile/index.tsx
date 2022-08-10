@@ -8,10 +8,14 @@ function Profile() {
 
   if (!user) return null;
 
-  const { isCouple, nickName } = user;
+  const { isCouple, nickName, imageUrl } = user;
   return (
     <ProfileTemplate>
-      <UserProfile isCouple={isCouple} nickName={nickName} />
+      <UserProfile
+        isCouple={isCouple}
+        nickName={nickName}
+        imageUrl={imageUrl}
+      />
     </ProfileTemplate>
   );
 }

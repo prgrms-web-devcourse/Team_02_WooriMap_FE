@@ -4,7 +4,7 @@ export interface IUserProfile {
 
 export interface IUserProfileProps extends IUserProfile {
   nickName: string;
-  profileImage: string;
+  imageUrl?: string | null;
   coupleNickName?: string;
   startDate?: string;
 }
