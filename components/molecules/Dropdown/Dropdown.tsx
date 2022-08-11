@@ -3,7 +3,7 @@ import * as S from './Dropdown.styles';
 
 interface IDropdown {
   trigger?: React.ReactElement;
-  children?: React.ReactNode;
+  children?: React.ReactElement[];
 }
 
 function Dropdown({ trigger, children }: IDropdown) {
@@ -23,6 +23,10 @@ function Dropdown({ trigger, children }: IDropdown) {
     setIsOpen((prev) => !prev);
   }, []);
 
+  const close = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
   const clonedTrigger = trigger
     ? React.cloneElement(trigger, {
         onClick: (e: React.MouseEvent<HTMLElement>) => {
@@ -33,11 +37,21 @@ function Dropdown({ trigger, children }: IDropdown) {
       })
     : null;
 
+  const childrenWithProps = React.Children.map(children, (child) => {
+    if (!React.isValidElement(child)) return null;
+    return React.cloneElement(child, {
+      onClick: (e: React.MouseEvent<HTMLElement>) => {
+        close();
+        child.props.onClick?.(e);
+      },
+    });
+  });
+
   return (
     <S.DropdownWrapper>
       <S.DropdownTrigger>{clonedTrigger}</S.DropdownTrigger>
       <S.DropdownMenu display={isOpen} widthBoundary={boundary} ref={ref}>
-        {children}
+        {childrenWithProps}
       </S.DropdownMenu>
     </S.DropdownWrapper>
   );
