@@ -3,10 +3,6 @@ import { ITag, ICoordinates } from 'types';
 
 import * as S from './PostBody.styles';
 
-interface ITag {
-  name: string;
-  color: string;
-}
 interface IPostBodyProps {
   title: string;
   date: string;
