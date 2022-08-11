@@ -43,3 +43,7 @@ export interface IPostFilterProps {
 export interface IHandlePostFilterProps {
   handlePostFilter: (postFilter: IPostFilterProps) => void;
 }
+
+export interface IMainSearchBarProps extends IHandlePostFilterProps {
+  wholeTagList: ITag[];
+}

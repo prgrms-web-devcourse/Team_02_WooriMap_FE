@@ -4,13 +4,23 @@ import {
   ITag as ITagWithoutId,
   IPostFilterProps,
   IHandlePostFilterProps,
+  IApiResponse,
+  IResponseTag,
+  IMainSearchBarProps,
 } from 'types';
 import { TagList } from 'components';
 import searchIcon from '../../../public/image/Search.png';
+import LocalStorage from 'utils/storage';
 import * as S from './MainSearchBar.styles';
+import { useAxiosInstance } from 'hooks';
 
 interface ITag extends ITagWithoutId {
   id: number;
+}
+
+interface ITagSearchBarProps {
+  addTagList: (tag: ITag) => void;
+  wholeTagList: ITag[];
 }
 
 function TagCheckbox({ onCheckboxClick }: { onCheckboxClick: () => void }) {
@@ -22,38 +32,7 @@ function TagCheckbox({ onCheckboxClick }: { onCheckboxClick: () => void }) {
   );
 }
 
-function TagSearchBar({ addTagList }: { addTagList: (tag: ITag) => void }) {
-  const getWholeTagList = () => {
-    const dummyData: ITag[] = [
-      {
-        id: 1,
-        name: '첫번째 태그',
-        color: '#000000',
-      },
-      {
-        id: 2,
-        name: '두번째 태그',
-        color: '#000000',
-      },
-      {
-        id: 3,
-        name: '세번째 태그',
-        color: '#000000',
-      },
-      {
-        id: 4,
-        name: '네번째 태그',
-        color: '#000000',
-      },
-      {
-        id: 5,
-        name: '다섯번째 태그',
-        color: '#000000',
-      },
-    ];
-    return dummyData;
-  };
-  const wholeTagList = getWholeTagList();
+function TagSearchBar({ addTagList, wholeTagList }: ITagSearchBarProps) {
   const [inputValue, setInputValue] = useState('');
   const input = useRef<HTMLInputElement>(null);
 
@@ -127,7 +106,10 @@ function TitleSearchBar({
   );
 }
 
-export function MainSearchBar({ handlePostFilter }: IHandlePostFilterProps) {
+export function MainSearchBar({
+  handlePostFilter,
+  wholeTagList,
+}: IMainSearchBarProps) {
   const [isTagSearch, setIsTagSearch] = useState(false);
   const [tagList, setTagList] = useState<ITag[]>([]);
   const [keyWord, setKeyWord] = useState('');
@@ -144,7 +126,7 @@ export function MainSearchBar({ handlePostFilter }: IHandlePostFilterProps) {
     if (!tagList.some((eachTag) => eachTag.id === tag.id)) {
       const temp = tagList;
       temp.push(tag);
-      setTagList(temp);
+      setTagList(() => temp);
       alert(`tagList에 ${tag}가 추가되었습니다.`);
     } else {
       alert(`해당 태그는 이미 존재합니다`);
@@ -161,10 +143,6 @@ export function MainSearchBar({ handlePostFilter }: IHandlePostFilterProps) {
     });
   };
 
-  // useEffect(() => {
-
-  // }, [tagList]);
-
   useEffect(() => {
     const postFilter: IPostFilterProps = {
       postFilter: {
@@ -173,20 +151,17 @@ export function MainSearchBar({ handlePostFilter }: IHandlePostFilterProps) {
       },
     };
     handlePostFilter(postFilter);
-    alert('postFilter가 변경되었습니다');
   }, [tagList.length, keyWord]);
 
   return (
     <S.MainSearchBarContainer>
       <TagCheckbox onCheckboxClick={onCheckboxClick} />
-      {isTagSearch ? (
-        <TagSearchBar addTagList={addTagList} />
+      {isTagSearch && tagList ? (
+        <TagSearchBar addTagList={addTagList} wholeTagList={wholeTagList} />
       ) : (
         <TitleSearchBar handleKeyWord={handleKeyWord} />
       )}
-      {!!tagList.length && (
-        <TagList tagList={tagList} onDelete={deleteTagList} />
-      )}
+      <TagList tagList={tagList} onDelete={deleteTagList} />
     </S.MainSearchBarContainer>
   );
 }
