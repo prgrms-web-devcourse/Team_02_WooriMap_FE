@@ -12,7 +12,11 @@ function Dropdown({ trigger, children }: IDropdown) {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const calculateWidth = useCallback(() => {
-    setBoundary(window.innerWidth);
+    if (!ref.current) return;
+    setBoundary(
+      ref.current.getBoundingClientRect().width +
+        ref.current.getBoundingClientRect().left,
+    );
   }, []);
 
   const toggle = useCallback(() => {

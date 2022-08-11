@@ -6,7 +6,7 @@ interface IDropdownMenu {
 }
 
 export const DropdownMenu = styled.div<Partial<IDropdownMenu>>`
-  display: ${({ display }) => (display ? 'block' : 'none')};
+  visibility: ${({ display }) => (display ? 'visible' : 'hidden')};
   position: absolute;
   right: 0;
 
@@ -30,6 +30,8 @@ export const DropdownMenu = styled.div<Partial<IDropdownMenu>>`
 `;
 
 export const DropdownWrapper = styled.div`
+  display: inline-block;
+
   position: relative;
 `;
 
@@ -45,4 +47,6 @@ export const DropdownItem = styled.div`
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  cursor: pointer;
 `;
