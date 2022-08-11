@@ -62,7 +62,7 @@ function TagSearchBar({ addTagList, wholeTagList }: ITagSearchBarProps) {
           <Image src={searchIcon} alt="search icon" />
         </button>
       </S.SearchBarForm>
-      {wholeTagList.length && inputValue !== '' && (
+      {inputValue !== '' ? (
         <S.FilteredTagList>
           {wholeTagList
             .filter(({ name }) => name.includes(inputValue))
@@ -70,13 +70,27 @@ function TagSearchBar({ addTagList, wholeTagList }: ITagSearchBarProps) {
               <S.FilteredTag
                 key={id}
                 color={color}
-                onClick={(e) => {
+                onClick={() => {
                   onFilteredTagClick({ id, name, color });
                 }}
               >
                 {name}
               </S.FilteredTag>
             ))}
+        </S.FilteredTagList>
+      ) : (
+        <S.FilteredTagList>
+          {wholeTagList.map(({ id, name, color }) => (
+            <S.FilteredTag
+              key={id}
+              color={color}
+              onClick={() => {
+                onFilteredTagClick({ id, name, color });
+              }}
+            >
+              {name}
+            </S.FilteredTag>
+          ))}
         </S.FilteredTagList>
       )}
     </S.TagSearchBarContainer>

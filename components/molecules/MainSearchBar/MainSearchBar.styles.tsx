@@ -73,7 +73,7 @@ export const FilteredTag = styled.div`
   height: 2rem;
   margin: 1rem 0;
   padding: 0.5rem 1rem;
+  border: 1px solid;
   border-radius: 1rem;
-  color: white;
   background-color: ${({ color }) => color};
 `;
