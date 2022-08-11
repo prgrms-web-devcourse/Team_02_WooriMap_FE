@@ -31,6 +31,7 @@ function Home() {
           })
           .then((response) => response.data.data);
         setCoupleData(data);
+        return null;
       } catch (error) {
         return Promise.reject(error);
       }
