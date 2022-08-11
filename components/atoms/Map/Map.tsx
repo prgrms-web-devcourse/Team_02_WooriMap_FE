@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Script from 'next/script';
+import React, { useEffect, useState } from 'react';
 import { Map as KakaoMap, MapProps } from 'react-kakao-maps-sdk';
 
 interface IProps extends MapProps {
@@ -25,21 +24,24 @@ function Map({ children, isMain, width, height, ...props }: IProps) {
     ...props.style,
   };
 
-  return (
-    <>
-      <Script src={URL} onLoad={onLoad} />
-      {loaded && (
-        <KakaoMap
-          style={
-            isMain ? defaultStyle : { ...defaultStyle, borderRadius: '8px' }
-          }
-          {...props}
-        >
-          {children}
-        </KakaoMap>
-      )}
-    </>
-  );
+  useEffect(() => {
+    const $script = document.createElement('script');
+    $script.src = URL;
+    $script.addEventListener('load', onLoad);
+    document.head.appendChild($script);
+    return () => {
+      $script.remove();
+    };
+  }, []);
+
+  return loaded ? (
+    <KakaoMap
+      style={isMain ? defaultStyle : { ...defaultStyle, borderRadius: '8px' }}
+      {...props}
+    >
+      {children}
+    </KakaoMap>
+  ) : null;
 }
 
 export default Map;
