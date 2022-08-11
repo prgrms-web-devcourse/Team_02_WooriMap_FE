@@ -1,4 +1,10 @@
-import { IQueryProps, IEditState, EditErrorTypes } from 'types';
+import { nanoid } from 'nanoid';
+import {
+  IQueryProps,
+  IEditState,
+  EditErrorTypes,
+  IEditInputProps,
+} from 'types';
 
 interface ISetInitialValueState {
   initialValues: IEditState;
@@ -16,7 +22,7 @@ export const setInitialState = ({
     ? {
         initialValues: {
           nickName: query.nickName,
-          startDate: query.startDate,
+          editDate: query.startDate,
         } as IEditState,
         errorState: { nickName: '' },
       }
@@ -25,3 +31,21 @@ export const setInitialState = ({
         errorState: { nickName: '' },
       };
 };
+
+export const coupleTextInputProps: Array<IEditInputProps> = [
+  {
+    key: nanoid(),
+    name: 'nickName',
+    type: 'text',
+    variant: 'input',
+    text: '닉네임',
+    placeholder: '닉네임을 입력해주세요',
+  },
+  {
+    key: nanoid(),
+    name: 'editDate',
+    type: 'date',
+    variant: 'calendar',
+    text: '연애시작일',
+  },
+];

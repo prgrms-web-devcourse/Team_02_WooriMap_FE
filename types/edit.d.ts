@@ -7,7 +7,16 @@ export interface IQueryProps {
 
 export interface IEditState {
   nickName: string;
-  startDate?: string;
+  editDate?: string;
 }
 
-export type EditErrorTypes = Omit<IEditState, 'startDate'>;
+export type EditErrorTypes = Omit<IEditState, 'editDate'>;
+
+export interface IEditInputProps {
+  key: string;
+  name: string;
+  type: 'text' | 'date';
+  variant: 'input' | 'calendar';
+  text: string;
+  placeholder?: string;
+}

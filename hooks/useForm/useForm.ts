@@ -68,8 +68,13 @@ function useForm<T, V, K>({
   };
 
   const removeAll = useCallback((name: string) => {
+<<<<<<< HEAD
     if (name === 'tags') setValues((prev) => ({ ...prev, [name]: [] }));
     else setValues((prev) => ({ ...prev, [name]: '' }));
+=======
+    console.log(name);
+    setValues((prev) => ({ ...prev, [name]: '' }));
+>>>>>>> 4daba49 (feat: 인풋 화면 구성)
   }, []);
 
   return {

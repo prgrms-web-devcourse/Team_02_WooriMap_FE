@@ -6,7 +6,7 @@ export const CalendarInputWrapper = styled.div`
   flex: 1;
   border-radius: 8px;
   border: 2px solid ${({ theme }) => theme.colors.gray};
-  padding: 13px 16px;
+  padding: 8px 12px;
   position: relative;
 `;
 

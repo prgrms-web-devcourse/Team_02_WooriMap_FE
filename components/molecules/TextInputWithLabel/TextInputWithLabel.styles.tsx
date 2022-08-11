@@ -21,7 +21,7 @@ export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
   ${({ isValidationNotUsed }) => isValidationNotUsed && `margin-bottom: 1rem;`}
 
   & > label {
-    width: 52px;
+    width: 64px;
     height: 20px;
 
     margin-right: 10px;
@@ -30,7 +30,7 @@ export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
     font-size: 14px;
     font-weight: bold;
     word-break: break-all;
-    text-align: center;
+    text-align: start;
   }
 `;
 
