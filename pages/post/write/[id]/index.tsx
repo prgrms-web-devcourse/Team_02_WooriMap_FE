@@ -3,19 +3,13 @@ import { useRouter } from 'next/router';
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
 import { useForm, useAxiosInstance } from 'hooks';
 import {
-  ITag,
   IPostFormState,
   IPostValidationState,
   IPostValidationProps,
   IInitialPostState,
   IPostDetailProps,
 } from 'types';
-import {
-  postValidation,
-  parsePostData,
-  postInitialValue,
-  checkStateIsValid,
-} from 'utils';
+import { postValidation, parsePostData, postInitialValue } from 'utils';
 import { updatePost, getOnePost } from 'apis/post';
 
 export const errorState: IPostValidationState = {
@@ -29,8 +23,7 @@ export default function PostEdit() {
   const { id } = router.query as { id: string };
   const axiosInstance = useAxiosInstance();
 
-  const [initialValues, setInitialValues] =
-    useState<IInitialPostState>(postInitialValue);
+  const [loading, setLoading] = useState(true);
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     const res = await updatePost({ instance: axiosInstance, data: values, id });
@@ -38,16 +31,13 @@ export default function PostEdit() {
     console.log(res);
   };
 
-  const { values, handleChange, handleSubmit, removeAll } = useForm<
-    IPostFormState,
-    IPostValidationState,
-    IPostValidationProps
-  >({
-    initialValues,
-    errorState,
-    onSubmit,
-    validateValues: postValidation,
-  });
+  const { values, handleChange, handleSubmit, removeAll, setAllState } =
+    useForm<IPostFormState, IPostValidationState, IPostValidationProps>({
+      initialValues: postInitialValue,
+      errorState,
+      onSubmit,
+      validateValues: postValidation,
+    });
 
   useEffect(() => {
     (async () => {
@@ -60,10 +50,9 @@ export default function PostEdit() {
         })) as IPostDetailProps;
 
         if (res) {
-          setInitialValues(
-            parsePostData({ postData: res }) as IInitialPostState,
-          );
+          setAllState(parsePostData({ postData: res }) as IInitialPostState);
 
+          setLoading(false);
           return;
         }
 
@@ -73,19 +62,10 @@ export default function PostEdit() {
         router.push('/404');
       }
     })();
-  }, [router, setInitialValues]);
+  }, [router, setAllState]);
 
   // 현재 값이 유효하지 않으면 로딩 화면 ( 스켈레톤 계획 )
-  if (
-    !checkStateIsValid<IPostValidationState>({
-      errorState: postValidation({
-        title: values.title,
-        imageUrls: values.imageUrls as Array<string>,
-        tags: values.tags as Array<ITag>,
-      }),
-    })
-  )
-    return null;
+  if (loading) return null;
 
   // 현재 값이 유효하다면
   const { title, content, datingDate, tags, latitude, longitude, imageUrls } =

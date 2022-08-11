@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { checkStateIsValid } from 'utils';
 import { IOnSubmit, IPostOnChangeProps, ISetValueState } from 'types';
 
@@ -22,10 +22,6 @@ function useForm<T, V, K>({
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    setValues(initialValues);
-  }, [initialValues]);
-
   const setStateWhenChanged = useCallback(({ name, value }: ISetValueState) => {
     if (name === 'position') {
       setValues((prev) => ({
@@ -46,6 +42,10 @@ function useForm<T, V, K>({
       setStateWhenChanged({ name: n, value: v });
     }
   };
+
+  const setAllState = useCallback((newValues: T) => {
+    setValues(newValues);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent<Element>) => {
     setIsLoading(true);
@@ -80,6 +80,7 @@ function useForm<T, V, K>({
     handleChange,
     handleSubmit,
     removeAll,
+    setAllState,
   };
 }
 
