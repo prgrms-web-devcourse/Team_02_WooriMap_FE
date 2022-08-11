@@ -10,6 +10,11 @@ export default function ProfileEdit() {
   const currentUserState = useRecoilValueAfterMount(userState, null);
   const [user, setUser] = useState<IUserProps | null>(null);
 
+  /**
+   * 유저 정보를 가져옵니다
+   *
+   * 초반에는 리코일이 null 이기 때문에 useEffect로 리코일 state가 처리 되었을 때, fetch합니다.
+   */
   useEffect(() => {
     if (currentUserState) {
       // 사용자가 커플일 때
@@ -44,6 +49,7 @@ export default function ProfileEdit() {
     }
   }, [currentUserState, instance]);
 
+  // 모든 데이터의 상태가 처리되지 않았다면 그냥 빈 화면 보여줍니다. (추후에, UI 개선이 가능할 것 같습니다.)
   if (!currentUserState || !user) return null;
 
   return (

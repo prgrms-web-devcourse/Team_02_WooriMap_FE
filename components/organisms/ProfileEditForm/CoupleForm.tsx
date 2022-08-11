@@ -13,6 +13,7 @@ export function CoupleForm({
   removeAll: (name: string) => void;
   errors: IEditState;
 }) {
+  // 커플인 경우 구성되어야 할 폼입니다.
   return (
     <>
       {coupleTextInputProps.map((input: IEditInputProps) => {

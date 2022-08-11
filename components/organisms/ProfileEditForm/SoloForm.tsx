@@ -13,6 +13,7 @@ export function SoloForm({
   removeAll: (name: string) => void;
   errors: IEditState;
 }) {
+  // 솔로인경우 구성되어야 할 폼입니다.
   const [input] = coupleTextInputProps;
 
   return (
