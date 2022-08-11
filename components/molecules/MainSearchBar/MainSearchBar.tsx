@@ -3,16 +3,11 @@ import { useState, useRef, useEffect } from 'react';
 import {
   ITag as ITagWithoutId,
   IPostFilterProps,
-  IHandlePostFilterProps,
-  IApiResponse,
-  IResponseTag,
   IMainSearchBarProps,
 } from 'types';
 import { TagList } from 'components';
 import searchIcon from '../../../public/image/Search.png';
-import LocalStorage from 'utils/storage';
 import * as S from './MainSearchBar.styles';
-import { useAxiosInstance } from 'hooks';
 
 interface ITag extends ITagWithoutId {
   id: number;
@@ -106,7 +101,7 @@ function TitleSearchBar({
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // 이 부분에서 도저히 any를 쓰지 않고 어떻게 해야할 지 잘 모르겠습니다 ㅜㅠ
-    const target: any = e.target;
+    const { target }: { target: any } = e;
     console.dir(target[0].value);
     handleKeyWord(target[0].value);
   };
@@ -132,8 +127,8 @@ export function MainSearchBar({
     setIsTagSearch((v) => !v);
   };
 
-  const handleKeyWord = (keyWord: string) => {
-    setKeyWord(keyWord);
+  const handleKeyWord = (newKeyWord: string) => {
+    setKeyWord(newKeyWord);
   };
 
   const addTagList = (tag: ITag) => {
@@ -154,6 +149,7 @@ export function MainSearchBar({
         setTagList(temp);
         alert(`tag : ${tag.name} 가 무사히 제거되었습니다.`);
       }
+      return null;
     });
   };
 

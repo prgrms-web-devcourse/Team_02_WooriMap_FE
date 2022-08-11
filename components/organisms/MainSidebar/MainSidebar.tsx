@@ -6,9 +6,9 @@ import {
 } from 'types';
 import { useState, useEffect } from 'react';
 import { CoupleProfile, MainSearchBar, MainThumbnailList } from 'components';
-import * as S from './MainSidebar.styles';
 import LocalStorage from 'utils/storage';
 import { useAxiosInstance } from 'hooks';
+import * as S from './MainSidebar.styles';
 
 interface ITag extends ITagWithoutId {
   id: number;
@@ -70,7 +70,7 @@ export function MainSidebar({
         // 태그 확인용, 곧 삭제 예정
         console.log('tags : ', tags);
         setWholeTagList(tags);
-        return;
+        return null;
       } catch (error) {
         return Promise.reject(error);
       }
