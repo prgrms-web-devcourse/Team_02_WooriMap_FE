@@ -1,6 +1,7 @@
 import { ProfileUpload, Button, SubmitButton } from 'components';
-import { useImage, useForm } from 'hooks';
+import { useImage, useForm, useAxiosInstance } from 'hooks';
 import { IUserProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
+import { updateMemberInfo, updateCoupleInfo } from 'apis/couple';
 import { profileEditValidation } from 'utils/formValidation';
 import { CoupleForm } from './CoupleForm';
 import { SoloForm } from './SoloForm';
@@ -8,6 +9,8 @@ import { setInitialState } from './helper';
 import * as S from './ProfileEditForm.style';
 
 export function ProfileEditForm({ user }: { user: IUserProps }) {
+  const instance = useAxiosInstance();
+
   const { isCouple, imageUrl } = user;
 
   const { initialValues, errorState } = setInitialState({
@@ -18,8 +21,37 @@ export function ProfileEditForm({ user }: { user: IUserProps }) {
     image: imageUrl as string,
   });
 
-  const onSubmit = ({ values }: IOnSubmit<IEditState>) => {
-    console.log(values);
+  const onSubmit = async ({ values }: IOnSubmit<IEditState>) => {
+    const memberUpdateInfo = {
+      imageUrl: preview,
+      nickName: values.nickName,
+    };
+
+    if (isCouple) {
+      const coupleUpdateInfo = {
+        editDate: values.editDate,
+      };
+
+      const response = await Promise.all([
+        updateCoupleInfo({
+          instance,
+          data: coupleUpdateInfo,
+        }),
+        updateMemberInfo({
+          instance,
+          data: memberUpdateInfo,
+        }),
+      ]);
+
+      console.log(response);
+    } else {
+      const response = await updateMemberInfo({
+        instance,
+        data: memberUpdateInfo,
+      });
+
+      console.log(response);
+    }
   };
 
   const { values, errors, handleChange, handleSubmit, removeAll } = useForm<
