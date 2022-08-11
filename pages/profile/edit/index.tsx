@@ -1,5 +1,6 @@
 import { withRouter } from 'next/router';
 import type { Router } from 'next/router';
+import { IQueryProps } from 'types';
 import { ProfileTemplate, ProfileEditForm } from 'components';
 
 type PropsWithRouter = {
@@ -13,7 +14,7 @@ function ProfileEdit({ router: { query } }: PropsWithRouter) {
 
   return (
     <ProfileTemplate>
-      <ProfileEditForm imageUrl={imageUrl as string | null} />
+      <ProfileEditForm query={query} />
     </ProfileTemplate>
   );
 }

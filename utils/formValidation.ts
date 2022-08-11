@@ -159,3 +159,15 @@ export const signupValidation = ({
 
   return errors;
 };
+
+export const profileEditValidation = ({ nickName }: { nickName: string }) => {
+  const errors = {
+    nickName: '',
+  };
+
+  const { validateNickName } = new FormValidation();
+
+  errors.nickName = validateNickName({ nickName });
+
+  return errors;
+};

@@ -33,3 +33,4 @@ export type {
   IMainSearchBarProps,
 } from 'types/mainPage';
 export type { ITag, IResponseTag } from 'types/tag';
+export type { IQueryProps, EditErrorTypes, IEditState } from 'types/edit';
