@@ -25,6 +25,11 @@ export function PostBody({
 }: IPostBodyProps) {
   const [deleteConfirm, setDeleteConfirm] = useState<boolean>(false);
 
+  const handleEditClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    handleEdit();
+  };
+
   const handleDeleteClick = (e: React.MouseEvent<HTMLElement>) => {
     e.preventDefault();
     if (!deleteConfirm) {
@@ -42,7 +47,7 @@ export function PostBody({
           <S.Date>{date}</S.Date>
         </S.TitleLine>
         <S.PostControl>
-          <S.EditPostButton size="small" onClick={handleEdit}>
+          <S.EditPostButton size="small" onClick={handleEditClick}>
             포스트 편집
           </S.EditPostButton>
           <S.DeletePostButton size="small" onClick={handleDeleteClick}>
