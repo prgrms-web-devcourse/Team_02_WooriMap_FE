@@ -3,12 +3,19 @@ import { useRouter } from 'next/router';
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
 import { useForm, useAxiosInstance } from 'hooks';
 import {
+  ITag,
   IPostFormState,
   IPostValidationState,
   IPostValidationProps,
   IInitialPostState,
+  IPostDetailProps,
 } from 'types';
-import { postValidation, parsePostData, postInitialValue } from 'utils';
+import {
+  postValidation,
+  parsePostData,
+  postInitialValue,
+  checkStateIsValid,
+} from 'utils';
 import { updatePost, getOnePost } from 'apis/post';
 
 export const errorState: IPostValidationState = {
@@ -21,13 +28,8 @@ export default function PostEdit() {
   const router = useRouter();
   const { id } = router.query as { id: string };
 
-  const [postState, setPostState] = useState<{
-    initalValue: IInitialPostState;
-    status: 'initial' | 'settled';
-  }>({
-    initalValue: postInitialValue,
-    status: 'initial',
-  });
+  const [initialValues, setInitialValues] =
+    useState<IInitialPostState>(postInitialValue);
 
   const axiosInstance = useAxiosInstance();
 
@@ -42,7 +44,7 @@ export default function PostEdit() {
     IPostValidationState,
     IPostValidationProps
   >({
-    initialValues: postState.initalValue,
+    initialValues,
     errorState,
     onSubmit,
     validateValues: postValidation,
@@ -53,14 +55,15 @@ export default function PostEdit() {
       if (!router.isReady) return;
 
       try {
-        const res = await getOnePost({ instance: axiosInstance, id });
+        const res = (await getOnePost({
+          instance: axiosInstance,
+          id,
+        })) as IPostDetailProps;
 
         if (res) {
-          setPostState((prev) => ({
-            ...prev,
-            initalValue: parsePostData({ postData: res }) as IInitialPostState,
-            status: 'settled',
-          }));
+          setInitialValues(
+            parsePostData({ postData: res }) as IInitialPostState,
+          );
 
           return;
         }
@@ -71,9 +74,18 @@ export default function PostEdit() {
         router.push('/404');
       }
     })();
-  }, [router]);
+  }, [router, setInitialValues]);
 
-  if (postState.status === 'initial') return null;
+  if (
+    !checkStateIsValid<IPostValidationState>({
+      errorState: postValidation({
+        title: values.title,
+        imageUrls: values.imageUrls as Array<string>,
+        tags: values.tags as Array<ITag>,
+      }),
+    })
+  )
+    return null;
 
   const { title, content, datingDate, tags, latitude, longitude, imageUrls } =
     values;

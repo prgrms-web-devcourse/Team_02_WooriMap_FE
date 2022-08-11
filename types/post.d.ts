@@ -13,7 +13,7 @@ export interface IPostFormState {
 export interface IPostValidationProps {
   title: string;
   imageUrls: Array<string>;
-  tags: Array<string>;
+  tags: Array<ITag>;
 }
 
 export interface IPostOnChangeProps {
