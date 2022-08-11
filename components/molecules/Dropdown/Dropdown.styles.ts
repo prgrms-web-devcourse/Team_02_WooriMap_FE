@@ -15,7 +15,7 @@ export const DropdownMenu = styled.div<Partial<IDropdownMenu>>`
   max-height: 40rem;
   z-index: 99999;
 
-  padding: 1rem;
+  padding: 1rem 0;
   background-color: white;
 
   border-top-left-radius: 24px;
@@ -24,6 +24,7 @@ export const DropdownMenu = styled.div<Partial<IDropdownMenu>>`
   box-shadow: 1px 4px 5px #00000026;
 
   overflow-y: auto;
+
   ::-webkit-scrollbar {
     display: none;
   }
