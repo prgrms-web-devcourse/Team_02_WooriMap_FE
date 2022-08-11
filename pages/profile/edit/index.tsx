@@ -1,6 +1,13 @@
+import { withRouter } from 'next/router';
+import type { Router } from 'next/router';
 import { ProfileTemplate } from 'components';
 
-function ProfileEdit() {
+type PropsWithRouter = {
+  router: Router;
+};
+
+function ProfileEdit({ router }: PropsWithRouter) {
+  console.log(router.query);
   return (
     <ProfileTemplate>
       <h1>Profile Edit</h1>
@@ -8,4 +15,4 @@ function ProfileEdit() {
   );
 }
 
-export default ProfileEdit;
+export default withRouter(ProfileEdit);

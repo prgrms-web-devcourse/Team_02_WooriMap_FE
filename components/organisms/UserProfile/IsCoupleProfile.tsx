@@ -11,6 +11,7 @@ export function IsCoupleProfile({
   imageUrl,
   ...props
 }: IUserProfileProps) {
+  const query = { isCouple, imageUrl, nickName, startDate };
   return (
     <S.UserProfileBackground {...props}>
       <S.ProfileWrapper>
@@ -32,7 +33,13 @@ export function IsCoupleProfile({
           <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
       </S.CoupleInfoWrapper>
-      <Link href="/profile/edit">
+      <Link
+        href={{
+          pathname: '/profile/edit',
+          query,
+        }}
+        as="/profile/edit"
+      >
         <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
       </Link>
       <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>

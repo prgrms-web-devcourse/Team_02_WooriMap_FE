@@ -3,10 +3,12 @@ import { IUserProfileProps } from 'types/couple';
 import * as S from './UserProfile.styles';
 
 export function IsNotCoupleProfile({
+  imageUrl,
   isCouple,
   nickName,
   ...props
 }: IUserProfileProps) {
+  const query = { isCouple, imageUrl, nickName };
   return (
     <S.UserProfileBackground {...props}>
       <S.ProfileWrapper>
@@ -21,7 +23,13 @@ export function IsNotCoupleProfile({
             커플 맺기
           </S.MakeCoupleButton>
         </Link>
-        <Link href="/profile/edit">
+        <Link
+          href={{
+            pathname: '/profile/edit',
+            query,
+          }}
+          as="/profile/edit"
+        >
           <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
         </Link>
       </S.ButtonWrapper>

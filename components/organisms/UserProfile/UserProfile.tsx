@@ -55,6 +55,11 @@ export function UserProfile({
   }
 
   return (
-    <IsNotCoupleProfile isCouple={isCouple} nickName={nickName} {...props} />
+    <IsNotCoupleProfile
+      imageUrl={imageUrl}
+      isCouple={isCouple}
+      nickName={nickName}
+      {...props}
+    />
   );
 }
