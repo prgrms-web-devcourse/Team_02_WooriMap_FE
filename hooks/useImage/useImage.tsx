@@ -8,10 +8,13 @@ export function useImage({ image }: { image: string | null }) {
 
   const onUpload = () => ref.current.click() as HTMLInputElement;
 
-  const onChange = async (
-    e: React.ChangeEvent<HTMLInputElement>,
-    instance: AxiosInstance,
-  ) => {
+  const onChange = async ({
+    e,
+    instance,
+  }: {
+    e: React.ChangeEvent<HTMLInputElement>;
+    instance: AxiosInstance;
+  }) => {
     const file = e.target.files![0];
     const formData = new FormData();
 

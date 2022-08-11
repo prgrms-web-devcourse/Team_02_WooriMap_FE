@@ -7,13 +7,13 @@ type PropsWithRouter = {
 };
 
 function ProfileEdit({ router: { query } }: PropsWithRouter) {
-  const { isCouple } = query;
+  const { isCouple, imageUrl } = query;
 
   console.log(isCouple);
 
   return (
     <ProfileTemplate>
-      <ProfileEditForm />
+      <ProfileEditForm imageUrl={imageUrl as string | null} />
     </ProfileTemplate>
   );
 }
