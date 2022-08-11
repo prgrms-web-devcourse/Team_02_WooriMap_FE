@@ -21,7 +21,9 @@ export function IsNotCoupleProfile({
             커플 맺기
           </S.MakeCoupleButton>
         </Link>
-        <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+        <Link href="/profile/edit">
+          <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+        </Link>
       </S.ButtonWrapper>
       <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
     </S.UserProfileBackground>

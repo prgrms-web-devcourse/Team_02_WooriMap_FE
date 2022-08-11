@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { calculatingDDay } from 'utils';
 import { IUserProfileProps } from 'types/couple';
 import * as S from './UserProfile.styles';
@@ -31,7 +32,9 @@ export function IsCoupleProfile({
           <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
       </S.CoupleInfoWrapper>
-      <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+      <Link href="/profile/edit">
+        <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+      </Link>
       <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
     </S.UserProfileBackground>
   );
