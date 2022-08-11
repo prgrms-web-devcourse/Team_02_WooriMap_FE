@@ -1,6 +1,5 @@
 import { withRouter } from 'next/router';
 import type { Router } from 'next/router';
-import { IQueryProps } from 'types';
 import { ProfileTemplate, ProfileEditForm } from 'components';
 
 type PropsWithRouter = {
@@ -10,7 +9,7 @@ type PropsWithRouter = {
 function ProfileEdit({ router: { query } }: PropsWithRouter) {
   const { isCouple, imageUrl } = query;
 
-  console.log(isCouple);
+  console.log(isCouple, imageUrl);
 
   return (
     <ProfileTemplate>

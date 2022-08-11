@@ -1,17 +1,11 @@
-import { ProfileUpload, TextInputWithLabel } from 'components';
+import { ProfileUpload, Button, SubmitButton } from 'components';
 import { useImage, useForm } from 'hooks';
 import { ParsedUrlQuery } from 'querystring';
-import {
-  IQueryProps,
-  IEditState,
-  EditErrorTypes,
-  IOnSubmit,
-  IEditInputProps,
-} from 'types';
+import { IQueryProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
 import { profileEditValidation } from 'utils/formValidation';
 import { CoupleForm } from './CoupleForm';
 import { SoloForm } from './SoloForm';
-import { setInitialState, coupleTextInputProps } from './helper';
+import { setInitialState } from './helper';
 import * as S from './ProfileEditForm.style';
 
 export function ProfileEditForm({
@@ -20,6 +14,8 @@ export function ProfileEditForm({
   query: IQueryProps | ParsedUrlQuery;
 }) {
   const { isCouple, imageUrl } = query;
+
+  const checkIsCouple = JSON.parse(isCouple as string);
 
   const onSubmit = (value: IOnSubmit<IEditState>) => {
     console.log(value);
@@ -44,29 +40,37 @@ export function ProfileEditForm({
   });
 
   return (
-    <S.Container onSubmit={handleSubmit}>
-      <ProfileUpload
-        ref={ref}
-        preview={preview}
-        onUpload={onUpload}
-        onChange={onChange}
-      />
-      {isCouple && (
-        <CoupleForm
-          value={values}
-          handleChange={handleChange}
-          removeAll={removeAll}
-          errors={errors}
+    <S.Container id="profileEdit" onSubmit={handleSubmit}>
+      <S.InputsWrapper>
+        <ProfileUpload
+          ref={ref}
+          preview={preview}
+          onUpload={onUpload}
+          onChange={onChange}
         />
-      )}
-      {!isCouple && (
-        <SoloForm
-          value={values}
-          handleChange={handleChange}
-          removeAll={removeAll}
-          errors={errors}
-        />
-      )}
+        {checkIsCouple && (
+          <CoupleForm
+            value={values}
+            handleChange={handleChange}
+            removeAll={removeAll}
+            errors={errors}
+          />
+        )}
+        {!checkIsCouple && (
+          <SoloForm
+            value={values}
+            handleChange={handleChange}
+            removeAll={removeAll}
+            errors={errors}
+          />
+        )}
+      </S.InputsWrapper>
+      <S.ButtonWrapper>
+        <Button size="small">취소</Button>
+        <SubmitButton id="profileEdit" size="small" variant="black">
+          완료
+        </SubmitButton>
+      </S.ButtonWrapper>
     </S.Container>
   );
 }
