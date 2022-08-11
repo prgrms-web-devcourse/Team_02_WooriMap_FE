@@ -16,18 +16,29 @@ interface ITag extends ITagWithoutId {
 interface ITagSearchBarProps {
   addTagList: (tag: ITag) => void;
   wholeTagList: ITag[];
+  onClick: () => void;
 }
 
-function TagCheckbox({ onCheckboxClick }: { onCheckboxClick: () => void }) {
+function TagCheckbox({
+  onCheckboxClick,
+  isChecked,
+}: {
+  onCheckboxClick: () => void;
+  isChecked: boolean;
+}) {
   return (
     <S.TagValidation>
-      <input type="checkbox" onClick={onCheckboxClick} />
+      <input type="checkbox" onClick={onCheckboxClick} checked={isChecked} />
       <div>태그 검색하기</div>
     </S.TagValidation>
   );
 }
 
-function TagSearchBar({ addTagList, wholeTagList }: ITagSearchBarProps) {
+function TagSearchBar({
+  addTagList,
+  wholeTagList,
+  onClick,
+}: ITagSearchBarProps) {
   const [inputValue, setInputValue] = useState('');
   const input = useRef<HTMLInputElement>(null);
 
@@ -67,6 +78,7 @@ function TagSearchBar({ addTagList, wholeTagList }: ITagSearchBarProps) {
                 color={color}
                 onClick={() => {
                   onFilteredTagClick({ id, name, color });
+                  onClick();
                 }}
               >
                 {name}
@@ -81,6 +93,7 @@ function TagSearchBar({ addTagList, wholeTagList }: ITagSearchBarProps) {
               color={color}
               onClick={() => {
                 onFilteredTagClick({ id, name, color });
+                onClick();
               }}
             >
               {name}
@@ -102,7 +115,6 @@ function TitleSearchBar({
     e.preventDefault();
     // 이 부분에서 도저히 any를 쓰지 않고 어떻게 해야할 지 잘 모르겠습니다 ㅜㅠ
     const { target }: { target: any } = e;
-    console.dir(target[0].value);
     handleKeyWord(target[0].value);
   };
   return (
@@ -136,9 +148,6 @@ export function MainSearchBar({
       const temp = tagList;
       temp.push(tag);
       setTagList(() => temp);
-      alert(`tagList에 ${tag}가 추가되었습니다.`);
-    } else {
-      alert(`해당 태그는 이미 존재합니다`);
     }
   };
 
@@ -147,7 +156,6 @@ export function MainSearchBar({
       if (tag.name === tagName) {
         const temp = tagList.filter((each) => each !== tag);
         setTagList(temp);
-        alert(`tag : ${tag.name} 가 무사히 제거되었습니다.`);
       }
       return null;
     });
@@ -165,9 +173,13 @@ export function MainSearchBar({
 
   return (
     <S.MainSearchBarContainer>
-      <TagCheckbox onCheckboxClick={onCheckboxClick} />
+      <TagCheckbox onCheckboxClick={onCheckboxClick} isChecked={isTagSearch} />
       {isTagSearch && tagList ? (
-        <TagSearchBar addTagList={addTagList} wholeTagList={wholeTagList} />
+        <TagSearchBar
+          addTagList={addTagList}
+          wholeTagList={wholeTagList}
+          onClick={() => setIsTagSearch(false)}
+        />
       ) : (
         <TitleSearchBar handleKeyWord={handleKeyWord} />
       )}
