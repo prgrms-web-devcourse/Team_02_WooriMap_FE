@@ -43,10 +43,15 @@ export const DropdownTrigger = styled.div`
 export const DropdownItem = styled.div`
   padding: 1rem;
   width: 100%;
+  border-bottom: 1px solid rgba(191, 191, 191, 0.3);
 
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 
   cursor: pointer;
+
+  :hover {
+    background-color: rgba(191, 191, 191, 0.3);
+  }
 `;
