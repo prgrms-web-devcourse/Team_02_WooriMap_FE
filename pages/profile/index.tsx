@@ -10,6 +10,8 @@ function Profile() {
 
   const { isCouple, nickName, imageUrl } = user;
 
+  console.log(user);
+
   return (
     <ProfileTemplate>
       <UserProfile
