@@ -40,7 +40,7 @@ function ProfileUpload(
       </S.Container>
       <S.FileInput
         type="file"
-        accept="image/*"
+        accept=".jpg, .jpeg, .png, .gif, .bmp"
         ref={ref}
         onChange={(e) => onChange({ e, instance })}
       />
