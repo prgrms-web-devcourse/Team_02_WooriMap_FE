@@ -38,16 +38,13 @@ export function updateMemberInfo({
   data,
 }: {
   instance: AxiosInstance;
-  data: any;
+  data: {
+    imageUrl: string;
+    nickName: string;
+  };
 }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .put('/members', data, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .put('/members', data)
     .then((response) => {
       return response.data;
     })
@@ -66,16 +63,10 @@ export function updateCoupleInfo({
   data,
 }: {
   instance: AxiosInstance;
-  data: any;
+  data: { editDate: string };
 }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .put('/couples', data, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .put('/couples', data)
     .then((response) => {
       return response.data;
     })
@@ -132,36 +123,31 @@ export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
 }
 
 export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
-  const res = instance
-    .post('/couples/invite')
-    .then((response) => response.data)
-    .catch((error) => {
-      const { response } = error;
+  const accessToken = LocalStorage.getItem('accessToken', '');
 
-      console.error(response.message);
-
-      return {
-        code: '',
-      };
-    });
+  try {
+    const res = instance
+      .post('/couples/invite', {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      })
+      .then((response) => response.data);
 
   return res;
 }
 
 export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+
   const res = instance
-    .get('/couples')
+    .get('/couples', {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
     .then((response) => {
       return response.data;
-    })
-    .catch((error) => {
-      const { response } = error;
-
-      console.error(response.message);
-
-      return {
-        data: null,
-      };
     });
 
   return res;
