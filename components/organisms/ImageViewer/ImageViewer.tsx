@@ -10,8 +10,6 @@ interface INextSources {
 }
 
 export function ImageViewer({ images }: { images: Array<string> }) {
-  if (!images.length) return null;
-
   const [selectedImage, setSelectedImage] = useState<string>(images[0]);
   const [sources, setSources] = useState<Array<IImageSource>>(
     images.map((src: string, idx: number) => ({
