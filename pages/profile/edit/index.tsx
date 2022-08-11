@@ -7,10 +7,6 @@ type PropsWithRouter = {
 };
 
 function ProfileEdit({ router: { query } }: PropsWithRouter) {
-  const { isCouple, imageUrl } = query;
-
-  console.log(isCouple, imageUrl);
-
   return (
     <ProfileTemplate>
       <ProfileEditForm query={query} />

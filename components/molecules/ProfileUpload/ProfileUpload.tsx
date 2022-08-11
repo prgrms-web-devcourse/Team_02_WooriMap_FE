@@ -28,7 +28,7 @@ function AddBtn() {
 
 function ProfileUpload(
   { preview, onUpload, onChange }: IProfileUploadProps,
-  ref: React.MutableRefObject<HTMLInputElement | null>,
+  ref: React.ForwardedRef<HTMLInputElement>,
 ) {
   const instance = useAxiosInstance();
 
