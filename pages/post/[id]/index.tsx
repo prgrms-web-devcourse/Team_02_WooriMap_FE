@@ -1,11 +1,11 @@
 import { PostTemplate, ImageViewer } from 'components';
-import { ITagState, ICoordinates } from 'types';
+import { ITag, ICoordinates } from 'types';
 import { PostBody } from 'components/organisms/PostBody';
 
 interface IPostDetial {
   title: string;
   date: string;
-  tagList: ITagState[];
+  tagList: ITag[];
   content: string;
   location: ICoordinates;
   photos: string[];

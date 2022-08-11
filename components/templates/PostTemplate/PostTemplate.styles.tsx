@@ -12,7 +12,7 @@ export const Container = styled.form`
   box-sizing: border-box;
 `;
 
-export const PostContent = styled.article`
+export const PostContent = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
