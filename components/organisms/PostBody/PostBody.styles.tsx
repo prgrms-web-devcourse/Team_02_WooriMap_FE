@@ -5,7 +5,7 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 44rem;
+  width: 98%;
   border-top: 2px solid black;
 `;
 
@@ -20,8 +20,8 @@ export const TitleLine = styled.div`
   align-items: flex-end;
 `;
 
-export const Title = styled.h1`
-  font-size: 3.75rem;
+export const Title = styled.h2`
+  font-size: 60px;
 `;
 
 export const Date = styled.h6`
@@ -35,7 +35,10 @@ export const PostControl = styled.div`
 `;
 
 export const EditPostButton = styled(Button)`
-  border-radius: 1.5rem;
+  width: 166px;
+  height: 48px;
+  border-radius: 8px;
+  font-size: 20px;
 `;
 
 export const DeletePostLink = styled.a`
@@ -55,10 +58,9 @@ export const PostTags = styled.div`
 `;
 
 export const PostContent = styled.div`
-  height: 18rem;
   margin: 1rem 0;
-  font-size: 1.25rem;
-  overflow-y: auto;
+  font-size: 20px;
+  line-height: 1.7rem;
 `;
 
 export const PostLocation = styled(Map)`

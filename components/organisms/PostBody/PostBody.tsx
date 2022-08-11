@@ -1,18 +1,14 @@
 import { TagList } from 'components/molecules/TagList';
-import { ITag } from 'types';
-import * as S from './PostBody.styles';
+import { ITag, ICoordinates } from 'types';
 
-interface ILocation {
-  lat: number;
-  lng: number;
-}
+import * as S from './PostBody.styles';
 
 interface IPostBodyProps {
   title: string;
   date: string;
   tagList: ITag[];
   content: string;
-  location: ILocation;
+  location: ICoordinates;
 }
 
 export function PostBody({
@@ -30,7 +26,7 @@ export function PostBody({
           <S.Date>{date}</S.Date>
         </S.TitleLine>
         <S.PostControl>
-          <S.EditPostButton size="medium">포스트 편집</S.EditPostButton>
+          <S.EditPostButton size="small">포스트 편집</S.EditPostButton>
           <S.DeletePostLink>포스트 삭제</S.DeletePostLink>
         </S.PostControl>
       </S.Header>
@@ -38,7 +34,11 @@ export function PostBody({
         <TagList tagList={tagList} />
       </S.PostTags>
       <S.PostContent>{content}</S.PostContent>
-      <S.PostLocation width="100%" height={304} center={location} />
+      <S.PostLocation
+        width="100%"
+        height={225}
+        center={{ lat: location.latitude, lng: location.longitude }}
+      />
     </S.Container>
   );
 }

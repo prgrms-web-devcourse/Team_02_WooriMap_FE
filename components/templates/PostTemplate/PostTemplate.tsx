@@ -3,8 +3,8 @@ import { Button, SubmitButton } from 'components';
 import * as S from './PostTemplate.styles';
 
 interface IPostTemplateProps {
-  type: 'create' | 'edit';
-  onSubmit: (e: React.FormEvent<Element>) => Promise<void>;
+  type: 'create' | 'edit' | 'detail';
+  onSubmit?: (e: React.FormEvent<Element>) => Promise<void>;
   imageSection: React.ReactNode;
   contentSection: React.ReactNode;
 }
@@ -21,16 +21,20 @@ export function PostTemplate({
 
   return (
     <S.Container onSubmit={onSubmit} id="post-write">
-      <S.ImageSection>{imageSection}</S.ImageSection>
-      <S.ContentSection>{contentSection}</S.ContentSection>
-      <S.Wrapper>
-        <Button id="post-write" size="small" onClick={onCancel}>
-          취소
-        </Button>
-        <SubmitButton id="post-write" size="medium" variant="black">
-          {type === 'create' ? '포스트 생성' : '포스트 수정'}
-        </SubmitButton>
-      </S.Wrapper>
+      <S.PostContent>
+        <S.ImageSection>{imageSection}</S.ImageSection>
+        <S.ContentSection>{contentSection}</S.ContentSection>
+      </S.PostContent>
+      {type !== 'detail' && (
+        <S.Wrapper>
+          <Button id="post-write" size="small" onClick={onCancel}>
+            취소
+          </Button>
+          <SubmitButton id="post-write" size="medium" variant="black">
+            {type === 'create' ? '포스트 생성' : '포스트 수정'}
+          </SubmitButton>
+        </S.Wrapper>
+      )}
     </S.Container>
   );
 }
