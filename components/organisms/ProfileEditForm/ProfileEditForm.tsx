@@ -1,5 +1,6 @@
 import userState from 'core';
 import { useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
 import { ProfileUpload, Button, SubmitButton } from 'components';
 import { useImage, useForm, useAxiosInstance } from 'hooks';
 import { IUserProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
@@ -18,6 +19,7 @@ export function ProfileEditForm({
   user: IUserProps;
   userRecoilState: UserResponseType;
 }) {
+  const router = useRouter();
   const instance = useAxiosInstance();
   const setUser = useSetRecoilState(userState);
 
@@ -31,7 +33,10 @@ export function ProfileEditForm({
     image: imageUrl as string,
   });
 
+  const routeToProfile = () => router.push('/profile');
+
   const onSubmit = async ({ values }: IOnSubmit<IEditState>) => {
+    console.log('sd');
     const memberUpdateInfo = {
       imageUrl: preview as string,
       nickName: values.nickName as string,
@@ -57,6 +62,9 @@ export function ProfileEditForm({
 
       if (memberResponse.data) {
         setUser({ ...userRecoilState, ...memberResponse.data });
+
+        // 성공했을 때 profile로 이동
+        routeToProfile();
       }
     } else {
       const response = await updateMemberInfo({
@@ -66,6 +74,9 @@ export function ProfileEditForm({
 
       if (response.data) {
         setUser({ ...userRecoilState, ...response.data });
+
+        // 성공했을 때 profile로 이동
+        routeToProfile();
       }
     }
   };
@@ -108,7 +119,9 @@ export function ProfileEditForm({
         )}
       </S.InputsWrapper>
       <S.ButtonWrapper>
-        <Button size="small">취소</Button>
+        <Button size="small" onClick={routeToProfile} type="button">
+          취소
+        </Button>
         <SubmitButton id="profileEdit" size="small" variant="black">
           완료
         </SubmitButton>
