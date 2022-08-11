@@ -135,6 +135,7 @@ function Home() {
     }
   };
 
+  // 포스트 필터가 바뀔때마다 실행되는 포스트리스트 가져오는 로직
   useEffect(() => {
     accessToken = LocalStorage.getItem('accessToken', '');
 
