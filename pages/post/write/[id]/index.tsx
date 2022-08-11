@@ -27,11 +27,10 @@ export const errorState: IPostValidationState = {
 export default function PostEdit() {
   const router = useRouter();
   const { id } = router.query as { id: string };
+  const axiosInstance = useAxiosInstance();
 
   const [initialValues, setInitialValues] =
     useState<IInitialPostState>(postInitialValue);
-
-  const axiosInstance = useAxiosInstance();
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     const res = await updatePost({ instance: axiosInstance, data: values, id });
@@ -76,6 +75,7 @@ export default function PostEdit() {
     })();
   }, [router, setInitialValues]);
 
+  // 현재 값이 유효하지 않으면 로딩 화면 ( 스켈레톤 계획 )
   if (
     !checkStateIsValid<IPostValidationState>({
       errorState: postValidation({
@@ -87,6 +87,7 @@ export default function PostEdit() {
   )
     return null;
 
+  // 현재 값이 유효하다면
   const { title, content, datingDate, tags, latitude, longitude, imageUrls } =
     values;
 
