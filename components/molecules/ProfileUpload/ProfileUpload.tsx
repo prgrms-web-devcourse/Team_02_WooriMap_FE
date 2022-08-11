@@ -18,6 +18,7 @@ interface IProfileUploadProps {
   }) => void;
 }
 
+// AddBtn을 누르면 ref에 연결된 input File이 열립니다.
 function AddBtn() {
   return (
     <S.ButtonWrapper top={0} right={0}>

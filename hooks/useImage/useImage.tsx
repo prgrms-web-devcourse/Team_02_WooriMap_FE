@@ -7,6 +7,7 @@ export function useImage({ image }: { image: string | null }) {
   const [preview, setPreview] = useState<string | null>(image);
 
   const onUpload = () => {
+    // 클릭하면 ref에 연결된 input을 엽니다.
     ref.current?.click() as unknown as HTMLInputElement;
   };
 
