@@ -1,67 +1,80 @@
 import { PostTemplate, ImageViewer } from 'components';
 import { ITag, ICoordinates } from 'types';
+import { useRouter } from 'next/router';
 import { PostBody } from 'components/organisms/PostBody';
+import { useAxiosInstance } from '@hooks/useAxiosInstance';
+import { useState, useEffect } from 'react';
+import { getOnePost } from 'apis/post';
 
-interface IPostDetial {
+interface IPostInfo {
   title: string;
   date: string;
   tagList: ITag[];
   content: string;
   location: ICoordinates;
-  photos: string[];
+  imageUrls: string[];
 }
 
+const placeHolder: IPostInfo = {
+  title: '기본 제목',
+  date: '2022.08.11',
+  tagList: [],
+  content: '기본 내용',
+  location: { latitude: 33, longitude: 128 },
+  imageUrls: [
+    'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+2.png',
+  ],
+};
+
 export default function PostDetail() {
-  const getPost = (): IPostDetial => {
-    const RESPONSE = {
-      title: '강릉 여행',
-      contents:
-        'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-      imageUrls: [
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+2.png',
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/i1.jpg',
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test.png',
-        'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+3.png',
-      ],
-      createdDate: '2022-07-09',
-      datingStartDate: '2022-07-01',
-      place: {
-        latitude: '37.4',
-        longitude: '127',
-      },
-      tags: [
-        { name: '멋진태그', color: '#9d22a6' },
-        { name: '강한태그', color: '#bad138' },
-        { name: '슈퍼태그', color: '#666cd9' },
-        { name: '프로태그', color: '#dd8648' },
-        { name: '택택그', color: '#ac536c' },
-      ],
+  const [postInfo, setPostInfo] = useState<IPostInfo>(placeHolder);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const instance = useAxiosInstance();
+  const router = useRouter();
+  const { id } = router.query as { id: string };
+
+  useEffect(() => {
+    const getPost = async () => {
+      if (!router.isReady) return;
+
+      try {
+        setIsLoading(true);
+        const res = await getOnePost({ instance, id });
+
+        if (res) {
+          const { title, datingDate, tags, content, location, imageUrls } = res;
+          const newPost: IPostInfo = {
+            title,
+            date: datingDate,
+            tagList: tags,
+            content,
+            location,
+            imageUrls,
+          };
+          console.log(imageUrls);
+          setPostInfo(newPost);
+          return;
+        }
+        console.error('존재하지 않는 포스트');
+      } catch (error) {
+        console.error(error);
+        router.push('/404');
+      } finally {
+        setIsLoading(false);
+      }
     };
+    getPost();
+  }, [id, router, instance]);
 
-    const { title, contents, imageUrls, datingStartDate, place, tags } =
-      RESPONSE;
+  if (isLoading) return <div />;
 
-    const postInfo = {
-      title,
-      date: datingStartDate,
-      tagList: tags,
-      content: contents,
-      location: {
-        latitude: Number(place.latitude),
-        longitude: Number(place.longitude),
-      },
-      photos: imageUrls,
-    };
-
-    return postInfo;
-  };
-
-  const { title, date, tagList, content, location, photos } = getPost();
+  const { title, date, tagList, content, location, imageUrls } = postInfo;
 
   return (
     <PostTemplate
       type="detail"
-      imageSection={<ImageViewer images={photos} />}
+      imageSection={<ImageViewer images={imageUrls} />}
       contentSection={
         <PostBody
           title={title}
