@@ -27,71 +27,91 @@ function Home() {
         postId: '1',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '첫번째 포스트 썸네일',
+        title: '서울특별시',
         createDate: '2022-03-18',
+        latitude: '37.56667',
+        longitude: '126.97806',
       },
       {
         postId: '2',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '두번째 포스트 썸네일',
+        title: '부산광역시',
         createDate: '2022-03-18',
+        latitude: '35.17944',
+        longitude: '129.07556',
       },
       {
         postId: '3',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '세번째 포스트 썸네일',
+        title: '인천광역시',
         createDate: '2022-03-18',
+        latitude: '37.45639',
+        longitude: '126.70528',
       },
       {
         postId: '4',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '네번째 포스트 썸네일',
+        title: '대구광역시',
         createDate: '2022-03-18',
+        latitude: '35.87222',
+        longitude: '128.60250',
       },
       {
         postId: '5',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '다섯번째 포스트 썸네일',
+        title: '대전광역시',
         createDate: '2022-03-18',
+        latitude: '36.35111',
+        longitude: '127.38500',
       },
       {
         postId: '6',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '여섯번째 포스트 썸네일',
+        title: '광주광역시',
         createDate: '2022-03-18',
+        latitude: '35.15972',
+        longitude: '126.85306',
       },
       {
         postId: '7',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '일곱번째 포스트 썸네일',
+        title: '울산광역시',
         createDate: '2022-03-18',
+        latitude: '35.53889',
+        longitude: '129.31667',
       },
       {
         postId: '8',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '여덟번째 포스트 썸네일',
+        title: '세종특별자치시',
         createDate: '2022-03-18',
+        latitude: '36.48750',
+        longitude: '127.28167',
       },
       {
         postId: '9',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '아홉번째 포스트 썸네일',
+        title: '제주특별자치시',
         createDate: '2022-03-18',
+        latitude: '33.50000',
+        longitude: '126.51667',
       },
       {
         postId: '10',
         postThumbnailPath:
           'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+5.png',
-        title: '열번째 포스트 썸네일',
+        title: '고양시',
         createDate: '2022-03-18',
+        latitude: '37.65833',
+        longitude: '126.83056',
       },
     ];
     return dummyData;

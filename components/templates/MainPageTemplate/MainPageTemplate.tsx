@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { IMainPageTemplateProps } from 'types';
-import { Map, MainSidebar } from 'components';
+import { Map, MapMarkerOverlay, MainSidebar } from 'components';
+import { MapMarker } from 'react-kakao-maps-sdk';
 import * as S from './MainPageTemplate.styles';
-
-// 지금 Dependency cycle 에러가 나서 types import를 다 빼고 일일히 하드코딩 해 놓은 상태입니다. 해당 커밋 이후에 관련 types는 모두 추상화해서 types 폴더에 따로 빼 놓을 계획입니다.
 
 export function MainPageTemplate({
   coupleData,
   postList,
   coordinate,
 }: IMainPageTemplateProps) {
+  const [isOverlayShown, setIsOverlayShown] = useState(false);
+  const [selectedMarker, setSelectedMarker] = useState<string | null>(null);
+
   return (
     <S.Container>
       <S.MainSidebarContainer>
@@ -22,7 +25,37 @@ export function MainPageTemplate({
             lat: coordinate.latitude,
             lng: coordinate.longitude,
           }}
-        />
+        >
+          {postList.map((post) => (
+            <MapMarker
+              key={post.postId}
+              position={{
+                lat: Number(post.latitude),
+                lng: Number(post.longitude),
+              }}
+              clickable
+              onClick={() => {
+                setIsOverlayShown(true);
+                setSelectedMarker(post.postId);
+              }}
+            >
+              {isOverlayShown && selectedMarker === post.postId && (
+                <S.OverlayContainer
+                  onClick={() => {
+                    setIsOverlayShown(false);
+                  }}
+                >
+                  <MapMarkerOverlay
+                    postId={post.postId}
+                    postThumbnailPath={post.postThumbnailPath}
+                    title={post.title}
+                    createDate={post.createDate}
+                  />
+                </S.OverlayContainer>
+              )}
+            </MapMarker>
+          ))}
+        </Map>
       </S.MapContainer>
     </S.Container>
   );

@@ -1,4 +1,5 @@
 // atoms
+
 export { Button } from 'components/atoms/Button';
 export { ImageDeleteBox } from 'components/atoms/ImageDeleteBox';
 export { Profile } from 'components/atoms/Profile';
@@ -14,6 +15,7 @@ export { Map } from 'components/atoms/Map';
 export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
 export { FormLabel } from 'components/atoms/FormLabel';
 export { Wrapper, FlexWrapper } from 'components/atoms/Wrapper';
+export { CircularIcon } from 'components/atoms/CircularIcon';
 
 // molecules
 export { CalendarInput } from 'components/molecules/CalendarInput';
@@ -27,6 +29,7 @@ export { MainSearchBar } from 'components/molecules/MainSearchBar';
 export { MainThumbnailList } from 'components/molecules/MainThumbnailList';
 export { SearchableMap } from 'components/molecules/SearchableMap';
 export { FormControl } from 'components/molecules/FormControl';
+export { MapMarkerOverlay } from 'components/molecules/MapMarkerOverlay';
 export { TagInput } from 'components/molecules/TagInput';
 export { TagInputWithList } from 'components/molecules/TagInputWithList';
 // organisms
