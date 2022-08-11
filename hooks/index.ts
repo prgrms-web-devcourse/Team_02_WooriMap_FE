@@ -4,3 +4,4 @@ export { useMapSearch } from 'hooks/useMapSearch';
 export { useAxiosInstance } from 'hooks/useAxiosInstance';
 export { useComponentDidMount } from 'hooks/useComponentDidMount';
 export { useRecoilValueAfterMount } from 'hooks/useRecoilValueAfterMount';
+export { useClickAway } from 'hooks/useClickAway';
