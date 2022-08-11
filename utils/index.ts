@@ -3,6 +3,6 @@ export { dummyImages } from 'utils/dummyImages';
 export { calculatingDDay } from 'utils/calculatingDDay';
 export { formatDate } from 'utils/formatDate';
 export { signupValidation, postValidation } from 'utils/formValidation';
-export { parseCookise } from 'utils/parseCookies';
+export { parseCookises } from 'utils/parseCookies';
 export { parsePostData } from 'utils/parsePostData';
 export { checkStateIsValid } from 'utils/checkStateIsValid';
