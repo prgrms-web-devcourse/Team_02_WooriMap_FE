@@ -6,7 +6,7 @@ export default {
   title: 'Components/Atoms/CircularIcon',
   component: CircularIcon,
   argTypes: {
-    icon: {
+    src: {
       defaultValue: arrowRight,
       control: {
         disabled: true,

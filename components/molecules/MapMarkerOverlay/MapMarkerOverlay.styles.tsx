@@ -11,6 +11,7 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.colors.white};
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+  cursor: pointer;
 `;
 
 export const ImageContainer = styled.div`
@@ -26,10 +27,12 @@ export const ContentContainer = styled.div`
   justify-content: space-between;
   align-self: stretch;
   position: relative;
+  min-width: fit-content;
 `;
 
 export const Title = styled.h4`
   max-width: 13rem;
+  height: 1.7rem;
   padding-bottom: 0.5rem;
   font-family: 'Noto Serif KR', serif;
   font-weight: 900;

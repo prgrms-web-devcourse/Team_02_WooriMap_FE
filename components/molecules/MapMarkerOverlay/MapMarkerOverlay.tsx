@@ -29,10 +29,7 @@ export function MapMarkerOverlay({
         <S.IconContainer>
           <Link href={`/post/${postId}`}>
             <a href="#!">
-              <CircularIcon
-                icon={arrowRight}
-                color="rgba(255, 143, 143, 0.5)"
-              />
+              <CircularIcon src={arrowRight} color="rgba(255, 143, 143, 0.5)" />
             </a>
           </Link>
         </S.IconContainer>
