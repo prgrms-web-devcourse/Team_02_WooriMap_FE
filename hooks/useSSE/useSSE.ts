@@ -1,10 +1,16 @@
+import LocalStorage from 'utils/storage';
 import { useEffect, useMemo, useState } from 'react';
 
-function useSSE(url: string) {
+function useSSE() {
   const [source, setSource] = useState<EventSource | null>(null);
 
   useEffect(() => {
-    const eventSource = new EventSource(url, { withCredentials: true });
+    const eventSource = new EventSource(
+      `${process.env.NEXT_PUBLIC_BASE_URL}?token=${LocalStorage.getItem(
+        'accessToken',
+        '',
+      )}`,
+    );
 
     eventSource.addEventListener('error', () => {
       if (eventSource.readyState === EventSource.CLOSED) {
@@ -17,7 +23,7 @@ function useSSE(url: string) {
     return () => {
       eventSource.close();
     };
-  }, [url]);
+  }, []);
 
   return useMemo(() => source, [source]);
 }

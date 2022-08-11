@@ -2,7 +2,7 @@ import { useSSE } from 'hooks/useSSE';
 import { useEffect } from 'react';
 
 function useNotification() {
-  const source = useSSE('https://test.woorimap.p-e.kr/api/fake/subscribe/100');
+  const source = useSSE();
 
   useEffect(() => {
     if (!source) return;
