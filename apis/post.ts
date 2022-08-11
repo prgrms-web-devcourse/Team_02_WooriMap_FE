@@ -1,5 +1,4 @@
 import { AxiosInstance } from 'axios';
-import LocalStorage from 'utils/storage';
 import { IPostFormState } from 'types';
 import { IApiResponse } from 'types/api';
 
@@ -9,68 +8,47 @@ interface IPostWriteProps {
   id?: string;
 }
 
-export const createPost = async ({ data, instance }: IPostWriteProps) => {
-  try {
-    const accessToken = LocalStorage.getItem('accessToken', '');
-
-    const res = await instance
-      .post<IApiResponse<object>>('/couples/posts', data, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .catch((error) => {
-        const { response } = error;
-
-        return response?.data;
-      });
-
-    if (res.message) {
-      return res.message;
-    }
-
-    return res.data;
-  } catch (error: unknown) {
-    console.error(error);
-    return '서버에러';
-  }
-};
-
-export const updatePost = async ({ instance, data, id }: IPostWriteProps) => {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
-  const response = instance
-    .put(`/couples/posts/${id}`, data, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
-    .then((res) => {
-      return res.data;
+export function createPost({ data, instance }: IPostWriteProps) {
+  const res = instance
+    .post<IApiResponse<object>>('/couples/posts', data)
+    .then((response) => {
+      return response.data;
     })
     .catch((error) => {
-      const { response: res } = error;
+      const { response } = error;
 
-      return res?.data;
+      throw Error(response.message);
     });
 
-  return response;
-};
+  return res;
+}
 
-export const getOnePost = async ({ instance, id }: IPostWriteProps) => {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-  try {
-    const res = await instance.get(`/couples/posts/${id}`, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
+export function updatePost({ instance, data, id }: IPostWriteProps) {
+  const res = instance
+    .put(`/couples/posts/${id}`, data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      const { response } = error;
+
+      throw Error(response.message);
     });
 
-    const { data } = res.data;
+  return res;
+}
 
-    return data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-};
+export function getOnePost({ instance, id }: IPostWriteProps) {
+  const res = instance
+    .get(`/couples/posts/${id}`)
+    .then((response) => {
+      return response.data.data;
+    })
+    .catch((error) => {
+      const { response } = error;
+
+      throw Error(response.message);
+    });
+
+  return res;
+}
