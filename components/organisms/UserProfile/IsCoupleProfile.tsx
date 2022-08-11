@@ -1,4 +1,4 @@
-import { countDateFromNow } from 'utils';
+import { calculatingDDay } from 'utils';
 import { IUserProfileProps } from 'types/couple';
 import * as S from './UserProfile.styles';
 
@@ -26,7 +26,7 @@ export function IsCoupleProfile({
         <S.CoupleInfoRow>
           <S.CoupleInfoLabel isCoupleDateInfo>연애 기간</S.CoupleInfoLabel>
           <S.CoupleInfo>
-            D + {startDate && countDateFromNow({ date: startDate })}
+            D + {startDate && calculatingDDay(startDate)}
           </S.CoupleInfo>
           <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
