@@ -1,32 +1,27 @@
 import { ProfileUpload, Button, SubmitButton } from 'components';
 import { useImage, useForm } from 'hooks';
-import { ParsedUrlQuery } from 'querystring';
-import { IQueryProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
+import { IUserProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
 import { profileEditValidation } from 'utils/formValidation';
 import { CoupleForm } from './CoupleForm';
 import { SoloForm } from './SoloForm';
 import { setInitialState } from './helper';
 import * as S from './ProfileEditForm.style';
 
-export function ProfileEditForm({
-  query,
-}: {
-  query: IQueryProps | ParsedUrlQuery;
-}) {
-  const { isCouple, imageUrl } = query;
+export function ProfileEditForm({ user }: { user: IUserProps }) {
+  const { isCouple, imageUrl } = user;
 
-  const checkIsCouple = JSON.parse(isCouple as string);
-
-  const onSubmit = (value: IOnSubmit<IEditState>) => {
-    console.log(value);
-  };
   const { initialValues, errorState } = setInitialState({
-    query: query as IQueryProps,
+    user: user as IUserProps,
   });
 
   const { ref, preview, onUpload, onChange } = useImage({
     image: imageUrl as string,
   });
+
+  const onSubmit = (value: IOnSubmit<IEditState>) => {
+    console.log(preview);
+    console.log(value);
+  };
 
   const { values, errors, handleChange, handleSubmit, removeAll } = useForm<
     IEditState,
@@ -48,7 +43,7 @@ export function ProfileEditForm({
           onUpload={onUpload}
           onChange={onChange}
         />
-        {checkIsCouple && (
+        {isCouple && (
           <CoupleForm
             value={values}
             handleChange={handleChange}
@@ -56,7 +51,7 @@ export function ProfileEditForm({
             errors={errors}
           />
         )}
-        {!checkIsCouple && (
+        {!isCouple && (
           <SoloForm
             value={values}
             handleChange={handleChange}

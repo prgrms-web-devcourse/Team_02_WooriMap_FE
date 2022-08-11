@@ -1,10 +1,5 @@
 import { nanoid } from 'nanoid';
-import {
-  IQueryProps,
-  IEditState,
-  EditErrorTypes,
-  IEditInputProps,
-} from 'types';
+import { IUserProps, IEditState, EditErrorTypes, IEditInputProps } from 'types';
 
 interface ISetInitialValueState {
   initialValues: IEditState;
@@ -12,22 +7,22 @@ interface ISetInitialValueState {
 }
 
 export const setInitialState = ({
-  query,
+  user,
 }: {
-  query: IQueryProps;
+  user: IUserProps;
 }): ISetInitialValueState => {
-  const { isCouple } = query;
+  const { isCouple } = user;
 
   return isCouple
     ? {
         initialValues: {
-          nickName: query.nickName,
-          editDate: query.startDate,
+          nickName: user.nickName,
+          editDate: user.startDate,
         } as IEditState,
         errorState: { nickName: '' },
       }
     : {
-        initialValues: { nickName: query.nickName } as IEditState,
+        initialValues: { nickName: user.nickName } as IEditState,
         errorState: { nickName: '' },
       };
 };

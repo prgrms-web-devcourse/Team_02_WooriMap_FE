@@ -34,7 +34,7 @@ export type {
 } from 'types/mainPage';
 export type { ITag, IResponseTag } from 'types/tag';
 export type {
-  IQueryProps,
+  IUserProps,
   EditErrorTypes,
   IEditState,
   IEditInputProps,

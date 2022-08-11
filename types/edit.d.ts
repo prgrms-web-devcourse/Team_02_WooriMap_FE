@@ -1,6 +1,6 @@
-export interface IQueryProps {
+export interface IUserProps {
   isCouple: boolean;
-  imageUrl: string;
+  imageUrl: string | null;
   nickName?: string;
   startDate?: string;
 }

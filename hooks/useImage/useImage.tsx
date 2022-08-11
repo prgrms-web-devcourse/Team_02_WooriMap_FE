@@ -6,7 +6,10 @@ export function useImage({ image }: { image: string | null }) {
   const ref = useRef<HTMLInputElement | null>(null);
   const [preview, setPreview] = useState<string | null>(image);
 
-  const onUpload = () => ref.current?.click() as unknown as HTMLInputElement;
+  const onUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    ref.current?.click() as unknown as HTMLInputElement;
+  };
 
   const onChange = async ({
     e,
@@ -15,15 +18,14 @@ export function useImage({ image }: { image: string | null }) {
     e: React.ChangeEvent<HTMLInputElement>;
     instance: AxiosInstance;
   }) => {
-    const file = e.target.files![0];
-    const formData = new FormData();
-
-    formData.append('file', file);
+    e.preventDefault();
 
     try {
       const { data } = await uploadImage({ e, instance });
 
-      setPreview(data);
+      if (data) {
+        setPreview(data);
+      }
     } catch (error: unknown) {
       console.log(error);
     }
