@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { PostBody } from 'components/organisms/PostBody';
 import { useAxiosInstance } from '@hooks/useAxiosInstance';
 import { useState, useEffect } from 'react';
-import { getOnePost } from 'apis/post';
+import { getOnePost, deletePost } from 'apis/post';
 
 interface IPostInfo {
   title: string;
@@ -15,20 +15,8 @@ interface IPostInfo {
   imageUrls: string[];
 }
 
-const placeHolder: IPostInfo = {
-  title: '기본 제목',
-  date: '2022.08.11',
-  tagList: [],
-  content: '기본 내용',
-  location: { latitude: 33, longitude: 128 },
-  imageUrls: [
-    'https://wooriemap.s3.ap-northeast-2.amazonaws.com/images/test+2.png',
-  ],
-};
-
 export default function PostDetail() {
-  const [postInfo, setPostInfo] = useState<IPostInfo>(placeHolder);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [postInfo, setPostInfo] = useState<IPostInfo | null>(null);
 
   const instance = useAxiosInstance();
   const router = useRouter();
@@ -39,7 +27,6 @@ export default function PostDetail() {
       if (!router.isReady) return;
 
       try {
-        setIsLoading(true);
         const res = await getOnePost({ instance, id });
 
         if (res) {
@@ -52,22 +39,34 @@ export default function PostDetail() {
             location,
             imageUrls,
           };
-          console.log(imageUrls);
           setPostInfo(newPost);
           return;
         }
         console.error('존재하지 않는 포스트');
+        router.push('/404');
       } catch (error) {
         console.error(error);
         router.push('/404');
-      } finally {
-        setIsLoading(false);
       }
     };
     getPost();
-  }, [id, router, instance]);
+  }, [router, id, instance]);
 
-  if (isLoading) return <div />;
+  const handleEdit = () => {
+    router.push(`/post/write/${id}`);
+  };
+
+  const handleDelete = async () => {
+    if (!router.isReady) return;
+    try {
+      deletePost({ instance, id });
+      router.push('/');
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  if (postInfo === null) return <div />;
 
   const { title, date, tagList, content, location, imageUrls } = postInfo;
 
@@ -82,7 +81,8 @@ export default function PostDetail() {
           tagList={tagList}
           content={content}
           location={location}
-          postId={id}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
         />
       }
     />

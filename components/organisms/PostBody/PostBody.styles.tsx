@@ -32,6 +32,7 @@ export const Date = styled.h6`
 export const PostControl = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const EditPostButton = styled(Button)`
@@ -41,10 +42,11 @@ export const EditPostButton = styled(Button)`
   font-size: 20px;
 `;
 
-export const DeletePostLink = styled.a`
-  margin-top: 1rem;
+export const DeletePostButton = styled(Button)`
+  width: 100%;
+  border: none;
   font-size: 1rem;
-  color: ${({ theme }) => theme.colors.gray};
+  color: #2c91ea;
   text-align: right;
 `;
 

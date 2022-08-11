@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios';
-import { IPostFormState } from 'types';
+import LocalStorage from 'utils/storage';
+import { IPostFormState, ITag } from 'types';
 import { IApiResponse } from 'types/api';
 
 interface IPostWriteProps {
@@ -52,3 +53,66 @@ export function getOnePost({ instance, id }: IPostWriteProps) {
 
   return res;
 }
+
+export const updatePost = async ({ instance, data, id }: IPostWriteProps) => {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+
+  const response = instance
+    .put(`/couples/posts/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    .then((res) => {
+      return res.data;
+    })
+    .catch((error) => {
+      const { response: res } = error;
+
+      return res?.data;
+    });
+
+  return response;
+};
+
+export const getOnePost = async ({ instance, id }: IPostWriteProps) => {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+  try {
+    const res = await instance.get<IApiResponse<IPostDetailProps>>(
+      `/couples/posts/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    const { data } = res.data;
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+export const deletePost = async ({ instance, id }: IPostWriteProps) => {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+  try {
+    const res = await instance.delete<IApiResponse<object>>(
+      `/couples/posts/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      },
+    );
+
+    const { data } = res.data;
+
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};

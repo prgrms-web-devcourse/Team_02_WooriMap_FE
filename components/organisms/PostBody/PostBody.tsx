@@ -1,6 +1,6 @@
 import { TagList } from 'components/molecules/TagList';
 import { ITag, ICoordinates } from 'types';
-import Link from 'next/link';
+import { useState } from 'react';
 
 import * as S from './PostBody.styles';
 
@@ -10,7 +10,8 @@ interface IPostBodyProps {
   tagList: ITag[];
   content: string;
   location: ICoordinates;
-  postId: string;
+  handleEdit: () => void;
+  handleDelete: () => void;
 }
 
 export function PostBody({
@@ -19,8 +20,20 @@ export function PostBody({
   tagList,
   content,
   location,
-  postId,
+  handleEdit,
+  handleDelete,
 }: IPostBodyProps) {
+  const [deleteConfirm, setDeleteConfirm] = useState<boolean>(false);
+
+  const handleDeleteClick = (e: React.MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+    if (!deleteConfirm) {
+      setDeleteConfirm(true);
+      return;
+    }
+    handleDelete();
+  };
+
   return (
     <S.Container>
       <S.Header>
@@ -29,10 +42,12 @@ export function PostBody({
           <S.Date>{date}</S.Date>
         </S.TitleLine>
         <S.PostControl>
-          <Link href={`/post/write/${postId}`}>
-            <S.EditPostButton size="small">포스트 편집</S.EditPostButton>
-          </Link>
-          <S.DeletePostLink>포스트 삭제</S.DeletePostLink>
+          <S.EditPostButton size="small" onClick={handleEdit}>
+            포스트 편집
+          </S.EditPostButton>
+          <S.DeletePostButton size="small" onClick={handleDeleteClick}>
+            {deleteConfirm ? '삭제 확인' : '포스트 삭제'}
+          </S.DeletePostButton>
         </S.PostControl>
       </S.Header>
       <S.PostTags>
