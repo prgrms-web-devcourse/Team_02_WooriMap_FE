@@ -6,8 +6,7 @@ export function useImage({ image }: { image: string | null }) {
   const ref = useRef<HTMLInputElement | null>(null);
   const [preview, setPreview] = useState<string | null>(image);
 
-  const onUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const onUpload = () => {
     ref.current?.click() as unknown as HTMLInputElement;
   };
 

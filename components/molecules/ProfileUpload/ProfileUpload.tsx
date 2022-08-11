@@ -34,7 +34,7 @@ function ProfileUpload(
 
   return (
     <>
-      <S.Container onClick={onUpload}>
+      <S.Container onClick={onUpload} type="button">
         <Profile width={128} height={128} path={preview} />
         <AddBtn />
       </S.Container>

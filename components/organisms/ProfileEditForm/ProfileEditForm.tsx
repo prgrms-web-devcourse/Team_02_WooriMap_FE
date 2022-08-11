@@ -18,9 +18,8 @@ export function ProfileEditForm({ user }: { user: IUserProps }) {
     image: imageUrl as string,
   });
 
-  const onSubmit = (value: IOnSubmit<IEditState>) => {
-    console.log(preview);
-    console.log(value);
+  const onSubmit = ({ values }: IOnSubmit<IEditState>) => {
+    console.log(values);
   };
 
   const { values, errors, handleChange, handleSubmit, removeAll } = useForm<
