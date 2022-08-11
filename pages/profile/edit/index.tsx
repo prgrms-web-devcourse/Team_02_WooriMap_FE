@@ -1,16 +1,19 @@
 import { withRouter } from 'next/router';
 import type { Router } from 'next/router';
-import { ProfileTemplate } from 'components';
+import { ProfileTemplate, ProfileEditForm } from 'components';
 
 type PropsWithRouter = {
   router: Router;
 };
 
-function ProfileEdit({ router }: PropsWithRouter) {
-  console.log(router.query);
+function ProfileEdit({ router: { query } }: PropsWithRouter) {
+  const { isCouple } = query;
+
+  console.log(isCouple);
+
   return (
     <ProfileTemplate>
-      <h1>Profile Edit</h1>
+      <ProfileEditForm />
     </ProfileTemplate>
   );
 }
