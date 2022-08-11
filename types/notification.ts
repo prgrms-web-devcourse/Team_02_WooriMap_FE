@@ -7,7 +7,4 @@ export interface INotification {
   isRead: boolean;
 }
 
-export type NotificationResponseType = Pick<
-  INotification,
-  'id' | 'articleId' | 'action' | 'content' | 'nickName'
->;
+export type NotificationResponseType = Omit<INotification, 'isRead'>;

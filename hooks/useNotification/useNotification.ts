@@ -1,5 +1,5 @@
 import { useSSE } from 'hooks/useSSE';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { INotification } from 'types/notification';
 
 // TODO: dummydata 지울 것
@@ -54,10 +54,17 @@ const dummyData: INotification[] = [
   },
 ];
 
-function useNotification() {
-  const source = useSSE();
+type ReturnTypes = [INotification[], (notificationId: number) => void];
 
-  // event 받는 부분
+function useNotification(): ReturnTypes {
+  const source = useSSE();
+  const [notifications, setNotifications] =
+    useState<INotification[]>(dummyData);
+
+  /**
+   * 알림 이벤트 수신 부분
+   * TODO: 알림 받을 시, setNotification으로 가장 위에 배치할 것
+   */
   useEffect(() => {
     if (!source) return;
 
@@ -79,7 +86,27 @@ function useNotification() {
     });
   }, [source]);
 
-  // api 처리 부분
+  /**
+   * TODO: useEffect로 처음 읽지 않음 알림을 받아오는 처리 실행
+   */
+
+  /**
+   * 읽음 처리
+   * TODO: API를 연결하여 서버에서도 읽음 처리를 할 수 있도록 해야 함
+   */
+  const readNotification = useCallback(
+    (notificationId: number) =>
+      setNotifications((prev) =>
+        prev.map((notification) =>
+          notification.id === notificationId
+            ? { ...notification, isRead: true }
+            : notification,
+        ),
+      ),
+    [],
+  );
+
+  return [notifications, readNotification];
 }
 
 export default useNotification;
