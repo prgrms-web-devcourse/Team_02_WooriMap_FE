@@ -82,6 +82,7 @@ export default function PostDetail() {
           tagList={tagList}
           content={content}
           location={location}
+          postId={id}
         />
       }
     />

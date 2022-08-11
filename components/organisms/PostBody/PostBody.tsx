@@ -1,5 +1,6 @@
 import { TagList } from 'components/molecules/TagList';
 import { ITag, ICoordinates } from 'types';
+import Link from 'next/link';
 
 import * as S from './PostBody.styles';
 
@@ -9,6 +10,7 @@ interface IPostBodyProps {
   tagList: ITag[];
   content: string;
   location: ICoordinates;
+  postId: string;
 }
 
 export function PostBody({
@@ -17,6 +19,7 @@ export function PostBody({
   tagList,
   content,
   location,
+  postId,
 }: IPostBodyProps) {
   return (
     <S.Container>
@@ -26,7 +29,9 @@ export function PostBody({
           <S.Date>{date}</S.Date>
         </S.TitleLine>
         <S.PostControl>
-          <S.EditPostButton size="small">포스트 편집</S.EditPostButton>
+          <Link href={`/post/write/${postId}`}>
+            <S.EditPostButton size="small">포스트 편집</S.EditPostButton>
+          </Link>
           <S.DeletePostLink>포스트 삭제</S.DeletePostLink>
         </S.PostControl>
       </S.Header>
