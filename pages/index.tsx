@@ -1,6 +1,5 @@
 import { MainPageTemplate } from 'components';
 import { useGeolocation } from 'hooks';
-import Link from 'next/link';
 
 function Home() {
   // coupleData를 fetch하는 로직, 추후 고도화 예정
@@ -125,14 +124,11 @@ function Home() {
   } = useGeolocation();
 
   return (
-    <>
-      <Link href="/auth/signin">로그인</Link>
-      <MainPageTemplate
-        coupleData={dummyCoupleData}
-        postList={dummyPostListData}
-        coordinate={{ latitude: lat, longitude: lng }}
-      />
-    </>
+    <MainPageTemplate
+      coupleData={dummyCoupleData}
+      postList={dummyPostListData}
+      coordinate={{ latitude: lat, longitude: lng }}
+    />
   );
 }
 export default Home;
