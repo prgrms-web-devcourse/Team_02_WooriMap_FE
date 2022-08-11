@@ -48,7 +48,7 @@ export default function ProfileEdit() {
 
   return (
     <ProfileTemplate>
-      <ProfileEditForm user={user} />
+      <ProfileEditForm user={user} userRecoilState={currentUserState} />
     </ProfileTemplate>
   );
 }

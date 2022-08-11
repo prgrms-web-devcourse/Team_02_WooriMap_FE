@@ -33,6 +33,62 @@ export async function updateUserInfoWhenCoupleLinked({
   }
 }
 
+export function updateMemberInfo({
+  instance,
+  data,
+}: {
+  instance: AxiosInstance;
+  data: any;
+}) {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+
+  const res = instance
+    .put('/members', data, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return {
+        data: null,
+      };
+    });
+
+  return res;
+}
+
+export function updateCoupleInfo({
+  instance,
+  data,
+}: {
+  instance: AxiosInstance;
+  data: any;
+}) {
+  const accessToken = LocalStorage.getItem('accessToken', '');
+
+  const res = instance
+    .put('/couples', data, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return {
+        data: null,
+      };
+    });
+
+  return res;
+}
+
 export function getLinkCouple({
   instance,
   code,

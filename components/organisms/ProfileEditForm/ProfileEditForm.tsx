@@ -1,6 +1,9 @@
+import userState from 'core';
+import { useSetRecoilState } from 'recoil';
 import { ProfileUpload, Button, SubmitButton } from 'components';
 import { useImage, useForm, useAxiosInstance } from 'hooks';
 import { IUserProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
+import { UserResponseType } from 'types/auth';
 import { updateMemberInfo, updateCoupleInfo } from 'apis/couple';
 import { profileEditValidation } from 'utils/formValidation';
 import { CoupleForm } from './CoupleForm';
@@ -8,8 +11,15 @@ import { SoloForm } from './SoloForm';
 import { setInitialState } from './helper';
 import * as S from './ProfileEditForm.style';
 
-export function ProfileEditForm({ user }: { user: IUserProps }) {
+export function ProfileEditForm({
+  user,
+  userRecoilState,
+}: {
+  user: IUserProps;
+  userRecoilState: UserResponseType;
+}) {
   const instance = useAxiosInstance();
+  const setUser = useSetRecoilState(userState);
 
   const { isCouple, imageUrl } = user;
 
@@ -23,13 +33,13 @@ export function ProfileEditForm({ user }: { user: IUserProps }) {
 
   const onSubmit = async ({ values }: IOnSubmit<IEditState>) => {
     const memberUpdateInfo = {
-      imageUrl: preview,
-      nickName: values.nickName,
+      imageUrl: preview as string,
+      nickName: values.nickName as string,
     };
 
     if (isCouple) {
       const coupleUpdateInfo = {
-        editDate: values.editDate,
+        editDate: values.editDate as string,
       };
 
       const response = await Promise.all([
@@ -43,14 +53,20 @@ export function ProfileEditForm({ user }: { user: IUserProps }) {
         }),
       ]);
 
-      console.log(response);
+      const [, memberResponse] = response;
+
+      if (memberResponse.data) {
+        setUser({ ...userRecoilState, ...memberResponse.data });
+      }
     } else {
       const response = await updateMemberInfo({
         instance,
         data: memberUpdateInfo,
       });
 
-      console.log(response);
+      if (response.data) {
+        setUser({ ...userRecoilState, ...response.data });
+      }
     }
   };
 

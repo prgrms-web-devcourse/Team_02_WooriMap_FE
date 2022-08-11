@@ -9,6 +9,7 @@ function Profile() {
   if (!user) return null;
 
   const { isCouple, nickName, imageUrl } = user;
+
   return (
     <ProfileTemplate>
       <UserProfile
