@@ -11,14 +11,18 @@ function Dropdown({ trigger, children }: IDropdown) {
   const [boundary, setBoundary] = useState(0);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  const toggle = useCallback(() => {
+  const calculateWidth = useCallback(() => {
     setBoundary(window.innerWidth);
+  }, []);
+
+  const toggle = useCallback(() => {
     setIsOpen((prev) => !prev);
   }, []);
 
   const clonedTrigger = trigger
     ? React.cloneElement(trigger, {
         onClick: (e: React.MouseEvent<HTMLElement>) => {
+          calculateWidth();
           toggle();
           trigger.props.onClick?.(e);
         },
