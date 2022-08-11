@@ -1,1 +1,1 @@
-export { ProfileUpload } from './ProfileUpload';
+export { default as ProfileUpload } from './ProfileUpload';

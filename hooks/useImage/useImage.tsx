@@ -3,10 +3,10 @@ import { AxiosInstance } from 'axios';
 import { uploadImage } from 'apis/image';
 
 export function useImage({ image }: { image: string | null }) {
-  const ref = useRef<any | null>(null);
+  const ref = useRef<HTMLInputElement | null>(null);
   const [preview, setPreview] = useState<string | null>(image);
 
-  const onUpload = () => ref.current.click() as HTMLInputElement;
+  const onUpload = () => ref.current?.click() as unknown as HTMLInputElement;
 
   const onChange = async ({
     e,

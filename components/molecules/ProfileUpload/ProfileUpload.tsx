@@ -26,23 +26,26 @@ function AddBtn() {
   );
 }
 
-export const ProfileUpload = forwardRef(
-  ({ preview, onUpload, onChange }: IProfileUploadProps, ref: any) => {
-    const instance = useAxiosInstance();
+function ProfileUpload(
+  { preview, onUpload, onChange }: IProfileUploadProps,
+  ref: React.MutableRefObject<HTMLInputElement | null>,
+) {
+  const instance = useAxiosInstance();
 
-    return (
-      <>
-        <S.Container onClick={onUpload}>
-          <Profile width={128} height={128} path={preview} />
-          <AddBtn />
-        </S.Container>
-        <S.FileInput
-          type="file"
-          accept="image/*"
-          ref={ref}
-          onChange={(e) => onChange({ e, instance })}
-        />
-      </>
-    );
-  },
-);
+  return (
+    <>
+      <S.Container onClick={onUpload}>
+        <Profile width={128} height={128} path={preview} />
+        <AddBtn />
+      </S.Container>
+      <S.FileInput
+        type="file"
+        accept="image/*"
+        ref={ref}
+        onChange={(e) => onChange({ e, instance })}
+      />
+    </>
+  );
+}
+
+export default forwardRef(ProfileUpload);
