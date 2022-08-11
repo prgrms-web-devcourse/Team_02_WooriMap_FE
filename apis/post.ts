@@ -9,7 +9,7 @@ interface IPostWriteProps {
   id?: string;
 }
 
-export const postCreate = async ({ data, instance }: IPostWriteProps) => {
+export const createPost = async ({ data, instance }: IPostWriteProps) => {
   try {
     const accessToken = LocalStorage.getItem('accessToken', '');
 
