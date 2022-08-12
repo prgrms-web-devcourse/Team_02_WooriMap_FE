@@ -32,17 +32,17 @@ export function IsCoupleProfile({
           </S.CoupleInfo>
           <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
-        <Link
-          href={{
-            pathname: '/profile/edit',
-            query,
-          }}
-          as="/profile/edit"
-        >
-          <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
-        </Link>
-        <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
       </S.CoupleInfoWrapper>
+      <Link
+        href={{
+          pathname: '/profile/edit',
+          query,
+        }}
+        as="/profile/edit"
+      >
+        <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+      </Link>
+      <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
     </S.UserProfileBackground>
   );
 }
