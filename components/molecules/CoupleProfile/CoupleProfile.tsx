@@ -6,7 +6,7 @@ import * as S from './CoupleProfile.styles';
 function EachProfile({ nickName, imageUrl }: ICoupleUserProps) {
   return (
     <S.EachProfileContainer>
-      <Profile width={128} height={128} path={imageUrl} isLink={false} />
+      <Profile width={120} height={120} path={imageUrl} isLink={false} />
       <S.NickName>{nickName}</S.NickName>
     </S.EachProfileContainer>
   );

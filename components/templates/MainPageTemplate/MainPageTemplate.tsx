@@ -16,13 +16,11 @@ export function MainPageTemplate({
 
   return (
     <S.Container>
-      <S.MainSidebarContainer>
-        <MainSidebar
-          coupleData={coupleData}
-          postList={postList}
-          handlePostFilter={handlePostFilter}
-        />
-      </S.MainSidebarContainer>
+      <MainSidebar
+        coupleData={coupleData}
+        postList={postList}
+        handlePostFilter={handlePostFilter}
+      />
       <S.MapContainer>
         <Map
           width="100%"
@@ -65,7 +63,7 @@ export function MainPageTemplate({
       </S.MapContainer>
       <Link href="/post/write" passHref>
         <S.ButtonContainer>
-          <Button variant="blackOutlined" size="large">
+          <Button variant="blackOutlined" size="medium">
             새 글 생성
           </Button>
         </S.ButtonContainer>

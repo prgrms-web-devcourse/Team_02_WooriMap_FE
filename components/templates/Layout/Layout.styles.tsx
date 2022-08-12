@@ -15,6 +15,10 @@ export const PageContainer = styled.div`
 
   background-image: url('/image/pagebackground.png');
   background-size: cover;
+
+  color: #000000bb;
+
+  font-family: 'Noto Sans KR', sans-serif;
 `;
 
 export const Container = styled.div`

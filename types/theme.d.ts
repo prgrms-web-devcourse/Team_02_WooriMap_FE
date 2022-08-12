@@ -4,6 +4,7 @@ interface IColors {
   black: string;
   gray: string;
   white: string;
+  whiteTransparent: string;
   skyblue: string;
   alert: string;
   pink: string;
