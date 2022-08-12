@@ -40,3 +40,4 @@ export type {
   IEditInputProps,
 } from 'types/edit';
 export type { IUserProfile, IUserProfileProps } from 'types/couple';
+export type { IToast } from 'types/toast';
