@@ -15,7 +15,12 @@ export function LoggedInSection({
       <Button size="small" variant="blackOutlined" onClick={handleLogout}>
         Log Out
       </Button>
-      <Profile path={profileImageSrc} width={48} height={48} isLink />
+      <Profile
+        path={profileImageSrc && profileImageSrc}
+        width={48}
+        height={48}
+        isLink
+      />
     </S.Container>
   );
 }
