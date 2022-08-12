@@ -5,6 +5,12 @@ interface IDropdownMenu {
   widthBoundary: number;
 }
 
+export const DropdownWrapper = styled.div`
+  display: inline-block;
+
+  position: relative;
+`;
+
 export const DropdownMenu = styled.ul<IDropdownMenu>`
   visibility: ${({ isOpen: display }) => (display ? 'visible' : 'hidden')};
   position: absolute;
@@ -28,12 +34,6 @@ export const DropdownMenu = styled.ul<IDropdownMenu>`
   ::-webkit-scrollbar {
     display: none;
   }
-`;
-
-export const DropdownWrapper = styled.div`
-  display: inline-block;
-
-  position: relative;
 `;
 
 export const DropdownTrigger = styled.div`
