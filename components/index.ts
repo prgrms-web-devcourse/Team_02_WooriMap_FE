@@ -48,6 +48,7 @@ export { MainSidebar } from 'components/organisms/MainSidebar';
 export { UserProfile } from 'components/organisms/UserProfile';
 export { CoupleInviteForm } from 'components/organisms/CoupleInviteForm';
 export { ProfileEditForm } from 'components/organisms/ProfileEditForm';
+export { Notification } from 'components/organisms/Notification';
 
 // templates
 export { Layout } from 'components/templates/Layout';
