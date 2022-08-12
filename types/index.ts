@@ -26,5 +26,8 @@ export type {
   IThumbnailCardProps,
   IMainSidebarProps,
   IMainPageTemplateProps,
+  IPostFilterProps,
+  IHandlePostFilterProps,
+  IMainSearchBarProps,
 } from 'types/mainPage';
 export type { ITag, IResponseTag } from 'types/tag';

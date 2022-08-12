@@ -21,7 +21,7 @@ export interface IThumbnailCardProps {
   longitude?: string;
 }
 
-export interface IMainSidebarProps {
+export interface IMainSidebarProps extends IHandlePostFilterProps {
   coupleData: ICoupleProfileProps;
   postList: IThumbnailCardProps[];
 }
@@ -31,4 +31,19 @@ export interface IMainPageTemplateProps extends IMainSidebarProps {
     latitude: number;
     longitude: number;
   };
+}
+
+export interface IPostFilterProps {
+  postFilter: {
+    tagIds: (number | undefined)[];
+    title: string;
+  };
+}
+
+export interface IHandlePostFilterProps {
+  handlePostFilter: (postFilter: IPostFilterProps) => void;
+}
+
+export interface IMainSearchBarProps extends IHandlePostFilterProps {
+  wholeTagList: ITag[];
 }

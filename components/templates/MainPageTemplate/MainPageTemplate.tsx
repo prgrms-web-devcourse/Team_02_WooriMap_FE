@@ -9,6 +9,7 @@ export function MainPageTemplate({
   coupleData,
   postList,
   coordinate,
+  handlePostFilter,
 }: IMainPageTemplateProps) {
   const [isOverlayShown, setIsOverlayShown] = useState(false);
   const [selectedMarker, setSelectedMarker] = useState<string | null>(null);
@@ -16,7 +17,11 @@ export function MainPageTemplate({
   return (
     <S.Container>
       <S.MainSidebarContainer>
-        <MainSidebar coupleData={coupleData} postList={postList} />
+        <MainSidebar
+          coupleData={coupleData}
+          postList={postList}
+          handlePostFilter={handlePostFilter}
+        />
       </S.MainSidebarContainer>
       <S.MapContainer>
         <Map

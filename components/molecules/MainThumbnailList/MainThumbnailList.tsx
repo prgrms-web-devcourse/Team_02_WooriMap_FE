@@ -29,15 +29,17 @@ export function MainThumbnailList({
 }) {
   return (
     <S.MainThumbnailListContainer>
-      {postList.map(({ postId, postThumbnailPath, title, createDate }) => (
-        <ThumbnailCard
-          key={postId}
-          postId={postId}
-          postThumbnailPath={postThumbnailPath}
-          title={title}
-          createDate={createDate}
-        />
-      ))}
+      {postList.length &&
+        postList.map(({ postId, postThumbnailPath, title, createDate }) => (
+          <ThumbnailCard
+            key={postId}
+            postId={postId}
+            postThumbnailPath={postThumbnailPath}
+            title={title}
+            createDate={createDate}
+          />
+        ))}
+      {!postList.length && <div>검색된 결과가 없습니다</div>}
     </S.MainThumbnailListContainer>
   );
 }

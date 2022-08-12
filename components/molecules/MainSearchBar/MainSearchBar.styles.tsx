@@ -52,3 +52,28 @@ export const SearchBarForm = styled.form`
     }
   }
 `;
+
+export const TagSearchBarContainer = styled.div`
+  position: relative;
+`;
+export const FilteredTagList = styled.div`
+  width: 22rem;
+  min-height: 5rem;
+  position: absolute;
+  top: 2.5rem;
+  padding: 1rem;
+  background-color: ${({ theme }) => theme.colors.white};
+  z-index: 500;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+`;
+
+export const FilteredTag = styled.div`
+  width: fit-content;
+  height: 2rem;
+  margin: 1rem 0;
+  padding: 0.5rem 1rem;
+  border: 1px solid;
+  border-radius: 1rem;
+  background-color: ${({ color }) => color};
+`;
