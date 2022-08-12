@@ -34,7 +34,7 @@ function TagCheckbox({
 }) {
   return (
     <S.TagValidation>
-      <input type="checkbox" onClick={onCheckboxClick} checked={isChecked} />
+      <input type="checkbox" onChange={onCheckboxClick} checked={isChecked} />
       <div>태그 검색하기</div>
     </S.TagValidation>
   );
