@@ -13,8 +13,8 @@ function Notification() {
           <Image
             src={NotificationSvg}
             alt="notification"
-            width={24}
-            height={24}
+            width={48}
+            height={48}
           />
         </S.NotificationIcon>
       }
