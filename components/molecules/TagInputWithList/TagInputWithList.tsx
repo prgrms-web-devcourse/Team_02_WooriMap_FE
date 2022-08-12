@@ -57,7 +57,7 @@ export function TagInputWithList({
         return Promise.reject(error);
       }
     };
-    console.log(getAllTags());
+    getAllTags();
   }, [instance]);
 
   const handleEnterType = (newTagName: string) => {
