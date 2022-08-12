@@ -6,3 +6,4 @@ export { useComponentDidMount } from 'hooks/useComponentDidMount';
 export { useRecoilValueAfterMount } from 'hooks/useRecoilValueAfterMount';
 export { useClickAway } from 'hooks/useClickAway';
 export { useImage } from 'hooks/useImage';
+export { useTimeoutFn } from 'hooks/useTimeout';
