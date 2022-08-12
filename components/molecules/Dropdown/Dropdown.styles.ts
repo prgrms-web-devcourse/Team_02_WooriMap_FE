@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 
 interface IDropdownMenu {
-  display: boolean;
+  isOpen: boolean;
   widthBoundary: number;
 }
 
-export const DropdownMenu = styled.div<Partial<IDropdownMenu>>`
-  visibility: ${({ display }) => (display ? 'visible' : 'hidden')};
+export const DropdownMenu = styled.ul<IDropdownMenu>`
+  visibility: ${({ isOpen: display }) => (display ? 'visible' : 'hidden')};
   position: absolute;
   right: 0;
 
@@ -41,7 +41,7 @@ export const DropdownTrigger = styled.div`
   position: relative;
 `;
 
-export const DropdownItem = styled.div`
+export const DropdownItem = styled.li`
   padding: 1rem;
   width: 100%;
   border-bottom: 1px solid rgba(191, 191, 191, 0.3);

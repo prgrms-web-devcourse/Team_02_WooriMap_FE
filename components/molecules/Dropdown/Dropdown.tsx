@@ -1,16 +1,24 @@
-import { useClickAway } from 'hooks/useClickAway';
 import React, { useCallback, useRef, useState } from 'react';
+import { useClickAway } from 'hooks/useClickAway';
 import * as S from './Dropdown.styles';
 
-interface IDropdown {
+interface IDropdown extends React.HTMLAttributes<HTMLUListElement> {
   trigger?: React.ReactElement;
-  children?: React.ReactElement[];
+  children?: React.ReactNode;
 }
 
-function Dropdown({ trigger, children }: IDropdown) {
+interface IDropdownItem extends React.HTMLAttributes<HTMLLIElement> {
+  children?: React.ReactNode;
+}
+
+function DropdownItem({ children, ...props }: IDropdownItem) {
+  return <S.DropdownItem {...props}>{children}</S.DropdownItem>;
+}
+
+function Dropdown({ trigger, children, ...props }: IDropdown) {
   const [isOpen, setIsOpen] = useState(false);
   const [boundary, setBoundary] = useState(0);
-  const dropdownMenuRef = useRef<HTMLDivElement | null>(null);
+  const dropdownMenuRef = useRef<HTMLUListElement | null>(null);
 
   const calculateWidth = useCallback(() => {
     if (!dropdownMenuRef.current) return;
@@ -30,7 +38,7 @@ function Dropdown({ trigger, children }: IDropdown) {
 
   const dropdownRef = useClickAway<HTMLDivElement>(close);
 
-  const clonedTrigger = trigger
+  const triggerWithProps = trigger
     ? React.cloneElement(trigger, {
         onClick: (e: React.MouseEvent<HTMLElement>) => {
           calculateWidth();
@@ -52,11 +60,12 @@ function Dropdown({ trigger, children }: IDropdown) {
 
   return (
     <S.DropdownWrapper ref={dropdownRef}>
-      <S.DropdownTrigger>{clonedTrigger}</S.DropdownTrigger>
+      <S.DropdownTrigger>{triggerWithProps}</S.DropdownTrigger>
       <S.DropdownMenu
-        display={isOpen}
+        isOpen={isOpen}
         widthBoundary={boundary}
         ref={dropdownMenuRef}
+        {...props}
       >
         {childrenWithProps}
       </S.DropdownMenu>
@@ -64,4 +73,4 @@ function Dropdown({ trigger, children }: IDropdown) {
   );
 }
 
-export default Dropdown;
+export { Dropdown, DropdownItem };

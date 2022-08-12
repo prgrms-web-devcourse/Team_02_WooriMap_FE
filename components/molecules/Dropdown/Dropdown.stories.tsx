@@ -1,7 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Button } from 'components';
-import Dropdown from './Dropdown';
-import * as S from './Dropdown.styles';
+import { Dropdown, DropdownItem } from './Dropdown';
 
 export default {
   title: 'Components/Molecules/Dropdown',
@@ -22,22 +21,22 @@ export const Default: ComponentStory<typeof Dropdown> = () => (
         </Button>
       }
     >
-      <S.DropdownItem>테스트</S.DropdownItem>
-      <S.DropdownItem>테스트</S.DropdownItem>
-      <S.DropdownItem>테스트</S.DropdownItem>
-      <S.DropdownItem>테스트</S.DropdownItem>
-      <S.DropdownItem>
+      <DropdownItem>테스트</DropdownItem>
+      <DropdownItem>테스트</DropdownItem>
+      <DropdownItem>테스트</DropdownItem>
+      <DropdownItem>테스트</DropdownItem>
+      <DropdownItem>
         테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트
-      </S.DropdownItem>
-      <S.DropdownItem>
+      </DropdownItem>
+      <DropdownItem>
         테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트
-      </S.DropdownItem>
-      <S.DropdownItem>
+      </DropdownItem>
+      <DropdownItem>
         테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트
-      </S.DropdownItem>
-      <S.DropdownItem>
+      </DropdownItem>
+      <DropdownItem>
         테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트
-      </S.DropdownItem>
+      </DropdownItem>
     </Dropdown>
   </div>
 );
