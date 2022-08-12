@@ -8,7 +8,7 @@ interface IToastProps {
 
 export function Toast({ toasts, removeToast }: IToastProps) {
   return (
-    <div>
+    <>
       {toasts.map(({ key, message, status, duration }) => (
         <ToastItem
           key={key}
@@ -16,6 +16,6 @@ export function Toast({ toasts, removeToast }: IToastProps) {
           onRemove={() => removeToast({ key })}
         />
       ))}
-    </div>
+    </>
   );
 }
