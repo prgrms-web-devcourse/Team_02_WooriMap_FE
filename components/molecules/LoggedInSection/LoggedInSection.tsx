@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import { Profile } from 'components';
 import { notificationIcon, logoutIcon } from 'public/image';
+=======
+import { Button, Profile, Notification } from 'components';
+>>>>>>> fb7e800 (feat: LoggedInSection에 알림 컴포넌트 추가)
 import * as S from './LoggedInSection.styles';
 
 interface ILoggedInSectionProps {
@@ -13,6 +17,7 @@ export function LoggedInSection({
 }: ILoggedInSectionProps) {
   return (
     <S.Container>
+<<<<<<< HEAD
       <S.IconContainer>
         <S.HeaderIcon
           src={notificationIcon}
@@ -28,6 +33,12 @@ export function LoggedInSection({
           height={40}
         />
       </S.IconContainer>
+=======
+      <Notification />
+      <Button size="small" variant="blackOutlined" onClick={handleLogout}>
+        Log Out
+      </Button>
+>>>>>>> fb7e800 (feat: LoggedInSection에 알림 컴포넌트 추가)
       <Profile
         width={40}
         height={40}
