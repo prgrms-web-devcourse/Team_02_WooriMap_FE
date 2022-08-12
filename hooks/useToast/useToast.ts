@@ -6,8 +6,8 @@ import { IToast } from 'types';
 
 export function useToast() {
   const portalId = 'toast-portal';
-  const portalElement = useRef<HTMLDivElement | null>(null);
 
+  const portalElement = useRef<HTMLDivElement | null>(null);
   const [toasts, setToasts] = useState<Array<IToast>>([]);
   const [root, setRoot] = useState<ReactDOMClient.Root | null>(null);
 
