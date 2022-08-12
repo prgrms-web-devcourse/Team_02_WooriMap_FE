@@ -3,15 +3,10 @@ import { Profile } from 'components';
 import { calculatingDDay } from 'utils';
 import * as S from './CoupleProfile.styles';
 
-function EachProfile({ nickName, profileImagePath }: ICoupleUserProps) {
+function EachProfile({ nickName, imageUrl }: ICoupleUserProps) {
   return (
     <S.EachProfileContainer>
-      <Profile
-        width={128}
-        height={128}
-        path={profileImagePath}
-        isLink={false}
-      />
+      <Profile width={128} height={128} path={imageUrl} isLink={false} />
       <S.NickName>{nickName}</S.NickName>
     </S.EachProfileContainer>
   );
@@ -32,15 +27,9 @@ function CoupleInfo({ startDate }: IStartDateProps) {
 export function CoupleProfile({ me, you, startDate }: ICoupleProfileProps) {
   return (
     <S.Container>
-      <EachProfile
-        nickName={me.nickName}
-        profileImagePath={me.profileImagePath}
-      />
+      <EachProfile nickName={me.nickName} imageUrl={me.imageUrl} />
       <CoupleInfo startDate={startDate} />
-      <EachProfile
-        nickName={you.nickName}
-        profileImagePath={you.profileImagePath}
-      />
+      <EachProfile nickName={you.nickName} imageUrl={you.imageUrl} />
     </S.Container>
   );
 }

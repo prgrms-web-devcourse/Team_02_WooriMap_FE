@@ -1,23 +1,36 @@
+import { useState, useEffect } from 'react';
+import { IApiResponse, ICoupleProfileProps } from 'types';
 import { MainPageTemplate } from 'components';
-import { useGeolocation } from 'hooks';
+import { useGeolocation, useAxiosInstance } from 'hooks';
 
 function Home() {
-  // coupleData를 fetch하는 로직, 추후 고도화 예정
-  const getCoupleData = () => {
-    const dummyData = {
-      startDate: '2021-11-19',
-      me: {
-        profileImagePath: null,
-        nickName: 'myname',
-      },
-      you: {
-        profileImagePath: null,
-        nickName: 'yourname',
-      },
+  const instance = useAxiosInstance();
+  const [coupleData, setCoupleData] = useState<ICoupleProfileProps>({
+    startDate: '0000-00-00',
+    me: {
+      imageUrl: null,
+      nickName: 'myname',
+    },
+    you: {
+      imageUrl: null,
+      nickName: 'yourname',
+    },
+  });
+
+  useEffect(() => {
+    const getCoupleData = async () => {
+      try {
+        const data = await instance.get<IApiResponse<ICoupleProfileProps>>(
+          '/couples',
+        );
+        const newCoupleData = data.data.data;
+        return newCoupleData;
+      } catch (error) {
+        return Promise.reject(error);
+      }
     };
-    return dummyData;
-  };
-  const dummyCoupleData = getCoupleData();
+    getCoupleData().then((newCoupleData) => setCoupleData(newCoupleData));
+  }, [instance]);
 
   // postList를 fetch하는 로직, 추후 고도화 예정
   const getPostList = () => {
@@ -125,7 +138,7 @@ function Home() {
 
   return (
     <MainPageTemplate
-      coupleData={dummyCoupleData}
+      coupleData={coupleData}
       postList={dummyPostListData}
       coordinate={{ latitude: lat, longitude: lng }}
     />

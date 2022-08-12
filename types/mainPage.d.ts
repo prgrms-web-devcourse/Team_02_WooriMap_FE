@@ -1,7 +1,5 @@
-import { ImageProps } from 'next/image';
-
 export interface ICoupleUserProps {
-  profileImagePath: string | null;
+  imageUrl: string | null;
   nickName: string;
 }
 
