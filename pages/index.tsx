@@ -1,8 +1,7 @@
-import { MainPageTemplate } from 'components';
 import { useState, useEffect } from 'react';
-import { useGeolocation, useAxiosInstance } from 'hooks';
 import { IApiResponse, ICoupleProfileProps } from 'types';
-import LocalStorage from 'utils/storage';
+import { MainPageTemplate } from 'components';
+import { useGeolocation, useAxiosInstance } from 'hooks';
 
 function Home() {
   const instance = useAxiosInstance();
@@ -21,22 +20,16 @@ function Home() {
   useEffect(() => {
     const getCoupleData = async () => {
       try {
-        const accessToken = LocalStorage.getItem('accessToken', '');
-
-        const data = await instance
-          .get<IApiResponse<ICoupleProfileProps>>('/couples', {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          })
-          .then((response) => response.data.data);
-        setCoupleData(data);
-        return null;
+        const data = await instance.get<IApiResponse<ICoupleProfileProps>>(
+          '/couples',
+        );
+        const newCoupleData = data.data.data;
+        return newCoupleData;
       } catch (error) {
         return Promise.reject(error);
       }
     };
-    getCoupleData();
+    getCoupleData().then((newCoupleData) => setCoupleData(newCoupleData));
   }, [instance]);
 
   // postList를 fetch하는 로직, 추후 고도화 예정
