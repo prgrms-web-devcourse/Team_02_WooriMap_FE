@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IUserProfileProps } from 'types/couple';
+import { IUserProfileProps } from 'types';
 import { useAxiosInstance } from 'hooks';
 import { getCoupleInfo } from 'apis/couple';
 import { IsCoupleProfile } from './IsCoupleProfile';
@@ -55,6 +55,11 @@ export function UserProfile({
   }
 
   return (
-    <IsNotCoupleProfile isCouple={isCouple} nickName={nickName} {...props} />
+    <IsNotCoupleProfile
+      imageUrl={imageUrl}
+      isCouple={isCouple}
+      nickName={nickName}
+      {...props}
+    />
   );
 }

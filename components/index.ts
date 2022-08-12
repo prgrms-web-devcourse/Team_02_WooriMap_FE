@@ -33,6 +33,7 @@ export { MapMarkerOverlay } from 'components/molecules/MapMarkerOverlay';
 export { TagInput } from 'components/molecules/TagInput';
 export { TagInputWithList } from 'components/molecules/TagInputWithList';
 export { Dropdown, DropdownItem } from 'components/molecules/Dropdown';
+export { ProfileUpload } from 'components/molecules/ProfileUpload';
 
 export { TagList } from 'components/molecules/TagList';
 // organisms
@@ -45,6 +46,7 @@ export { PostWrite } from 'components/organisms/PostWrite';
 export { MainSidebar } from 'components/organisms/MainSidebar';
 export { UserProfile } from 'components/organisms/UserProfile';
 export { CoupleInviteForm } from 'components/organisms/CoupleInviteForm';
+export { ProfileEditForm } from 'components/organisms/ProfileEditForm';
 
 // templates
 export { Layout } from 'components/templates/Layout';

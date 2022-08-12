@@ -17,7 +17,11 @@ function Avatar({ width, height, path, isLink }: IProfileProps) {
         src={path || defaultImg}
         width={width}
         height={height}
+        objectFit="cover"
         alt="Profile Image"
+        style={{
+          borderRadius: '50%',
+        }}
       />
     </S.Container>
   );

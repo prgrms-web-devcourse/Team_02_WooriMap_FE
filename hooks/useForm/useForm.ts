@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { checkStateIsValid } from 'utils';
+import { trimValues } from 'utils';
 import { IOnSubmit, IPostOnChangeProps, ISetValueState } from 'types';
 
 interface IUseForm<T, V, K> {
@@ -58,8 +58,8 @@ function useForm<T, V, K>({
 
     const newErrors = validateValues(stateRequiresCheckValidation);
 
-    if (checkStateIsValid<V>({ errorState: newErrors })) {
-      onSubmit({ values, setErrors });
+    if (Object.values(newErrors).every((x) => !x)) {
+      onSubmit({ values: trimValues(values) as T, setErrors });
     }
 
     setErrors(newErrors);

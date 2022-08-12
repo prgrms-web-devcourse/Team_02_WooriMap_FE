@@ -33,3 +33,10 @@ export type {
   IMainSearchBarProps,
 } from 'types/mainPage';
 export type { ITag, IResponseTag } from 'types/tag';
+export type {
+  IUserProps,
+  EditErrorTypes,
+  IEditState,
+  IEditInputProps,
+} from 'types/edit';
+export type { IUserProfile, IUserProfileProps } from 'types/couple';

@@ -33,6 +33,53 @@ export async function updateUserInfoWhenCoupleLinked({
   }
 }
 
+export function updateMemberInfo({
+  instance,
+  data,
+}: {
+  instance: AxiosInstance;
+  data: {
+    imageUrl: string;
+    nickName: string;
+  };
+}) {
+  const res = instance
+    .put('/members', data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return {
+        data: null,
+      };
+    });
+
+  return res;
+}
+
+export function updateCoupleInfo({
+  instance,
+  data,
+}: {
+  instance: AxiosInstance;
+  data: { editDate: string };
+}) {
+  const res = instance
+    .put('/couples', data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      console.error(error);
+      return {
+        data: null,
+      };
+    });
+
+  return res;
+}
+
 export function getLinkCouple({
   instance,
   code,

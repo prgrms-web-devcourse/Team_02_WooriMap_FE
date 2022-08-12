@@ -6,3 +6,4 @@ export { signupValidation, postValidation } from 'utils/formValidation';
 export { parseCookises } from 'utils/parseCookies';
 export { parsePostData } from 'utils/parsePostData';
 export { checkStateIsValid } from 'utils/checkStateIsValid';
+export { trimValues } from 'utils/trimValues';
