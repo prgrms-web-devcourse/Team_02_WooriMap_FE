@@ -1,12 +1,11 @@
+import { useState, useEffect } from 'react';
 import {
   ITag as ITagWithoutId,
   IMainSidebarProps,
   IApiResponse,
   IResponseTag,
 } from 'types';
-import { useState, useEffect } from 'react';
 import { CoupleProfile, MainSearchBar, MainThumbnailList } from 'components';
-import LocalStorage from 'utils/storage';
 import { useAxiosInstance } from 'hooks';
 import * as S from './MainSidebar.styles';
 
@@ -54,21 +53,14 @@ export function MainSidebar({
   useEffect(() => {
     const getWholeTagList = async () => {
       try {
-        const accessToken = LocalStorage.getItem('accessToken', '');
         const data = await instance
-          .get<IApiResponse<IResponseTag[]>>('/couples/tags', {
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-          })
+          .get<IApiResponse<IResponseTag[]>>('/couples/tags')
           .then((response) => response.data.data);
         const tags = data.map(({ id, name, color }) => ({
           id,
           name,
           color,
         }));
-        // 태그 확인용, 곧 삭제 예정
-        console.log('tags : ', tags);
         setWholeTagList(tags);
         return null;
       } catch (error) {

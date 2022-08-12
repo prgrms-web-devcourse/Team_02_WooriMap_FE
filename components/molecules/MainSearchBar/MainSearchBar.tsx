@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { useState, useRef, useEffect } from 'react';
+import Image from 'next/image';
 import {
   ITag as ITagWithoutId,
   IPostFilterProps,
@@ -19,6 +19,12 @@ interface ITagSearchBarProps {
   onClick: () => void;
 }
 
+interface IFilteredTagListProps {
+  inputValue: string;
+  wholeTagList: ITag[];
+  onFilteredTagClick: ({ id, name, color }: ITag) => void;
+}
+
 function TagCheckbox({
   onCheckboxClick,
   isChecked,
@@ -34,6 +40,47 @@ function TagCheckbox({
   );
 }
 
+function FilteredTagList({
+  inputValue,
+  wholeTagList,
+  onFilteredTagClick,
+}: IFilteredTagListProps) {
+  if (inputValue !== '') {
+    return (
+      <S.FilteredTagList>
+        {wholeTagList
+          .filter(({ name }) => name.includes(inputValue))
+          .map(({ id, name, color }) => (
+            <S.FilteredTag
+              key={id}
+              color={color}
+              onClick={() => {
+                onFilteredTagClick({ id, name, color });
+              }}
+            >
+              {name}
+            </S.FilteredTag>
+          ))}
+      </S.FilteredTagList>
+    );
+  }
+  return (
+    <S.FilteredTagList>
+      {wholeTagList.map(({ id, name, color }) => (
+        <S.FilteredTag
+          key={id}
+          color={color}
+          onClick={() => {
+            onFilteredTagClick({ id, name, color });
+          }}
+        >
+          {name}
+        </S.FilteredTag>
+      ))}
+    </S.FilteredTagList>
+  );
+}
+
 function TagSearchBar({
   addTagList,
   wholeTagList,
@@ -45,12 +92,17 @@ function TagSearchBar({
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
-  const onFilteredTagClick = (tag: ITag) => {
+
+  const handleTagList = (tag: ITag) => {
     addTagList(tag);
     setInputValue('');
     if (input.current) {
       input.current.value = '';
     }
+  };
+  const onFilteredTagClick = ({ id, name, color }: ITag) => {
+    handleTagList({ id, name, color });
+    onClick();
   };
 
   return (
@@ -68,39 +120,11 @@ function TagSearchBar({
           <Image src={searchIcon} alt="search icon" />
         </button>
       </S.SearchBarForm>
-      {inputValue !== '' ? (
-        <S.FilteredTagList>
-          {wholeTagList
-            .filter(({ name }) => name.includes(inputValue))
-            .map(({ id, name, color }) => (
-              <S.FilteredTag
-                key={id}
-                color={color}
-                onClick={() => {
-                  onFilteredTagClick({ id, name, color });
-                  onClick();
-                }}
-              >
-                {name}
-              </S.FilteredTag>
-            ))}
-        </S.FilteredTagList>
-      ) : (
-        <S.FilteredTagList>
-          {wholeTagList.map(({ id, name, color }) => (
-            <S.FilteredTag
-              key={id}
-              color={color}
-              onClick={() => {
-                onFilteredTagClick({ id, name, color });
-                onClick();
-              }}
-            >
-              {name}
-            </S.FilteredTag>
-          ))}
-        </S.FilteredTagList>
-      )}
+      <FilteredTagList
+        inputValue={inputValue}
+        wholeTagList={wholeTagList}
+        onFilteredTagClick={onFilteredTagClick}
+      />
     </S.TagSearchBarContainer>
   );
 }
@@ -111,7 +135,7 @@ function TitleSearchBar({
   handleKeyWord: (keyWord: string) => void;
 }) {
   const input = useRef<HTMLInputElement>(null);
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // 이 부분에서 도저히 any를 쓰지 않고 어떻게 해야할 지 잘 모르겠습니다 ㅜㅠ
     const { target }: { target: any } = e;
