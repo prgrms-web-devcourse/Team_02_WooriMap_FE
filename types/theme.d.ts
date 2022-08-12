@@ -30,6 +30,8 @@ interface IboxShadow {
   molecule: string;
   organism: string;
 }
+
+type IOpacityTransition = string;
 declare global {
   // for css``
   interface IThemeProps {
@@ -43,5 +45,6 @@ declare module '@emotion/react' {
     tagColors: ITagColors;
     sizes: ISizes;
     boxShadow: IboxShadow;
+    opacityTransition: IOpacityTransition;
   }
 }
