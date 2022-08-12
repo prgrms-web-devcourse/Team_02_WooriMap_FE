@@ -60,6 +60,7 @@ const theme: Theme = {
     molecule: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.25)',
     organism: '0 0.5rem 1rem rgba(0, 0, 0, 0.25)',
   },
+  opacityTransition: 'opacity ease-in 0.2s',
 };
 
 export default theme;
