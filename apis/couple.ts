@@ -58,14 +58,8 @@ export function getLinkCouple({
 }
 
 export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .get('/couples/check', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .get('/couples/check')
     .then((response) => {
       return response.data;
     })
