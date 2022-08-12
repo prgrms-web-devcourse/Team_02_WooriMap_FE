@@ -8,7 +8,7 @@ const dummyData: INotification[] = [
     id: 1,
     contentId: 1,
     action: 'created',
-    nickName: 'yummy',
+    nickName: 'yummyyummyyummy',
     content: 'article 제목1',
     isRead: false,
   },

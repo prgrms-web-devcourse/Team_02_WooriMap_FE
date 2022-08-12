@@ -1,5 +1,8 @@
 import styled from '@emotion/styled';
-import { DropdownItem } from 'components';
+
+interface INotificationMessage {
+  isRead?: boolean;
+}
 
 export const NotificationIcon = styled.div`
   position: relative;
@@ -7,6 +10,27 @@ export const NotificationIcon = styled.div`
   cursor: pointer;
 `;
 
-export const NotificationMessage = styled(DropdownItem)`
+export const NotificationMessage = styled.li<INotificationMessage>`
+  width: 100%;
+  padding: 1rem;
+  border-bottom: 1px solid rgba(191, 191, 191, 0.3);
+
   font-size: 14px;
+  white-space: pre-wrap;
+  line-height: 1.4;
+
+  overflow-x: hidden;
+
+  cursor: pointer;
+
+  :hover {
+    background-color: rgba(191, 191, 191, 0.3);
+  }
+`;
+
+export const StrongAndEllipsis = styled.span`
+  display: inline-block;
+
+  font-weight: bold;
+  white-space: pre-wrap;
 `;
