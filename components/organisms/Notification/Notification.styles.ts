@@ -5,3 +5,7 @@ export const NotificationIcon = styled.div`
 
   cursor: pointer;
 `;
+
+export const NotificationMessage = styled.li`
+  width: 100%;
+`;

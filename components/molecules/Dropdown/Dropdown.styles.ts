@@ -16,7 +16,7 @@ export const DropdownMenu = styled.ul<IDropdownMenu>`
   position: absolute;
   right: 0;
 
-  max-width: ${({ widthBoundary }) =>
+  width: ${({ widthBoundary }) =>
     widthBoundary ? `${Math.min(widthBoundary, 20 * 16)}px` : '20rem'};
   max-height: 40rem;
   z-index: 99999;
@@ -47,8 +47,6 @@ export const DropdownItem = styled.li`
   border-bottom: 1px solid rgba(191, 191, 191, 0.3);
 
   overflow-x: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 
   cursor: pointer;
 
