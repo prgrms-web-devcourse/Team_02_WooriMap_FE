@@ -1,6 +1,5 @@
 import { AxiosInstance } from 'axios';
-import LocalStorage from 'utils/storage';
-import { IPostFormState, ITag } from 'types';
+import { IPostFormState, IPostDetailProps } from 'types';
 import { IApiResponse } from 'types/api';
 
 interface IPostWriteProps {
@@ -26,7 +25,7 @@ export function createPost({ data, instance }: IPostWriteProps) {
 
 export function updatePost({ instance, data, id }: IPostWriteProps) {
   const res = instance
-    .put(`/couples/posts/${id}`, data)
+    .put<IApiResponse<object>>(`/couples/posts/${id}`, data)
     .then((response) => {
       return response.data;
     })
@@ -41,7 +40,7 @@ export function updatePost({ instance, data, id }: IPostWriteProps) {
 
 export function getOnePost({ instance, id }: IPostWriteProps) {
   const res = instance
-    .get(`/couples/posts/${id}`)
+    .get<IApiResponse<IPostDetailProps>>(`/couples/posts/${id}`)
     .then((response) => {
       return response.data.data;
     })
@@ -54,47 +53,17 @@ export function getOnePost({ instance, id }: IPostWriteProps) {
   return res;
 }
 
-export async function updatePost({ instance, data, id }: IPostWriteProps) {
+export function deletePost({ instance, id }: IPostWriteProps) {
   const response = instance
-    .put(`/couples/posts/${id}`, data)
+    .delete<IApiResponse<object>>(`/couples/posts/${id}`)
     .then((res) => {
-      return res.data;
+      return res.data.data;
     })
     .catch((error) => {
-      const responseWithError = error.response;
+      const res = error.response;
 
-      return responseWithError.data;
+      throw Error(res.message);
     });
 
   return response;
-}
-
-export async function getOnePost({ instance, id }: IPostWriteProps) {
-  try {
-    const response = await instance.get<IApiResponse<IPostDetailProps>>(
-      `/couples/posts/${id}`,
-    );
-
-    const { data } = response.data;
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
-}
-
-export async function deletePost({ instance, id }: IPostWriteProps) {
-  try {
-    const response = await instance.delete<IApiResponse<object>>(
-      `/couples/posts/${id}`,
-    );
-
-    const { data } = response.data;
-
-    return data;
-  } catch (error) {
-    console.error(error);
-    return null;
-  }
 }
