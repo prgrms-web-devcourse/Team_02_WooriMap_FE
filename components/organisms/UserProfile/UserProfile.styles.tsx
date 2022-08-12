@@ -128,8 +128,6 @@ export const StartringDate = styled.span`
 export const Withdrawal = styled.span<IUserProfile>`
   position: absolute;
   bottom: 2rem;
-
   color: ${({ theme }) => theme.colors.gray};
-
   font-size: 0.8rem;
 `;

@@ -14,6 +14,7 @@ export function UserProfile({
   isCouple,
   nickName,
   imageUrl,
+  email,
   ...props
 }: IUserProfileProps) {
   const [coupleInfo, setCoupleInfo] = useState<ICoupleInfo>({
@@ -21,6 +22,8 @@ export function UserProfile({
     startDate: '',
   });
   const instance = useAxiosInstance();
+
+  console.log(isCouple);
 
   useEffect(() => {
     if (isCouple) {
@@ -49,6 +52,7 @@ export function UserProfile({
         coupleNickName={coupleNickName}
         startDate={startDate}
         imageUrl={imageUrl}
+        email={email}
         {...props}
       />
     );

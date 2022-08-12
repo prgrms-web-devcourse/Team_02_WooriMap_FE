@@ -7,4 +7,5 @@ export interface IUserProfileProps extends IUserProfile {
   imageUrl?: string | null;
   coupleNickName?: string;
   startDate?: string;
+  email?: string;
 }

@@ -157,3 +157,20 @@ export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
 
   return res;
 }
+
+export function breakWithUpCouple({ instance }: { instance: AxiosInstance }) {
+  const res = instance
+    .delete('/couples')
+    .then((response) => {
+      return response.data.data;
+    })
+    .catch((error) => {
+      const { response } = error;
+
+      console.error(response.message);
+
+      return null;
+    });
+
+  return res;
+}

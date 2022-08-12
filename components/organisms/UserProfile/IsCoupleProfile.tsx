@@ -1,6 +1,11 @@
+import userState from 'core';
 import Link from 'next/link';
+import { useSetRecoilState } from 'recoil';
+import { breakWithUpCouple } from 'apis/couple';
 import { calculatingDDay } from 'utils';
 import { IUserProfileProps } from 'types';
+import { useAxiosInstance } from 'hooks';
+import LocalStorage from 'utils/storage';
 import * as S from './UserProfile.styles';
 
 export function IsCoupleProfile({
@@ -9,9 +14,31 @@ export function IsCoupleProfile({
   coupleNickName,
   startDate,
   imageUrl,
+  email,
   ...props
 }: IUserProfileProps) {
   const query = { isCouple, imageUrl, nickName, startDate };
+  const instance = useAxiosInstance();
+  const setUser = useSetRecoilState(userState);
+
+  const onBreakUp = async () => {
+    if (window.confirm('혹시.. 이별하셨나요?')) {
+      const response = await breakWithUpCouple({ instance });
+
+      if (response) {
+        const { accessToken } = response;
+
+        LocalStorage.setItem('accessToken', accessToken);
+        setUser({
+          isCouple: false,
+          imageUrl: imageUrl as string,
+          nickName: nickName as string,
+          email: email as string,
+        });
+      }
+    }
+  };
+
   return (
     <S.UserProfileBackground {...props}>
       <S.ProfileWrapper>
@@ -42,7 +69,9 @@ export function IsCoupleProfile({
       >
         <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
       </Link>
-      <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
+      <S.Withdrawal isCouple={isCouple} onClick={onBreakUp}>
+        커플끊기
+      </S.Withdrawal>
     </S.UserProfileBackground>
   );
 }

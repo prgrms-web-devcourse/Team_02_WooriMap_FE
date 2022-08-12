@@ -8,7 +8,9 @@ function Profile() {
 
   if (!user) return null;
 
-  const { isCouple, nickName, imageUrl } = user;
+  const { isCouple, nickName, imageUrl, email } = user;
+
+  console.log(email);
 
   return (
     <ProfileTemplate>
@@ -16,6 +18,7 @@ function Profile() {
         isCouple={isCouple}
         nickName={nickName}
         imageUrl={imageUrl}
+        email={email}
       />
     </ProfileTemplate>
   );
