@@ -22,8 +22,7 @@ export function uploadImage({ e, instance }: IUploadImageProps) {
     })
     .catch((error) => {
       const { response } = error;
-
-      console.error(response.message);
+      console.error(response.data.message);
 
       return {
         name,
