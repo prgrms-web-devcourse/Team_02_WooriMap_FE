@@ -3,40 +3,28 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  /* align-items: center; */
+  justify-content: space-between;
 
-  box-sizing: border-box;
+  width: 100%;
 `;
 
 export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
-  width: 100%;
-
   display: flex;
-  justify-content: center;
-  align-items: start;
-  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
 
-  ${({ isValidationNotUsed }) => isValidationNotUsed && `margin-bottom: 1rem;`}
+  width: 100%;
 
   & > label {
-    width: 64px;
-    height: 20px;
+    width: 3rem;
 
-    margin-right: 10px;
-    margin-top: 14px;
-
-    font-size: 14px;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-family: 'Noto Serif KR', serif;
+    font-weight: 900;
+    line-height: 3rem;
     word-break: break-all;
-    text-align: start;
   }
-`;
-
-export const Inner = styled.div`
-  width: 100%;
-  margin: 4px 0 0 30%;
 `;
 
 export const ValidationError = styled.p`

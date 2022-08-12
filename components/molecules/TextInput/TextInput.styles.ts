@@ -2,26 +2,40 @@ import Image from 'next/image';
 import styled from '@emotion/styled';
 
 export const TextInputWrapper = styled.div`
-  position: relative;
   display: flex;
   flex: 1;
-  border-radius: 8px;
-  border: 2px solid ${({ theme }) => theme.colors.gray};
-  padding: 8px 12px;
+  position: relative;
+
+  width: 100%;
+  height: 3rem;
+
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.boxShadow.atom};
 `;
 
 export const TextInput = styled.input`
-  outline-style: none;
-  border: 0;
-  outline: 0;
-  width: 98%;
-  font-size: 16px;
-  font-weight: 600;
+  width: 100%;
+
+  margin-right: 2rem;
+
+  border: none;
+
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5rem;
+
+  :focus {
+    outline-color: ${({ theme }) => theme.colors.pink};
+  }
 `;
 
 export const DeleteButton = styled(Image)`
-  cursor: pointer;
   position: absolute;
-  right: 16px;
+  right: 2rem;
   z-index: 10;
+
+  cursor: pointer;
 `;

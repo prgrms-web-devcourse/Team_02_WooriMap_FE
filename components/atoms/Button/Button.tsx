@@ -9,11 +9,13 @@ const disabledButtonStyle = ({ theme }: IThemeProps) => css`
   background-color: ${theme.colors.gray};
   cursor: default;
   pointer-events: none;
+  font-size: 1.2rem;
 `;
 
 const blackButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.white};
   background-color: ${theme.colors.black};
+  font-size: 1.2rem;
 `;
 
 const blackOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
@@ -33,6 +35,7 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.black};
   background-color: ${theme.colors.white};
   border: 3px solid ${theme.colors.gray};
+  font-size: 1.2rem;
 `;
 
 const pinkButtonStyle = ({ theme }: IThemeProps) => css`
@@ -41,6 +44,7 @@ const pinkButtonStyle = ({ theme }: IThemeProps) => css`
   color: ${theme.colors.black};
   background-color: ${theme.colors.pink};
   border: 3px solid ${theme.colors.black};
+  font-size: 1.2rem;
 `;
 
 export const Button = styled.button<IButtonStyleProps>`
@@ -51,6 +55,7 @@ export const Button = styled.button<IButtonStyleProps>`
   margin: 0;
   box-sizing: border-box;
 
+  font-size: 1.2rem;
   font-weight: bold;
   border-radius: 5rem;
 
