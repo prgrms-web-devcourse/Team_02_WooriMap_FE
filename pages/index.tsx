@@ -79,7 +79,6 @@ function Home() {
           },
         })
         .then((response) => response.data.data);
-      console.log('FilteredPost : ', data);
       const newPostList: IThumbnailCardProps[] = data.map(
         ({ postId, title, imageUrl, createDateTime, latitude, longitude }) => ({
           postId: String(postId),
@@ -117,7 +116,6 @@ function Home() {
           },
         })
         .then((response) => response.data.data);
-      console.log('allPost : ', data);
       const newPostList: IThumbnailCardProps[] = data.map(
         ({ postId, title, imageUrl, createDateTime, latitude, longitude }) => ({
           postId: String(postId),
