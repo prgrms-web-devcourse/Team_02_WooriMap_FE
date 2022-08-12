@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { MainPageTemplate } from 'components';
-import { useAxiosInstance, useGeolocation } from 'hooks';
+import { useAxiosInstance, useGeolocation, useToast } from 'hooks';
 import {
   IApiResponse,
   IPostFilterProps,
@@ -15,6 +15,8 @@ function Home() {
   const [postList, setPostList] = useState<IThumbnailCardProps[]>([]);
   let accessToken: string | null = '';
   const instance = useAxiosInstance();
+
+  // useToast();
 
   const [coupleData, setCoupleData] = useState<ICoupleProfileProps>({
     startDate: '0000-00-00',
