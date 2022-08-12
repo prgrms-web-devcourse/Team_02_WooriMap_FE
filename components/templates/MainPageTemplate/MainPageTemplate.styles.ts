@@ -5,22 +5,20 @@ export const Container = styled.div`
 
   position: relative;
 
-  width: 75rem;
-  height: 52rem;
+  width: 90rem;
+  height: 55rem;
 
-  box-shadow: ${({ theme }) => theme.boxShadow.organism};
-`;
-
-export const MainSidebarContainer = styled.div`
-  width: 23rem;
-  height: 100%;
+  margin-left: -1rem;
 `;
 
 export const MapContainer = styled.div`
-  width: 52rem;
+  width: 55rem;
   height: 100%;
+  flex-grow: 1;
 
   z-index: 100;
+
+  box-shadow: ${({ theme }) => theme.boxShadow.organism};
 `;
 
 export const OverlayContainer = styled.div``;
@@ -29,6 +27,10 @@ export const ButtonContainer = styled.div`
   position: absolute;
   bottom: 3rem;
   right: 3rem;
+
+  width: fit-content;
+
+  border-radius: 3rem;
 
   z-index: 200;
 

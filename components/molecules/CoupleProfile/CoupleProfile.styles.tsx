@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
+
   position: relative;
-  width: 384px;
-  height: 177px;
-  padding: 0 10px;
+
+  width: fit-content;
+  height: fit-content;
 `;
 
 export const EachProfileContainer = styled.div`
@@ -14,37 +15,43 @@ export const EachProfileContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 160px;
-  min-height: 176px;
+
+  width: 7.5rem;
+  height: 7.5rem;
+
+  padding: 0 1rem;
+
+  :first-child {
+    position: relative;
+    left: 1rem;
+  }
+  :last-child {
+    position: relative;
+    right: 1rem;
+    z-index: 2;
+  }
 `;
 
 export const NickName = styled.div`
-  width: 80%;
-  height: 50px;
-  padding-top: 16px;
-  text-align: center;
-  text-overflow: ellipsis;
-  font-size: 24px;
-  font-weight: 900;
-  font-family: serif;
-  overflow: hidden;
-  white-space: nowrap;
+  display: none;
 `;
 
 export const CoupleInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 8px;
-  position: absolute;
-  left: 128px;
-  z-index: 1;
-  width: 128px;
-  height: 128px;
-  border: 1px dashed;
-  border-radius: 64px;
+  align-items: center;
+  gap: 0.5rem;
+
+  z-index: 2;
+
+  width: 7.5rem;
+  height: 7.5rem;
+
+  border-radius: 4rem;
   background-color: ${({ theme }) => theme.colors.pink};
+
+  box-shadow: ${({ theme }) => theme.boxShadow.atom};
 `;
 
 export const DDay = styled.div`
@@ -54,7 +61,7 @@ export const DDay = styled.div`
 
 export const StartDate = styled.div`
   text-align: center;
-  font-size: 14px;
+  font-size: 0.8rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.white};
 `;
