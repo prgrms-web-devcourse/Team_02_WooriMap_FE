@@ -18,6 +18,7 @@ export const MapContainer = styled.div`
 
   z-index: 100;
 
+  border-radius: 1rem;
   box-shadow: ${({ theme }) => theme.boxShadow.organism};
 `;
 
