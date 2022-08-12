@@ -1,23 +1,31 @@
 import styled from '@emotion/styled';
 
-export const Container = styled.div`
-  width: 100%;
-  height: 100vh;
-  z-index: 0;
-
+export const PageContainer = styled.div`
   display: flex;
-  align-items: top;
+  flex-direction: column;
   justify-content: center;
-  box-sizing: border-box;
-  overflow-y: auto;
+  align-items: center;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url('/image/pagebackground.png');
+  background-size: cover;
 `;
 
-export const Wrapper = styled.main<{ isAuthPage: boolean }>`
-  width: 100%;
-  max-width: 100rem;
-  flex: 1;
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: top;
 
-  ${({ isAuthPage }) => !isAuthPage && `margin-top: 5rem;`};
+  width: fit-content;
+  height: fit-content;
+`;
 
-  box-sizing: border-box;
+export const Wrapper = styled.main`
+  width: fit-content;
 `;
