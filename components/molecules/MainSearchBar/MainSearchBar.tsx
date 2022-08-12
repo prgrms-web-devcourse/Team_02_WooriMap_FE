@@ -6,7 +6,7 @@ import {
   IMainSearchBarProps,
 } from 'types';
 import { TagList } from 'components';
-import searchIcon from '../../../public/image/Search.png';
+import searchIcon from 'public/image/Search.png';
 import * as S from './MainSearchBar.styles';
 
 interface ITag extends ITagWithoutId {
@@ -137,12 +137,11 @@ function TitleSearchBar({
   const input = useRef<HTMLInputElement>(null);
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // 이 부분에서 도저히 any를 쓰지 않고 어떻게 해야할 지 잘 모르겠습니다 ㅜㅠ
-    const { target }: { target: any } = e;
-    handleKeyWord(target[0].value);
+    const { value } = input.current as HTMLInputElement;
+    handleKeyWord(value);
   };
   return (
-    <S.SearchBarForm onSubmit={(e) => onSubmit(e)}>
+    <S.SearchBarForm onSubmit={onSubmit}>
       <input type="text" placeholder="TitleSearch" ref={input} />
       <button type="button">
         <Image src={searchIcon} alt="search icon" />
@@ -171,18 +170,12 @@ export function MainSearchBar({
     if (!tagList.some((eachTag) => eachTag.id === tag.id)) {
       const temp = tagList;
       temp.push(tag);
-      setTagList(() => temp);
+      setTagList((prev) => [...prev, tag]);
     }
   };
 
   const deleteTagList = (tagName: string) => {
-    tagList.map((tag) => {
-      if (tag.name === tagName) {
-        const temp = tagList.filter((each) => each !== tag);
-        setTagList(temp);
-      }
-      return null;
-    });
+    setTagList((prev) => prev.filter((each) => each.name !== tagName));
   };
 
   useEffect(() => {

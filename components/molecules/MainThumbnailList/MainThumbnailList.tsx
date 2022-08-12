@@ -29,7 +29,7 @@ export function MainThumbnailList({
 }) {
   return (
     <S.MainThumbnailListContainer>
-      {postList.length ? (
+      {postList.length &&
         postList.map(({ postId, postThumbnailPath, title, createDate }) => (
           <ThumbnailCard
             key={postId}
@@ -38,10 +38,8 @@ export function MainThumbnailList({
             title={title}
             createDate={createDate}
           />
-        ))
-      ) : (
-        <div>검색된 결과가 없습니다</div>
-      )}
+        ))}
+      {!postList.length && <div>검색된 결과가 없습니다</div>}
     </S.MainThumbnailListContainer>
   );
 }
