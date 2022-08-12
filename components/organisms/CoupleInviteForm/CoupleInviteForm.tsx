@@ -6,12 +6,8 @@ import { ITextInputProps } from 'types';
 import userState from 'core';
 import { TextInput } from 'components';
 import { useAxiosInstance } from 'hooks';
-import {
-  getLinkCouple,
-  getCheckIsCoupled,
-  updateUserInfoWhenCoupleLinked,
-} from 'apis/couple';
-
+import { getLinkCouple, getCheckIsCoupled } from 'apis/couple';
+import { updateUserInfoWhenCoupleLinked } from 'apis/members';
 import * as S from './CoupleInviteForm.styles';
 
 interface ICoupleInviteFormProps extends ITextInputProps {
