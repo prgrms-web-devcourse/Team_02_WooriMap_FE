@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { IUserProfileProps } from 'types/couple';
+import { IUserProfileProps } from 'types';
 import * as S from './UserProfile.styles';
 
 export function IsNotCoupleProfile({
