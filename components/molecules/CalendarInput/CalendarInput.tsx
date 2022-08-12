@@ -25,6 +25,12 @@ export function CalendarInput({
     if (calendarInputRef.current) calendarInputRef.current.focus();
   };
 
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   return (
     <S.CalendarInputWrapper>
       <S.CalendarButton>
@@ -43,6 +49,7 @@ export function CalendarInput({
         name={name}
         value={value as string}
         onChange={(e) => handleChange({ e })}
+        onKeyPress={onKeyPress}
         ref={calendarInputRef}
       />
     </S.CalendarInputWrapper>
