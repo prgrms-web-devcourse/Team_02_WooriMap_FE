@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { useNotification } from 'hooks/useNotification';
-import { Dropdown, DropdownItem } from 'components';
+import { Dropdown } from 'components';
 import NotificationSvg from 'public/image/notification.svg';
 import Image from 'next/image';
 import { INotification } from 'types/notification';
@@ -13,7 +13,7 @@ interface INotificationMessageProps {
 
 function NotificationMessage({ notification }: INotificationMessageProps) {
   return (
-    <DropdownItem>
+    <S.NotificationMessage>
       <Link href="/">
         {/** TODO: span width 제한 props 만들기 */}
         <>
@@ -22,7 +22,7 @@ function NotificationMessage({ notification }: INotificationMessageProps) {
           {translateActionType(notification.action)}했어요.
         </>
       </Link>
-    </DropdownItem>
+    </S.NotificationMessage>
   );
 }
 

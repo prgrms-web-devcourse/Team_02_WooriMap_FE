@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { DropdownItem } from 'components';
 
 export const NotificationIcon = styled.div`
   position: relative;
@@ -6,6 +7,6 @@ export const NotificationIcon = styled.div`
   cursor: pointer;
 `;
 
-export const NotificationMessage = styled.li`
-  width: 100%;
+export const NotificationMessage = styled(DropdownItem)`
+  font-size: 14px;
 `;

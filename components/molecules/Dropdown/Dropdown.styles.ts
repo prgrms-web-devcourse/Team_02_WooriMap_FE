@@ -45,6 +45,7 @@ export const DropdownItem = styled.li`
   padding: 1rem;
   width: 100%;
   border-bottom: 1px solid rgba(191, 191, 191, 0.3);
+  white-space: pre-wrap;
 
   overflow-x: hidden;
 
