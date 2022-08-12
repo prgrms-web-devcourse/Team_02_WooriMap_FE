@@ -32,6 +32,8 @@ export { FormControl } from 'components/molecules/FormControl';
 export { MapMarkerOverlay } from 'components/molecules/MapMarkerOverlay';
 export { TagInput } from 'components/molecules/TagInput';
 export { TagInputWithList } from 'components/molecules/TagInputWithList';
+export { Dropdown, DropdownItem } from 'components/molecules/Dropdown';
+
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
 export { ImageViewer } from 'components/organisms/ImageViewer';
