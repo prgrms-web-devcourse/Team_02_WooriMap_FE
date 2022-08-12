@@ -23,7 +23,7 @@ export function IsCoupleProfile({
 
   const onBreakUp = async () => {
     if (window.confirm('혹시.. 이별하셨나요?')) {
-      const response = await breakWithUpCouple({ instance });
+      const response = await breakUpWithCouple({ instance });
 
       if (response) {
         const { accessToken } = response;
