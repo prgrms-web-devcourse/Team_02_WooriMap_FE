@@ -20,7 +20,7 @@ const emailRegx =
  *
  * 길이 : 15자 이하
  */
-const nickNameRegx = /^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9]{1,15}$/;
+const nickNameRegx = /^[a-z|A-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣|0-9|\s]{1,15}$/;
 
 /**
  * 비밀번호 정규식
@@ -74,7 +74,7 @@ class FormValidation {
   validateNickName = ({ nickName }: { nickName: string }) => {
     if (!nickName) return '닉네임을 입력해주세요';
 
-    if (!this.nickNameRegx.test(nickName))
+    if (!this.nickNameRegx.test(nickName.trim()))
       return '닉네임은 1자 이상 15자 이하로 입력해주세요';
 
     return '';
