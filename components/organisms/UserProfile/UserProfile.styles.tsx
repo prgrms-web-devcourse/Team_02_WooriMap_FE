@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { FormBackground, Button, Profile } from 'components';
-import { IUserProfile } from 'types/couple';
+import { IUserProfile } from 'types';
 
 interface ICoupleInfoprops {
   isCoupleDateInfo?: boolean;

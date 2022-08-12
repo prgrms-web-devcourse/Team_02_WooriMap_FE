@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IUserProfileProps } from 'types/couple';
+import { IUserProfileProps } from 'types';
 import { useAxiosInstance } from 'hooks';
 import { getCoupleInfo } from 'apis/couple';
 import { IsCoupleProfile } from './IsCoupleProfile';

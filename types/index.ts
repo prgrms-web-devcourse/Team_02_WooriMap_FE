@@ -39,3 +39,4 @@ export type {
   IEditState,
   IEditInputProps,
 } from 'types/edit';
+export type { IUserProfile, IUserProfileProps } from 'types/couple';
