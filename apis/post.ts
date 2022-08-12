@@ -54,65 +54,47 @@ export function getOnePost({ instance, id }: IPostWriteProps) {
   return res;
 }
 
-export const updatePost = async ({ instance, data, id }: IPostWriteProps) => {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
+export async function updatePost({ instance, data, id }: IPostWriteProps) {
   const response = instance
-    .put(`/couples/posts/${id}`, data, {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .put(`/couples/posts/${id}`, data)
     .then((res) => {
       return res.data;
     })
     .catch((error) => {
-      const { response: res } = error;
+      const responseWithError = error.response;
 
-      return res?.data;
+      return responseWithError.data;
     });
 
   return response;
-};
+}
 
-export const getOnePost = async ({ instance, id }: IPostWriteProps) => {
-  const accessToken = LocalStorage.getItem('accessToken', '');
+export async function getOnePost({ instance, id }: IPostWriteProps) {
   try {
-    const res = await instance.get<IApiResponse<IPostDetailProps>>(
+    const response = await instance.get<IApiResponse<IPostDetailProps>>(
       `/couples/posts/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      },
     );
 
-    const { data } = res.data;
+    const { data } = response.data;
 
     return data;
   } catch (error) {
     console.error(error);
     return null;
   }
-};
+}
 
-export const deletePost = async ({ instance, id }: IPostWriteProps) => {
-  const accessToken = LocalStorage.getItem('accessToken', '');
+export async function deletePost({ instance, id }: IPostWriteProps) {
   try {
-    const res = await instance.delete<IApiResponse<object>>(
+    const response = await instance.delete<IApiResponse<object>>(
       `/couples/posts/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      },
     );
 
-    const { data } = res.data;
+    const { data } = response.data;
 
     return data;
   } catch (error) {
     console.error(error);
     return null;
   }
-};
+}

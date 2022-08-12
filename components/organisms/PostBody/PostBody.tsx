@@ -25,12 +25,12 @@ export function PostBody({
 }: IPostBodyProps) {
   const [deleteConfirm, setDeleteConfirm] = useState<boolean>(false);
 
-  const handleEditClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleEditClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     handleEdit();
   };
 
-  const handleDeleteClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     if (!deleteConfirm) {
       setDeleteConfirm(true);

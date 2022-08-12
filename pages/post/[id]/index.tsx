@@ -27,10 +27,11 @@ export default function PostDetail() {
       if (!router.isReady) return;
 
       try {
-        const res = await getOnePost({ instance, id });
+        const response = await getOnePost({ instance, id });
 
-        if (res) {
-          const { title, datingDate, tags, content, location, imageUrls } = res;
+        if (response) {
+          const { title, datingDate, tags, content, location, imageUrls } =
+            response;
           const newPost: IPostInfo = {
             title,
             date: datingDate,
