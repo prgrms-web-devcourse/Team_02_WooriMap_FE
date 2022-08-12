@@ -6,7 +6,7 @@ import { INotification } from 'types/notification';
 const dummyData: INotification[] = [
   {
     id: 1,
-    articleId: 1,
+    contentId: 1,
     action: 'created',
     nickName: 'yummy',
     content: 'article 제목1',
@@ -14,7 +14,7 @@ const dummyData: INotification[] = [
   },
   {
     id: 2,
-    articleId: 2,
+    contentId: 2,
     action: 'created',
     nickName: 'yummy',
     content: 'article 제목2',
@@ -22,7 +22,7 @@ const dummyData: INotification[] = [
   },
   {
     id: 3,
-    articleId: 3,
+    contentId: 3,
     action: 'modified',
     nickName: 'yummy',
     content: 'article 제목3',
@@ -30,7 +30,7 @@ const dummyData: INotification[] = [
   },
   {
     id: 4,
-    articleId: 4,
+    contentId: 4,
     action: 'modified',
     nickName: 'yummy',
     content: 'article 제목4',
@@ -38,7 +38,7 @@ const dummyData: INotification[] = [
   },
   {
     id: 5,
-    articleId: 5,
+    contentId: 5,
     action: 'modified',
     nickName: 'yummy',
     content: 'article 제목5',
@@ -46,7 +46,7 @@ const dummyData: INotification[] = [
   },
   {
     id: 6,
-    articleId: 6,
+    contentId: 6,
     action: 'created',
     nickName: 'yummy',
     content: 'article 제목6',

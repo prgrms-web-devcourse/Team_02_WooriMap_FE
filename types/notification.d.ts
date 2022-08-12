@@ -1,8 +1,8 @@
 export interface INotification {
   id: number;
-  articleId: number;
+  contentId: number;
   nickName: string;
-  action: 'modified' | 'created';
+  action: 'created' | 'modified';
   content: string;
   isRead: boolean;
 }

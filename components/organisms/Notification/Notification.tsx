@@ -25,7 +25,7 @@ function Notification() {
             key={notification.id}
             onClick={() => readNotification(notification.id)}
           >
-            {notification.articleId} {notification.action}{' '}
+            {notification.contentId} {notification.action}{' '}
             {notification.nickName} {notification.content}{' '}
             {String(notification.isRead)}
           </DropdownItem>
