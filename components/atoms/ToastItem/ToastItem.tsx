@@ -1,7 +1,12 @@
 import { IToast } from 'types';
 import { useTimeout } from 'hooks';
 import Lottie from 'react-lottie';
-import success from './96085-green-check.json';
+import Image from 'next/image';
+import success from './check.json';
+import fail from './fail.json';
+import error from './error.json';
+import close from 'public/image/close.png';
+import temp from './error.json';
 import * as S from './ToastItem.styles';
 
 interface IToastProps {
@@ -17,18 +22,31 @@ export function ToastItem({ toast, onRemove }: IToastProps) {
   const defaultOptions = {
     loop: false,
     autoplay: true,
-    animationData: success,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
 
   return (
-    <S.Container>
-      <Lottie options={defaultOptions} width={50} height={50} />
-      <div>{message}</div>
+    <S.Container status={status}>
+      {status === 'success' && (
+        <Lottie
+          options={{ ...defaultOptions, animationData: success }}
+          width={50}
+          height={50}
+        />
+      )}
+      {status === 'fail' && (
+        <Lottie
+          options={{ ...defaultOptions, animationData: temp }}
+          width={50}
+          height={50}
+        />
+      )}
+
+      <p>{message}</p>
       <button className="toast-item-close" onClick={onRemove} type="button">
-        <span className="sr-only">닫기</span>
+        <Image src={close} width={10} height={10} />
       </button>
     </S.Container>
   );
