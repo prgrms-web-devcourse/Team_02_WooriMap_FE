@@ -1,6 +1,7 @@
 import { useState } from 'react';
+import Link from 'next/link';
+import { Button, Map, MapMarkerOverlay, MainSidebar } from 'components';
 import { IMainPageTemplateProps } from 'types';
-import { Map, MapMarkerOverlay, MainSidebar } from 'components';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import * as S from './MainPageTemplate.styles';
 
@@ -57,6 +58,16 @@ export function MainPageTemplate({
           ))}
         </Map>
       </S.MapContainer>
+      {/* 새 글 생성 버튼 컴포넌트 */}
+      <Link href="/post/write">
+        <a href="#!">
+          <S.ButtonContainer>
+            <Button variant="blackOutlined" size="large">
+              새 글 생성
+            </Button>
+          </S.ButtonContainer>
+        </a>
+      </Link>
     </S.Container>
   );
 }

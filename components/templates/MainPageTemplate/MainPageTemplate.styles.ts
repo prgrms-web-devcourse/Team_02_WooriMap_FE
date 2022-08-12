@@ -22,3 +22,12 @@ export const MapContainer = styled.div`
 `;
 
 export const OverlayContainer = styled.div``;
+
+// 새글 생성 버튼의 포지션을 위해 생성한 스타일 컴포넌트.
+export const ButtonContainer = styled.div`
+  z-index: 500;
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.5);
+`;
