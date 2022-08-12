@@ -4,29 +4,41 @@ export const Container = styled.form`
   display: flex;
   flex-direction: column;
 
-  width: 100%;
-  height: 100%;
-
-  padding: 2rem 5%;
-
-  box-sizing: border-box;
+  width: 90rem;
+  height: 55rem;
 `;
 
 export const PostContent = styled.div`
   display: flex;
   justify-content: space-between;
+  gap: 2rem;
+
   width: 100%;
-  min-height: 55%;
+  height: 100%;
 `;
 
 export const ImageSection = styled.div`
-  width: 45%;
-  overflow: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+
+  border-radius: 1rem;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
+  box-shadow: ${({ theme }) => theme.boxShadow.organism};
 `;
 
 export const ContentSection = styled.div`
-  width: 45%;
-  overflow: auto;
+  width: 100%;
+
+  padding: 4rem 3rem;
+
+  border-radius: 1rem;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
+  box-shadow: ${({ theme }) => theme.boxShadow.organism};
 `;
 
 export const Wrapper = styled.div`
