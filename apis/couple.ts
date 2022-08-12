@@ -100,7 +100,7 @@ export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
   return res;
 }
 
-export function breakWithUpCouple({ instance }: { instance: AxiosInstance }) {
+export function breakUpWithCouple({ instance }: { instance: AxiosInstance }) {
   const res = instance
     .delete('/couples')
     .then((response) => {

@@ -1,7 +1,7 @@
 import userState from 'core';
 import Link from 'next/link';
 import { useSetRecoilState } from 'recoil';
-import { breakWithUpCouple } from 'apis/couple';
+import { breakUpWithCouple } from 'apis/couple';
 import { calculatingDDay } from 'utils';
 import { IUserProfileProps } from 'types';
 import { useAxiosInstance } from 'hooks';
