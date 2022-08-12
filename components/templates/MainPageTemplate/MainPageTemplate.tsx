@@ -58,15 +58,12 @@ export function MainPageTemplate({
           ))}
         </Map>
       </S.MapContainer>
-      {/* 새 글 생성 버튼 컴포넌트 */}
       <Link href="/post/write" passHref>
-        {/* <a href="#!"> */}
         <S.ButtonContainer>
           <Button variant="blackOutlined" size="large">
             새 글 생성
           </Button>
         </S.ButtonContainer>
-        {/* </a> */}
       </Link>
     </S.Container>
   );
