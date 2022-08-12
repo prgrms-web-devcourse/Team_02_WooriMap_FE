@@ -19,11 +19,12 @@ export const PageContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: top;
+  flex-direction: column;
 
   width: fit-content;
   height: fit-content;
+
+  margin-bottom: 3rem;
 `;
 
 export const Wrapper = styled.main`
