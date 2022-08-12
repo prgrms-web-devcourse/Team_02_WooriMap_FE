@@ -4,6 +4,7 @@ import Image from 'next/image';
 export const CalendarInputWrapper = styled.div`
   display: flex;
   flex: 1;
+  flex-shrink: 0;
   position: relative;
 
   padding: 0.5rem 0.75rem;
@@ -23,7 +24,8 @@ export const CalendarInput = styled.input`
   border: none;
   outline: none;
 
-  font-size: 1.2rem;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1rem;
   font-weight: 500;
 `;
 
