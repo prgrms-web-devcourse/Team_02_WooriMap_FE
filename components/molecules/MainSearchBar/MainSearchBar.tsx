@@ -168,8 +168,6 @@ export function MainSearchBar({
 
   const addTagList = (tag: ITag) => {
     if (!tagList.some((eachTag) => eachTag.id === tag.id)) {
-      const temp = tagList;
-      temp.push(tag);
       setTagList((prev) => [...prev, tag]);
     }
   };
