@@ -123,31 +123,36 @@ export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
 }
 
 export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
+  const res = instance
+    .post('/couples/invite')
+    .then((response) => response.data)
+    .catch((error) => {
+      const { response } = error;
 
-  try {
-    const res = instance
-      .post('/couples/invite', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then((response) => response.data);
+      console.error(response.message);
+
+      return {
+        code: '',
+      };
+    });
 
   return res;
 }
 
 export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .get('/couples', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .get('/couples')
     .then((response) => {
       return response.data;
+    })
+    .catch((error) => {
+      const { response } = error;
+
+      console.error(response.message);
+
+      return {
+        data: null,
+      };
     });
 
   return res;

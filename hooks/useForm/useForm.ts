@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { checkStateIsValid, trimValues } from 'utils';
+import { trimValues } from 'utils';
 import { IOnSubmit, IPostOnChangeProps, ISetValueState } from 'types';
 
 interface IUseForm<T, V, K> {
