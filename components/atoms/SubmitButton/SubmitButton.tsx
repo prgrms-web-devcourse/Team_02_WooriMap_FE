@@ -13,7 +13,7 @@ export function SubmitButton({
   children,
 }: ISubmitButtonProps) {
   return (
-    <S.SubmitButton form={id} variant={variant} size={size}>
+    <S.SubmitButton form={id} variant={variant} size={size} type="button">
       {children}
     </S.SubmitButton>
   );

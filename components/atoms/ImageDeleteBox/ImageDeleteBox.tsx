@@ -12,7 +12,7 @@ interface IDeleteBoxProps
 
 function DeleteIcon({ onClick }: { onClick: () => void }) {
   return (
-    <S.Wrapper onClick={onClick}>
+    <S.Wrapper onClick={onClick} type="button">
       <Image src={deleteSvg} width={7} height={7} alt="delete button" />
     </S.Wrapper>
   );
