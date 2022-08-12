@@ -1,5 +1,5 @@
 import { AxiosInstance } from 'axios';
-import { IPostFormState } from 'types';
+import { IPostFormState, IPostDetailProps } from 'types';
 import { IApiResponse } from 'types/api';
 
 interface IPostWriteProps {
@@ -25,7 +25,7 @@ export function createPost({ data, instance }: IPostWriteProps) {
 
 export function updatePost({ instance, data, id }: IPostWriteProps) {
   const res = instance
-    .put(`/couples/posts/${id}`, data)
+    .put<IApiResponse<object>>(`/couples/posts/${id}`, data)
     .then((response) => {
       return response.data;
     })
@@ -40,7 +40,7 @@ export function updatePost({ instance, data, id }: IPostWriteProps) {
 
 export function getOnePost({ instance, id }: IPostWriteProps) {
   const res = instance
-    .get(`/couples/posts/${id}`)
+    .get<IApiResponse<IPostDetailProps>>(`/couples/posts/${id}`)
     .then((response) => {
       return response.data.data;
     })
@@ -51,4 +51,19 @@ export function getOnePost({ instance, id }: IPostWriteProps) {
     });
 
   return res;
+}
+
+export function deletePost({ instance, id }: IPostWriteProps) {
+  const response = instance
+    .delete<IApiResponse<object>>(`/couples/posts/${id}`)
+    .then((res) => {
+      return res.data.data;
+    })
+    .catch((error) => {
+      const res = error.response;
+
+      throw Error(res.message);
+    });
+
+  return response;
 }

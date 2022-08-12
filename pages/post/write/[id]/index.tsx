@@ -7,7 +7,6 @@ import {
   IPostValidationState,
   IPostValidationProps,
   IInitialPostState,
-  IPostDetailProps,
 } from 'types';
 import { postValidation, parsePostData, postInitialValue } from 'utils';
 import { updatePost, getOnePost } from 'apis/post';
@@ -44,10 +43,10 @@ export default function PostEdit() {
       if (!router.isReady) return;
 
       try {
-        const res = (await getOnePost({
+        const res = await getOnePost({
           instance: axiosInstance,
           id,
-        })) as IPostDetailProps;
+        });
 
         if (res) {
           setAllState(parsePostData({ postData: res }) as IInitialPostState);
