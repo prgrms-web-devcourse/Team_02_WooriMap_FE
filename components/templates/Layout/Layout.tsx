@@ -8,11 +8,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
   const isAuthPage = asPath.includes('/signin') || asPath.includes('/signup');
 
   return (
-    <>
-      {!isAuthPage && <NavBar />}
+    <S.PageContainer>
       <S.Container>
-        <S.Wrapper isAuthPage={isAuthPage}>{children}</S.Wrapper>
+        {!isAuthPage && <NavBar />}
+        <S.Wrapper>{children}</S.Wrapper>
       </S.Container>
-    </>
+    </S.PageContainer>
   );
 }

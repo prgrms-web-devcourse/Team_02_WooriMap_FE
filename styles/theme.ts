@@ -55,6 +55,11 @@ const theme: Theme = {
       `,
     },
   },
+  boxShadow: {
+    atom: '0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)',
+    molecule: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.25)',
+    organism: '0 0.5rem 1rem rgba(0, 0, 0, 0.25)',
+  },
 };
 
 export default theme;

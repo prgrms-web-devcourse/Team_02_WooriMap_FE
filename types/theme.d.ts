@@ -24,6 +24,12 @@ interface ISizes {
     xlarge: SerializedStyles;
   };
 }
+
+interface IboxShadow {
+  atom: string;
+  molecule: string;
+  organism: string;
+}
 declare global {
   // for css``
   interface IThemeProps {
@@ -36,5 +42,6 @@ declare module '@emotion/react' {
     colors: IColors;
     tagColors: ITagColors;
     sizes: ISizes;
+    boxShadow: IboxShadow;
   }
 }
