@@ -1,4 +1,4 @@
-import { useForm } from 'hooks';
+import { useForm, useAxiosInstance } from 'hooks';
 import { PostTemplate, ImageUploader, PostWrite } from 'components';
 import { postValidation, formatDate } from 'utils';
 import {
@@ -6,20 +6,14 @@ import {
   IPostValidationProps,
   IPostFormState,
 } from 'types';
-import { postCreate } from 'apis/post';
-import useAxiosInstance from '../../../hooks/useAxiosInstance/useAxiosInstnace';
+import { createPost } from 'apis/post';
 
 export const initialValues: IPostFormState = {
   title: '',
   content: '',
   datingDate: formatDate(),
   imageUrls: [],
-  tags: [
-    {
-      name: 'hello',
-      color: '#ff0000',
-    },
-  ],
+  tags: [],
   latitude: 0,
   longitude: 0,
 };
@@ -35,7 +29,7 @@ export default function PostCreate() {
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
-      const response = await postCreate({ data: values, instance });
+      const response = await createPost({ data: values, instance });
 
       if (response) {
         console.log(response);

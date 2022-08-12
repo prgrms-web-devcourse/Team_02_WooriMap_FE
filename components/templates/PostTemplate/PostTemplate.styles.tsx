@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 
-  & > button:first-child {
+  & > button:first-of-type {
     margin-right: 1rem;
   }
 

@@ -1,11 +1,16 @@
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
-import { useForm } from 'hooks';
+import { useForm, useAxiosInstance } from 'hooks';
 import {
   IPostFormState,
   IPostValidationState,
   IPostValidationProps,
+  IInitialPostState,
+  IPostDetailProps,
 } from 'types';
-import { postValidation, dummyImages } from 'utils';
+import { postValidation, parsePostData, postInitialValue } from 'utils';
+import { updatePost, getOnePost } from 'apis/post';
 
 export const errorState: IPostValidationState = {
   title: '',
@@ -13,26 +18,56 @@ export const errorState: IPostValidationState = {
   tags: '',
 };
 
-export default function PostEdit({
-  initialValues,
-}: {
-  initialValues: IPostFormState;
-}) {
-  const onSubmit = ({ values }: { values: IPostFormState }) => {
-    console.log(values);
+export default function PostEdit() {
+  const router = useRouter();
+  const { id } = router.query as { id: string };
+  const axiosInstance = useAxiosInstance();
+
+  const [loading, setLoading] = useState(true);
+
+  const onSubmit = async ({ values }: { values: IPostFormState }) => {
+    const res = await updatePost({ instance: axiosInstance, data: values, id });
+
+    console.log(res);
   };
 
-  const { values, handleChange, handleSubmit, removeAll } = useForm<
-    IPostFormState,
-    IPostValidationState,
-    IPostValidationProps
-  >({
-    initialValues,
-    errorState,
-    onSubmit,
-    validateValues: postValidation,
-  });
+  const { values, handleChange, handleSubmit, removeAll, setAllState } =
+    useForm<IPostFormState, IPostValidationState, IPostValidationProps>({
+      initialValues: postInitialValue,
+      errorState,
+      onSubmit,
+      validateValues: postValidation,
+    });
 
+  useEffect(() => {
+    (async () => {
+      if (!router.isReady) return;
+
+      try {
+        const res = (await getOnePost({
+          instance: axiosInstance,
+          id,
+        })) as IPostDetailProps;
+
+        if (res) {
+          setAllState(parsePostData({ postData: res }) as IInitialPostState);
+
+          setLoading(false);
+          return;
+        }
+
+        throw new Error('존재하지 않는 포스트입니다.');
+      } catch (e: unknown) {
+        console.error(e);
+        router.push('/404');
+      }
+    })();
+  }, [router, setAllState]);
+
+  // 현재 값이 유효하지 않으면 로딩 화면 ( 스켈레톤 계획 )
+  if (loading) return null;
+
+  // 현재 값이 유효하다면
   const { title, content, datingDate, tags, latitude, longitude, imageUrls } =
     values;
 
@@ -57,30 +92,4 @@ export default function PostEdit({
       }
     />
   );
-}
-
-export function getStaticProps({ params }: { params: { id: string } }) {
-  console.log(params);
-  const initialValues = {
-    title: '너와의 첫 만남',
-    content:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut blanditiis doloremque distinctio sunt repudiandae iure. Voluptate at voluptatem consequuntur reprehenderit modi, necessitatibus ipsa nulla reiciendis tenetur, aliquid voluptatum esse culpa?',
-    datingDate: '2020-01-01',
-    tags: ['여행', '친구', '여자친구'],
-    imageUrls: dummyImages,
-    latitude: '33.450701',
-    longitude: '126.570667',
-  };
-  return {
-    props: {
-      initialValues,
-    },
-  };
-}
-
-export function getStaticPaths() {
-  return {
-    paths: [{ params: { id: '1' } }],
-    fallback: false,
-  };
 }

@@ -14,11 +14,7 @@ export async function updateUserInfoWhenCoupleLinked({
   setUser,
 }: IUploadUserProps) {
   const res = instance
-    .get('/members', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .get('/members')
     .then((response) => {
       return response.data;
     })
@@ -44,18 +40,8 @@ export function getLinkCouple({
   instance: AxiosInstance;
   code: string;
 }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .post(
-      '/couples',
-      { code },
-      {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      },
-    )
+    .post('/couples', { code })
     .then((response) => {
       return response.data;
     })
@@ -72,14 +58,8 @@ export function getLinkCouple({
 }
 
 export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .get('/couples/check', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .get('/couples/check')
     .then((response) => {
       return response.data;
     })
@@ -96,35 +76,36 @@ export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
 }
 
 export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
+  const res = instance
+    .post('/couples/invite')
+    .then((response) => response.data)
+    .catch((error) => {
+      const { response } = error;
 
-  try {
-    const res = instance
-      .post('/couples/invite', {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .then((response) => response.data);
+      console.error(response.message);
 
-    return res;
-  } catch (error: unknown) {
-    console.error(error);
-    return { code: '' };
-  }
+      return {
+        code: '',
+      };
+    });
+
+  return res;
 }
 
 export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
-  const accessToken = LocalStorage.getItem('accessToken', '');
-
   const res = instance
-    .get('/couples', {
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    })
+    .get('/couples')
     .then((response) => {
       return response.data;
+    })
+    .catch((error) => {
+      const { response } = error;
+
+      console.error(response.message);
+
+      return {
+        data: null,
+      };
     });
 
   return res;

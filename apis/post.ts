@@ -1,36 +1,54 @@
 import { AxiosInstance } from 'axios';
-import LocalStorage from 'utils/storage';
 import { IPostFormState } from 'types';
 import { IApiResponse } from 'types/api';
 
-interface IPostCreateProps {
-  data: IPostFormState;
+interface IPostWriteProps {
+  data?: IPostFormState;
   instance: AxiosInstance;
+  id?: string;
 }
 
-export const postCreate = async ({ data, instance }: IPostCreateProps) => {
-  try {
-    const accessToken = LocalStorage.getItem('accessToken', '');
+export function createPost({ data, instance }: IPostWriteProps) {
+  const res = instance
+    .post<IApiResponse<object>>('/couples/posts', data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      const { response } = error;
 
-    const res = await instance
-      .post<IApiResponse<object>>('/couples/posts', data, {
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      })
-      .catch((error) => {
-        const { response } = error;
+      throw Error(response.message);
+    });
 
-        return response?.data;
-      });
+  return res;
+}
 
-    if (res.message) {
-      return res.message;
-    }
+export function updatePost({ instance, data, id }: IPostWriteProps) {
+  const res = instance
+    .put(`/couples/posts/${id}`, data)
+    .then((response) => {
+      return response.data;
+    })
+    .catch((error) => {
+      const { response } = error;
 
-    return res.data;
-  } catch (error: unknown) {
-    console.error(error);
-    return '서버에러';
-  }
-};
+      throw Error(response.message);
+    });
+
+  return res;
+}
+
+export function getOnePost({ instance, id }: IPostWriteProps) {
+  const res = instance
+    .get(`/couples/posts/${id}`)
+    .then((response) => {
+      return response.data.data;
+    })
+    .catch((error) => {
+      const { response } = error;
+
+      throw Error(response.message);
+    });
+
+  return res;
+}

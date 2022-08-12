@@ -23,6 +23,12 @@ export function SearchBar({
 
   const isSearching = resultLength > 0 && isResultVisible;
 
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   return (
     <S.Container>
       <S.Wrapper isSearching={isSearching}>
@@ -30,6 +36,7 @@ export function SearchBar({
           value={keyword}
           placeholder="장소를 검색해주세요"
           onChange={onChange}
+          onKeyPress={onKeyPress}
         />
         <Image src={search} width={16} height={16} alt="search" />
       </S.Wrapper>

@@ -92,6 +92,7 @@ function useMapSearch({ initialMarker, map }: IMapSearchProps): IReturnType {
   useEffect(() => {
     if (!map) return;
     const ps = new kakao.maps.services.Places();
+    setMarkers(initialMarker);
     setServices(ps);
   }, [map]);
 

@@ -1,4 +1,9 @@
-import { IPostValidationState, IPostValidationProps, IInputState } from 'types';
+import {
+  IPostValidationState,
+  IPostValidationProps,
+  IInputState,
+  ITag,
+} from 'types';
 
 /* eslint-disable class-methods-use-this */
 /**
@@ -52,7 +57,7 @@ class FormValidation {
     return '';
   };
 
-  validateTags = ({ tags }: { tags: Array<string> }): string => {
+  validateTags = ({ tags }: { tags: Array<ITag> }): string => {
     if (!tags.length) return '태그를 최소 1개 등록 해주세요';
 
     return '';

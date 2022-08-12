@@ -16,10 +16,17 @@ export function TextInput({
   handleChange,
   ...props
 }: ITextInputProps) {
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   return (
     <S.TextInputWrapper>
       <S.TextInput
         value={value as string}
+        onKeyPress={onKeyPress}
         onChange={(e) => handleChange?.({ e })}
         {...props}
       />
