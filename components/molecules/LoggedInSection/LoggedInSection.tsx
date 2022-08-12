@@ -1,32 +1,21 @@
 import { Button, Profile } from 'components';
-import Link from 'next/link';
 import * as S from './LoggedInSection.styles';
 
 interface ILoggedInSectionProps {
-  isSignedIn: boolean;
   profileImageSrc?: string | null;
+  handleLogout: () => void;
 }
 
 export function LoggedInSection({
-  isSignedIn,
   profileImageSrc,
+  handleLogout,
 }: ILoggedInSectionProps) {
   return (
     <S.Container>
-      {isSignedIn ? (
-        <>
-          <Button size="small" variant="blackOutlined">
-            Log Out
-          </Button>
-          <Profile path={profileImageSrc} width={48} height={48} isLink />
-        </>
-      ) : (
-        <Link href="/auth/signin">
-          <Button size="small" variant="blackOutlined">
-            Log In
-          </Button>
-        </Link>
-      )}
+      <Button size="small" variant="blackOutlined" onClick={handleLogout}>
+        Log Out
+      </Button>
+      <Profile path={profileImageSrc} width={48} height={48} isLink />
     </S.Container>
   );
 }
