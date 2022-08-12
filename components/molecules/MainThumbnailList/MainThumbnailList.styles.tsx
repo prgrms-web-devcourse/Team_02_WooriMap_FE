@@ -8,18 +8,25 @@ export const MainThumbnailListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 10px;
-  width: 400px;
-  height: 512px;
+  gap: 0.8rem;
+  flex-grow: 1;
+
+  width: 100%;
+  height: 100%;
+
   overflow: auto;
 `;
 
 export const CardContainer = styled.div<ICardContainerProps>`
-  width: 184px;
-  height: 160px;
-  border-radius: 8px;
+  width: 11rem;
+  height: 10rem;
+
+  border-radius: 0.5rem;
+
   background-image: ${({ url }) => `url(${url})`};
   background-size: cover;
+  box-shadow: ${({ theme }) => theme.boxShadow.molecule};
+
   > div {
     display: flex;
     flex-direction: column-reverse;

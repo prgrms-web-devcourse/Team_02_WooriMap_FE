@@ -21,7 +21,10 @@ const blackOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
   outline: 0;
   color: ${theme.colors.black};
   background-color: ${theme.colors.white};
-  border: 3px solid ${theme.colors.black};
+  border: 2px solid ${theme.colors.black};
+  font-size: 1.2rem;
+  line-height: 2rem;
+  text-shadow: 0 4px 4px #00000033;
 `;
 
 const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
@@ -49,7 +52,7 @@ export const Button = styled.button<IButtonStyleProps>`
   box-sizing: border-box;
 
   font-weight: bold;
-  border-radius: 8px;
+  border-radius: 5rem;
 
   ${({
     size,
