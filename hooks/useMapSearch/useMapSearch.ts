@@ -45,6 +45,10 @@ function useMapSearch({ initialMarker, map }: IMapSearchProps): IReturnType {
   const getSearchResults = useCallback(
     (keyword: string) => {
       if (!services) return;
+      if (keyword === '') {
+        setMarkers([]);
+        return;
+      }
 
       services.keywordSearch(keyword, (data, status) => {
         if (status !== kakao.maps.services.Status.OK) {
