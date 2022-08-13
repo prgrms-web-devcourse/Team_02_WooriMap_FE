@@ -1,1 +1,1 @@
-export { Wrapper, FlexWrapper } from './Wrapper';
+export { Wrapper, FlexWrapper, IconWrapper } from './Wrapper';

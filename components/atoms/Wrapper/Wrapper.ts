@@ -36,3 +36,15 @@ export const FlexWrapper = styled(Wrapper)<Partial<IFlexWrapper>>`
   }};
   gap: ${({ gap }) => gap || 0};
 `;
+
+export const IconWrapper = styled.span`
+  opacity: 50%;
+
+  cursor: pointer;
+
+  transition: ${({ theme }) => theme.opacityTransition};
+
+  :hover {
+    opacity: 100%;
+  }
+`;

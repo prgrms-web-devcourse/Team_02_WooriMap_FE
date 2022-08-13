@@ -20,12 +20,12 @@ export const EachProfileContainer = styled.div`
   height: 6rem;
   padding: 0 1rem;
 
-  :first-child {
+  :first-of-type {
     position: relative;
     left: 1rem;
     z-index: 3;
   }
-  :last-child {
+  :last-of-type {
     position: relative;
     right: 1rem;
   }
