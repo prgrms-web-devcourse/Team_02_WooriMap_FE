@@ -1,5 +1,4 @@
 import { AxiosInstance } from 'axios';
-import { IUserInfo, IInvalidUserInfo } from 'types/couple';
 
 export function updateCoupleInfo({
   instance,
@@ -82,11 +81,7 @@ export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
   return res;
 }
 
-export function getCoupleInfo({
-  instance,
-}: {
-  instance: AxiosInstance;
-}): Promise<IUserInfo | IInvalidUserInfo> {
+export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
   const res = instance
     .get('/couples')
     .then((response) => {
@@ -94,6 +89,7 @@ export function getCoupleInfo({
     })
     .catch((error) => {
       const { response } = error;
+
       console.error(response.data.message);
 
       return {
