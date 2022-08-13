@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { IUserProfileProps } from 'types';
 import { useAxiosInstance } from 'hooks';
-import { getCoupleInfo } from 'apis/couple';
 import { IsCoupleProfile } from './IsCoupleProfile';
 import { IsNotCoupleProfile } from './IsNotCoupleProfile';
+import { handleCoupleInfo } from './helper';
 
 interface ICoupleInfo {
   coupleNickName: string;
@@ -26,17 +26,12 @@ export function UserProfile({
   useEffect(() => {
     if (isCouple) {
       (async () => {
-        const {
-          data: {
-            startDate,
-            you: { nickName: coupleNickName },
-          },
-        } = await getCoupleInfo({ instance });
+        const response = await handleCoupleInfo({ instance });
 
-        setCoupleInfo({
-          coupleNickName,
-          startDate,
-        });
+        if (response) {
+          setCoupleInfo({ ...response });
+        } else {
+        }
       })();
     }
   }, [instance]);
