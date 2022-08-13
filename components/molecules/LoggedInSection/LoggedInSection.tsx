@@ -1,5 +1,5 @@
 import { Profile, Notification } from 'components';
-import { notificationIcon, logoutIcon } from 'public/image';
+import { logoutIcon } from 'public/image';
 import * as S from './LoggedInSection.styles';
 
 interface ILoggedInSectionProps {
@@ -13,7 +13,6 @@ export function LoggedInSection({
 }: ILoggedInSectionProps) {
   return (
     <S.Container>
-      <Notification />
       <S.IconContainer>
         <S.HeaderIcon
           src={notificationIcon}
