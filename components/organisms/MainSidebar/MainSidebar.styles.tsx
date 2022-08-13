@@ -5,11 +5,11 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: top;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 
-  width: 31rem;
+  width: 22rem;
   height: 100%;
-  padding: 3rem 4rem 3rem 3rem;
+  padding: 2rem 3rem 2rem 2rem;
 
   position: relative;
   left: 1rem;

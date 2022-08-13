@@ -7,10 +7,14 @@ export const Container = styled.nav`
   justify-content: space-between;
 
   width: 100%;
-  height: 5rem;
+  height: 3rem;
+
+  margin-bottom: 0.5rem;
 `;
 
 export const HeaderLogo = styled(Image)`
+  margin-top: 0.5rem;
+
   opacity: 70%;
 
   cursor: pointer;

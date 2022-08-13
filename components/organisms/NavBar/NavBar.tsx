@@ -34,7 +34,7 @@ export function NavBar() {
   return (
     <S.Container>
       <Link href="/" passHref>
-        <S.HeaderLogo src={headerLogo} alt="메인로고" />
+        <S.HeaderLogo src={headerLogo} alt="메인로고" width={58} height={34} />
       </Link>
       <LoggedInSection
         profileImageSrc={user && user.imageUrl}

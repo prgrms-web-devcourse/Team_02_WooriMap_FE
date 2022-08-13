@@ -8,7 +8,7 @@ export const MainThumbnailListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 0.8rem;
+  gap: 0.5rem;
   flex-grow: 1;
 
   width: 100%;
@@ -18,8 +18,8 @@ export const MainThumbnailListContainer = styled.div`
 `;
 
 export const CardContainer = styled.div<ICardContainerProps>`
-  width: 11rem;
-  height: 10rem;
+  width: 8rem;
+  height: 7rem;
 
   border-radius: 0.5rem;
 
@@ -30,11 +30,11 @@ export const CardContainer = styled.div<ICardContainerProps>`
   > div {
     display: flex;
     flex-direction: column-reverse;
-    gap: 4px;
+    gap: 0.25rem;
     width: 100%;
     height: 100%;
-    padding: 16px 8px;
-    border-radius: 8px;
+    padding: 0.5rem 0.5rem;
+    border-radius: 0.5rem;
     color: white;
     background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5));
   }
@@ -42,11 +42,16 @@ export const CardContainer = styled.div<ICardContainerProps>`
 
 export const Title = styled.h3`
   width: 100%;
-  font-size: 24px;
+  height: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 700;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  opacity: 90%;
 `;
 
-export const CreateDate = styled.div``;
+export const CreateDate = styled.div`
+  font-size: 0.7rem;
+  opacity: 70%;
+`;

@@ -4,7 +4,7 @@ export const MainSearchBarContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 
   width: 100%;
   height: fit-content;
@@ -13,11 +13,11 @@ export const MainSearchBarContainer = styled.div`
 export const TagValidation = styled.div`
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 0.3rem;
 
   input {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.2rem;
+    height: 1.2rem;
 
     border-radius: 0.5rem;
 
@@ -29,6 +29,7 @@ export const TagValidation = styled.div`
 
   div {
     font-family: 'Noto Sans KR', sans-serif;
+    font-size: 0.8rem;
     font-weight: 500;
     text-shadow: ${({ theme }) => theme.boxShadow.atom};
   }
@@ -45,7 +46,7 @@ export const SearchBarForm = styled.form`
   position: relative;
 
   width: 100%;
-  height: 3rem;
+  height: 2.3rem;
   padding: 0.5rem 3rem 0.5rem 1rem;
 
   border-radius: 1.5rem;
@@ -65,8 +66,6 @@ export const SearchBarForm = styled.form`
 
     border: none;
     outline: none;
-
-    font-size: 1.2rem;
   }
 
   input[type='text']::placeholder {
@@ -75,10 +74,10 @@ export const SearchBarForm = styled.form`
 
   button {
     position: absolute;
-    right: 1rem;
+    right: 0.6rem;
 
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 1.8rem;
+    height: 1.8rem;
     padding: 0;
     background: none;
     border: none;
@@ -99,18 +98,22 @@ export const SearchBarForm = styled.form`
 `;
 
 export const FilteredTagList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+
   position: absolute;
-  top: 4rem;
+  top: 3rem;
   z-index: 500;
 
   width: 100%;
-  min-height: 5rem;
+  min-height: 2rem;
 
-  padding: 1rem;
+  padding: 0.8rem;
 
-  border-radius: 0.5rem;
-  border-bottom-left-radius: 2rem;
-  border-bottom-right-radius: 2rem;
+  border-radius: 0.3rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
 
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.boxShadow.molecule};
@@ -118,16 +121,16 @@ export const FilteredTagList = styled.div`
 
 export const FilteredTag = styled.div`
   width: fit-content;
-  height: 2rem;
 
-  margin: 1rem 0;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.8rem;
 
   border-radius: 1rem;
 
   opacity: 70%;
   background-color: ${({ color }) => color};
   box-shadow: ${({ theme }) => theme.boxShadow.atom};
+
+  font-size: 0.8rem;
 
   transition: ${({ theme }) => theme.opacityTransition};
 

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import Image from 'next/image';
 
-export const Container = styled.span`
+export const Container = styled.div`
   width: fit-content;
   height: fit-content;
 
@@ -10,7 +10,7 @@ export const Container = styled.span`
 `;
 
 export const IconContainer = styled.section`
-  margin-right: 1rem;
+  margin-right: 0.5rem;
 `;
 
 export const HeaderIcon = styled(Image)`
