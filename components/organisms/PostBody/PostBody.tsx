@@ -47,6 +47,9 @@ export function PostBody({
       <S.Header>
         <S.TitleLine>
           <S.Title>{title}</S.Title>
+          <S.PostTags>
+            <TagList tagList={tagList} />
+          </S.PostTags>
           <S.Date>{date}</S.Date>
         </S.TitleLine>
         <S.PostControl>
@@ -58,9 +61,6 @@ export function PostBody({
           </S.DeletePostButton>
         </S.PostControl>
       </S.Header>
-      <S.PostTags>
-        <TagList tagList={tagList} />
-      </S.PostTags>
       <S.PostContent>{content}</S.PostContent>
       <S.PostLocation width="100%" height={225} center={{ lat, lng }}>
         <MapMarker

@@ -10,6 +10,7 @@ interface IImageBoxProps {
 interface ISetSize {
   width: number;
   height: number;
+  boxShadow?: string;
 }
 
 export function ImageBox({ size, src, isSelected, onClick }: IImageBoxProps) {
@@ -20,14 +21,14 @@ export function ImageBox({ size, src, isSelected, onClick }: IImageBoxProps) {
       case 'medium':
         return { width: 136, height: 136 };
       case 'large':
-        return { width: 624, height: 624 };
+        return { width: 624, height: 624, boxShadow: '1px 10px 9px #000000' };
       default:
         return { width: 96, height: 96 };
     }
   };
 
   return (
-    <S.Wrapper isSelected={isSelected}>
+    <S.Wrapper isSelected={isSelected} size={size}>
       <S.Viewer
         src={src}
         onClick={onClick || (() => {})}

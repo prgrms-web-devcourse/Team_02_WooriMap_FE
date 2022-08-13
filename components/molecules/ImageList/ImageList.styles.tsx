@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  height: fit-content;
+  display: flex;
+  gap: 0.5rem;
+
   width: 100%;
-  max-width: 39rem;
+  height: fit-content;
 
   margin-top: 1rem;
-
-  display: flex;
 `;

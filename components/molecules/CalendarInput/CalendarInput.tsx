@@ -36,9 +36,10 @@ export function CalendarInput({
       <S.CalendarButton>
         <S.CalendarImage
           src={calendar}
-          width={25}
-          height={28}
+          width={35}
+          height={35}
           alt="calendar"
+          objectFit="cover"
           onClick={onClickCalendarButton}
         />
       </S.CalendarButton>
