@@ -14,7 +14,11 @@ export const Container = styled.div`
   height: 100%;
 `;
 
-export const Header = styled.div``;
+export const Header = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const TitleLine = styled.div`
   display: flex;
@@ -24,9 +28,16 @@ export const TitleLine = styled.div`
 `;
 
 export const Title = styled.h2`
+  width: 22rem;
+  height: 3.5rem;
+
   font-family: 'Noto Serif KR', serif;
-  font-size: 5rem;
+  font-size: 3rem;
   font-weight: 900;
+  text-overflow: ellipsis;
+
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const PostTags = styled.div`
