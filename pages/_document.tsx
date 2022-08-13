@@ -25,6 +25,7 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          <div id="toast-portal" />
           <Main />
           <NextScript />
         </body>
