@@ -38,6 +38,10 @@ export const UserNameWrapper = styled.div`
 `;
 
 export const UserName = styled.p`
+  height: 1.6rem;
+
+  padding-right: 1rem;
+
   font-size: 1.5rem;
   font-weight: 900;
   font-family: 'Noto Serif KR', serif;
@@ -50,9 +54,20 @@ export const UserName = styled.p`
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  flex-grow: 1;
 
-  margin-top: 76px;
+  position: relative;
+
+  width: 100%;
+  height: 10rem;
+
+  padding-top: 3rem;
+
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
 `;
 
 export const MakeCoupleButton = styled(Button)``;
