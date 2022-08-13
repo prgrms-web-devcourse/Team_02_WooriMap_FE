@@ -1,6 +1,6 @@
+import ReactDOM from 'react-dom';
 import { HTMLAttributes, useEffect, useMemo } from 'react';
 import { useClickAway } from 'hooks';
-import ReactDOM from 'react-dom';
 import * as S from './Modal.styles';
 
 interface IModalProps extends HTMLAttributes<HTMLDivElement> {

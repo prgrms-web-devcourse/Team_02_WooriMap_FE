@@ -23,5 +23,4 @@ export const ModalContainer = styled.div`
   padding: 8px;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
-  box-sizing: border-box;
 `;
