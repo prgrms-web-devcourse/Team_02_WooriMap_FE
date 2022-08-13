@@ -5,6 +5,7 @@ const theme: Theme = {
     black: '#000000',
     gray: '#D9D9D9',
     white: '#FFFFFF',
+    whiteTransparent: '#ffffffaa',
     skyblue: '#97BAFF',
     alert: '#FF3737',
     pink: '#ff8f8f80',
@@ -55,6 +56,12 @@ const theme: Theme = {
       `,
     },
   },
+  boxShadow: {
+    atom: '0 0.25rem 0.25rem rgba(0, 0, 0, 0.25)',
+    molecule: '0 0.25rem 0.5rem rgba(0, 0, 0, 0.25)',
+    organism: '0 0.5rem 1rem rgba(0, 0, 0, 0.25)',
+  },
+  opacityTransition: 'opacity ease-in 0.2s',
 };
 
 export default theme;

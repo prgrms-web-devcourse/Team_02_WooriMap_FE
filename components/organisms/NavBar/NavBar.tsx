@@ -1,7 +1,6 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { LoggedInSection } from 'components';
-import mainLogo from 'public/image/main-logo.svg';
+import { headerLogo } from 'public/image';
 import userState from 'core';
 import { useAxiosInstance, useRecoilValueAfterMount } from 'hooks';
 import { useSetRecoilState } from 'recoil';
@@ -34,21 +33,13 @@ export function NavBar() {
 
   return (
     <S.Container>
-      <S.Wrapper>
-        <Link href="/">
-          <Image
-            src={mainLogo}
-            style={{ cursor: 'pointer' }}
-            alt="main-logo"
-            width={240}
-            height={40}
-          />
-        </Link>
-        <LoggedInSection
-          profileImageSrc={user && user.imageUrl}
-          handleLogout={handleLogout}
-        />
-      </S.Wrapper>
+      <Link href="/" passHref>
+        <S.HeaderLogo src={headerLogo} alt="메인로고" />
+      </Link>
+      <LoggedInSection
+        profileImageSrc={user && user.imageUrl}
+        handleLogout={handleLogout}
+      />
     </S.Container>
   );
 }

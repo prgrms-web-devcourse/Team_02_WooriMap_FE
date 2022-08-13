@@ -4,6 +4,7 @@ interface IColors {
   black: string;
   gray: string;
   white: string;
+  whiteTransparent: string;
   skyblue: string;
   alert: string;
   pink: string;
@@ -24,6 +25,14 @@ interface ISizes {
     xlarge: SerializedStyles;
   };
 }
+
+interface IboxShadow {
+  atom: string;
+  molecule: string;
+  organism: string;
+}
+
+type IOpacityTransition = string;
 declare global {
   // for css``
   interface IThemeProps {
@@ -36,5 +45,7 @@ declare module '@emotion/react' {
     colors: IColors;
     tagColors: ITagColors;
     sizes: ISizes;
+    boxShadow: IboxShadow;
+    opacityTransition: IOpacityTransition;
   }
 }

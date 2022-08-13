@@ -1,4 +1,5 @@
-import { Button, Profile } from 'components';
+import { Profile } from 'components';
+import { notificationIcon, logoutIcon } from 'public/image';
 import * as S from './LoggedInSection.styles';
 
 interface ILoggedInSectionProps {
@@ -12,14 +13,19 @@ export function LoggedInSection({
 }: ILoggedInSectionProps) {
   return (
     <S.Container>
-      <Button size="small" variant="blackOutlined" onClick={handleLogout}>
-        Log Out
-      </Button>
+      <S.IconContainer>
+        <S.HeaderIcon src={notificationIcon} alt="알람" />
+        <S.HeaderIcon
+          src={logoutIcon}
+          alt="로그아웃 버튼"
+          onClick={handleLogout}
+        />
+      </S.IconContainer>
       <Profile
-        path={profileImageSrc && profileImageSrc}
         width={48}
         height={48}
         isLink
+        path={profileImageSrc && profileImageSrc}
       />
     </S.Container>
   );
