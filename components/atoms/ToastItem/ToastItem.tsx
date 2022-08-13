@@ -10,6 +10,10 @@ import * as S from './ToastItem.styles';
 interface IToastProps {
   toast: Omit<IToast, 'key'>;
   onRemove: () => void;
+  position: {
+    top: number;
+    right: number;
+  };
 }
 
 function ProgressBar({
@@ -22,7 +26,7 @@ function ProgressBar({
   return <S.ProgressBar status={status} duration={duration} />;
 }
 
-export function ToastItem({ toast, onRemove }: IToastProps) {
+export function ToastItem({ toast, onRemove, position }: IToastProps) {
   const { message, status, duration } = toast;
 
   useTimeout({ fn: () => onRemove(), delay: duration });
@@ -36,7 +40,12 @@ export function ToastItem({ toast, onRemove }: IToastProps) {
   };
 
   return (
-    <S.Container status={status}>
+    <S.Container
+      duration={duration}
+      top={position.top}
+      right={position.right}
+      status={status}
+    >
       {status === 'success' && (
         <Lottie
           options={{ ...defaultOptions, animationData: success }}

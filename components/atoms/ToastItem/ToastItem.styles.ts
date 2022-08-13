@@ -2,6 +2,9 @@ import styled from '@emotion/styled';
 
 interface IToastContainerProps {
   status: 'success' | 'fail';
+  duration: number;
+  top?: number;
+  right?: number;
 }
 
 interface IProgressBarProps extends IToastContainerProps {
@@ -9,7 +12,10 @@ interface IProgressBarProps extends IToastContainerProps {
 }
 
 export const Container = styled.div<IToastContainerProps>`
-  position: relative;
+  position: absolute;
+  top: ${(props) => props.top}px;
+  right: ${(props) => props.right}px;
+
   z-index: 999;
 
   display: flex;
@@ -23,6 +29,8 @@ export const Container = styled.div<IToastContainerProps>`
 
   background-color: ${(props) =>
     props.status === 'success' ? '#00e676' : '#FF6247'};
+
+  animation: toast-opening 0.25s ease-in;
 
   & div {
     position: absolute;
@@ -39,7 +47,7 @@ export const Container = styled.div<IToastContainerProps>`
     margin-left: 64px;
     font-size: 0.85rem;
     font-weight: bold;
-    color: ${({ theme }) => theme.colors.white};
+    color: #fff;
   }
 
   & button {
@@ -51,6 +59,17 @@ export const Container = styled.div<IToastContainerProps>`
 
     cursor: pointer;
   }
+
+  @keyframes toast-opening {
+    from {
+      opacity: 0;
+      right: -250px;
+    }
+    to {
+      opacity: 1;
+      right: ${(props) => props.right}px;
+    }
+  }
 `;
 
 export const ProgressBar = styled.span<IProgressBarProps>`
@@ -61,7 +80,7 @@ export const ProgressBar = styled.span<IProgressBarProps>`
 
   height: 2px;
 
-  background-color: ${({ theme }) => theme.colors.skyblue};
+  background-color: orange;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
