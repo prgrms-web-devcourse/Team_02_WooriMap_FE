@@ -16,19 +16,18 @@ export const EachProfileContainer = styled.div`
   justify-content: center;
   align-items: center;
 
-  width: 7.5rem;
-  height: 7.5rem;
-
+  width: 6rem;
+  height: 6rem;
   padding: 0 1rem;
 
   :first-child {
     position: relative;
     left: 1rem;
+    z-index: 3;
   }
   :last-child {
     position: relative;
     right: 1rem;
-    z-index: 2;
   }
 `;
 
@@ -41,27 +40,28 @@ export const CoupleInfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
 
   z-index: 2;
 
-  width: 7.5rem;
-  height: 7.5rem;
+  width: 6rem;
+  height: 6rem;
 
-  border-radius: 4rem;
+  border-radius: 3rem;
   background-color: ${({ theme }) => theme.colors.pink};
 
   box-shadow: ${({ theme }) => theme.boxShadow.atom};
 `;
 
 export const DDay = styled.div`
+  font-size: 0.8rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.white};
 `;
 
 export const StartDate = styled.div`
   text-align: center;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.white};
 `;

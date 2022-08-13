@@ -6,8 +6,8 @@ export const Container = styled.form`
 
   position: relative;
 
-  width: 90rem;
-  height: 55rem;
+  width: 65rem;
+  height: 40rem;
 `;
 
 export const PostContent = styled.div`
@@ -26,6 +26,8 @@ export const ImageSection = styled.div`
 
   width: 100%;
 
+  padding: 0 2rem;
+
   border-radius: 1rem;
 
   background-color: ${({ theme }) => theme.colors.whiteTransparent};
@@ -35,7 +37,7 @@ export const ImageSection = styled.div`
 export const ContentSection = styled.div`
   width: 100%;
 
-  padding: 4rem 3rem;
+  padding: 3rem 2rem;
 
   border-radius: 1rem;
 
@@ -46,12 +48,11 @@ export const ContentSection = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-end;
+  gap: 0.5rem;
 
   position: absolute;
-  bottom: 2rem;
-  right: 3rem;
-
-  width: 100%;
+  bottom: 1rem;
+  right: 2rem;
 
   > button {
     opacity: 70%;
@@ -61,9 +62,5 @@ export const Wrapper = styled.div`
     :hover {
       opacity: 90%;
     }
-  }
-
-  & > button:first-of-type {
-    margin-right: 1rem;
   }
 `;

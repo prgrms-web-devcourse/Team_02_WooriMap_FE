@@ -5,8 +5,8 @@ export const Container = styled.div`
 
   position: relative;
 
-  width: 90rem;
-  height: 55rem;
+  width: 65rem;
+  height: 40rem;
 
   margin-left: -1rem;
 `;
@@ -26,8 +26,8 @@ export const OverlayContainer = styled.div``;
 
 export const ButtonContainer = styled.div`
   position: absolute;
-  bottom: 3rem;
-  right: 3rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
 
   width: fit-content;
 

@@ -24,15 +24,15 @@ export const TitleLine = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 `;
 
 export const Title = styled.h2`
-  width: 22rem;
-  height: 3.5rem;
+  width: 16rem;
+  height: 1.6rem;
 
   font-family: 'Noto Serif KR', serif;
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: 900;
   text-overflow: ellipsis;
 
@@ -52,15 +52,15 @@ export const Date = styled.h6`
   opacity: 30%;
   color: ${({ theme }) => theme.colors.black};
 
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: 500;
 `;
 
 export const PostControl = styled.div`
   display: flex;
-  flex-direction: row-reverse;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
 
   position: absolute;
   top: 0;

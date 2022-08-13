@@ -7,7 +7,7 @@ export const TextInputWrapper = styled.div`
   position: relative;
   flex-shrink: 0;
   width: 100%;
-  height: 3rem;
+  height: 2.5rem;
   padding: 0.5rem 0.75rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors.white};
@@ -20,7 +20,7 @@ export const TextInput = styled.input`
   outline: none;
   border: none;
   font-family: 'Noto Serif KR', serif;
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   font-weight: 900;
   line-height: 1.5rem;
 `;

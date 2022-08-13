@@ -31,6 +31,4 @@ export const Container = styled.div`
   margin-bottom: 3rem;
 `;
 
-export const Wrapper = styled.main`
-  width: fit-content;
-`;
+export const Wrapper = styled.main``;

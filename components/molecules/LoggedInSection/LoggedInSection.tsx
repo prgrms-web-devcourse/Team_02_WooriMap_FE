@@ -14,16 +14,23 @@ export function LoggedInSection({
   return (
     <S.Container>
       <S.IconContainer>
-        <S.HeaderIcon src={notificationIcon} alt="알람" />
+        <S.HeaderIcon
+          src={notificationIcon}
+          alt="알람"
+          width={40}
+          height={40}
+        />
         <S.HeaderIcon
           src={logoutIcon}
           alt="로그아웃 버튼"
           onClick={handleLogout}
+          width={40}
+          height={40}
         />
       </S.IconContainer>
       <Profile
-        width={48}
-        height={48}
+        width={40}
+        height={40}
         isLink
         path={profileImageSrc && profileImageSrc}
       />
