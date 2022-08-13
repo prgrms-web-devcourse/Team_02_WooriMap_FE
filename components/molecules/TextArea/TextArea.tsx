@@ -27,7 +27,9 @@ export function TextArea({
         placeholder={placeholder}
         onChange={(e) => handleChange({ e })}
       />
-      <DeleteAllBtn onClick={onClickButton} />
+      <S.DeleteAllBtnContainer>
+        <DeleteAllBtn onClick={onClickButton} />
+      </S.DeleteAllBtnContainer>
     </S.TextAreaWrapper>
   );
 }

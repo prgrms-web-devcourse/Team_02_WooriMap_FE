@@ -30,7 +30,9 @@ export function TextInput({
         onChange={(e) => handleChange?.({ e })}
         {...props}
       />
-      <DeleteAllBtn onClick={onClickButton} />
+      <S.DeleteAllBtnContainer>
+        <DeleteAllBtn onClick={onClickButton} />
+      </S.DeleteAllBtnContainer>
     </S.TextInputWrapper>
   );
 }

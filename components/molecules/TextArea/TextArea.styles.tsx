@@ -5,11 +5,13 @@ export const TextAreaWrapper = styled.div`
   display: flex;
   flex: 1;
 
-  height: 176px;
+  width: 100%;
+  height: 11rem;
+  padding: 0.5rem;
 
-  border-radius: 8px;
-  border: 2px solid ${({ theme }) => theme.colors.gray};
-  padding: 8px 16px;
+  border-radius: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.boxShadow.atom};
 `;
 
 export const TextArea = styled.textarea`
@@ -19,11 +21,17 @@ export const TextArea = styled.textarea`
   border: none;
   resize: none;
   outline: none;
+
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.1rem;
+  resize: none;
+  ::placeholder {
+    font-size: 1.1rem;
+  }
 `;
 
-export const DeleteButton = styled.span`
-  cursor: pointer;
+export const DeleteAllBtnContainer = styled.div`
   position: absolute;
-  top: 4px;
-  right: 4px;
+  top: 1rem;
+  right: 1rem;
 `;
