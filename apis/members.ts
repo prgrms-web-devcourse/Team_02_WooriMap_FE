@@ -13,10 +13,10 @@ export async function updateUserInfoWhenCoupleLinked({
   accessToken,
   setUser,
 }: IUploadUserProps) {
-  const res = instance
+  const response = instance
     .get('/members')
-    .then((response) => {
-      return response.data;
+    .then((res) => {
+      return res.data;
     })
     .catch((error) => {
       console.error(error);
@@ -25,7 +25,7 @@ export async function updateUserInfoWhenCoupleLinked({
       };
     });
 
-  const { data } = await res;
+  const { data } = await response;
 
   if (data) {
     LocalStorage.setItem('accessToken', accessToken);
@@ -43,10 +43,10 @@ export function updateMemberInfo({
     nickName: string;
   };
 }) {
-  const res = instance
+  const response = instance
     .put('/members', data)
-    .then((response) => {
-      return response.data;
+    .then((res) => {
+      return res.data;
     })
     .catch((error) => {
       console.error(error);
@@ -55,24 +55,24 @@ export function updateMemberInfo({
       };
     });
 
-  return res;
+  return response;
 }
 
 export function withdrawFromMember({ instance }: { instance: AxiosInstance }) {
-  const res = instance
+  const response = instance
     .delete('/members')
-    .then((response) => {
-      if (response.status === 204) {
+    .then((res) => {
+      if (res.status === 204) {
         return true;
       }
       throw new Error('withdraw failed');
     })
     .catch((error) => {
-      const { response } = error;
+      const { response: errorResponse } = error;
 
-      console.error(response);
+      console.error(errorResponse);
       return false;
     });
 
-  return res;
+  return response;
 }
