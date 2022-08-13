@@ -14,6 +14,8 @@ export interface IPostValidationProps {
   title: string;
   imageUrls: Array<string>;
   tags: Array<ITag>;
+  latitude: number;
+  longitude: number;
 }
 
 export interface IPostOnChangeProps {
@@ -26,6 +28,8 @@ export interface IPostValidationState {
   title: string;
   imageUrls: string;
   tags: string;
+  latitude: string;
+  longitude: string;
 }
 
 export interface ISetValueState {

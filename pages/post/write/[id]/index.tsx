@@ -16,6 +16,8 @@ export const errorState: IPostValidationState = {
   title: '',
   imageUrls: '',
   tags: '',
+  latitude: '',
+  longitude: '',
 };
 
 function PostEdit() {
