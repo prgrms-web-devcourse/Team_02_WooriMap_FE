@@ -6,7 +6,7 @@ interface IUseTimeoutFnProps {
 }
 
 export function useTimeoutFn({ fn, delay }: IUseTimeoutFnProps) {
-  const timeoutId = useRef<NodeJS.Timeout | null>(null);
+  const timeoutId = useRef<ReturnType<typeof setTimeout> | null>(null);
   const callback = useRef(fn);
 
   useEffect(() => {
