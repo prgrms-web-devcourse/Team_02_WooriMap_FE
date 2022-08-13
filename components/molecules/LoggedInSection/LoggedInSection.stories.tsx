@@ -7,5 +7,5 @@ export default {
 } as ComponentMeta<typeof LoggedInSection>;
 
 export const Default: ComponentStory<typeof LoggedInSection> = () => {
-  return <LoggedInSection />;
+  return <LoggedInSection handleLogout={() => {}} />;
 };

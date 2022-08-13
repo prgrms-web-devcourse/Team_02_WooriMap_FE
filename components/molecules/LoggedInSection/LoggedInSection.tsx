@@ -1,15 +1,26 @@
 import { Button, Profile } from 'components';
 import * as S from './LoggedInSection.styles';
 
-export function LoggedInSection() {
-  const onLogout = () => console.log('logout');
+interface ILoggedInSectionProps {
+  profileImageSrc?: string | null;
+  handleLogout: () => void;
+}
 
+export function LoggedInSection({
+  profileImageSrc,
+  handleLogout,
+}: ILoggedInSectionProps) {
   return (
     <S.Container>
-      <Button size="small" variant="blackOutlined" onClick={onLogout}>
-        log out
+      <Button size="small" variant="blackOutlined" onClick={handleLogout}>
+        Log Out
       </Button>
-      <Profile width={48} height={48} isLink />
+      <Profile
+        path={profileImageSrc && profileImageSrc}
+        width={48}
+        height={48}
+        isLink
+      />
     </S.Container>
   );
 }
