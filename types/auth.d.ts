@@ -1,6 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
 
 interface User {
+  id: number;
   email: string;
   password: string;
   imageUrl: string | null;
