@@ -2,10 +2,9 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   position: absolute;
-  z-index: 99;
-
-  top: 4px;
-  left: 4px;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 10;
 `;
 
 export const Wrapper = styled.div<{ isSearching: boolean }>`
@@ -21,7 +20,7 @@ export const Wrapper = styled.div<{ isSearching: boolean }>`
   padding: 0 8px;
 
   background-color: #fff;
-  border: 1px solid ${({ theme }) => theme.colors.gray}
+  border: 1px solid ${({ theme }) => theme.colors.gray};
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px,
     rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
   border-bottom: 1px solid transparent;
