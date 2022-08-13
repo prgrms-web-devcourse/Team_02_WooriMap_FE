@@ -80,7 +80,7 @@ export const ProgressBar = styled.span<IProgressBarProps>`
 
   height: 2px;
 
-  background-color: orange;
+  background-color: ${({ theme }) => theme.colors.white};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 
