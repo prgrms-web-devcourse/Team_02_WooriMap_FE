@@ -1,5 +1,5 @@
 import { TextInputWithLabel, SearchableMap } from 'components';
-import { IPostFormState, IFormInputProps } from 'types';
+import { IPostFormState, IFormInputProps, IPostValidationState } from 'types';
 import { inputList } from './helper';
 import * as S from './PostWrite.styles';
 
@@ -9,6 +9,7 @@ export function PostWrite({
   postState,
   handleChange,
   deleteAll,
+  errorState,
 }: IFormInputProps) {
   const { latitude, longitude } = postState as IPostWrite;
 
@@ -29,6 +30,7 @@ export function PostWrite({
           handleChange={handleChange}
           variant={item.variant}
           deleteAll={deleteAll}
+          error={errorState[item.name as keyof IPostValidationState]}
         />
       ))}
       <SearchableMap position={position} handleChange={handleChange} />

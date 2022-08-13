@@ -44,7 +44,7 @@ function PostCreate() {
     }
   };
 
-  const { values, handleChange, handleSubmit, removeAll } = useForm<
+  const { values, errors, handleChange, handleSubmit, removeAll } = useForm<
     IPostFormState,
     IPostValidationState,
     IPostValidationProps
@@ -77,6 +77,7 @@ function PostCreate() {
           }}
           handleChange={handleChange}
           deleteAll={removeAll}
+          errorState={errors}
         />
       }
     />

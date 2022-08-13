@@ -58,6 +58,7 @@ export interface IFormImageProps extends IFormStateProps {
 export interface IFormInputProps extends IFormStateProps {
   postState: IPostFormState;
   deleteAll: (name: string) => void;
+  errorState: IPostValidationState;
 }
 
 export interface IPostDetailProps {
