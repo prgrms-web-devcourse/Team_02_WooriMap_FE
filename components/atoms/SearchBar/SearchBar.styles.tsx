@@ -10,8 +10,8 @@ export const Container = styled.div`
 export const Wrapper = styled.div<{ isSearching: boolean }>`
   position: relative;
 
-  width: 208px;
-  height: 48px;
+  width: 10rem;
+  height: 2.5rem;
 
   display: flex;
   justify-content: center;
@@ -47,6 +47,10 @@ export const Input = styled.input`
   list-style: none;
 
   overflow: visible;
+
+  ::placeholder {
+    font-size: 0.8rem;
+  }
 `;
 
 export const SearchResultBox = styled.ul`
@@ -61,7 +65,7 @@ export const SearchResultBox = styled.ul`
   border-radius: 0 0 8px 8px;
   box-shadow: rgba(0, 0, 0, 0.2) 0 2px 4px;
 
-  font-size: 15px;
+  font-size: 0.8rem;
   overflow: auto;
 
   &::-webkit-scrollbar {
@@ -82,7 +86,7 @@ export const SearchResult = styled.li`
   cursor: pointer;
   color: #8c8c8c;
 
-  font-size: 16px;
+  font-size: 0.8rem;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.06);

@@ -36,7 +36,9 @@ function Map({ children, isMain, width, height, ...props }: IProps) {
 
   return loaded ? (
     <KakaoMap
-      style={isMain ? defaultStyle : { ...defaultStyle, borderRadius: '1rem' }}
+      style={
+        isMain ? defaultStyle : { ...defaultStyle, borderRadius: '0.5rem' }
+      }
       {...props}
     >
       {children}

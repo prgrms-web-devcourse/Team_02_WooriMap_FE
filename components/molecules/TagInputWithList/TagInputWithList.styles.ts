@@ -4,10 +4,10 @@ import { TagList } from 'components/molecules/TagList';
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 98%;
-  height: 104px;
+  gap: 0.5rem;
+  width: 100%;
+  height: fit-content;
+  font-size: 0.8rem;
 `;
 
-export const SelectedTags = styled(TagList)`
-  margin: 1rem 0;
-`;
+export const SelectedTags = styled(TagList)``;

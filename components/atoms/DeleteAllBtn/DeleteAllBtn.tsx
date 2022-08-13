@@ -12,8 +12,8 @@ export function DeleteAllBtn({
       <Image
         src={deleteIcon}
         alt="Delete All"
-        width={24}
-        height={24}
+        width={16}
+        height={16}
         onClick={onClick}
       />
     </S.DeleteButton>

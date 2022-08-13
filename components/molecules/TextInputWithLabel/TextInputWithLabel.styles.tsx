@@ -17,13 +17,13 @@ export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
   width: 100%;
 
   & > label {
-    width: 3rem;
-    height: 20px;
+    flex-shrink: 0;
 
-    font-size: 1.2rem;
+    width: 2rem;
+
     font-family: 'Noto Serif KR', serif;
     font-weight: 900;
-    line-height: 3rem;
+    line-height: 2.3rem;
     word-break: break-all;
   }
 `;

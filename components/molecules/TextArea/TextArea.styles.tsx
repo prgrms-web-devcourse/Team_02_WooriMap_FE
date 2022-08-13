@@ -6,7 +6,8 @@ export const TextAreaWrapper = styled.div`
   flex: 1;
 
   width: 100%;
-  height: 11rem;
+  height: 9rem;
+
   padding: 0.5rem;
 
   border-radius: 0.5rem;
@@ -23,8 +24,9 @@ export const TextArea = styled.textarea`
   outline: none;
 
   font-family: 'Noto Serif KR', serif;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   resize: none;
+
   ::placeholder {
     font-size: 1.1rem;
   }
