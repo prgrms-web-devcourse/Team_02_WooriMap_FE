@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { LoggedInSection } from 'components';
 import { headerLogo } from 'public/image';
 import userState from 'core';
@@ -32,7 +33,9 @@ export function NavBar() {
 
   return (
     <S.Container>
-      <S.HeaderLogo src={headerLogo} alt="메인로고" />
+      <Link href="/" passHref>
+        <S.HeaderLogo src={headerLogo} alt="메인로고" />
+      </Link>
       <LoggedInSection
         profileImageSrc={user && user.imageUrl}
         handleLogout={handleLogout}
