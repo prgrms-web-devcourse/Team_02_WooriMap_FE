@@ -2,8 +2,8 @@ import { IToast } from 'types';
 import { useTimeout } from 'hooks';
 import Lottie from 'react-lottie';
 import Image from 'next/image';
-import success from './check.json';
 import close from 'public/image/close.png';
+import success from './check.json';
 import temp from './error.json';
 import * as S from './ToastItem.styles';
 
@@ -12,15 +12,15 @@ interface IToastProps {
   onRemove: () => void;
 }
 
-const ProgressBar = ({
+function ProgressBar({
   status,
   duration,
 }: {
   status: 'success' | 'fail';
   duration: number;
-}) => {
+}) {
   return <S.ProgressBar status={status} duration={duration} />;
-};
+}
 
 export function ToastItem({ toast, onRemove }: IToastProps) {
   const { message, status, duration } = toast;
@@ -37,7 +37,6 @@ export function ToastItem({ toast, onRemove }: IToastProps) {
 
   return (
     <S.Container status={status}>
-      <ProgressBar status={status} duration={duration} />
       {status === 'success' && (
         <Lottie
           options={{ ...defaultOptions, animationData: success }}
@@ -57,6 +56,7 @@ export function ToastItem({ toast, onRemove }: IToastProps) {
       <button className="toast-item-close" onClick={onRemove} type="button">
         <Image src={close} width={10} height={10} />
       </button>
+      <ProgressBar status={status} duration={duration} />
     </S.Container>
   );
 }

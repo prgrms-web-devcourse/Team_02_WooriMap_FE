@@ -26,16 +26,13 @@ export const Container = styled.div<IToastContainerProps>`
 
   & div {
     position: absolute;
-    left: 4px;
+    left: 0px;
     width: 50px;
     height: 4px;
 
     display: flex;
     justify-content: center;
     align-items: center;
-
-    border-top-left-radius: 4px;
-    border-top-right-radius: 4px;
   }
 
   & p {
@@ -56,13 +53,18 @@ export const Container = styled.div<IToastContainerProps>`
   }
 `;
 
-export const ProgressBar = styled.div<IProgressBarProps>`
+export const ProgressBar = styled.span<IProgressBarProps>`
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 0;
-  height: 4px;
+  right: 200px;
+
+  height: 2px;
+
   background-color: ${({ theme }) => theme.colors.skyblue};
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+
   animation-name: progress;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
