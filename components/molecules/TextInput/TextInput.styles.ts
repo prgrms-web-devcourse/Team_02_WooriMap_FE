@@ -23,6 +23,9 @@ export const TextInput = styled.input`
   font-size: 0.8rem;
   font-weight: 900;
   line-height: 1.5rem;
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.gray};
+  }
 `;
 
 export const DeleteAllBtnContainer = styled.div`

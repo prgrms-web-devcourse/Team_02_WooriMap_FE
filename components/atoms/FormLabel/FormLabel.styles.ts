@@ -1,14 +1,15 @@
 import styled from '@emotion/styled';
 
 export const FormLabel = styled.label`
-  width: 52px;
-  height: 20px;
+  width: 4.5rem;
+  height: 1.25rem;
 
   margin-top: auto;
   margin-bottom: auto;
 
-  font-size: 14px;
+  font-size: 0.9rem;
   font-weight: bold;
   word-break: break-all;
-  text-align: center;
+  line-height: 1.5rem;
+  text-align: left;
 `;
