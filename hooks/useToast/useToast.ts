@@ -4,7 +4,12 @@ import { nanoid } from 'nanoid';
 import { Toast } from 'components';
 import { IToast } from 'types';
 
-export function useToast() {
+interface IUseToastProps {
+  top: number;
+  right: number;
+}
+
+export function useToast({ top, right }: IUseToastProps) {
   const portalId = 'toast-portal';
 
   const portalElement = useRef<HTMLDivElement | null>(null);
@@ -28,6 +33,8 @@ export function useToast() {
         React.createElement(Toast, {
           toasts,
           removeToast,
+          top,
+          right,
         }),
       );
 

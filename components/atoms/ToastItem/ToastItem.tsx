@@ -51,10 +51,9 @@ export function ToastItem({ toast, onRemove }: IToastProps) {
           height={50}
         />
       )}
-
       <p>{message}</p>
       <button className="toast-item-close" onClick={onRemove} type="button">
-        <Image src={close} width={10} height={10} />
+        <Image src={close} width={10} height={10} alt="delete-button" />
       </button>
       <ProgressBar status={status} duration={duration} />
     </S.Container>

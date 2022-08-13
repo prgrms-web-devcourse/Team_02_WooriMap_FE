@@ -9,7 +9,7 @@ interface IProgressBarProps extends IToastContainerProps {
 }
 
 export const Container = styled.div<IToastContainerProps>`
-  position: absolute;
+  position: relative;
   z-index: 999;
 
   display: flex;
