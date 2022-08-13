@@ -19,7 +19,7 @@ export const Wrapper = styled.div<{ isValidationNotUsed: boolean }>`
   & > label {
     flex-shrink: 0;
 
-    width: 2rem;
+    width: 5rem;
 
     font-family: 'Noto Serif KR', serif;
     font-weight: 900;

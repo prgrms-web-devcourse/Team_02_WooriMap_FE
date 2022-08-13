@@ -7,16 +7,22 @@ export const Container = styled(FormBackground)`
   align-items: center;
   justify-content: space-between;
 
-  padding-bottom: 5rem;
+  width: 100%;
+  height: 100%;
+
+  padding: 2rem 2rem 3rem 2rem;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
 `;
 
 export const InputsWrapper = styled.div`
-  width: 100%;
-
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+
+  width: 100%;
+  height: 100%;
 
   margin-top: 1rem;
 
@@ -31,8 +37,5 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  & button:first-of-type {
-    margin-right: 1.5rem;
-  }
+  gap: 1.5rem;
 `;

@@ -9,17 +9,27 @@ interface ICoupleInfoprops {
 export const UserProfileBackground = styled(FormBackground)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+
+  width: 100%;
+  height: 100%;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
 `;
 
 export const ProfileWrapper = styled.div`
-  margin-top: 63px;
-  gap: 32px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+  height: 10rem;
+
+  padding: 0 3rem;
 `;
 
-export const UserProfile = styled(Profile)``;
+export const UserProfile = styled(Profile)`
+  border: 1px solid;
+`;
 
 export const UserNameWrapper = styled.div`
   display: flex;
@@ -28,54 +38,98 @@ export const UserNameWrapper = styled.div`
 `;
 
 export const UserName = styled.p`
-  font-size: 36px;
+  height: 1.6rem;
+
+  padding-right: 1rem;
+
+  font-size: 1.5rem;
   font-weight: 900;
-  font-family: serif;
+  font-family: 'Noto Serif KR', serif;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
 
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  flex-grow: 1;
 
-  margin-top: 76px;
+  position: relative;
+
+  width: 100%;
+  height: 10rem;
+
+  padding-top: 3rem;
+
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
 `;
 
 export const MakeCoupleButton = styled(Button)``;
-export const ProfileEditButton = styled(Button)``;
+export const ProfileEditButton = styled(Button)`
+  margin-top: 2rem;
+`;
 
 export const CoupleInfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  flex-grow: 1;
 
-  margin-top: 51px;
-  margin-bottom: 62px;
-  font-size: 20px;
+  position: relative;
+
+  width: 100%;
+
+  padding: 3rem 3rem 0 3rem;
+
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
 `;
 
-export const CoupleInfoRow = styled.div``;
+export const CoupleInfoRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+
+  position: relative;
+
+  width: 100%;
+  height: 1.5rem;
+`;
+
 export const CoupleInfoLabel = styled.label<ICoupleInfoprops>`
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.2rem;
   font-weight: 900;
-  margin-right: ${({ isCoupleDateInfo }) =>
-    isCoupleDateInfo ? '51px' : '32px'};
 `;
+
 export const CoupleInfo = styled.span`
   font-weight: 500;
 `;
 
 export const StartringDate = styled.span`
-  border-radius: 16px;
-  border: 2px solid ${({ theme }) => theme.colors.black};
-  /* width: 128px;
-  height: 32px; */
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
 
-  margin-left: 21px;
-  padding: 4.5px 23.5px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  opacity: 30%;
 `;
 
 export const Withdrawal = styled.span<IUserProfile>`
+  position: absolute;
+  bottom: 2rem;
+
   color: ${({ theme }) => theme.colors.gray};
-  margin-top: ${({ isCouple }) => (isCouple ? '78px' : '109px')};
-  margin-bottom: 33px;
+
+  font-size: 0.8rem;
 `;

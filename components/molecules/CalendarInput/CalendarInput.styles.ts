@@ -29,7 +29,8 @@ export const CalendarInput = styled.input`
 
 export const CalendarButton = styled.button`
   position: absolute;
-  right: 0.2rem;
+  top: 0.3rem;
+  right: 0.1rem;
   bottom: 0.1rem;
 
   z-index: 0;
