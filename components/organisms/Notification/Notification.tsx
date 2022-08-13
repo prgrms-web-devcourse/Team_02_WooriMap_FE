@@ -48,8 +48,8 @@ function Notification() {
           <Image
             src={NotificationSvg}
             alt="notification"
-            width={48}
-            height={48}
+            width={40}
+            height={40}
           />
         </IconWrapper>
       }

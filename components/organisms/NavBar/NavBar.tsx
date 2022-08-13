@@ -1,12 +1,11 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { LoggedInSection } from 'components';
 import { headerLogo } from 'public/image';
 import userState from 'core';
 import { useAxiosInstance, useRecoilValueAfterMount } from 'hooks';
 import { useSetRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
-import { IconWrapper } from 'components/atoms/Wrapper';
-import Image from 'next/image';
 import * as S from './NavBar.styles';
 
 export function NavBar() {
@@ -35,15 +34,10 @@ export function NavBar() {
 
   return (
     <S.Container>
-      <Link href="/" passHref>
-        <a href="#!">
-          <S.HeaderLogo
-            src={headerLogo}
-            alt="메인로고"
-            width={58}
-            height={34}
-          />
-        </a>
+      <Link href="/">
+        <S.HeaderLogo>
+          <Image src={headerLogo} alt="메인로고" width={58} height={34} />
+        </S.HeaderLogo>
       </Link>
       <LoggedInSection
         profileImageSrc={user && user.imageUrl}

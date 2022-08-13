@@ -10,14 +10,12 @@ function ThumbnailCard({
 }: IThumbnailCardProps) {
   return (
     <Link href={`/post/${postId}`}>
-      <a href="#!">
-        <S.CardContainer url={postThumbnailPath}>
-          <div>
-            <S.Title>{title}</S.Title>
-            <S.CreateDate>{createDate}</S.CreateDate>
-          </div>
-        </S.CardContainer>
-      </a>
+      <S.CardContainer url={postThumbnailPath}>
+        <div>
+          <S.Title>{title}</S.Title>
+          <S.CreateDate>{createDate}</S.CreateDate>
+        </div>
+      </S.CardContainer>
     </Link>
   );
 }

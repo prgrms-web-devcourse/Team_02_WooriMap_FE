@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import Image from 'next/image';
 
 export const Container = styled.nav`
   display: flex;
@@ -12,7 +11,7 @@ export const Container = styled.nav`
   margin-bottom: 0.5rem;
 `;
 
-export const HeaderLogo = styled(Image)`
+export const HeaderLogo = styled.span`
   margin-top: 0.5rem;
 
   opacity: 70%;

@@ -1,5 +1,5 @@
-import { Profile, Notification, IconWrapper } from 'components';
 import Image from 'next/image';
+import { Profile, Notification, IconWrapper } from 'components';
 import { logoutIcon } from 'public/image';
 import * as S from './LoggedInSection.styles';
 
@@ -15,19 +15,16 @@ export function LoggedInSection({
   return (
     <S.Container>
       <S.IconContainer>
-        <S.HeaderIcon
-          src={notificationIcon}
-          alt="알람"
-          width={40}
-          height={40}
-        />
-        <S.HeaderIcon
-          src={logoutIcon}
-          alt="로그아웃 버튼"
-          onClick={handleLogout}
-          width={40}
-          height={40}
-        />
+        <Notification />
+        <IconWrapper>
+          <Image
+            src={logoutIcon}
+            alt="로그아웃 버튼"
+            onClick={handleLogout}
+            width={40}
+            height={40}
+          />
+        </IconWrapper>
       </S.IconContainer>
       <Profile
         width={40}
