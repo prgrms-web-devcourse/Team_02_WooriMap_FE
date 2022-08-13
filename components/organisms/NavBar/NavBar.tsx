@@ -5,6 +5,8 @@ import userState from 'core';
 import { useAxiosInstance, useRecoilValueAfterMount } from 'hooks';
 import { useSetRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
+import { IconWrapper } from 'components/atoms/Wrapper';
+import Image from 'next/image';
 import * as S from './NavBar.styles';
 
 export function NavBar() {

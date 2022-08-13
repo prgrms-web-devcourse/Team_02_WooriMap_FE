@@ -13,7 +13,7 @@ export { SearchBar } from 'components/atoms/SearchBar';
 export { Map } from 'components/atoms/Map';
 export { MultiMarkerDrawer } from 'components/atoms/MultiMarkerDrawer';
 export { FormLabel } from 'components/atoms/FormLabel';
-export { Wrapper, FlexWrapper } from 'components/atoms/Wrapper';
+export { Wrapper, FlexWrapper, IconWrapper } from 'components/atoms/Wrapper';
 export { CircularIcon } from 'components/atoms/CircularIcon';
 export { ToastItem } from 'components/atoms/ToastItem';
 

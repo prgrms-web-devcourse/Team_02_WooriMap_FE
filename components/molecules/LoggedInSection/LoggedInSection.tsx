@@ -1,4 +1,5 @@
-import { Profile, Notification } from 'components';
+import { Profile, Notification, IconWrapper } from 'components';
+import Image from 'next/image';
 import { logoutIcon } from 'public/image';
 import * as S from './LoggedInSection.styles';
 
