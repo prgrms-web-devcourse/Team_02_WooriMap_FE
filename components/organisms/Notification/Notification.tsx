@@ -1,12 +1,12 @@
 import { LiHTMLAttributes, useCallback } from 'react';
-import { useNotification } from 'hooks/useNotification';
-import { Dropdown } from 'components';
-import NotificationSvg from 'public/image/notification.svg';
 import Image from 'next/image';
-import { INotification } from 'types/notification';
 import { useRouter } from 'next/router';
+import { Dropdown, IconWrapper } from 'components';
+import { useNotification } from 'hooks';
+import { INotification } from 'types/notification';
+import NotificationSvg from 'public/image/notification.svg';
+import { changeToEllipsis, translateActionType } from './helper';
 import * as S from './Notification.styles';
-import { translateActionType, changeToEllipsis } from './helper';
 
 interface INotificationMessageProps extends LiHTMLAttributes<HTMLLIElement> {
   notification: INotification;
@@ -44,14 +44,14 @@ function Notification() {
   return (
     <Dropdown
       trigger={
-        <S.NotificationIcon>
+        <IconWrapper>
           <Image
             src={NotificationSvg}
             alt="notification"
             width={48}
             height={48}
           />
-        </S.NotificationIcon>
+        </IconWrapper>
       }
     >
       {notifications.map((notification) => {
