@@ -1,10 +1,10 @@
-import { LiHTMLAttributes } from 'react';
-import Link from 'next/link';
+import { LiHTMLAttributes, useCallback } from 'react';
 import { useNotification } from 'hooks/useNotification';
 import { Dropdown } from 'components';
 import NotificationSvg from 'public/image/notification.svg';
 import Image from 'next/image';
 import { INotification } from 'types/notification';
+import { useRouter } from 'next/router';
 import * as S from './Notification.styles';
 import { translateActionType, changeToEllipsis } from './helper';
 
@@ -18,25 +18,29 @@ function NotificationMessage({
 }: INotificationMessageProps) {
   return (
     <S.NotificationMessage {...props} isRead={notification.isRead}>
-      <Link href="/">
-        {/** TODO: span width 제한 props 만들기 */}
-        <>
-          <S.StrongAndEllipsis>
-            {changeToEllipsis(notification.nickName, 8)}
-          </S.StrongAndEllipsis>
-          님이{' '}
-          <S.StrongAndEllipsis>
-            {changeToEllipsis(notification.content, 14)}
-          </S.StrongAndEllipsis>
-          을(를) {translateActionType(notification.action)}했어요.
-        </>
-      </Link>
+      <S.StrongAndEllipsis>
+        {changeToEllipsis(notification.nickName, 8)}
+      </S.StrongAndEllipsis>
+      님이{' '}
+      <S.StrongAndEllipsis>
+        {changeToEllipsis(notification.content, 14)}
+      </S.StrongAndEllipsis>
+      을(를) {translateActionType(notification.action)}했어요.
     </S.NotificationMessage>
   );
 }
 
 function Notification() {
   const [notifications, readNotification] = useNotification();
+  const router = useRouter();
+
+  const moveTo = useCallback(
+    (contentId: number) => {
+      router.push(`/post/${contentId}`);
+    },
+    [router],
+  );
+
   return (
     <Dropdown
       trigger={
@@ -57,6 +61,7 @@ function Notification() {
             notification={notification}
             onClick={() => {
               readNotification(notification.id);
+              moveTo(notification.contentId);
             }}
           />
         );
