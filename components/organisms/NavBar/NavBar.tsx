@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { LoggedInSection } from 'components';
 import { headerLogo } from 'public/image';
 import userState from 'core';
