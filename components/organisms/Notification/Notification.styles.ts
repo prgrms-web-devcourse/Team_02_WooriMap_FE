@@ -1,8 +1,13 @@
+import { css } from '@emotion/react';
 import styled from '@emotion/styled';
 
 interface INotificationMessage {
   isRead?: boolean;
 }
+
+const ReadNotificationStyle = () => css`
+  color: #bebebe;
+`;
 
 export const NotificationIcon = styled.div`
   position: relative;
@@ -26,6 +31,11 @@ export const NotificationMessage = styled.li<INotificationMessage>`
   :hover {
     background-color: rgba(191, 191, 191, 0.3);
   }
+
+  ${({ isRead }) => {
+    if (isRead) return ReadNotificationStyle;
+    return null;
+  }};
 `;
 
 export const StrongAndEllipsis = styled.span`

@@ -17,7 +17,7 @@ function NotificationMessage({
   ...props
 }: INotificationMessageProps) {
   return (
-    <S.NotificationMessage {...props}>
+    <S.NotificationMessage {...props} isRead={notification.isRead}>
       <Link href="/">
         {/** TODO: span width 제한 props 만들기 */}
         <>

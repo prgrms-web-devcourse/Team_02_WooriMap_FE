@@ -10,7 +10,7 @@ const dummyData: INotification[] = [
     action: 'created',
     nickName: 'yummyyummyyummy',
     content: 'article 제목1',
-    isRead: false,
+    isRead: true,
   },
   {
     id: 2,
