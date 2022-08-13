@@ -23,8 +23,6 @@ export function UserProfile({
   });
   const instance = useAxiosInstance();
 
-  console.log(isCouple);
-
   useEffect(() => {
     if (isCouple) {
       (async () => {
