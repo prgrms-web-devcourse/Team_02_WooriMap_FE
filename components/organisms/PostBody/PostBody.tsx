@@ -1,6 +1,7 @@
 import { TagList } from 'components/molecules/TagList';
 import { ITag, ICoordinates } from 'types';
 import { useState } from 'react';
+import { MapMarker } from 'react-kakao-maps-sdk';
 
 import * as S from './PostBody.styles';
 
@@ -39,6 +40,8 @@ export function PostBody({
     handleDelete();
   };
 
+  const { latitude: lat, longitude: lng } = location;
+
   return (
     <S.Container>
       <S.Header>
@@ -59,11 +62,19 @@ export function PostBody({
         <TagList tagList={tagList} />
       </S.PostTags>
       <S.PostContent>{content}</S.PostContent>
-      <S.PostLocation
-        width="100%"
-        height={225}
-        center={{ lat: location.latitude, lng: location.longitude }}
-      />
+      <S.PostLocation width="100%" height={225} center={{ lat, lng }}>
+        <MapMarker
+          position={{ lat, lng }}
+          image={{
+            src: 'https://i.imgur.com/iwOEvRP.png',
+            size: {
+              width: 24,
+              height: 35,
+            },
+          }}
+          title={content}
+        />
+      </S.PostLocation>
     </S.Container>
   );
 }
