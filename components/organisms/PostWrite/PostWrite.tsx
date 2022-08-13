@@ -33,7 +33,11 @@ export function PostWrite({
           error={errorState[item.name as keyof IPostValidationState]}
         />
       ))}
-      <SearchableMap position={position} handleChange={handleChange} />
+      <SearchableMap
+        position={position}
+        handleChange={handleChange}
+        error={Boolean(errorState.latitude || errorState.longitude)}
+      />
     </S.Container>
   );
 }

@@ -8,9 +8,14 @@ import * as S from './SearchableMap.styles';
 interface ISearchableMapProps {
   position: ICoordinates;
   handleChange: HandleChangeTypes;
+  error: boolean;
 }
 
-export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
+export function SearchableMap({
+  position,
+  handleChange,
+  error,
+}: ISearchableMapProps) {
   const { initialMarker, initialMapCenter } = setInitialPositionState({
     marker: {
       position: { ...position },
@@ -42,23 +47,28 @@ export function SearchableMap({ position, handleChange }: ISearchableMapProps) {
   };
 
   return (
-    <S.Container>
-      <SearchBar
-        keyword={selected.content}
-        isResultVisible={isResultVisible}
-        onChange={onChange}
-        onClick={onClickMarker()}
-        results={markers}
-      />
-      <Map
-        width="100%"
-        height="100%"
-        isMain={false}
-        onCreate={setMap}
-        center={{ ...initialMapCenter }}
-      >
-        <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
-      </Map>
-    </S.Container>
+    <>
+      {error && (
+        <div style={{ color: 'red' }}>지도만 errorProp이 Boolean 입니다!</div>
+      )}
+      <S.Container>
+        <SearchBar
+          keyword={selected.content}
+          isResultVisible={isResultVisible}
+          onChange={onChange}
+          onClick={onClickMarker()}
+          results={markers}
+        />
+        <Map
+          width="100%"
+          height="100%"
+          isMain={false}
+          onCreate={setMap}
+          center={{ ...initialMapCenter }}
+        >
+          <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
+        </Map>
+      </S.Container>
+    </>
   );
 }

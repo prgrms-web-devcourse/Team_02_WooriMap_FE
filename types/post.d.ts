@@ -53,6 +53,7 @@ interface IFormStateProps {
 
 export interface IFormImageProps extends IFormStateProps {
   imageUrls: Array<string>;
+  error: string;
 }
 
 export interface IFormInputProps extends IFormStateProps {

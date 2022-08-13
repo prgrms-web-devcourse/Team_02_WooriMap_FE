@@ -63,6 +63,7 @@ function PostCreate() {
         <ImageUploader
           imageUrls={values.imageUrls as Array<string>}
           handleChange={handleChange}
+          error={errors.imageUrls}
         />
       }
       contentSection={
