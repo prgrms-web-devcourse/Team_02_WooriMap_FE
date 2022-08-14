@@ -6,10 +6,9 @@ function useSSE() {
 
   useEffect(() => {
     const eventSource = new EventSource(
-      `${process.env.NEXT_PUBLIC_BASE_URL}?token=${LocalStorage.getItem(
-        'accessToken',
-        '',
-      )}`,
+      `${
+        process.env.NEXT_PUBLIC_BASE_URL
+      }/subscribe?token=${LocalStorage.getItem('accessToken', '')}`,
     );
 
     eventSource.addEventListener('error', () => {
