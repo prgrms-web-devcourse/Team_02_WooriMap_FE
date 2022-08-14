@@ -106,7 +106,7 @@ export const DeletePostButton = styled(Button)`
   }
 `;
 
-export const PostContent = styled.div`
+export const PostContent = styled.pre`
   flex-grow: 1;
 
   font-size: 0.8rem;
