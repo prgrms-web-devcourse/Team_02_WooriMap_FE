@@ -3,25 +3,24 @@ import { useRouter } from 'next/router';
 import { useComponentDidMount, useRecoilValueAfterMount } from 'hooks';
 import userState from 'core';
 
-function withSignInSignOut<P>(Component: FunctionComponent<P>) {
-  return function WithCoupleComponent(props: P) {
+function witihSigninSignout<P>(Component: FunctionComponent<P>) {
+  return function WithAuthComponent(props: P) {
     const mounted = useComponentDidMount();
     const user = useRecoilValueAfterMount(userState, null);
     const router = useRouter();
 
     useEffect(() => {
       if (!mounted) return;
-
-      if (user) {
-        if (user.isCouple) router.replace('/');
-        else router.replace('/profile');
+      if (user && user.isCouple) {
+        router.push('/');
+        return;
       }
+      router.push('/profile');
     }, [mounted, router, user]);
 
-    if (!mounted) return null;
-
+    if (!(mounted && !user)) return null;
     return <Component {...props} />;
   };
 }
 
-export default withSignInSignOut;
+export default witihSigninSignout;
