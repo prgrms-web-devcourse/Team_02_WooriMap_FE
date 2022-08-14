@@ -29,12 +29,7 @@ export function getConfigWithAuthorizedHeadersBy(
 }
 
 export function isAuthorization(url: string | undefined) {
-  const authorizationUrlList = [
-    '/auth/token',
-    '/auth/login',
-    '/fake/token',
-    '/fake/signin',
-  ];
+  const authorizationUrlList = ['/auth/token', '/auth/signin'];
   if (!url) return false;
   return authorizationUrlList.includes(url);
 }
