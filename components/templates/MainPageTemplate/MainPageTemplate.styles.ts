@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Button } from 'components';
 
 export const Container = styled.div`
   display: flex;
@@ -37,4 +38,22 @@ export const ButtonContainer = styled.div`
 
   // 이 버튼은 atom 이상으로 강조가 되어야 해서 atom임에도 organism box-shadow를 사용하였습니다.
   box-shadow: ${({ theme }) => theme.boxShadow.organism};
+`;
+
+export const NewPostButton = styled(Button)`
+  border: none;
+
+  font-family: 'Noto Sans KR', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 2.9rem;
+  text-shadow: none;
+
+  opacity: 70%;
+
+  transition: ${({ theme }) => theme.opacityTransition};
+
+  :hover {
+    opacity: 100%;
+  }
 `;

@@ -70,9 +70,9 @@ export function MainPageTemplate({
       </S.MapContainer>
       <Link href="/post/write" passHref>
         <S.ButtonContainer>
-          <Button variant="blackOutlined" size="medium">
-            새 글 생성
-          </Button>
+          <S.NewPostButton variant="blackOutlined" size="medium">
+            새 글 작성
+          </S.NewPostButton>
         </S.ButtonContainer>
       </Link>
     </S.Container>
