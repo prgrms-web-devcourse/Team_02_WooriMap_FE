@@ -27,7 +27,7 @@ export const errorState: IPostValidationState = {
   longitude: '',
 };
 
-function PostCreate() {
+export default function PostCreate() {
   const instance = useAxiosInstance();
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
@@ -38,21 +38,19 @@ function PostCreate() {
     }
   };
 
-  const { values, errors, handleChange, handleSubmit, removeAll } = useForm<
-    IPostFormState,
-    IPostValidationState,
-    IPostValidationProps
-  >({
-    initialValues,
-    errorState,
-    onSubmit,
-    validateValues: postValidation,
-  });
+  const { values, errors, handleChange, handleSubmit, removeAll, isChanged } =
+    useForm<IPostFormState, IPostValidationState, IPostValidationProps>({
+      initialValues,
+      errorState,
+      onSubmit,
+      validateValues: postValidation,
+    });
 
   return (
     <PostTemplate
       type="create"
       onSubmit={handleSubmit}
+      isChanged={isChanged}
       imageSection={
         <ImageUploader
           imageUrls={values.imageUrls as Array<string>}
@@ -78,5 +76,3 @@ function PostCreate() {
     />
   );
 }
-
-export default withCoupleRoute(PostCreate);
