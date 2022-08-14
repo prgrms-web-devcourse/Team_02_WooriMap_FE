@@ -34,7 +34,7 @@ export function MainThumbnailList({
             postId={postId}
             postThumbnailPath={postThumbnailPath}
             title={title}
-            createDate={createDate}
+            createDate={createDate.slice(0, 10)}
           />
         ))}
       {!postList.length && <div>검색된 결과가 없습니다</div>}
