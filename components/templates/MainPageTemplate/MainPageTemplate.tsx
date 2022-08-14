@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { Button, Map, MapMarkerOverlay, MainSidebar } from 'components';
+import { Map, MapMarkerOverlay, MainSidebar } from 'components';
 import { IMainPageTemplateProps } from 'types';
 import { MapMarker } from 'react-kakao-maps-sdk';
 import * as S from './MainPageTemplate.styles';
