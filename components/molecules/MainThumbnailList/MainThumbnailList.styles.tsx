@@ -64,3 +64,9 @@ export const CreateDate = styled.div`
   font-size: 0.7rem;
   opacity: 70%;
 `;
+
+export const NoResultAlert = styled.div`
+  width: 10rem;
+
+  font-size: 0.7rem;
+`;
