@@ -7,7 +7,7 @@ import userState from 'core';
  * NOTE: 해당 HOC는 auth/signin, auth/signup 등
  * 로그인 하지 않은 페이지에서만 사용할 것
  */
-function withNoAuth<P>(Component: FunctionComponent<P>) {
+function witihSigninSignout<P>(Component: FunctionComponent<P>) {
   return function WithAuthComponent(props: P) {
     const mounted = useComponentDidMount();
     const user = useRecoilValueAfterMount(userState, null);
@@ -27,4 +27,4 @@ function withNoAuth<P>(Component: FunctionComponent<P>) {
   };
 }
 
-export default withNoAuth;
+export default witihSigninSignout;

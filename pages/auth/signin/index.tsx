@@ -13,7 +13,7 @@ import { LoginFormDataTypes, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
 import LocalStorage from 'utils/storage';
 import userState from 'core';
-import withNoAuth from 'hocs/withNoAuthRoute';
+import { withSigninSignout } from 'hocs';
 
 type LoginFormKeyType = 'email' | 'password';
 
@@ -114,4 +114,4 @@ function Signin() {
   );
 }
 
-export default withNoAuth(Signin);
+export default withSigninSignout(Signin);

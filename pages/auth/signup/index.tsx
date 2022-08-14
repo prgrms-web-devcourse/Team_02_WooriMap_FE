@@ -1,8 +1,8 @@
 import { SignUpTemplate } from 'components';
-import withNoAuth from 'hocs/withNoAuthRoute';
+import { withSigninSignout } from 'hocs';
 
 function SignUp() {
   return <SignUpTemplate />;
 }
 
-export default withNoAuth(SignUp);
+export default withSigninSignout(SignUp);
