@@ -1,9 +1,10 @@
+import { useState, useEffect } from 'react';
 import { PostTemplate, ImageViewer } from 'components';
 import { ITag, ICoordinates } from 'types';
 import { useRouter } from 'next/router';
 import { PostBody } from 'components/organisms/PostBody';
 import { useAxiosInstance } from '@hooks/useAxiosInstance';
-import { useState, useEffect } from 'react';
+import { withCoupleRoute } from 'hocs';
 import { getOnePost, deletePost } from 'apis/post';
 
 interface IPostInfo {
@@ -14,8 +15,7 @@ interface IPostInfo {
   location: ICoordinates;
   imageUrls: string[];
 }
-
-export default function PostDetail() {
+function PostDetail() {
   const [postInfo, setPostInfo] = useState<IPostInfo | null>(null);
 
   const instance = useAxiosInstance();
@@ -89,3 +89,5 @@ export default function PostDetail() {
     />
   );
 }
+
+export default withCoupleRoute(PostDetail);

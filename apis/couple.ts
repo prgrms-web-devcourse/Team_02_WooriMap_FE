@@ -125,14 +125,14 @@ export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
 export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
   const res = instance
     .post('/couples/invite')
-    .then((response) => response.data)
+    .then((response) => response.data.data)
     .catch((error) => {
       const { response } = error;
 
       console.error(response.message);
 
       return {
-        code: '',
+        code: null,
       };
     });
 

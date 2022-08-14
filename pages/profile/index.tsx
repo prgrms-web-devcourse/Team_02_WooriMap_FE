@@ -1,8 +1,9 @@
 import userState from 'core';
 import { ProfileTemplate, UserProfile } from 'components';
 import { useRecoilValueAfterMount } from 'hooks';
+import { withAuthRoute } from 'hocs';
 
-export default function Profile() {
+function Profile() {
   const user = useRecoilValueAfterMount(userState, null);
 
   if (!user) return null;
@@ -19,3 +20,5 @@ export default function Profile() {
     </ProfileTemplate>
   );
 }
+
+export default withAuthRoute(Profile);
