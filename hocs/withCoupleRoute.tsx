@@ -8,8 +8,10 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
     const mounted = useComponentDidMount();
     const user = useRecoilValueAfterMount(userState, null);
     const router = useRouter();
+    const { pathname } = router;
 
     useEffect(() => {
+      console.log('sd');
       if (!mounted) return;
 
       if (!user) {
@@ -19,13 +21,19 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
       /**
        * TODO: 페이지 완성 뒤 다른 페이지로 이동 필요
        */
-      if (!user.isCouple) {
+
+      if (!user.isCouple && pathname !== '/profile/invite') {
         router.push('/profile');
+        return;
+      }
+
+      if (user.isCouple && pathname === '/profile/invite') {
+        router.push('/');
       }
     }, [mounted, router, user]);
 
     if (!(mounted && user)) return null;
-    if (!user.isCouple) return null;
+
     return <Component {...props} />;
   };
 }
