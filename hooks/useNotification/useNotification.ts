@@ -68,21 +68,8 @@ function useNotification(): ReturnTypes {
   useEffect(() => {
     if (!source) return;
 
-    source.addEventListener('open', (e) => {
-      console.log('opened!!', e);
-    });
-
-    source.addEventListener('test', (e) => {
-      console.log('test:', e);
-    });
-
-    source.addEventListener('message', (e) => {
-      console.log('message');
-      console.log(e);
-    });
-
-    source.addEventListener('error', () => {
-      console.log('error');
+    source.addEventListener('sse', (e) => {
+      console.log('sse:', e);
     });
   }, [source]);
 
