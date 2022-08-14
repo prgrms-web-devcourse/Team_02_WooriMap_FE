@@ -42,6 +42,13 @@ export function MainPageTemplate({
                 setIsOverlayShown(true);
                 setSelectedMarker(post.postId);
               }}
+              image={{
+                src: './image/mapMarker.png',
+                size: {
+                  width: 40,
+                  height: 50,
+                },
+              }}
             >
               {isOverlayShown && selectedMarker === post.postId && (
                 <S.OverlayContainer
