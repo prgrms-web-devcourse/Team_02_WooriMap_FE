@@ -79,15 +79,15 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
 
   return (
     <S.CoupleInviteFormBackground onSubmit={onSubmit}>
-      <S.Title>커플 맺기</S.Title>
-      <S.CodeWrapper>
-        <S.Container>
+      <S.TitleWrapper>
+        <S.Title>커플 맺기</S.Title>
+      </S.TitleWrapper>
+      <S.ContentWrapper>
+        <S.CodeWrapper>
           <S.Wrapper>
             <S.Label>내 코드</S.Label>
             <S.Code> {code && code}</S.Code>
           </S.Wrapper>
-        </S.Container>
-        <S.Container>
           <S.Wrapper>
             <S.Label>상대 코드</S.Label>
             <TextInput
@@ -96,24 +96,25 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
               onChange={onChange}
             />
           </S.Wrapper>
-        </S.Container>
-      </S.CodeWrapper>
+        </S.CodeWrapper>
+        <S.InviteButtonWrapper>
+          <S.InviteButton
+            size="large"
+            variant="black"
+            onClick={onClickInviteButton}
+            disabled={inputCode.length === 0}
+          >
+            커플 맺기
+          </S.InviteButton>
+          <S.InviteConfrimButton size="large" onClick={checkIsCoupled}>
+            커플 맺음 확인하기
+          </S.InviteConfrimButton>
+        </S.InviteButtonWrapper>
 
-      <S.InviteButton
-        size="xlarge"
-        variant="black"
-        onClick={onClickInviteButton}
-        disabled={inputCode.length === 0}
-      >
-        커플 맺기
-      </S.InviteButton>
-      <S.InviteConfrimButton size="xlarge" onClick={checkIsCoupled}>
-        커플 맺음 확인하기
-      </S.InviteConfrimButton>
-
-      <Link href="/profile">
-        <S.Back>돌아가기</S.Back>
-      </Link>
+        <Link href="/profile">
+          <S.Back>프로필 페이지로 돌아가기</S.Back>
+        </Link>
+      </S.ContentWrapper>
     </S.CoupleInviteFormBackground>
   );
 }
