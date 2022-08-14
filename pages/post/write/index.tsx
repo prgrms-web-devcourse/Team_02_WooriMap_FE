@@ -27,7 +27,7 @@ export const errorState: IPostValidationState = {
   longitude: '',
 };
 
-export default function PostCreate() {
+function PostCreate() {
   const instance = useAxiosInstance();
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
@@ -76,3 +76,5 @@ export default function PostCreate() {
     />
   );
 }
+
+export default withCoupleRoute(PostCreate);
