@@ -75,7 +75,7 @@ function Signin() {
       controls={
         <>
           <FormControl
-            label="email"
+            label="이메일"
             input={
               <TextInput
                 value={data.email}
@@ -88,7 +88,7 @@ function Signin() {
             }
           />
           <FormControl
-            label="password"
+            label="비밀번호"
             input={
               <TextInput
                 value={data.password}

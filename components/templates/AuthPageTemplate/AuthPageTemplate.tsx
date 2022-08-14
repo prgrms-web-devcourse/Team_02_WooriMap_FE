@@ -1,7 +1,6 @@
 import React, { FormHTMLAttributes } from 'react';
 import Image from 'next/image';
 import { FormBackground } from 'components';
-import mainLogoVertical from 'public/image/main-logo-vertical.svg';
 import { logo } from 'public/image';
 import * as S from './AuthPageTemplate.styles';
 

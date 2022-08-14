@@ -1,11 +1,19 @@
 import styled from '@emotion/styled';
 
 export const Wrapper = styled.span`
-  width: 100%;
-
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  gap: 1rem;
 
-  margin: 32px 0;
+  width: 100%;
+  height: 11rem;
+`;
+
+export const Title = styled.h1`
+  color: ${({ theme }) => theme.colors.pink};
+  font-family: 'Noto Serif KR', serif;
+  font-size: 2rem;
+  font-weight: 900;
 `;

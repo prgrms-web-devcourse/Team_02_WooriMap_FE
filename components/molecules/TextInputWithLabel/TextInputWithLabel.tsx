@@ -17,7 +17,10 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
 
   return (
     <S.Container>
-      <S.Wrapper isValidationNotUsed={props.error === undefined}>
+      <S.Wrapper
+        isValidationNotUsed={props.error === undefined}
+        variant={variant || 'input'}
+      >
         <label htmlFor={name}>{text}</label>
         {variant === 'input' && (
           <TextInput

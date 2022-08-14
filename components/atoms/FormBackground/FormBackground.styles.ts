@@ -5,7 +5,7 @@ export const FormBackground = styled.form`
   flex-direction: column;
 
   width: 27rem;
-  height: 35rem;
+  height: 40rem;
 
   position: relative;
   top: 2rem;
