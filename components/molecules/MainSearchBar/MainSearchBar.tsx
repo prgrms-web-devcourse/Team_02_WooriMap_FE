@@ -110,7 +110,7 @@ function TagSearchBar({
       <S.SearchBarForm onSubmit={(e) => onSubmit(e)}>
         <input
           type="text"
-          placeholder="tagSearch"
+          placeholder="태그를 입력하세요"
           onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
             setInputValue(e.target.value);
           }}
@@ -135,14 +135,19 @@ function TitleSearchBar({
   handleKeyWord: (keyWord: string) => void;
 }) {
   const input = useRef<HTMLInputElement>(null);
-  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
     const { value } = input.current as HTMLInputElement;
     handleKeyWord(value);
   };
   return (
-    <S.SearchBarForm onSubmit={onSubmit}>
-      <input type="text" placeholder="TitleSearch" ref={input} />
+    <S.SearchBarForm>
+      <input
+        type="text"
+        placeholder="찾고싶은 제목을 입력 해 주세요"
+        ref={input}
+        onKeyUp={onSubmit}
+      />
       <button type="button">
         <Image src={searchIcon} alt="search icon" />
       </button>

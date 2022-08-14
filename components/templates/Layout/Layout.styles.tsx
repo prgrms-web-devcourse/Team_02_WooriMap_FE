@@ -19,6 +19,17 @@ export const PageContainer = styled.div`
   color: #000000bb;
 
   font-family: 'Noto Sans KR', sans-serif;
+
+  ::-webkit-scrollbar {
+    width: 0.5rem;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${({ theme }) => theme.colors.pink};
+    border-radius: 0.25rem;
+  }
+  ::-webkit-scrollbar-track {
+    background-color: white;
+  }
 `;
 
 export const Container = styled.div`

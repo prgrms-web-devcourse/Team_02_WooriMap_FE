@@ -70,6 +70,7 @@ export const SearchBarForm = styled.form`
 
   input[type='text']::placeholder {
     color: lightgray;
+    font-size: 0.7rem;
   }
 
   button {
@@ -108,15 +109,18 @@ export const FilteredTagList = styled.div`
 
   width: 100%;
   min-height: 2rem;
+  max-height: 10rem;
 
   padding: 0.8rem;
 
   border-radius: 0.3rem;
-  border-bottom-left-radius: 1rem;
-  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 
-  background-color: ${({ theme }) => theme.colors.white};
+  background: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.boxShadow.molecule};
+
+  overflow: auto;
 `;
 
 export const FilteredTag = styled.div`
