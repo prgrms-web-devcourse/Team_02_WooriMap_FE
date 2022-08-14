@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProfileTemplate, CoupleInviteForm } from 'components';
 import { getCoupleCode } from 'apis/couple';
-import { withAuthRoute } from 'hocs';
+import { withNotCoupleRoute } from 'hocs';
 import { useAxiosInstance } from 'hooks';
 
 function CoupleInvite() {
@@ -10,10 +10,11 @@ function CoupleInvite() {
 
   useEffect(() => {
     (async () => {
-      const {
-        data: { code: coupleCode },
-      } = await getCoupleCode({ instance });
-      setCode(coupleCode);
+      const response = await getCoupleCode({ instance });
+
+      if (response.code) {
+        setCode(response.code);
+      }
     })();
   }, []);
 
@@ -24,4 +25,4 @@ function CoupleInvite() {
   );
 }
 
-export default withAuthRoute(CoupleInvite);
+export default withNotCoupleRoute(CoupleInvite);
