@@ -37,6 +37,7 @@ export { ProfileUpload } from 'components/molecules/ProfileUpload';
 export { Toast } from 'components/molecules/Toast';
 export { TagList } from 'components/molecules/TagList';
 export { MetaTag } from 'components/molecules/MetaTag';
+export { Modal } from 'components/molecules/Modal';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';
@@ -50,6 +51,7 @@ export { UserProfile } from 'components/organisms/UserProfile';
 export { CoupleInviteForm } from 'components/organisms/CoupleInviteForm';
 export { ProfileEditForm } from 'components/organisms/ProfileEditForm';
 export { Notification } from 'components/organisms/Notification';
+export { PostBody } from 'components/organisms/PostBody';
 
 // templates
 export { Layout } from 'components/templates/Layout';
