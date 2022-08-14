@@ -16,6 +16,8 @@ export const errorState: IPostValidationState = {
   title: '',
   imageUrls: '',
   tags: '',
+  latitude: '',
+  longitude: '',
 };
 
 function PostEdit() {
@@ -31,7 +33,7 @@ function PostEdit() {
     console.log(res);
   };
 
-  const { values, handleChange, handleSubmit, removeAll, setAllState } =
+  const { values, errors, handleChange, handleSubmit, removeAll, setAllState } =
     useForm<IPostFormState, IPostValidationState, IPostValidationProps>({
       initialValues: postInitialValue,
       errorState,
@@ -88,6 +90,7 @@ function PostEdit() {
           }}
           handleChange={handleChange}
           deleteAll={removeAll}
+          errorState={errors}
         />
       }
     />

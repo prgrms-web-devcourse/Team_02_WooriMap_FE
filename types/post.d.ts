@@ -14,6 +14,8 @@ export interface IPostValidationProps {
   title: string;
   imageUrls: Array<string>;
   tags: Array<ITag>;
+  latitude: number;
+  longitude: number;
 }
 
 export interface IPostOnChangeProps {
@@ -26,6 +28,8 @@ export interface IPostValidationState {
   title: string;
   imageUrls: string;
   tags: string;
+  latitude: string;
+  longitude: string;
 }
 
 export interface ISetValueState {
@@ -49,11 +53,13 @@ interface IFormStateProps {
 
 export interface IFormImageProps extends IFormStateProps {
   imageUrls: Array<string>;
+  error: string;
 }
 
 export interface IFormInputProps extends IFormStateProps {
   postState: IPostFormState;
   deleteAll: (name: string) => void;
+  errorState: IPostValidationState;
 }
 
 export interface IPostDetailProps {

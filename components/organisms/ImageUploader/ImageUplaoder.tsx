@@ -9,7 +9,11 @@ import * as S from './ImageUploader.styles';
 type IImages = Array<Omit<IImageSource, 'isSelected'>>;
 type IImage = Omit<IImageSource, 'isSelected'>;
 
-export function ImageUploader({ imageUrls, handleChange }: IFormImageProps) {
+export function ImageUploader({
+  imageUrls,
+  handleChange,
+  error,
+}: IFormImageProps) {
   const initialState: IImages = imageUrls?.map((src: string) => ({
     key: nanoid(),
     src,
@@ -46,6 +50,7 @@ export function ImageUploader({ imageUrls, handleChange }: IFormImageProps) {
 
   return (
     <S.Container>
+      {error && <div style={{ color: 'red' }}>{error}</div>}
       <UploadArea onUploadImage={onUploadImage} />
       <ImageList
         type="upload"

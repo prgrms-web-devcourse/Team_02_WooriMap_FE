@@ -23,6 +23,8 @@ export const errorState: IPostValidationState = {
   title: '',
   imageUrls: '',
   tags: '',
+  latitude: '',
+  longitude: '',
 };
 
 function PostCreate() {
@@ -42,7 +44,7 @@ function PostCreate() {
     }
   };
 
-  const { values, handleChange, handleSubmit, removeAll } = useForm<
+  const { values, errors, handleChange, handleSubmit, removeAll } = useForm<
     IPostFormState,
     IPostValidationState,
     IPostValidationProps
@@ -61,6 +63,7 @@ function PostCreate() {
         <ImageUploader
           imageUrls={values.imageUrls as Array<string>}
           handleChange={handleChange}
+          error={errors.imageUrls}
         />
       }
       contentSection={
@@ -75,6 +78,7 @@ function PostCreate() {
           }}
           handleChange={handleChange}
           deleteAll={removeAll}
+          errorState={errors}
         />
       }
     />

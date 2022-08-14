@@ -63,6 +63,20 @@ class FormValidation {
     return '';
   };
 
+  validateLatitude = ({ latitude }: { latitude: number }): string => {
+    if (latitude === 0) return '위도를 설정해주세요!';
+    if (latitude < 0 || latitude > 90) return '올바른 위도를 설정해주세요!';
+
+    return '';
+  };
+
+  validateLongitude = ({ longitude }: { longitude: number }): string => {
+    if (longitude === 0) return '경도를 설정해주세요!';
+    if (longitude < 0 || longitude > 180) return '올바른 경도를 설정해주세요!';
+
+    return '';
+  };
+
   validateEmail = ({ email }: { email: string }) => {
     if (!email) return '이메일을 입력해주세요';
 
@@ -108,20 +122,34 @@ export const postValidation = ({
   title,
   imageUrls,
   tags,
+  latitude,
+  longitude,
 }: IPostValidationProps) => {
   const errors: IPostValidationState = {
     title: '',
     imageUrls: '',
     tags: '',
+    latitude: '',
+    longitude: '',
   };
 
-  const { validateTitle, validateImages, validateTags } = new FormValidation();
+  const {
+    validateTitle,
+    validateImages,
+    validateTags,
+    validateLatitude,
+    validateLongitude,
+  } = new FormValidation();
 
   errors.title = validateTitle({ title });
 
   errors.imageUrls = validateImages({ imageUrls });
 
   errors.tags = validateTags({ tags });
+
+  errors.latitude = validateLatitude({ latitude });
+
+  errors.longitude = validateLongitude({ longitude });
 
   return errors;
 };
