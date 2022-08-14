@@ -110,9 +110,8 @@ export const InfoMessageWrapper = styled.div`
 `;
 
 export const ErrorMessage = styled.div`
-  position: absolute;
-  top: 22.5rem;
-  left: 9.2rem;
+  width: 100%;
+  text-align: center;
 
   color: #f44336;
   font-size: 0.7rem;
