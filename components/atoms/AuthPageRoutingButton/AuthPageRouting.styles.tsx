@@ -5,7 +5,7 @@ export const Container = styled.div`
   text-align: center;
 
   color: ${({ theme }) => theme.colors.gray};
-  font-size: 1rem;
+  font-size: 0.8rem;
   & > a {
     color: #ff8f8f;
 

@@ -53,27 +53,29 @@ export function SignUpForm() {
     <FormBackground id="signup" onSubmit={handleSubmit} noValidate>
       <S.Container>
         <AuthLogoImage />
-        {textInputsProps.map((input: ITextInputProps) => {
-          const { name } = input;
+        <S.ContentContainer>
+          {textInputsProps.map((input: ITextInputProps) => {
+            const { name } = input;
 
-          return (
-            // eslint-disable-next-line react/jsx-key
-            <TextInputWithLabel
-              {...input}
-              {...parseSignUpFormValues({
-                handleChange,
-                removeAll,
-                value: values[name as keyof IInputState] as string,
-                error: errors[name as keyof IInputState] as string,
-              })}
-            />
-          );
-        })}
-        <S.FinalValidationError>{errors.finalError}</S.FinalValidationError>
-        <SubmitButton id="signup" size="large" variant="grayOutlined">
-          회원가입
-        </SubmitButton>
-        <AuthPageRoutingButton type="signup" />
+            return (
+              // eslint-disable-next-line react/jsx-key
+              <TextInputWithLabel
+                {...input}
+                {...parseSignUpFormValues({
+                  handleChange,
+                  removeAll,
+                  value: values[name as keyof IInputState] as string,
+                  error: errors[name as keyof IInputState] as string,
+                })}
+              />
+            );
+          })}
+          <S.FinalValidationError>{errors.finalError}</S.FinalValidationError>
+          <SubmitButton id="signup" size="large" variant="grayOutlined">
+            회원가입
+          </SubmitButton>
+          <AuthPageRoutingButton type="signup" />
+        </S.ContentContainer>
       </S.Container>
     </FormBackground>
   );

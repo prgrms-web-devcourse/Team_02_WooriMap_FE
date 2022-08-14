@@ -1,7 +1,7 @@
 import React, { FormHTMLAttributes } from 'react';
 import Image from 'next/image';
 import { FormBackground } from 'components';
-import mainLogoVertical from 'public/image/main-logo-vertical.svg';
+import { logo } from 'public/image';
 import * as S from './AuthPageTemplate.styles';
 
 interface IProps extends FormHTMLAttributes<HTMLFormElement> {
@@ -19,25 +19,23 @@ function AuthPageTemplate({
   ...props
 }: Partial<IProps>) {
   return (
-    <FormBackground {...props} style={{ margin: '2rem auto', padding: '5rem' }}>
-      <S.FlexWrapper justify="center">
-        <Image
-          src={mainLogoVertical}
-          alt="main-logo"
-          width={240}
-          height={145}
-        />
-      </S.FlexWrapper>
-      {controls && (
-        <S.Wrapper>
-          <S.InputWrapper margin="2rem 0">{controls}</S.InputWrapper>
-        </S.Wrapper>
-      )}
-      <S.ErrorMessage>{error}</S.ErrorMessage>
-      <S.FooterWrapper margin="7rem 0 0 0">
-        {trigger}
-        {infoMessage}
-      </S.FooterWrapper>
+    <FormBackground {...props}>
+      <S.AuthFlexWrapper justify="center" flexDirection="column" align="center">
+        <Image src={logo} alt="main-logo" width={180} />
+        <S.LogoTitle>WooriMap</S.LogoTitle>
+      </S.AuthFlexWrapper>
+      <S.ContentWrapper>
+        {controls && (
+          <S.Wrapper>
+            <S.InputWrapper margin="3rem 3rem">{controls}</S.InputWrapper>
+          </S.Wrapper>
+        )}
+        <S.ErrorMessage>{error}</S.ErrorMessage>
+        <S.FooterWrapper>
+          {trigger}
+          {infoMessage}
+        </S.FooterWrapper>
+      </S.ContentWrapper>
     </FormBackground>
   );
 }

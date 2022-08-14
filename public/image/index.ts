@@ -2,5 +2,6 @@ import notificationIcon from './notification.svg';
 import loginIcon from './login.svg';
 import logoutIcon from './logout.svg';
 import headerLogo from './headerLogo.png';
+import logo from './logo.svg';
 
-export { notificationIcon, loginIcon, logoutIcon, headerLogo };
+export { notificationIcon, loginIcon, logoutIcon, headerLogo, logo };
