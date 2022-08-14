@@ -70,13 +70,14 @@ function useNotification(): ReturnTypes {
 
   /**
    * 알림 이벤트 수신 부분
-   * TODO: 알림 받을 시, setNotification으로 가장 위에 배치할 것
+   * NOTE: 알림 id가 중첩될 수 있으므로, 해당 현상 발생시, 이 부분을 확인할 것
    */
   useEffect(() => {
     if (!source) return;
 
     source.addEventListener('sse', (e) => {
-      console.log('sse:', e);
+      const data = JSON.parse(e.data) as NotificationResponseType;
+      setNotifications((prev) => [{ ...data, isRead: false }, ...prev]);
     });
   }, [source]);
 
