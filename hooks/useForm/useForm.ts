@@ -58,12 +58,10 @@ function useForm<T, V, K>({
 
     const newErrors = validateValues(stateRequiresCheckValidation);
 
-    console.log(values);
     if (Object.values(newErrors).every((x) => !x)) {
       onSubmit({ values: trimValues(values) as T, setErrors });
     }
 
-    console.log(newErrors);
     setErrors(newErrors);
 
     setIsLoading(false);
