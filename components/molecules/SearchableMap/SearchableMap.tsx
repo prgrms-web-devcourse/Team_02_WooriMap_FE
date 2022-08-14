@@ -65,6 +65,18 @@ export function SearchableMap({
           isMain={false}
           onCreate={setMap}
           center={{ ...initialMapCenter }}
+          onClick={(_t, mouseEvent) => {
+            const postion: ICoordinates = {
+              latitude: mouseEvent.latLng.getLat(),
+              longitude: mouseEvent.latLng.getLng(),
+            };
+            const content = '';
+
+            onClickMarker()({
+              position: postion,
+              content,
+            });
+          }}
         >
           <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
         </Map>
