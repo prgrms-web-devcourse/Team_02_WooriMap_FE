@@ -15,7 +15,11 @@ export function TagInput({ allTags, onEnterType, ...props }: ITagInputProps) {
   const [options, setOptions] = useState<ITag[]>([]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newInputValue = e.target.value;
+    let newInputValue = e.target.value;
+    if (newInputValue.slice(-1) === '\\') {
+      newInputValue = newInputValue.slice(0, -1);
+      return;
+    }
     if (newInputValue.length > 10) return;
     if (newInputValue.length === 0) {
       setOptions([]);
