@@ -54,3 +54,5 @@ export const IconContainer = styled.div`
   bottom: 0;
   right: 0;
 `;
+
+export const CircularIconContainer = styled.div``;
