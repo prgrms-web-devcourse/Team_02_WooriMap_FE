@@ -28,9 +28,7 @@ function PostEdit() {
   const [loading, setLoading] = useState(true);
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
-    const res = await updatePost({ instance: axiosInstance, data: values, id });
-
-    console.log(res);
+    await updatePost({ instance: axiosInstance, data: values, id });
   };
 
   const { values, errors, handleChange, handleSubmit, removeAll, setAllState } =
@@ -64,7 +62,7 @@ function PostEdit() {
         router.push('/404');
       }
     })();
-  }, [router, setAllState]);
+  }, [axiosInstance, id, router, setAllState]);
 
   // 현재 값이 유효하지 않으면 로딩 화면 ( 스켈레톤 계획 )
   if (loading) return null;
