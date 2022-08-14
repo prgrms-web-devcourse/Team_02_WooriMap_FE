@@ -8,7 +8,6 @@ export const FormBackground = styled.form`
   height: 40rem;
 
   position: relative;
-  top: 2rem;
 
   border-radius: 1rem;
 
