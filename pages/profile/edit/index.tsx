@@ -3,9 +3,10 @@ import userState from 'core';
 import { IUserProps } from 'types';
 import { useAxiosInstance, useRecoilValueAfterMount } from 'hooks';
 import { ProfileTemplate, ProfileEditForm } from 'components';
+import { withAuthRoute } from 'hocs';
 import { getCoupleInfo } from 'apis/couple';
 
-export default function ProfileEdit() {
+function ProfileEdit() {
   const instance = useAxiosInstance();
   const currentUserState = useRecoilValueAfterMount(userState, null);
   const [user, setUser] = useState<IUserProps | null>(null);
@@ -58,3 +59,5 @@ export default function ProfileEdit() {
     </ProfileTemplate>
   );
 }
+
+export default withAuthRoute(ProfileEdit);

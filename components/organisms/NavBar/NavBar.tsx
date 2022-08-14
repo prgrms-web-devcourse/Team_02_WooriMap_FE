@@ -26,7 +26,7 @@ export function NavBar() {
   const handleLogout = async () => {
     try {
       await logout();
-      router.push('/auth/signin');
+      router.push('/auth/signup');
     } catch (error) {
       console.error(error);
     }

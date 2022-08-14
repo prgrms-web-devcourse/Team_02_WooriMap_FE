@@ -6,6 +6,7 @@ import {
   IPostValidationProps,
   IPostFormState,
 } from 'types';
+import { withCoupleRoute } from 'hocs';
 import { createPost } from 'apis/post';
 
 export const initialValues: IPostFormState = {
@@ -24,7 +25,7 @@ export const errorState: IPostValidationState = {
   tags: '',
 };
 
-export default function PostCreate() {
+function PostCreate() {
   const instance = useAxiosInstance();
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
@@ -79,3 +80,5 @@ export default function PostCreate() {
     />
   );
 }
+
+export default withCoupleRoute(PostCreate);

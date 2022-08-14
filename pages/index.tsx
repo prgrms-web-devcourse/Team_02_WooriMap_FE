@@ -7,6 +7,7 @@ import {
   IThumbnailCardProps,
   ICoupleProfileProps,
 } from 'types';
+import { withCoupleRoute } from 'hocs';
 import LocalStorage from 'utils/storage';
 
 function Home() {
@@ -158,4 +159,4 @@ function Home() {
     />
   );
 }
-export default Home;
+export default withCoupleRoute(Home);

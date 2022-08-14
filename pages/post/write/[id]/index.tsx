@@ -9,6 +9,7 @@ import {
   IInitialPostState,
 } from 'types';
 import { postValidation, parsePostData, postInitialValue } from 'utils';
+import { withCoupleRoute } from 'hocs';
 import { updatePost, getOnePost } from 'apis/post';
 
 export const errorState: IPostValidationState = {
@@ -17,7 +18,7 @@ export const errorState: IPostValidationState = {
   tags: '',
 };
 
-export default function PostEdit() {
+function PostEdit() {
   const router = useRouter();
   const { id } = router.query as { id: string };
   const axiosInstance = useAxiosInstance();
@@ -92,3 +93,5 @@ export default function PostEdit() {
     />
   );
 }
+
+export default withCoupleRoute(PostEdit);

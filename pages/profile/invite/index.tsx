@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ProfileTemplate, CoupleInviteForm } from 'components';
 import { getCoupleCode } from 'apis/couple';
+import { withAuthRoute } from 'hocs';
 import { useAxiosInstance } from 'hooks';
 
 function CoupleInvite() {
@@ -23,4 +24,4 @@ function CoupleInvite() {
   );
 }
 
-export default CoupleInvite;
+export default withAuthRoute(CoupleInvite);
