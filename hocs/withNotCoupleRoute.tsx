@@ -17,10 +17,6 @@ function withNotCoupleRoute<P>(Component: FunctionComponent<P>) {
         return;
       }
 
-      console.log(user);
-      /**
-       * TODO: 페이지 완성 뒤 다른 페이지로 이동 필요
-       */
       if (user.isCouple) {
         router.push('/profile');
       }

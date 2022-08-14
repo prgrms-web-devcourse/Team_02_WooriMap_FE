@@ -12,6 +12,7 @@ import { useAxiosInstance } from 'hooks';
 import { LoginFormDataTypes, ILoginResponse } from 'types/auth';
 import { IApiResponse } from 'types/api';
 import LocalStorage from 'utils/storage';
+import { withSignInSignOut } from 'hocs';
 import userState from 'core';
 import { withSigninSignout } from 'hocs';
 
@@ -114,4 +115,8 @@ function Signin() {
   );
 }
 
+<<<<<<< HEAD
 export default withSigninSignout(Signin);
+=======
+export default withSignInSignOut(Signin);
+>>>>>>> caf38be (feat: 로그인 회원가입 회원이면 접근 하지 못하게 변경)
