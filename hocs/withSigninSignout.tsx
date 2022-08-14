@@ -15,11 +15,11 @@ function witihSigninSignout<P>(Component: FunctionComponent<P>) {
 
     useEffect(() => {
       if (!mounted) return;
-      if (user && !user.isCouple) {
-        router.push('/profile');
+      if (user && user.isCouple) {
+        router.push('/');
         return;
       }
-      router.push('/');
+      router.push('/profile');
     }, [mounted, router, user]);
 
     if (!(mounted && !user)) return null;
