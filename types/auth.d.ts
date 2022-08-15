@@ -17,7 +17,7 @@ export type LoginFormDataTypes = Pick<User, 'email' | 'password'>;
 
 export type UserResponseType = Pick<
   User,
-  'id' | 'email' | 'imageUrl' | 'nickName' | 'isCouple'
+  'email' | 'imageUrl' | 'nickName' | 'isCouple'
 >;
 
 export interface ILoginResponse extends ITokenSet {
