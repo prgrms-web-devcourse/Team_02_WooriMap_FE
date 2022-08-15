@@ -8,18 +8,21 @@ interface ITextInputProps
   value: string | Array<ITag>;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
   handleChange?: HandleChangeTypes;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 export function TextInput({
   value,
   onClickButton,
   handleChange,
+  onKeyPress = () => {},
   ...props
 }: ITextInputProps) {
   return (
     <S.TextInputWrapper>
       <S.TextInput
         value={value as string}
+        onKeyPress={onKeyPress}
         onChange={(e) => handleChange?.({ e })}
         {...props}
       />
