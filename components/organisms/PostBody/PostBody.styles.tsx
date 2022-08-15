@@ -112,6 +112,9 @@ export const PostContent = styled.div`
   font-size: 0.8rem;
   line-height: 1.7rem;
 
+  white-space: pre-wrap;
+  word-wrap: break-word;
+
   overflow: auto;
 `;
 
