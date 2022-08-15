@@ -20,19 +20,21 @@ export function PostWrite({
 
   return (
     <S.Container>
-      {inputList.map((item) => (
-        <TextInputWithLabel
-          key={item.id}
-          text={item.text}
-          name={item.name}
-          placeholder={item?.placeholder}
-          value={postState[item.name as keyof IPostWrite] as string}
-          handleChange={handleChange}
-          variant={item.variant}
-          deleteAll={deleteAll}
-          error={errorState[item.name as keyof IPostValidationState]}
-        />
-      ))}
+      <S.InputContainer>
+        {inputList.map((item) => (
+          <TextInputWithLabel
+            key={item.id}
+            text={item.text}
+            name={item.name}
+            placeholder={item?.placeholder}
+            value={postState[item.name as keyof IPostWrite] as string}
+            handleChange={handleChange}
+            variant={item.variant}
+            deleteAll={deleteAll}
+            error={errorState[item.name as keyof IPostValidationState]}
+          />
+        ))}
+      </S.InputContainer>
       <SearchableMap
         position={position}
         handleChange={handleChange}

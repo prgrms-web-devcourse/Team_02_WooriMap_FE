@@ -10,7 +10,8 @@ export const CalendarInputWrapper = styled.div`
 
   padding: 0.5rem 0.75rem;
   width: 100%;
-  height: 2.5rem;
+  height: fit-content;
+  margin-bottom: 0.5rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.boxShadow.atom};
@@ -30,8 +31,7 @@ export const CalendarInput = styled.input`
 export const CalendarButton = styled.button`
   position: absolute;
   top: 0.3rem;
-  right: 0.1rem;
-  bottom: 0.1rem;
+  right: 0.3rem;
 
   z-index: 0;
 

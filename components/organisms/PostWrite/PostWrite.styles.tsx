@@ -11,3 +11,7 @@ export const Container = styled.section`
 
   padding-bottom: 1.5rem;
 `;
+
+export const InputContainer = styled.div`
+  height: 50rem;
+`;
