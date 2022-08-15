@@ -31,7 +31,7 @@ function ProfileUpload(
   { preview, onUpload, onChange }: IProfileUploadProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ) {
-  const instance = useAxiosInstance();
+  const imageInstance = useAxiosInstance(process.env.NEXT_PUBLIC_IMAGE_API_URL);
 
   return (
     <>
@@ -43,7 +43,7 @@ function ProfileUpload(
         type="file"
         accept=".jpg, .jpeg, .png, .gif, .bmp"
         ref={ref}
-        onChange={(e) => onChange({ e, instance })}
+        onChange={(e) => onChange({ e, instance: imageInstance })}
       />
     </>
   );
