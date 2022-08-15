@@ -30,18 +30,19 @@ function Home() {
   });
 
   useEffect(() => {
-    const getCoupleData = async () => {
+    (async () => {
       try {
-        const data = await instance.get<IApiResponse<ICoupleProfileProps>>(
-          '/couples',
-        );
-        const newCoupleData = data.data.data;
+        const newCoupleData = await instance
+          .get<IApiResponse<ICoupleProfileProps>>('/couples')
+          .then((response) => response.data.data);
+
+        setCoupleData(newCoupleData);
+
         return newCoupleData;
       } catch (error) {
         return Promise.reject(error);
       }
-    };
-    getCoupleData().then((newCoupleData) => setCoupleData(newCoupleData));
+    })();
   }, [instance]);
 
   // 지도 첫 렌더링 중심점을 잡는 로직
