@@ -10,6 +10,7 @@ import {
 import { withCoupleRoute } from 'hocs';
 import LocalStorage from 'utils/storage';
 import { IPostMain } from 'types/post';
+import { getLastIdQuery, getTagIdQuery, getTitleQuery } from 'utils/pages';
 
 function Home() {
   const [postFilter, setPostFilter] = useState<IPostFilterProps | null>(null);
@@ -55,14 +56,14 @@ function Home() {
     setPostFilter(newPostFilter);
   }, []);
 
+  // ANCHOR: 이 함수가 하는 역할이 무엇인가?
   const getFilteredPost = async (newPostFilter: IPostFilterProps) => {
     try {
       const { tagIds, title: titleFilter } = newPostFilter.postFilter;
-      const tagIdParams = tagIds.length
-        ? `tagIds=${tagIds.map((tagId) => `${tagId},`.slice(0, -1))}`
-        : '';
-      const titleParams = titleFilter ? `&title=${titleFilter}` : '';
-      const lastPostIdParams = lastPostId ? `&lastPostId=${lastPostId}` : '';
+
+      const tagIdParams = getTagIdQuery(tagIds);
+      const titleParams = getTitleQuery(titleFilter);
+      const lastPostIdParams = getLastIdQuery(lastPostId);
 
       const data = await instance
         .get<IApiResponse<IPostMain[]>>(
