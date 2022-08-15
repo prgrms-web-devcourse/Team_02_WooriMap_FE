@@ -17,9 +17,6 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
         router.push('/auth/signin');
         return;
       }
-      /**
-       * TODO: 페이지 완성 뒤 다른 페이지로 이동 필요
-       */
 
       if (!user.isCouple && pathname !== '/profile/invite') {
         router.push('/profile');
@@ -29,11 +26,10 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
       if (user.isCouple && pathname === '/profile/invite') {
         router.push('/');
       }
-    }, [mounted, router, user]);
+    }, [mounted, pathname, router, user]);
 
-    if (!(mounted && user)) return null;
-
-    return <Component {...props} />;
+    if (user?.isCouple) <Component {...props} />;
+    return null;
   };
 }
 

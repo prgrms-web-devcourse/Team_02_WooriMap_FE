@@ -20,8 +20,8 @@ function withAuth<P>(Component: FunctionComponent<P>) {
       }
     }, [mounted, router, user]);
 
-    if (!(mounted && user)) return null;
-    return <Component {...props} />;
+    if (user) <Component {...props} />;
+    return null;
   };
 }
 
