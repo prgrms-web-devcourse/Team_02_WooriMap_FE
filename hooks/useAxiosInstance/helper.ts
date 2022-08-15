@@ -1,13 +1,24 @@
 import LocalStorage from 'utils/storage';
 import { IApiResponse } from 'types/api';
 import { ITokenSet, IRetryAxiosInstanceConfig } from 'types/auth';
-import { AxiosInstance } from 'axios';
+import axios, { AxiosRequestHeaders, AxiosResponse } from 'axios';
 
-export async function getNewAccessToken(instance: AxiosInstance) {
+// ANCHOR: 해당 함수는 클라이언트에서만 사용이 가능함
+export async function getNewAccessToken() {
   try {
-    const accessToken = await instance
-      .post<IApiResponse<ITokenSet>>('/auth/token')
-      .then((response) => response.data.data.accessToken);
+    const headers: AxiosRequestHeaders = {
+      Authorization: `Bearer ${LocalStorage.getItem('accessToken', '')}`,
+    };
+
+    const response: AxiosResponse<IApiResponse<ITokenSet>> = await axios({
+      method: 'POST',
+      url: `${process.env.NEXT_PUBLIC_BASE_URL}/auth/token`,
+      withCredentials: true,
+      headers,
+    });
+
+    const { accessToken } = response.data.data;
+
     return accessToken;
   } catch (error) {
     return Promise.reject(error);
