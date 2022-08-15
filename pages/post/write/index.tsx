@@ -8,6 +8,7 @@ import {
 } from 'types';
 import { withCoupleRoute } from 'hocs';
 import { createPost } from 'apis/post';
+import { useRouter } from 'next/router';
 
 export const initialValues: IPostFormState = {
   title: '',
@@ -30,9 +31,12 @@ export const errorState: IPostValidationState = {
 function PostCreate() {
   const instance = useAxiosInstance();
 
+  const router = useRouter();
+
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
       await createPost({ data: values, instance });
+      router.push('/');
     } catch (error: unknown) {
       console.error(error);
     }

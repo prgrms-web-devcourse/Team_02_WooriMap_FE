@@ -28,7 +28,12 @@ function PostEdit() {
   const [loading, setLoading] = useState(true);
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
-    await updatePost({ instance: axiosInstance, data: values, id });
+    try {
+      await updatePost({ instance: axiosInstance, data: values, id });
+      router.push('/');
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const {
