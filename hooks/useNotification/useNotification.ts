@@ -8,7 +8,9 @@ type ReturnTypes = [INotification[], (notificationId: number) => void];
 
 function useNotification(): ReturnTypes {
   const source = useSSE();
-  const instance = useAxiosInstance('https://noti.woorimap.p-e.kr/api');
+  const instance = useAxiosInstance(
+    process.env.NEXT_PUBLIC_NOTIFICATION_API_URL,
+  );
   const [notifications, setNotifications] = useState<INotification[]>([]);
 
   // ANCHOR: 읽지 않은 알림을 받아온다.
