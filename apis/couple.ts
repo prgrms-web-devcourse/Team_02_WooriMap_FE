@@ -35,7 +35,7 @@ export function getLinkCouple({
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error);
       return {
         data: {
           accessToken: null,
@@ -53,7 +53,7 @@ export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
       return response.data;
     })
     .catch((error) => {
-      console.log(error);
+      console.error(error);
       return {
         data: {
           accessToken: null,
@@ -69,9 +69,7 @@ export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
     .post('/couples/invite')
     .then((response) => response.data.data)
     .catch((error) => {
-      const { response } = error;
-
-      console.error(response.message);
+      console.error(error);
 
       return {
         code: null,
@@ -88,9 +86,7 @@ export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
       return response.data;
     })
     .catch((error) => {
-      const { response } = error;
-
-      console.error(response.data.message);
+      console.error(error);
 
       return {
         data: null,

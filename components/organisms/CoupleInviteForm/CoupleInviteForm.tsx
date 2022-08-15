@@ -71,7 +71,7 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
     e.preventDefault();
   };
 
-  console.log(error);
+  console.error(error);
 
   return (
     <S.CoupleInviteFormBackground onSubmit={onSubmit}>

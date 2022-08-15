@@ -27,7 +27,7 @@ export function useImage({ image }: { image: string | null }) {
         setPreview(data);
       }
     } catch (error: unknown) {
-      console.log(error);
+      console.error(error);
     }
   };
 

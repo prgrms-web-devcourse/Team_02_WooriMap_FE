@@ -32,13 +32,7 @@ function PostCreate() {
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
-      const response = await createPost({ data: values, instance });
-
-      if (response) {
-        console.log(response);
-      } else {
-        console.log('정상 성공!');
-      }
+      await createPost({ data: values, instance });
     } catch (error: unknown) {
       console.error(error);
     }
