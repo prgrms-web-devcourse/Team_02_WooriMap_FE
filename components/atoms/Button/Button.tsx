@@ -39,7 +39,7 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
 `;
 
 const pinkButtonStyle = ({ theme }: IThemeProps) => css`
-  width: 19rem !important;
+  width: 19rem;
   height: 4rem;
   outline: 0;
   color: ${theme.colors.white};
