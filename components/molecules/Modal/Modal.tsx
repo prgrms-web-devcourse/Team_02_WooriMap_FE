@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import { HTMLAttributes, useEffect, useMemo } from 'react';
+import { HTMLAttributes, useEffect, useRef } from 'react';
 import { useClickAway } from 'hooks';
 import * as S from './Modal.styles';
 
@@ -10,16 +10,18 @@ interface IModalProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export function Modal({ isVisible, onClose, children, ...props }: IModalProps) {
+  const portal = useRef<HTMLDivElement | null>(null);
   const ref = useClickAway<HTMLDivElement>(() => {
     onClose();
   });
-  const element = useMemo(() => document.createElement('div'), []);
+
   useEffect(() => {
-    document.body.appendChild(element);
-    return () => {
-      document.body.removeChild(element);
-    };
+    if (portal.current) return;
+    portal.current = document.createElement('div');
+    document.body.appendChild(portal.current);
   });
+
+  if (!portal.current) return <div />;
 
   return ReactDOM.createPortal(
     <S.BackgroundDim isVisible={isVisible}>
@@ -27,6 +29,6 @@ export function Modal({ isVisible, onClose, children, ...props }: IModalProps) {
         {children}
       </S.ModalContainer>
     </S.BackgroundDim>,
-    element,
+    portal.current,
   );
 }

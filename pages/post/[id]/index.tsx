@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { PostTemplate, ImageViewer } from 'components';
+import { PostTemplate, ImageViewer, PostBody } from 'components';
 import { ITag, ICoordinates } from 'types';
 import { useRouter } from 'next/router';
-import { PostBody } from 'components/organisms/PostBody';
 import { useAxiosInstance } from '@hooks/useAxiosInstance';
 import { withCoupleRoute } from 'hocs';
 import { getOnePost, deletePost } from 'apis/post';

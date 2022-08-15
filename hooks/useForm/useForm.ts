@@ -21,6 +21,7 @@ function useForm<T, V, K>({
     finalError: '',
   });
   const [isLoading, setIsLoading] = useState(false);
+  const [isChanged, setChanged] = useState<boolean>(false);
 
   const setStateWhenChanged = useCallback(({ name, value }: ISetValueState) => {
     if (name === 'position') {
@@ -35,6 +36,7 @@ function useForm<T, V, K>({
   }, []);
 
   const handleChange = ({ e, name, value }: IPostOnChangeProps) => {
+    setChanged(true);
     if (name && value) {
       setStateWhenChanged({ name, value });
     } else if (e) {
@@ -77,6 +79,7 @@ function useForm<T, V, K>({
     errors,
     setErrors,
     isLoading,
+    isChanged,
     handleChange,
     handleSubmit,
     removeAll,

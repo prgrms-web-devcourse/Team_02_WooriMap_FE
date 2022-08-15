@@ -31,13 +31,20 @@ function PostEdit() {
     await updatePost({ instance: axiosInstance, data: values, id });
   };
 
-  const { values, errors, handleChange, handleSubmit, removeAll, setAllState } =
-    useForm<IPostFormState, IPostValidationState, IPostValidationProps>({
-      initialValues: postInitialValue,
-      errorState,
-      onSubmit,
-      validateValues: postValidation,
-    });
+  const {
+    values,
+    errors,
+    handleChange,
+    handleSubmit,
+    removeAll,
+    setAllState,
+    isChanged,
+  } = useForm<IPostFormState, IPostValidationState, IPostValidationProps>({
+    initialValues: postInitialValue,
+    errorState,
+    onSubmit,
+    validateValues: postValidation,
+  });
 
   useEffect(() => {
     (async () => {
@@ -75,6 +82,7 @@ function PostEdit() {
     <PostTemplate
       type="edit"
       onSubmit={handleSubmit}
+      isChanged={isChanged}
       imageSection={<ImageViewer images={imageUrls as Array<string>} />}
       contentSection={
         <PostWrite

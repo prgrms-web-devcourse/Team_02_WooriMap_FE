@@ -1,8 +1,7 @@
-import { TagList } from 'components/molecules/TagList';
+import { TagList, Modal, Button } from 'components';
 import { ITag, ICoordinates } from 'types';
 import { useState } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
-
 import * as S from './PostBody.styles';
 
 interface IPostBodyProps {
@@ -33,11 +32,21 @@ export function PostBody({
 
   const handleDeleteClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    if (!deleteConfirm) {
-      setDeleteConfirm(true);
-      return;
-    }
+    setDeleteConfirm(true);
+  };
+
+  const handleDeleteConfirm = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
     handleDelete();
+  };
+
+  const handleDeleteReject = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setDeleteConfirm(false);
+  };
+
+  const handleClickAway = () => {
+    setDeleteConfirm(false);
   };
 
   const { latitude: lat, longitude: lng } = location;
@@ -57,7 +66,7 @@ export function PostBody({
             포스트 편집
           </S.EditPostButton>
           <S.DeletePostButton size="small" onClick={handleDeleteClick}>
-            {deleteConfirm ? '삭제 확인' : '포스트 삭제'}
+            포스트 삭제
           </S.DeletePostButton>
         </S.PostControl>
       </S.Header>
@@ -75,6 +84,17 @@ export function PostBody({
           title={content}
         />
       </S.PostLocation>
+      <Modal isVisible={deleteConfirm} onClose={handleClickAway}>
+        <div>
+          정말로 삭제하실건가요?
+          <Button size="small" onClick={handleDeleteConfirm}>
+            삭제
+          </Button>
+          <Button size="small" onClick={handleDeleteReject}>
+            취소
+          </Button>
+        </div>
+      </Modal>
     </S.Container>
   );
 }

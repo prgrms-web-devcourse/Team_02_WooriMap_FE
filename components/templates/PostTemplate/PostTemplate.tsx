@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
-import { SubmitButton } from 'components';
+import { Button, SubmitButton, Modal } from 'components';
+import { useState } from 'react';
 import * as S from './PostTemplate.styles';
 
 interface IPostTemplateProps {
@@ -7,6 +8,7 @@ interface IPostTemplateProps {
   onSubmit?: (e: React.FormEvent<Element>) => Promise<void>;
   imageSection: React.ReactNode;
   contentSection: React.ReactNode;
+  isChanged?: boolean;
 }
 
 export function PostTemplate({
@@ -14,10 +16,20 @@ export function PostTemplate({
   onSubmit,
   imageSection,
   contentSection,
+  isChanged,
 }: IPostTemplateProps) {
+  const [confirmCancel, setConfirmCancel] = useState<boolean>(false);
+
   const router = useRouter();
 
-  const onCancel = () => router.back();
+  const onCancel = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    if (isChanged) {
+      setConfirmCancel(true);
+      return;
+    }
+    router.back();
+  };
 
   return (
     <S.Container onSubmit={onSubmit} id="post-write">
@@ -35,6 +47,27 @@ export function PostTemplate({
           </SubmitButton>
         </S.Wrapper>
       )}
+      <Modal
+        isVisible={confirmCancel}
+        onClose={() => {
+          setConfirmCancel(false);
+        }}
+      >
+        <div>
+          작성 내용은 저장되지 않아요! 그래도 돌아갈까요?
+          <Button size="small" onClick={() => router.back()}>
+            확인
+          </Button>
+          <Button
+            size="small"
+            onClick={() => {
+              setConfirmCancel(false);
+            }}
+          >
+            취소
+          </Button>
+        </div>
+      </Modal>
     </S.Container>
   );
 }
