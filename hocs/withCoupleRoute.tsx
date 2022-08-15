@@ -28,7 +28,7 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
       }
     }, [mounted, pathname, router, user]);
 
-    if (user?.isCouple) <Component {...props} />;
+    if (user?.isCouple) return <Component {...props} />;
     return null;
   };
 }
