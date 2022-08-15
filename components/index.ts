@@ -36,6 +36,7 @@ export { Dropdown, DropdownItem } from 'components/molecules/Dropdown';
 export { ProfileUpload } from 'components/molecules/ProfileUpload';
 export { Toast } from 'components/molecules/Toast';
 export { TagList } from 'components/molecules/TagList';
+export { MetaTag } from 'components/molecules/MetaTag';
 
 // organisms
 export { LoggedInSection } from 'components/molecules/LoggedInSection';

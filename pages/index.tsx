@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MainPageTemplate } from 'components';
+import { MainPageTemplate, MetaTag } from 'components';
 import { useAxiosInstance, useGeolocation } from 'hooks';
 import {
   IApiResponse,
@@ -151,12 +151,15 @@ function Home() {
   }, [postFilter]);
 
   return (
-    <MainPageTemplate
-      coupleData={coupleData}
-      postList={postList || []}
-      coordinate={{ latitude: lat, longitude: lng }}
-      handlePostFilter={handlePostFilter}
-    />
+    <>
+      <MetaTag title="우리맵 메인 페이지" />
+      <MainPageTemplate
+        coupleData={coupleData}
+        postList={postList || []}
+        coordinate={{ latitude: lat, longitude: lng }}
+        handlePostFilter={handlePostFilter}
+      />
+    </>
   );
 }
 export default withCoupleRoute(Home);
