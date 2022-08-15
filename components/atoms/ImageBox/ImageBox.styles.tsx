@@ -17,7 +17,7 @@ export const Wrapper = styled.span<IWrapper>`
   transform: none;
   transition: filter ease-in 0.2s, transform ease-in 0.2s;
 
-  cursor: ${({ isSelected }) => isSelected || 'pointer'};
+  cursor: pointer;
 
   :hover {
     transform: ${({ size }) =>
