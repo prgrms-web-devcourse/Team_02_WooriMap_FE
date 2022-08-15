@@ -16,7 +16,7 @@ function CoupleInvite() {
         setCode(response.code);
       }
     })();
-  }, []);
+  }, [instance]);
 
   return (
     <ProfileTemplate>
