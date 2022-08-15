@@ -9,6 +9,7 @@ import {
 } from 'types';
 import { withCoupleRoute } from 'hocs';
 import LocalStorage from 'utils/storage';
+import { IPostMain } from 'types/post';
 
 function Home() {
   const [postFilter, setPostFilter] = useState<IPostFilterProps | null>(null);
@@ -64,18 +65,9 @@ function Home() {
       const lastPostIdParams = lastPostId ? `&lastPostId=${lastPostId}` : '';
 
       const data = await instance
-        .get<
-          IApiResponse<
-            {
-              postId: number;
-              title: string;
-              imageUrl: string;
-              createDateTime: string;
-              latitude: number;
-              longitude: number;
-            }[]
-          >
-        >(`/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`)
+        .get<IApiResponse<IPostMain[]>>(
+          `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
+        )
         .then((response) => response.data.data);
 
       const newPostList: IThumbnailCardProps[] = data.map(
