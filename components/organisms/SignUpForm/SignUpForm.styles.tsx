@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
-import { SubmitButton } from 'components';
 
 export const Container = styled.div`
   display: flex;

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Button, SubmitButton } from 'components';
+import { SubmitButton } from 'components';
 import * as S from './PostTemplate.styles';
 
 interface IPostTemplateProps {
