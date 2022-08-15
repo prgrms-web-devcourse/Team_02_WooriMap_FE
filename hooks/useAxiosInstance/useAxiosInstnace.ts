@@ -80,7 +80,7 @@ function useAxiosInstance() {
       instance.interceptors.request.eject(requestInterceptor);
       instance.interceptors.response.eject(responseInterceptor);
     };
-  }, [setUser]);
+  }, [router, setUser]);
   return instanceRef.current;
 }
 
