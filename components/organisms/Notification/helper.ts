@@ -8,6 +8,6 @@ export function translateActionType(
 export function changeToEllipsis(word: string, length: number) {
   if (length < 0) return word;
 
-  const trimmed = word.slice(0, length);
+  const trimmed = word.replace(/\n+/g, ' ').slice(0, length);
   return word.slice(length) ? trimmed.concat('...') : trimmed;
 }
