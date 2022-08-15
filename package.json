@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.9.3",
     "@reduxjs/toolkit": "^1.8.3",
     "@storybook/react": "^6.5.9",
+    "@types/react-lottie": "^1.2.6",
     "@typescript-eslint/eslint-plugin": "^5.30.7",
     "@typescript-eslint/parser": "^5.30.7",
     "axios": "^0.27.2",
@@ -26,6 +27,7 @@
     "react-cookie": "^4.1.1",
     "react-dom": "18.2.0",
     "react-kakao-maps-sdk": "^1.1.1",
+    "react-lottie": "^1.2.3",
     "recoil": "^0.7.4",
     "universal-cookie": "^4.0.4"
   },

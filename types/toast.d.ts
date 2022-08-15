@@ -1,6 +1,6 @@
 export interface IToast {
   key: string;
-  status: 'success' | 'error';
+  status: 'success' | 'fail';
   message: string;
   duration: number;
 }
