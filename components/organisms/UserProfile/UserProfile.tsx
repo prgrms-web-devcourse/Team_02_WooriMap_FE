@@ -14,6 +14,7 @@ export function UserProfile({
   isCouple,
   nickName,
   imageUrl,
+  email,
   ...props
 }: IUserProfileProps) {
   const [coupleInfo, setCoupleInfo] = useState<ICoupleInfo>({
@@ -25,17 +26,19 @@ export function UserProfile({
   useEffect(() => {
     if (isCouple) {
       (async () => {
-        const {
-          data: {
+        const response = await getCoupleInfo({ instance });
+
+        if (response.data) {
+          const {
             startDate,
             you: { nickName: coupleNickName },
-          },
-        } = await getCoupleInfo({ instance });
+          } = response.data;
 
-        setCoupleInfo({
-          coupleNickName,
-          startDate,
-        });
+          setCoupleInfo({
+            coupleNickName,
+            startDate,
+          });
+        }
       })();
     }
   }, [instance]);
@@ -49,6 +52,7 @@ export function UserProfile({
         coupleNickName={coupleNickName}
         startDate={startDate}
         imageUrl={imageUrl}
+        email={email}
         {...props}
       />
     );

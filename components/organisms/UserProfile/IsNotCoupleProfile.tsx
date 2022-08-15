@@ -1,5 +1,11 @@
+import userState from 'core';
 import Link from 'next/link';
+import { useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
 import { IUserProfileProps } from 'types';
+import { withdrawFromMember } from 'apis/members';
+import { useAxiosInstance } from 'hooks';
+import LocalStorage from 'utils/storage';
 import * as S from './UserProfile.styles';
 
 export function IsNotCoupleProfile({
@@ -8,6 +14,22 @@ export function IsNotCoupleProfile({
   nickName,
   ...props
 }: IUserProfileProps) {
+  const router = useRouter();
+  const instance = useAxiosInstance();
+  const setUser = useSetRecoilState(userState);
+
+  const onWithDraw = async () => {
+    if (window.confirm('회원탈퇴 하시겠습니까?')) {
+      const response = await withdrawFromMember({ instance });
+
+      if (response) {
+        LocalStorage.removeItem('accessToken');
+        setUser(null);
+        router.push('/auth/signin');
+      }
+    }
+  };
+
   return (
     <S.UserProfileBackground {...props}>
       <S.ProfileWrapper>
@@ -25,7 +47,9 @@ export function IsNotCoupleProfile({
         <Link href="/profile/edit">
           <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
         </Link>
-        <S.Withdrawal isCouple={isCouple}>회원탈퇴</S.Withdrawal>
+        <S.Withdrawal isCouple={isCouple} onClick={onWithDraw}>
+          회원탈퇴
+        </S.Withdrawal>
       </S.ButtonWrapper>
     </S.UserProfileBackground>
   );

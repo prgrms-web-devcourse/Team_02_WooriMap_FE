@@ -21,30 +21,32 @@ function ProfileEdit() {
       // 사용자가 커플일 때
       if (currentUserState.isCouple) {
         (async () => {
-          const {
-            data: {
-              startDate,
-              me: { imageUrl, nickName },
-            },
-          } = await getCoupleInfo({
+          const response = await getCoupleInfo({
             instance,
           });
 
-          setUser((prev) => ({
-            ...prev,
-            isCouple: true,
-            imageUrl,
-            nickName,
-            startDate,
-          }));
+          if (response.data) {
+            const {
+              data: { startDate },
+              me: { imageUrl, nickName },
+            } = response;
+
+            setUser((prev) => ({
+              ...prev,
+              isCouple: true,
+              imageUrl,
+              nickName,
+              startDate,
+            }));
+          }
         })();
       } else {
         // 사용자가 솔로일 때
         setUser((prev) => ({
           ...prev,
           isCouple: false,
-          imageUrl: currentUserState.imageUrl as string,
-          nickName: currentUserState.nickName as string,
+          imageUrl: currentUserState.imageUrl,
+          nickName: currentUserState.nickName,
         }));
       }
     }

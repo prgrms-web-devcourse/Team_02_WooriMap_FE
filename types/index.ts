@@ -39,5 +39,10 @@ export type {
   IEditState,
   IEditInputProps,
 } from 'types/edit';
-export type { IUserProfile, IUserProfileProps } from 'types/couple';
+export type {
+  IUserProfile,
+  IUserProfileProps,
+  IUserInfo,
+  IInvalidUserInfo,
+} from 'types/couple';
 export type { IToast } from 'types/toast';
