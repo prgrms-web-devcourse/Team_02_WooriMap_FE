@@ -24,8 +24,9 @@ export const DropDown = styled.ul`
   padding-top: 10px;
   max-height: 12rem;
   background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.boxShadow.atom};
   border: 2px solid ${({ theme }) => theme.colors.gray};
-  border-top: none;
+  border: none;
   border-radius: 0px 0px 10px 10px;
   & > li {
     display: flex;
