@@ -13,8 +13,8 @@ interface IProgressBarProps extends IToastContainerProps {
 
 export const Container = styled.div<IToastContainerProps>`
   position: absolute;
-  top: ${(props) => props.top}px;
-  right: ${(props) => props.right}px;
+  top: 30px;
+  right: 0px;
 
   z-index: 999;
 

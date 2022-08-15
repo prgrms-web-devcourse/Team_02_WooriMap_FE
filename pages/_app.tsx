@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import { ThemeProvider } from '@emotion/react';
 import { RecoilRoot } from 'recoil';
 import { Layout, MetaTag } from 'components';
+import ToastProvider from 'context/ToastContext';
 import { GlobalStyle, theme } from '../styles';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -11,7 +12,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyle />
       <RecoilRoot>
         <Layout>
-          <Component {...pageProps} />
+          <ToastProvider>
+            <Component {...pageProps} />
+          </ToastProvider>
         </Layout>
       </RecoilRoot>
     </ThemeProvider>

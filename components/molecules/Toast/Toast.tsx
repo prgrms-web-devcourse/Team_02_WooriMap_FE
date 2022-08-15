@@ -4,11 +4,9 @@ import { ToastItem } from 'components';
 interface IToastProps {
   toasts: Array<IToast>;
   removeToast: ({ key }: { key: string }) => void;
-  top: number;
-  right: number;
 }
 
-export function Toast({ toasts, removeToast, top, right }: IToastProps) {
+export function Toast({ toasts, removeToast }: IToastProps) {
   return (
     <>
       {toasts.map(({ key, message, status, duration }) => (
@@ -16,7 +14,6 @@ export function Toast({ toasts, removeToast, top, right }: IToastProps) {
           key={key}
           toast={{ message, status, duration }}
           onRemove={() => removeToast({ key })}
-          position={{ top, right }}
         />
       ))}
     </>
