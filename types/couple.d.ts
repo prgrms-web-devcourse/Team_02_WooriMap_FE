@@ -27,3 +27,15 @@ export interface IUserInfo {
 export interface IInvalidUserInfo {
   data: null;
 }
+
+export interface ICoupleInfo {
+  startDate: string;
+  me: {
+    imageUrl: string;
+    nickName: string;
+  };
+  you: {
+    imageUrl: string;
+    nickName: string;
+  };
+}
