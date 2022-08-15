@@ -97,8 +97,6 @@ export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
       };
     });
 
-  console.log(res);
-
   return res;
 }
 
