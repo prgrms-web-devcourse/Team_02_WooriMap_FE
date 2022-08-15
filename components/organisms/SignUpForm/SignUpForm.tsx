@@ -71,9 +71,23 @@ export function SignUpForm() {
             );
           })}
           <S.FinalValidationError>{errors.finalError}</S.FinalValidationError>
-          <SubmitButton id="signup" size="large" variant="grayOutlined">
-            회원가입
-          </SubmitButton>
+          <S.SubmitButtonContainer>
+            <SubmitButton
+              id="signup"
+              size="large"
+              variant="grayOutlined"
+              style={{
+                width: '100%',
+                height: '4rem',
+                borderRadius: '0.5rem',
+                background: 'linear-gradient(to top right, #ffcfcf, #ff8299)',
+                fontSize: '1rem',
+                color: 'white',
+              }}
+            >
+              회원가입
+            </SubmitButton>
+          </S.SubmitButtonContainer>
           <AuthPageRoutingButton type="signup" />
         </S.ContentContainer>
       </S.Container>

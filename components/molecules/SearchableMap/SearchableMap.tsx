@@ -80,6 +80,9 @@ export function SearchableMap({
         >
           <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
         </Map>
+        {error && (
+          <S.Error style={{ color: 'red' }}>위치를 지정 해 주세요</S.Error>
+        )}
       </S.Container>
     </>
   );

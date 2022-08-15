@@ -103,7 +103,7 @@ function Signin() {
         </>
       }
       trigger={
-        <Button size="xlarge" type="submit">
+        <Button size="xlarge" type="submit" variant="pink">
           로그인
         </Button>
       }

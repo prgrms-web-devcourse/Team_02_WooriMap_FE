@@ -9,3 +9,8 @@ export const Container = styled.div`
 
   border-radius: 8px;
 `;
+
+export const Error = styled.div`
+  font-size: 0.7rem;
+  ${({ theme }) => theme.colors.alert};
+`;

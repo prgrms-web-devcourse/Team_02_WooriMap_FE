@@ -39,12 +39,23 @@ const grayOutlinedButtonStyle = ({ theme }: IThemeProps) => css`
 `;
 
 const pinkButtonStyle = ({ theme }: IThemeProps) => css`
-  border: 0;
+  width: 19rem;
+  height: 4rem;
   outline: 0;
-  color: ${theme.colors.black};
-  background-color: ${theme.colors.pink};
-  border: 3px solid ${theme.colors.black};
+  color: ${theme.colors.white};
+  background: linear-gradient(to top right, #ffcfcf, #ff8299);
+  border: none;
   font-size: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 0.5rem;
+
+  opacity: 70%;
+
+  transition: opacity ease-in 0.2s;
+
+  :hover {
+    opacity: 100%;
+  }
 `;
 
 export const Button = styled.button<IButtonStyleProps>`

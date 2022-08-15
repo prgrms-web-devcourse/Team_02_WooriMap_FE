@@ -4,6 +4,7 @@ import * as S from './SubmitButton.styles';
 interface ISubmitButtonProps extends IButtonStyleProps {
   id: string;
   children: React.ReactNode;
+  style?: React.CSSProperties;
 }
 
 export function SubmitButton({
@@ -11,9 +12,16 @@ export function SubmitButton({
   variant,
   size,
   children,
+  style,
 }: ISubmitButtonProps) {
   return (
-    <S.SubmitButton form={id} variant={variant} size={size} type="submit">
+    <S.SubmitButton
+      form={id}
+      variant={variant}
+      size={size}
+      type="submit"
+      style={style}
+    >
       {children}
     </S.SubmitButton>
   );

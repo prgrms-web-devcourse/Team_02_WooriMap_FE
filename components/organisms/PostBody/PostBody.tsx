@@ -66,10 +66,10 @@ export function PostBody({
         <MapMarker
           position={{ lat, lng }}
           image={{
-            src: 'https://i.imgur.com/iwOEvRP.png',
+            src: 'https://img1.daumcdn.net/thumb/R750x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FHzNaV%2FbtrJFPHq266%2FYSW64UbOvUPehLH6Kjo8bk%2Fimg.png',
             size: {
-              width: 24,
-              height: 35,
+              width: 40,
+              height: 50,
             },
           }}
           title={content}

@@ -60,7 +60,6 @@ export const PostControl = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 0.5rem;
 
   position: absolute;
   top: 0;
@@ -68,14 +67,16 @@ export const PostControl = styled.div`
 `;
 
 export const EditPostButton = styled(Button)`
-  width: 10rem;
-  height: 3rem;
+  width: 7rem;
+  height: 2.2rem;
 
   opacity: 70%;
 
+  border: none;
   border-radius: 1.5rem;
 
-  font-size: 1.2rem;
+  font-size: 1rem;
+  text-shadow: none;
 
   transition: ${({ theme }) => theme.opacityTransition};
 
@@ -85,14 +86,18 @@ export const EditPostButton = styled(Button)`
 `;
 
 export const DeletePostButton = styled(Button)`
-  padding-bottom: 0.3rem;
+  width: fit-content;
+
+  position: relative;
+  top: -0.5rem;
 
   border: none;
 
   opacity: 30%;
   color: ${({ theme }) => theme.colors.black};
+  background-color: #ffffff00;
 
-  font-size: 1.1rem;
+  font-size: 0.7rem;
 
   transition: ${({ theme }) => theme.opacityTransition};
 
@@ -104,7 +109,7 @@ export const DeletePostButton = styled(Button)`
 export const PostContent = styled.div`
   flex-grow: 1;
 
-  font-size: 1.2rem;
+  font-size: 0.8rem;
   line-height: 1.7rem;
 
   overflow: auto;

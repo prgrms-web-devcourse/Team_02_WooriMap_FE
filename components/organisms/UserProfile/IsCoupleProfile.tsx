@@ -66,7 +66,9 @@ export function IsCoupleProfile({
           }}
           as="/profile/edit"
         >
-          <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+          <S.EditButtonWrapper>
+            <S.ProfileEditButton size="xlarge">프로필 수정</S.ProfileEditButton>
+          </S.EditButtonWrapper>
         </Link>
         <S.Withdrawal isCouple={isCouple} onClick={onBreakUp}>
           커플끊기

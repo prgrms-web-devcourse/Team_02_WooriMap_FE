@@ -54,15 +54,17 @@ export const UserName = styled.p`
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   align-items: center;
   flex-grow: 1;
+  gap: 0.5rem;
 
   position: relative;
 
   width: 100%;
   height: 10rem;
 
-  padding-top: 3rem;
+  padding: 3rem 2rem 5rem 2rem;
 
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
@@ -70,9 +72,57 @@ export const ButtonWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.whiteTransparent};
 `;
 
-export const MakeCoupleButton = styled(Button)``;
+export const MakeCoupleButton = styled(Button)`
+  width: 100%;
+  height: 4rem;
+  background: ${({ theme }) => theme.colors.white};
+
+  border: 3px solid ${({ theme }) => theme.colors.pink};
+  border-radius: 0.7rem;
+
+  color: ${({ theme }) => theme.colors.pink};
+
+  font-size: 1.1rem;
+  font-weight: 400;
+
+  box-shadow: ${({ theme }) => theme.boxShadow.molecule};
+
+  opacity: 70%;
+  transition: ${({ theme }) => theme.opacityTransition};
+
+  :hover {
+    opacity: 100%;
+  }
+`;
+
+export const EditButtonWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  flex-grow: 1;
+  margin-bottom: 4rem;
+`;
 export const ProfileEditButton = styled(Button)`
-  margin-top: 2rem;
+  width: 100%;
+  height: 4rem;
+  background: linear-gradient(to top right, #ffcfcf, #ff8299);
+
+  border: none;
+  border-radius: 0.7rem;
+
+  color: white;
+
+  font-size: 1.1rem;
+  font-weight: 400;
+
+  box-shadow: ${({ theme }) => theme.boxShadow.molecule};
+
+  opacity: 70%;
+  transition: ${({ theme }) => theme.opacityTransition};
+
+  :hover {
+    opacity: 100%;
+  }
 `;
 
 export const CoupleInfoWrapper = styled.div`
@@ -130,4 +180,11 @@ export const Withdrawal = styled.span<IUserProfile>`
   bottom: 2rem;
   color: ${({ theme }) => theme.colors.gray};
   font-size: 0.8rem;
+
+  cursor: pointer;
+
+  transition: color ease-in 0.2s;
+  :hover {
+    color: ${({ theme }) => theme.colors.black};
+  }
 `;

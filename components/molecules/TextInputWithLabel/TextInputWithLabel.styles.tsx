@@ -19,13 +19,12 @@ export const Wrapper = styled.div<{
   gap: 1rem;
 
   width: 100%;
-
   & > label {
+    align-self: flex-start;
     flex-shrink: 0;
 
     width: 5rem;
-    padding-top: ${({ variant }) =>
-      variant === 'textarea' ? '0.5rem' : 'none'};
+    padding-top: 0.5rem;
 
     font-family: 'Noto Serif KR', serif;
     font-weight: 900;
@@ -34,10 +33,11 @@ export const Wrapper = styled.div<{
 `;
 
 export const ValidationError = styled.p`
-  height: 12px;
-  font-size: 10px;
-  font-weight: bold;
+  height: 1.2rem;
+  margin-left: 6rem;
+  font-size: 0.7rem;
+  font-weight: 500;
+  line-height: 1rem;
 
-  margin: 4px 0 12px 6rem;
   color: ${({ theme }) => theme.colors.alert};
 `;

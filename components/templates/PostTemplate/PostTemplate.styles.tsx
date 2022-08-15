@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Button } from 'components';
 
 export const Container = styled.form`
   display: flex;
@@ -51,7 +52,7 @@ export const Wrapper = styled.div`
   gap: 0.5rem;
 
   position: absolute;
-  bottom: 1rem;
+  bottom: 2rem;
   right: 2rem;
 
   > button {
@@ -63,4 +64,16 @@ export const Wrapper = styled.div`
       opacity: 90%;
     }
   }
+`;
+
+export const CancelButton = styled(Button)`
+  width: fit-content;
+  height: fit-content;
+
+  border: none;
+
+  color: white;
+  background-color: #ffffff00;
+
+  font-size: 0.8rem;
 `;

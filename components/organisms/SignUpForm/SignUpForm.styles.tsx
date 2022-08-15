@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import styled from '@emotion/styled';
+// import { SubmitButton } from 'components';
 
 export const Container = styled.div`
   display: flex;
@@ -43,4 +44,13 @@ export const FinalValidationError = styled.p`
   font-weight: bold;
 
   color: ${({ theme }) => theme.colors.alert};
+`;
+
+export const SubmitButtonContainer = styled.div`
+  width: 100%;
+  opacity: 50%;
+  transition: ${({ theme }) => theme.opacityTransition};
+  :hover {
+    opacity: 100%;
+  }
 `;

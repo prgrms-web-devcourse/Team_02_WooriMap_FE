@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Button, SubmitButton } from 'components';
+import { SubmitButton } from 'components';
 import * as S from './PostTemplate.styles';
 
 interface IPostTemplateProps {
@@ -27,9 +27,9 @@ export function PostTemplate({
       </S.PostContent>
       {type !== 'detail' && (
         <S.Wrapper>
-          <Button id="post-write" size="small" onClick={onCancel}>
-            취소
-          </Button>
+          <S.CancelButton id="post-write" size="small" onClick={onCancel}>
+            수정 취소
+          </S.CancelButton>
           <SubmitButton id="post-write" size="medium" variant="black">
             {type === 'create' ? '포스트 생성' : '포스트 수정'}
           </SubmitButton>
