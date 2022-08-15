@@ -1,16 +1,15 @@
 import { NavBar } from 'components';
-import { useRouter } from 'next/router';
+import { useRecoilValueAfterMount } from 'hooks';
+import userState from 'core';
 import * as S from './Layout.styles';
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const { asPath } = useRouter();
-
-  const isAuthPage = asPath.includes('/signin') || asPath.includes('/signup');
+  const user = useRecoilValueAfterMount(userState, null);
 
   return (
     <S.PageContainer>
       <S.Container>
-        {!isAuthPage && <NavBar />}
+        {user && <NavBar />}
         <S.Wrapper>{children}</S.Wrapper>
       </S.Container>
     </S.PageContainer>
