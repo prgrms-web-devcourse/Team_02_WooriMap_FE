@@ -11,9 +11,16 @@ export function SubmitButton({
   variant,
   size,
   children,
+  ...props
 }: ISubmitButtonProps) {
   return (
-    <S.SubmitButton form={id} variant={variant} size={size} type="submit">
+    <S.SubmitButton
+      form={id}
+      variant={variant}
+      size={size}
+      type="submit"
+      {...props}
+    >
       {children}
     </S.SubmitButton>
   );
