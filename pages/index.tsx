@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { MainPageTemplate, MetaTag } from 'components';
 import { useAxiosInstance, useGeolocation } from 'hooks';
 import {
@@ -29,6 +29,11 @@ function Home() {
     },
   });
 
+  // 지도 첫 렌더링 중심점을 잡는 로직
+  const {
+    coords: { latitude: lat, longitude: lng },
+  } = useGeolocation();
+
   useEffect(() => {
     (async () => {
       try {
@@ -45,14 +50,9 @@ function Home() {
     })();
   }, [instance]);
 
-  // 지도 첫 렌더링 중심점을 잡는 로직
-  const {
-    coords: { latitude: lat, longitude: lng },
-  } = useGeolocation();
-
-  const handlePostFilter = (newPostFilter: IPostFilterProps) => {
+  const handlePostFilter = useCallback((newPostFilter: IPostFilterProps) => {
     setPostFilter(newPostFilter);
-  };
+  }, []);
 
   const getFilteredPost = async (newPostFilter: IPostFilterProps) => {
     try {
