@@ -75,12 +75,9 @@ function Home() {
               longitude: number;
             }[]
           >
-        >(`/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
+        >(`/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`)
         .then((response) => response.data.data);
+
       const newPostList: IThumbnailCardProps[] = data.map(
         ({ postId, title, imageUrl, createDateTime, latitude, longitude }) => ({
           postId: String(postId),
