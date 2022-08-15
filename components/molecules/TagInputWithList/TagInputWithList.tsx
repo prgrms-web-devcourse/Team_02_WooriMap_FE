@@ -26,6 +26,7 @@ export function TagInputWithList({
   value,
   handleChange,
   onClickButton,
+  onKeyPress,
   ...props
 }: ITagInputWithListProps) {
   const [inputValue, setInputValue] = useState<ITag[]>(
@@ -96,6 +97,7 @@ export function TagInputWithList({
         allTags={allTags}
         onEnterType={handleEnterType}
         onClickButton={handleClickButton}
+        onKeyPress={onKeyPress}
         {...props}
       />
       <S.SelectedTags tagList={inputValue} onDelete={handleDelete} />

@@ -33,6 +33,7 @@ export const Default: ComponentStory<typeof TagInput> = () => {
   return (
     <Wrapper>
       <TagInput
+        onKeyPress={() => {}}
         key="1"
         onEnterType={(a: string) => {
           console.log(a);
