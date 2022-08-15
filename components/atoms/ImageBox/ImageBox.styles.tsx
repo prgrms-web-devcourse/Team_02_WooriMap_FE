@@ -17,6 +17,8 @@ export const Wrapper = styled.span<IWrapper>`
   transform: none;
   transition: filter ease-in 0.2s, transform ease-in 0.2s;
 
+  cursor: ${({ isSelected }) => isSelected || 'pointer'};
+
   :hover {
     transform: ${({ size }) =>
       size === 'small' ? 'translateY(-0.25rem)' : 'none'};
