@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Button } from 'components';
 
 interface IWrapper {
   margin: string;
@@ -89,6 +90,10 @@ export const FooterWrapper = styled(Wrapper)`
   width: 15rem;
   position: absolute;
   bottom: 3rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   button {
     display: block;
     width: 100%;
