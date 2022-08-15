@@ -66,7 +66,7 @@ export default function ToastProvider({
     portalElement.current = toastDOM as HTMLDivElement;
 
     setRoot(ReactDOMClient.createRoot(portalElement.current));
-  }, [toasts]);
+  }, [removeToast, root, toasts]);
 
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
