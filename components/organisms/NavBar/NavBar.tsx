@@ -5,6 +5,7 @@ import { headerLogo } from 'public/image';
 import userState from 'core';
 import { useAxiosInstance, useRecoilValueAfterMount } from 'hooks';
 import { useSetRecoilState } from 'recoil';
+import { withLoading } from 'hocs';
 import * as S from './NavBar.styles';
 
 function NavBar() {
@@ -44,4 +45,4 @@ function NavBar() {
   );
 }
 
-export default NavBar;
+export default withLoading(NavBar);
