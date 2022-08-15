@@ -8,6 +8,7 @@ interface IColors {
   skyblue: string;
   alert: string;
   pink: string;
+  pinkTransparent: string;
 }
 
 type ITagColors = string[];

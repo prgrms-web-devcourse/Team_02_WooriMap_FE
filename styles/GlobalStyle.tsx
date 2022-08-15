@@ -1,5 +1,6 @@
 import { Global, css } from '@emotion/react';
 import { reset } from './reset';
+import theme from './theme';
 
 const globalStyles = css`
   ${reset}
@@ -15,6 +16,19 @@ const globalStyles = css`
   }
   * {
     box-sizing: border-box;
+
+    ::-webkit-scrollbar {
+      width: 0.8rem;
+    }
+    ::-webkit-scrollbar-thumb {
+      border-radius: 0.5rem;
+      background-color: ${theme.colors.pinkTransparent};
+      background-clip: padding-box;
+      border: 0.2rem solid transparent;
+    }
+    ::-webkit-scrollbar-track {
+      border-radius: inherit;
+    }
   }
 
   input[type='date']::-webkit-calendar-picker-indicator {

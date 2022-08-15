@@ -9,6 +9,7 @@ const theme: Theme = {
     skyblue: '#97BAFF',
     alert: '#FF3737',
     pink: '#ff8f8f80',
+    pinkTransparent: '#ff8f8f30',
   },
   tagColors: [
     '#d9d9d9',

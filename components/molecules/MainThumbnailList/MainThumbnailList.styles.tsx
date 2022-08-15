@@ -5,20 +5,21 @@ interface ICardContainerProps {
 }
 
 export const MainThumbnailListContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.5rem;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  gap: 1rem 0.5rem;
   flex-grow: 1;
 
   width: 100%;
   height: 100%;
 
+  padding: 0.5rem 1rem 0.5rem 0.5rem;
   overflow: auto;
+  overflow-x: hidden;
 `;
 
 export const CardContainer = styled.div<ICardContainerProps>`
-  width: 8rem;
+  width: 100%;
   height: 7rem;
 
   border-radius: 0.5rem;
@@ -26,6 +27,14 @@ export const CardContainer = styled.div<ICardContainerProps>`
   background-image: ${({ url }) => `url(${url})`};
   background-size: cover;
   box-shadow: ${({ theme }) => theme.boxShadow.molecule};
+
+  transform: none;
+  transition: transform ease-in 0.15s;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(1.02);
+  }
 
   > div {
     display: flex;
@@ -54,4 +63,10 @@ export const Title = styled.h3`
 export const CreateDate = styled.div`
   font-size: 0.7rem;
   opacity: 70%;
+`;
+
+export const NoResultAlert = styled.div`
+  width: 10rem;
+
+  font-size: 0.7rem;
 `;
