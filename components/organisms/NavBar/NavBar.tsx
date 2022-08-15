@@ -7,7 +7,7 @@ import { useAxiosInstance, useRecoilValueAfterMount } from 'hooks';
 import { useSetRecoilState } from 'recoil';
 import * as S from './NavBar.styles';
 
-export function NavBar() {
+function NavBar() {
   const user = useRecoilValueAfterMount(userState, null);
   const setUser = useSetRecoilState(userState);
   const instance = useAxiosInstance();
@@ -43,3 +43,5 @@ export function NavBar() {
     </S.Container>
   );
 }
+
+export default NavBar;
