@@ -1,6 +1,14 @@
 import { AxiosInstance } from 'axios';
+import { IApiResponse } from 'types/api';
+import { ITokenSet } from 'types/auth';
+import { ICoupleInfo } from 'types/couple';
 
-export function updateCoupleInfo({
+interface ICoupleCheckResponse {
+  accessToken: string;
+  isCouple: boolean;
+}
+
+export async function updateCoupleInfo({
   instance,
   data,
 }: {
@@ -8,7 +16,7 @@ export function updateCoupleInfo({
   data: { editDate: string };
 }) {
   const res = instance
-    .put('/couples', data)
+    .put<IApiResponse<{ startDate: string }>>('/couples', data)
     .then((response) => {
       return response.data;
     })
@@ -30,7 +38,7 @@ export function getLinkCouple({
   code: string;
 }) {
   const res = instance
-    .post('/couples', { code })
+    .post<IApiResponse<ITokenSet>>('/couples', { code })
     .then((response) => {
       return response.data;
     })
@@ -48,7 +56,7 @@ export function getLinkCouple({
 
 export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
   const res = instance
-    .get('/couples/check')
+    .get<IApiResponse<ICoupleCheckResponse>>('/couples/check')
     .then((response) => {
       return response.data;
     })
@@ -66,7 +74,7 @@ export function getCheckIsCoupled({ instance }: { instance: AxiosInstance }) {
 
 export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
   const res = instance
-    .post('/couples/invite')
+    .post<IApiResponse<{ code: string }>>('/couples/invite')
     .then((response) => response.data.data)
     .catch((error) => {
       console.error(error);
@@ -81,7 +89,7 @@ export function getCoupleCode({ instance }: { instance: AxiosInstance }) {
 
 export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
   const res = instance
-    .get('/couples')
+    .get<IApiResponse<ICoupleInfo>>('/couples')
     .then((response) => {
       return response.data;
     })
@@ -98,7 +106,7 @@ export function getCoupleInfo({ instance }: { instance: AxiosInstance }) {
 
 export function breakUpWithCouple({ instance }: { instance: AxiosInstance }) {
   const res = instance
-    .delete('/couples')
+    .delete<IApiResponse<ITokenSet>>('/couples')
     .then((response) => {
       return response.data.data;
     })

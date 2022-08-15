@@ -1,6 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { SetterOrUpdater } from 'recoil';
 import LocalStorage from 'utils/storage';
+import { IApiResponse } from 'types/api';
 import { UserResponseType } from 'types/auth';
 
 interface IUploadUserProps {
@@ -14,7 +15,7 @@ export async function updateUserInfoWhenCoupleLinked({
   setUser,
 }: IUploadUserProps) {
   const response = instance
-    .get('/members')
+    .get<IApiResponse<UserResponseType>>('/members')
     .then((res) => {
       return res.data;
     })
@@ -44,7 +45,10 @@ export function updateMemberInfo({
   };
 }) {
   const response = instance
-    .put('/members', data)
+    .put<IApiResponse<Pick<UserResponseType, 'imageUrl' | 'nickName'>>>(
+      '/members',
+      data,
+    )
     .then((res) => {
       return res.data;
     })
