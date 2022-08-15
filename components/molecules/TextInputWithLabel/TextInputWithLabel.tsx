@@ -15,6 +15,12 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
     if (deleteAll && name) deleteAll(name);
   };
 
+  const onKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+    }
+  };
+
   return (
     <S.Container>
       <S.Wrapper
@@ -27,6 +33,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             value={value as string}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
+            onKeyPress={onKeyPress}
             {...props}
           />
         )}
@@ -50,6 +57,7 @@ export function TextInputWithLabel(props: ITextInputWithLabelProps) {
             value={value as ITag[]}
             onClickButton={onClickDeleteButton}
             handleChange={handleChange as HandleChangeTypes}
+            onKeyPress={onKeyPress}
             {...props}
           />
         )}

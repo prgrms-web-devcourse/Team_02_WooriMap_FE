@@ -8,6 +8,7 @@ import * as S from './TagInputWithList.styles';
 interface ITagInputWithListProps extends ITextInputProps {
   value?: ITag[] | string;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
+  onKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
 const defaultTagColors: string[] = [
