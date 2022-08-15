@@ -25,7 +25,15 @@ function NotificationMessage({
       <S.StrongAndEllipsis>
         {changeToEllipsis(notification.content, 14)}
       </S.StrongAndEllipsis>
-      을(를) {translateActionType(notification.action)}했어요.
+      을(를) {translateActionType(notification.type)}했어요.
+    </S.NotificationMessage>
+  );
+}
+
+function DefaultMessage() {
+  return (
+    <S.NotificationMessage isRead>
+      모든 알림을 확인했어요.
     </S.NotificationMessage>
   );
 }
@@ -54,18 +62,22 @@ function Notification() {
         </IconWrapper>
       }
     >
-      {notifications.map((notification) => {
-        return (
-          <NotificationMessage
-            key={notification.id}
-            notification={notification}
-            onClick={() => {
-              readNotification(notification.id);
-              moveTo(notification.contentId);
-            }}
-          />
-        );
-      })}
+      {notifications.length > 0 ? (
+        notifications.map((notification) => {
+          return (
+            <NotificationMessage
+              key={notification.id}
+              notification={notification}
+              onClick={() => {
+                readNotification(notification.id);
+                moveTo(notification.contentId);
+              }}
+            />
+          );
+        })
+      ) : (
+        <DefaultMessage />
+      )}
     </Dropdown>
   );
 }

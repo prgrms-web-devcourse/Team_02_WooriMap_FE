@@ -11,7 +11,6 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
     const { pathname } = router;
 
     useEffect(() => {
-      console.log('sd');
       if (!mounted) return;
 
       if (!user) {

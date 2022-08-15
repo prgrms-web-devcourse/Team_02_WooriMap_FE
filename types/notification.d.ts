@@ -2,7 +2,7 @@ export interface INotification {
   id: number;
   contentId: number;
   nickName: string;
-  action: 'created' | 'modified';
+  type: 'POST_CREATED' | 'POST_MODIFIED';
   content: string;
   isRead: boolean;
 }

@@ -1,6 +1,8 @@
 // ANCHOR: 액션 타입을 한글로 변환하는 함수
-export function translateActionType(actionType: 'created' | 'modified') {
-  return actionType === 'created' ? '생성' : '수정';
+export function translateActionType(
+  actionType: 'POST_CREATED' | 'POST_MODIFIED',
+) {
+  return actionType === 'POST_CREATED' ? '생성' : '수정';
 }
 
 export function changeToEllipsis(word: string, length: number) {
