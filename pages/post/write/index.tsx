@@ -1,4 +1,4 @@
-import { useForm, useAxiosInstance, useToast } from 'hooks';
+import { useForm, useAxiosInstance } from 'hooks';
 import { PostTemplate, ImageUploader, PostWrite } from 'components';
 import { postValidation, formatDate } from 'utils';
 import {
@@ -33,26 +33,11 @@ function PostCreate() {
 
   const router = useRouter();
 
-  const { createToast } = useToast({
-    top: 10,
-    right: 0,
-  });
-
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
       await createPost({ data: values, instance });
-      createToast({
-        message: '포스트가 성공적으로 작성되었습니다.',
-        status: 'success',
-        duration: 3000,
-      });
       router.push('/');
     } catch (error: unknown) {
-      createToast({
-        message: '포스트 작성 실패',
-        status: 'fail',
-        duration: 3000,
-      });
       console.error(error);
     }
   };
