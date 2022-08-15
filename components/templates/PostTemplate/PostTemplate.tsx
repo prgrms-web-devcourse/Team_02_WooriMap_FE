@@ -53,20 +53,25 @@ export function PostTemplate({
           setConfirmCancel(false);
         }}
       >
-        <div>
-          작성 내용은 저장되지 않아요! 그래도 돌아갈까요?
-          <Button size="small" onClick={() => router.back()}>
-            확인
-          </Button>
-          <Button
-            size="small"
-            onClick={() => {
-              setConfirmCancel(false);
-            }}
-          >
-            취소
-          </Button>
-        </div>
+        <S.ModalContainer>
+          <S.ModalTitle>취소 확인</S.ModalTitle>
+          <S.ModalContent>
+            작성 내용은 저장되지 않아요! 그래도 돌아갈까요?
+          </S.ModalContent>
+          <S.ModalOptions>
+            <S.ModalOption size="small" onClick={() => router.back()}>
+              확인
+            </S.ModalOption>
+            <S.ModalOption
+              size="small"
+              onClick={() => {
+                setConfirmCancel(false);
+              }}
+            >
+              취소
+            </S.ModalOption>
+          </S.ModalOptions>
+        </S.ModalContainer>
       </Modal>
     </S.Container>
   );
