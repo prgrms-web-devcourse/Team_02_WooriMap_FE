@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { useRouter } from 'next/router';
 import { PostTemplate, ImageViewer, PostWrite } from 'components';
 import { useForm, useAxiosInstance } from 'hooks';
@@ -10,6 +10,7 @@ import {
 } from 'types';
 import { postValidation, parsePostData, postInitialValue } from 'utils';
 import { withCoupleRoute } from 'hocs';
+import { ToastContext } from 'context/ToastContext';
 import { updatePost, getOnePost } from 'apis/post';
 
 export const errorState: IPostValidationState = {
@@ -24,14 +25,25 @@ function PostEdit() {
   const router = useRouter();
   const { id } = router.query as { id: string };
   const axiosInstance = useAxiosInstance();
+  const { createToast } = useContext(ToastContext);
 
   const [loading, setLoading] = useState(true);
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
       await updatePost({ instance: axiosInstance, data: values, id });
+      createToast({
+        status: 'success',
+        message: '포스트가 수정되었습니다.',
+        duration: 3000,
+      });
       router.push('/');
     } catch (error) {
+      createToast({
+        status: 'fail',
+        message: '에러가 발생했습니다.',
+        duration: 3000,
+      });
       console.error(error);
     }
   };
