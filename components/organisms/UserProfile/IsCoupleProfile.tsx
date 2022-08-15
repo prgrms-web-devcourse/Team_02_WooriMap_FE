@@ -2,7 +2,7 @@ import userState from 'core';
 import Link from 'next/link';
 import { useSetRecoilState } from 'recoil';
 import { breakUpWithCouple } from 'apis/couple';
-import { calculatingDDay } from 'utils';
+import { calculateDDay } from 'utils';
 import { IUserProfileProps } from 'types';
 import { useAxiosInstance } from 'hooks';
 import LocalStorage from 'utils/storage';
@@ -55,7 +55,7 @@ export function IsCoupleProfile({
         <S.CoupleInfoRow>
           <S.CoupleInfoLabel isCoupleDateInfo>연애 기간</S.CoupleInfoLabel>
           <S.CoupleInfo>
-            D + {startDate && calculatingDDay(startDate)}
+            D + {startDate && calculateDDay(startDate)}
           </S.CoupleInfo>
           <S.StartringDate>{startDate && startDate}</S.StartringDate>
         </S.CoupleInfoRow>
