@@ -8,7 +8,7 @@ type ReturnTypes = [INotification[], (notificationId: number) => void];
 
 function useNotification(): ReturnTypes {
   const source = useSSE();
-  const instance = useAxiosInstance();
+  const instance = useAxiosInstance('https://noti.woorimap.p-e.kr/api');
   const [notifications, setNotifications] = useState<INotification[]>([]);
 
   // ANCHOR: 읽지 않은 알림을 받아온다.
@@ -76,8 +76,12 @@ function useNotification(): ReturnTypes {
     if (!source) return;
 
     source.addEventListener('sse', (e) => {
-      const data = JSON.parse(e.data) as NotificationResponseType;
-      setNotifications((prev) => [{ ...data, isRead: false }, ...prev]);
+      try {
+        const data = JSON.parse(e.data) as NotificationResponseType;
+        setNotifications((prev) => [{ ...data, isRead: false }, ...prev]);
+      } catch {
+        // do nothing
+      }
     });
   }, [source]);
 

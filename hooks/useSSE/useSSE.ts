@@ -9,7 +9,7 @@ function useSSE() {
     if (!accessToken) return undefined;
 
     const eventSource = new EventSource(
-      `${process.env.NEXT_PUBLIC_BASE_URL}/subscribe?token=${accessToken}`,
+      `${process.env.NEXT_PUBLIC_NOTIFICATION_API_URL}/subscribe?token=${accessToken}`,
     );
 
     eventSource.addEventListener('error', () => {

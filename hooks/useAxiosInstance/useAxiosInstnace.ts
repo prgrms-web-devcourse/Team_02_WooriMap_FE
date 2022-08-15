@@ -11,12 +11,12 @@ import {
   isAuthorization,
 } from './helper';
 
-function useAxiosInstance() {
+function useAxiosInstance(baseURL?: string) {
   const router = useRouter();
   const setUser = useSetRecoilState(userState);
   const instanceRef = useRef(
     axios.create({
-      baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+      baseURL: baseURL || process.env.NEXT_PUBLIC_BASE_URL,
       withCredentials: true,
     }),
   );
@@ -26,7 +26,7 @@ function useAxiosInstance() {
 
     const retry = async (_config: IRetryAxiosInstanceConfig) => {
       try {
-        const accessToken = await getNewAccessToken(instance);
+        const accessToken = await getNewAccessToken();
         LocalStorage.setItem('accessToken', accessToken);
         const config = getConfigWithAuthorizedHeadersBy(_config);
         return await instance(config);
