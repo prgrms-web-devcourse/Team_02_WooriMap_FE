@@ -106,11 +106,14 @@ export const DeletePostButton = styled(Button)`
   }
 `;
 
-export const PostContent = styled.pre`
+export const PostContent = styled.div`
   flex-grow: 1;
 
   font-size: 0.8rem;
   line-height: 1.7rem;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
 
   overflow: auto;
 `;
