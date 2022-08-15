@@ -1,6 +1,6 @@
 import { ICoupleUserProps, IStartDateProps, ICoupleProfileProps } from 'types';
 import { Profile } from 'components';
-import { calculatingDDay } from 'utils';
+import { calculateDDay } from 'utils';
 import * as S from './CoupleProfile.styles';
 
 function EachProfile({ nickName, imageUrl }: ICoupleUserProps) {
@@ -13,7 +13,7 @@ function EachProfile({ nickName, imageUrl }: ICoupleUserProps) {
 }
 
 function CoupleInfo({ startDate }: IStartDateProps) {
-  const calculatedDDay = calculatingDDay(startDate);
+  const calculatedDDay = calculateDDay(startDate);
 
   return (
     <S.CoupleInfoContainer>

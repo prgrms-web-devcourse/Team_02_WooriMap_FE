@@ -1,4 +1,4 @@
-export function calculatingDDay(date: string) {
+export function calculateDDay(date: string) {
   const startingDate = new Date(date);
   const currentDate = new Date();
 
