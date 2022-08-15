@@ -4,12 +4,12 @@ import { ICoordinates } from './map';
 interface PostBase {
   title: string;
   content: string;
-  createdDate: string;
 }
 
 interface IPostMain extends PostBase, ICoordinates {
   postId: number;
   imageUrl: string;
+  createDateTime: string;
 }
 
 export interface IPostDetail extends PostBase {
@@ -18,6 +18,7 @@ export interface IPostDetail extends PostBase {
   location: ICoordinates;
   tags: ITag[];
   datingDate: string;
+  createdDate: string;
 }
 
 export interface IPostFormState {
