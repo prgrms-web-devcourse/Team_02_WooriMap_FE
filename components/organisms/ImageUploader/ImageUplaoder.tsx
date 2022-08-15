@@ -19,7 +19,7 @@ export function ImageUploader({
     src,
   })) as IImages;
 
-  const instance = useAxiosInstance();
+  const instance = useAxiosInstance(process.env.NEXT_PUBLIC_IMAGE_API_URL);
   const [uploadSrc, setUploadSrc] = useState<IImages>(initialState);
 
   const onUploadImage = async (e: React.ChangeEvent<HTMLInputElement>) => {
