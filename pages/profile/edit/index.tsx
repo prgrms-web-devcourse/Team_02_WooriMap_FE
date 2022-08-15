@@ -27,8 +27,10 @@ function ProfileEdit() {
 
           if (response.data) {
             const {
-              data: { startDate },
-              me: { imageUrl, nickName },
+              data: {
+                startDate,
+                me: { imageUrl, nickName },
+              },
             } = response;
 
             setUser((prev) => ({
