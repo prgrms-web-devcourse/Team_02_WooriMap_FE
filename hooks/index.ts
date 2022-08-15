@@ -9,4 +9,3 @@ export { useSSE } from 'hooks/useSSE';
 export { useNotification } from 'hooks/useNotification';
 export { useImage } from 'hooks/useImage';
 export { useTimeout } from 'hooks/useTimeout';
-export { useToast } from 'hooks/useToast';
