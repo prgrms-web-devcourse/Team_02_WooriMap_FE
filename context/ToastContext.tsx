@@ -1,4 +1,10 @@
-import React, { createContext, useState, useRef, useEffect } from 'react';
+import React, {
+  createContext,
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+} from 'react';
 import * as ReactDOMClient from 'react-dom/client';
 import { nanoid } from 'nanoid';
 import { Toast } from 'components';
@@ -23,16 +29,25 @@ export default function ToastProvider({
   const [toasts, setToasts] = useState<Array<IToast>>([]);
   const [root, setRoot] = useState<ReactDOMClient.Root | null>(null);
 
-  const createToast = ({ status, message, duration }: Omit<IToast, 'key'>) => {
-    setToasts((prev) => [
-      ...prev,
-      { key: nanoid(), status, message, duration },
-    ]);
-  };
+  const createToast = useMemo(
+    () =>
+      ({ status, message, duration }: Omit<IToast, 'key'>) => {
+        const key = nanoid();
+        setToasts((prevToasts) => [
+          ...prevToasts,
+          { key, status, message, duration },
+        ]);
+      },
+    [],
+  );
 
-  const removeToast = ({ key }: { key: string }) => {
-    setToasts((prev) => prev.filter((toast) => toast.key !== key));
-  };
+  const removeToast = useMemo(
+    () =>
+      ({ key }: { key: string }) => {
+        setToasts((prev) => prev.filter((toast) => toast.key !== key));
+      },
+    [],
+  );
 
   useEffect(() => {
     if (portalElement.current) {

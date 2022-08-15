@@ -12,6 +12,7 @@ interface IProgressBarProps extends IToastContainerProps {
 }
 
 export const Container = styled.div<IToastContainerProps>`
+  position: relative;
   z-index: 999;
 
   display: flex;
@@ -20,6 +21,7 @@ export const Container = styled.div<IToastContainerProps>`
 
   width: 250px;
   height: 52px;
+  margin-bottom: 10px;
 
   border-radius: 4px;
 
@@ -48,7 +50,6 @@ export const Container = styled.div<IToastContainerProps>`
 
   & button {
     all: unset;
-
     position: absolute;
     right: 10px;
     top: 5px;
@@ -66,14 +67,12 @@ export const Container = styled.div<IToastContainerProps>`
       right: ${(props) => props.right}px;
     }
   }
-
-  margin-bottom: 10px;
 `;
 
 export const ProgressBar = styled.span<IProgressBarProps>`
   position: absolute;
-  bottom: 10px;
   left: 0;
+  bottom: 0;
   right: 200px;
 
   height: 2px;
