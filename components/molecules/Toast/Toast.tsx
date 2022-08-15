@@ -1,5 +1,6 @@
 import { IToast } from 'types';
 import { ToastItem } from 'components';
+import * as S from './Toast.style';
 
 interface IToastProps {
   toasts: Array<IToast>;
@@ -8,7 +9,7 @@ interface IToastProps {
 
 export function Toast({ toasts, removeToast }: IToastProps) {
   return (
-    <>
+    <S.Container>
       {toasts.map(({ key, message, status, duration }) => (
         <ToastItem
           key={key}
@@ -16,6 +17,6 @@ export function Toast({ toasts, removeToast }: IToastProps) {
           onRemove={() => removeToast({ key })}
         />
       ))}
-    </>
+    </S.Container>
   );
 }
