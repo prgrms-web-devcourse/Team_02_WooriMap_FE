@@ -2,6 +2,7 @@ import { FunctionComponent, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useComponentDidMount, useRecoilValueAfterMount } from 'hooks';
 import userState from 'core';
+import { NavBar } from 'components';
 
 function withCoupleRoute<P>(Component: FunctionComponent<P>) {
   return function WithCoupleComponent(props: P) {
@@ -35,7 +36,12 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
 
     // 커플이고 path가 invite가 아닐때, ( path 체크를 안해주면 중간에 들어갔다 나옵니다.. )
     if (user?.isCouple && pathname !== '/profile/invite') {
-      return <Component {...props} />;
+      return (
+        <>
+          <NavBar />
+          <Component {...props} />
+        </>
+      );
     }
 
     return null;
