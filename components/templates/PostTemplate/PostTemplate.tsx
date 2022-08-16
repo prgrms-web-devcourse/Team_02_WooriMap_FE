@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { Button, SubmitButton, Modal } from 'components';
+import { SubmitButton, Modal } from 'components';
 import { useState } from 'react';
 import * as S from './PostTemplate.styles';
 
