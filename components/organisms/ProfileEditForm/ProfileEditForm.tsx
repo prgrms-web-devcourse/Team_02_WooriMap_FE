@@ -132,12 +132,12 @@ export function ProfileEditForm({
         )}
       </S.InputsWrapper>
       <S.ButtonWrapper>
-        <Button size="small" onClick={routeToProfile} type="button">
+        <S.CancelButton size="small" onClick={routeToProfile} type="button">
           취소
-        </Button>
-        <SubmitButton id="profileEdit" size="small" variant="black">
+        </S.CancelButton>
+        <S.ConfirmButton id="profileEdit" size="small" variant="black">
           완료
-        </SubmitButton>
+        </S.ConfirmButton>
       </S.ButtonWrapper>
     </S.Container>
   );

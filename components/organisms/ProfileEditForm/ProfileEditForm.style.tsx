@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { FormBackground } from 'components';
+import { Button, FormBackground } from 'components';
 
 export const Container = styled(FormBackground)`
   display: flex;
@@ -37,5 +37,30 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+
+  > button {
+    flex-grow: 1;
+    height: 3rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    text-shadow: none;
+    box-shadow: ${({ theme }) => theme.boxShadow.atom};
+
+    opacity: 70%;
+    transition: ${({ theme }) => theme.opacityTransition};
+
+    :hover {
+      opacity: 100%;
+    }
+  }
+`;
+
+export const CancelButton = styled(Button)`
+  color: ${({ theme }) => theme.colors.gray};
+  background-color: ${({ theme }) => theme.colors.whiteTransparent};
+`;
+export const ConfirmButton = styled(Button)`
+  background: linear-gradient(to top right, #ffcfcf, #ff8299);
 `;
