@@ -58,7 +58,7 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
         accessToken,
         setUser,
       });
-      router.replace('/');
+      router.replace('/profile');
     }
   };
 
