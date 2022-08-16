@@ -1,7 +1,7 @@
 import userState from 'core';
 import { useSetRecoilState } from 'recoil';
 import { useRouter } from 'next/router';
-import { ProfileUpload, Button, SubmitButton } from 'components';
+import { ProfileUpload } from 'components';
 import { useImage, useForm, useAxiosInstance } from 'hooks';
 import { IUserProps, IEditState, EditErrorTypes, IOnSubmit } from 'types';
 import { UserResponseType } from 'types/auth';
