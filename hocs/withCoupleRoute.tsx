@@ -28,16 +28,14 @@ function withCoupleRoute<P>(Component: FunctionComponent<P>) {
       }
     }, [mounted, pathname, router, user]);
 
-    if (user !== null) {
-      // 커플이 아니고 path가 invite일 때
-      if (!user.isCouple && pathname === '/profile/invite') {
-        return <Component {...props} />;
-      }
+    // 커플이 아니고 path가 invite일 때
+    if (!user?.isCouple && pathname === '/profile/invite') {
+      return <Component {...props} />;
+    }
 
-      // 커플이고 path가 invite가 아닐때, ( path 체크를 안해주면 중간에 들어갔다 나옵니다.. )
-      if (user.isCouple && pathname !== '/profile/invite') {
-        return <Component {...props} />;
-      }
+    // 커플이고 path가 invite가 아닐때, ( path 체크를 안해주면 중간에 들어갔다 나옵니다.. )
+    if (user?.isCouple && pathname !== '/profile/invite') {
+      return <Component {...props} />;
     }
 
     return null;
