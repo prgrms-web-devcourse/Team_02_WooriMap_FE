@@ -97,29 +97,22 @@ function Home() {
         const data = await instance
           .get<IApiResponse<IPostMain[]>>(`/couples/posts`)
           .then((response) => response.data.data);
-        const newPostList: IThumbnailCardProps[] = data.map(
-          ({
-            postId,
-            title,
-            imageUrl,
-            createDateTime,
-            latitude,
-            longitude,
-          }) => ({
-            postId: String(postId),
-            title,
-            postThumbnailPath: imageUrl,
-            createDate: createDateTime,
-            latitude: String(latitude),
-            longitude: String(longitude),
-          }),
-        );
+        const newPostList = data.map<IThumbnailCardProps>((props) => ({
+          postId: String(props.postId),
+          title: props.title,
+          postThumbnailPath: props.imageUrl,
+          createDate: props.createDateTime,
+          latitude: String(props.latitude),
+          longitude: String(props.longitude),
+        }));
         setPostList(newPostList);
         return null;
       } catch (error) {
         return Promise.reject(error);
       }
     };
+
+    // 여기서부터 useEffect에 들어갈 로직
     if (
       postFilter?.postFilter.tagIds.length === 0 &&
       postFilter?.postFilter.title === ''
