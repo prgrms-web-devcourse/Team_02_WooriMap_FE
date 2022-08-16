@@ -17,7 +17,7 @@ interface ICoupleInviteFormProps extends ITextInputProps {
 export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
   const router = useRouter();
   const [inputCode, setInputCode] = useState<string>('');
-  const [error, setError] = useState<string>('ㄴㅇ');
+  const [error, setError] = useState<string>('');
   const setUser = useSetRecoilState(userState);
   const instance = useAxiosInstance();
 
