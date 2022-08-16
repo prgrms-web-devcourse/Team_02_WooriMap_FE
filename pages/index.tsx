@@ -36,6 +36,7 @@ function Home() {
     coords: { latitude: lat, longitude: lng },
   } = useGeolocation();
 
+  // ANCHOR: 커플 정보를 불러온다.
   useEffect(() => {
     (async () => {
       try {
@@ -56,7 +57,7 @@ function Home() {
     setPostFilter(newPostFilter);
   }, []);
 
-  // ANCHOR: 이 함수가 하는 역할이 무엇인가?
+  // ANCHOR: 필터 규칙을 적용하여 포스트들을 가져온다.
   const getFilteredPost = async (newPostFilter: IPostFilterProps) => {
     try {
       const { tagIds, title: titleFilter } = newPostFilter.postFilter;
@@ -65,22 +66,21 @@ function Home() {
       const titleParams = getTitleQuery(titleFilter);
       const lastPostIdParams = getLastIdQuery(lastPostId);
 
-      const data = await instance
+      const mainPosts = await instance
         .get<IApiResponse<IPostMain[]>>(
           `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
         )
         .then((response) => response.data.data);
 
-      const newPostList: IThumbnailCardProps[] = data.map(
-        ({ postId, title, imageUrl, createDateTime, latitude, longitude }) => ({
-          postId: String(postId),
-          title,
-          postThumbnailPath: imageUrl,
-          createDate: createDateTime,
-          latitude: String(latitude),
-          longitude: String(longitude),
-        }),
-      );
+      const newPostList = mainPosts.map<IThumbnailCardProps>((props) => ({
+        postId: String(props.postId),
+        title: props.title,
+        postThumbnailPath: props.imageUrl,
+        createDate: props.createDateTime,
+        latitude: String(props.latitude),
+        longitude: String(props.longitude),
+      }));
+
       setPostList(newPostList);
       return null;
     } catch (error) {

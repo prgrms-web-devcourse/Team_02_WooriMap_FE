@@ -33,6 +33,7 @@ export interface IMainPageTemplateProps extends IMainSidebarProps {
   };
 }
 
+// TODO: 중첩된 인터페이스를 밖으로 빼낸다.
 export interface IPostFilterProps {
   postFilter: {
     tagIds: (number | undefined)[];
