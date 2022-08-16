@@ -1,4 +1,4 @@
-import { TagList, Modal, Button } from 'components';
+import { TagList, Modal } from 'components';
 import { ITag, ICoordinates } from 'types';
 import { useState } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
@@ -85,15 +85,22 @@ export function PostBody({
         />
       </S.PostLocation>
       <Modal isVisible={deleteConfirm} onClose={handleClickAway}>
-        <div>
-          정말로 삭제하실건가요?
-          <Button size="small" onClick={handleDeleteConfirm}>
-            삭제
-          </Button>
-          <Button size="small" onClick={handleDeleteReject}>
-            취소
-          </Button>
-        </div>
+        <S.ModalContainer>
+          <S.ModalTitle>삭제 확인</S.ModalTitle>
+          <S.ModalContent>
+            게시물을 삭제하면 복구하실 수 없습니다
+            <br />
+            정말로 삭제하시겠어요?
+          </S.ModalContent>
+          <S.ModalOptions>
+            <S.ModalOption size="small" onClick={handleDeleteConfirm}>
+              삭제
+            </S.ModalOption>
+            <S.ModalOption size="small" onClick={handleDeleteReject}>
+              취소
+            </S.ModalOption>
+          </S.ModalOptions>
+        </S.ModalContainer>
       </Modal>
     </S.Container>
   );

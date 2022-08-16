@@ -121,3 +121,42 @@ export const PostContent = styled.div`
 export const PostLocation = styled(Map)`
   box-shadow: ${({ theme }) => theme.boxShadow.molecule};
 `;
+
+export const ModalContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 26rem;
+  height: 14rem;
+  padding: 1rem;
+  background-color: #ffe8e8;
+`;
+
+export const ModalTitle = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0rem;
+
+  font-family: 'Noto Serif KR', serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+`;
+
+export const ModalContent = styled.div`
+  font-size: 0.8rem;
+  line-height: 1.7rem;
+
+  white-space: pre-wrap;
+  word-wrap: break-word;
+`;
+
+export const ModalOptions = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.5rem;
+  padding: 0.5rem 0rem;
+`;
+
+export const ModalOption = styled(Button)`
+  border: none;
+`;
