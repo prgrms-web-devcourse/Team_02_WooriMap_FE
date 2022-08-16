@@ -24,14 +24,23 @@ export const DropDown = styled.ul`
   padding-top: 10px;
   max-height: 12rem;
   background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: ${({ theme }) => theme.boxShadow.atom};
   border: 2px solid ${({ theme }) => theme.colors.gray};
-  border-top: none;
+  border: none;
   border-radius: 0px 0px 10px 10px;
   & > li {
-    display: flex;
-    align-items: center;
     width: 100%;
     height: 3rem;
-    padding-left: 0.5rem;
   }
+`;
+
+export const ListItem = styled.button`
+  display: flex;
+  align-items: center;
+  border: none;
+  width: 100%;
+  height: 100%;
+  padding-left: 0.5rem;
+  background-color: ${({ theme }) => theme.colors.white};
+  cursor: pointer;
 `;

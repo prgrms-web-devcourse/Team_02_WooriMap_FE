@@ -49,6 +49,12 @@ export function TagInput({
     setOptions([]);
   };
 
+  const handleClick = (tagName: string) => () => {
+    onEnterType(tagName);
+    setInputValue('');
+    setOptions([]);
+  };
+
   return (
     <S.TagInputContainer>
       <S.TagInput
@@ -64,7 +70,9 @@ export function TagInput({
         <S.DropDown>
           {options.map(({ name, color }) => (
             <li key={name}>
-              <Tag name={name} color={color} />
+              <S.ListItem type="button" onClick={handleClick(name)}>
+                <Tag name={name} color={color} />
+              </S.ListItem>
             </li>
           ))}
         </S.DropDown>
