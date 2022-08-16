@@ -60,7 +60,7 @@ function Home() {
     // ANCHOR: 필터 규칙을 적용하여 포스트들을 가져온다.
     const getFilteredPost = async (newPostFilter: IPostFilterProps) => {
       try {
-        const { tagIds, title: titleFilter } = newPostFilter.postFilter;
+        const { tagIds, title: titleFilter } = newPostFilter;
 
         const tagIdParams = getTagIdQuery(tagIds);
         const titleParams = getTitleQuery(titleFilter);
@@ -113,10 +113,7 @@ function Home() {
     };
 
     // 여기서부터 useEffect에 들어갈 로직
-    if (
-      postFilter?.postFilter.tagIds.length === 0 &&
-      postFilter?.postFilter.title === ''
-    ) {
+    if (postFilter?.tagIds.length === 0 && postFilter?.title === '') {
       setLastPostId(0);
       getAllPost();
     } else if (postFilter !== null) {
