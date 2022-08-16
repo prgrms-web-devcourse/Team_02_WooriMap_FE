@@ -41,7 +41,7 @@ export function UserProfile({
         }
       })();
     }
-  }, [instance]);
+  }, [instance, isCouple]);
 
   if (isCouple) {
     const { coupleNickName, startDate } = coupleInfo;

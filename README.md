@@ -1,34 +1,55 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## 팀원 소개
 
-## Getting Started
+<div align="center">
 
-First, run the development server:
+| [벤](https://github.com/mrbartrns) | [위고](https://github.com/Yummy-sk) | [오월](https://github.com/MayOwall) | [맷](https://github.com/sangjin149) | [엘리오](https://github.com/woojerry) |
+| :-------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------: |
+| <img src="https://avatars.githubusercontent.com/u/56826914?v=4" width=150 /> | <img src="https://avatars.githubusercontent.com/u/60822846?v=4" width=150 /> | <img src="https://avatars.githubusercontent.com/u/97934878?v=4" width=150 /> | <img src="https://avatars.githubusercontent.com/u/53640976?v=4" width=150 /> | <img src="https://avatars.githubusercontent.com/u/50645183?v=4" width=150 /> |
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 서비스 소개
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+![logo](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/94f60f5f-7995-46d1-b131-42bbf1cbac8e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220816%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220816T064308Z&X-Amz-Expires=86400&X-Amz-Signature=adc04fc4950db7cab6d19de30315c058fe728d6d78ea10f4c5c365d625559954&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+> 우리 갔던 곳, 우리맵
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+WooriMap은 연인들간 추억을 공유하고 모아볼 수 있는 지도 기반 SNS 플랫폼입니다.  
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+## 앱 기능 소개
 
-## Learn More
+- 사용자와 또 다른 사용자는 서로 커플을 맺을 수 있습니다.
+- 커플을 맺은 사용자는 글을 쓰고 수정할 수 있으며, 우리가 갔던 곳의 위치를 표시할 수 있습니다.
+- 표시한 위치들을 모아 한 눈에 볼 수 있습니다! 우리 갔던 곳을 모아서 추억 지도를 만들어보세요.
+- 이별하셨나요? 걱정할 것이 없습니다. 버튼 하나만 누르면, 커플을 끊음과 함께 추억들 역시 날려버립니다.
 
-To learn more about Next.js, take a look at the following resources:
+## 기술 스택
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 개발
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Recoil](https://img.shields.io/badge/Recoil-blue?style=for-the-badge&logoColor=white)
 
-## Deploy on Vercel
+### 코드 관리
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+![prettier](https://img.shields.io/badge/prettier-ff69b4.svg?style=for-the-badge)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### 스타일
+
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Emotion](https://img.shields.io/badge/Emotion-af8eb5.svg?&style=for-the-badge&logo=Emotion&logoColor=white)
+![Storybook](https://img.shields.io/badge/-Storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
+
+### 커뮤니케이션
+
+![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)
+![Discord](https://img.shields.io/badge/Discord-%237289DA.svg?style=for-the-badge&logo=discord&logoColor=white)
+![Slack](https://img.shields.io/badge/Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
+
+### 기타 문서
+
+- [기술 스택 & 컨벤션 노션 문서](https://backend-devcourse.notion.site/bdea3ced39f748ffa84f20396dbe6d33)
