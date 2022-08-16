@@ -16,9 +16,10 @@ function NavBar() {
   const logout = async () => {
     try {
       await instance.post('/auth/signout');
-      setUser(null);
     } catch (error) {
-      console.error(error);
+      // do nothing
+    } finally {
+      setUser(null);
     }
   };
 
@@ -26,7 +27,7 @@ function NavBar() {
     try {
       await logout();
     } catch (error) {
-      console.error(error);
+      // do nothing
     }
   };
 
