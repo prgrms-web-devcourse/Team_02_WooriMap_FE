@@ -5,6 +5,7 @@ import theme from './theme';
 const globalStyles = css`
   ${reset}
   html, body {
+    overflow: hidden;
     padding: 0;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
