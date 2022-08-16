@@ -141,3 +141,13 @@ export const Back = styled.span`
 
   cursor: pointer;
 `;
+
+export const Error = styled.span`
+  width: 100%;
+  height: fit-content;
+
+  text-align: center;
+  color: ${({ theme }) => theme.colors.alert};
+
+  font-size: 0.7rem;
+`;
