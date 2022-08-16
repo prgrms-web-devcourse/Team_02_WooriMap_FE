@@ -186,13 +186,11 @@ export function MainSearchBar({
 
   useEffect(() => {
     const postFilter: IPostFilterProps = {
-      postFilter: {
-        tagIds: tagList.map((tag) => tag.id),
-        title: keyWord,
-      },
+      tagIds: tagList.map((tag) => tag.id),
+      title: keyWord,
     };
     handlePostFilter(postFilter);
-  }, [tagList.length, keyWord]);
+  }, [tagList.length, keyWord, tagList, handlePostFilter]);
 
   return (
     <S.MainSearchBarContainer>

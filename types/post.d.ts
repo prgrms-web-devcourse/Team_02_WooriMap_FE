@@ -1,4 +1,25 @@
 import { ITag } from 'types/tag';
+import { ICoordinates } from './map';
+
+interface PostBase {
+  title: string;
+  content: string;
+}
+
+interface IPostMain extends PostBase, ICoordinates {
+  postId: number;
+  imageUrl: string;
+  createDateTime: string;
+}
+
+export interface IPostDetail extends PostBase {
+  id: number;
+  imageUrls: string[];
+  location: ICoordinates;
+  tags: ITag[];
+  datingDate: string;
+  createdDate: string;
+}
 
 export interface IPostFormState {
   title: string;
