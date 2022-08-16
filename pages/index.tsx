@@ -8,7 +8,6 @@ import {
   ICoupleProfileProps,
 } from 'types';
 import { withCoupleRoute } from 'hocs';
-import LocalStorage from 'utils/storage';
 import { IPostMain } from 'types/post';
 import { getLastIdQuery, getTagIdQuery, getTitleQuery } from 'utils/pages';
 
@@ -16,7 +15,6 @@ function Home() {
   const [postFilter, setPostFilter] = useState<IPostFilterProps | null>(null);
   const [lastPostId, setLastPostId] = useState(0);
   const [postList, setPostList] = useState<IThumbnailCardProps[]>([]);
-  let accessToken: string | null = '';
   const instance = useAxiosInstance();
 
   const [coupleData, setCoupleData] = useState<ICoupleProfileProps>({
@@ -57,78 +55,71 @@ function Home() {
     setPostFilter(newPostFilter);
   }, []);
 
-  // ANCHOR: 필터 규칙을 적용하여 포스트들을 가져온다.
-  const getFilteredPost = async (newPostFilter: IPostFilterProps) => {
-    try {
-      const { tagIds, title: titleFilter } = newPostFilter.postFilter;
-
-      const tagIdParams = getTagIdQuery(tagIds);
-      const titleParams = getTitleQuery(titleFilter);
-      const lastPostIdParams = getLastIdQuery(lastPostId);
-
-      const mainPosts = await instance
-        .get<IApiResponse<IPostMain[]>>(
-          `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
-        )
-        .then((response) => response.data.data);
-
-      const newPostList = mainPosts.map<IThumbnailCardProps>((props) => ({
-        postId: String(props.postId),
-        title: props.title,
-        postThumbnailPath: props.imageUrl,
-        createDate: props.createDateTime,
-        latitude: String(props.latitude),
-        longitude: String(props.longitude),
-      }));
-
-      setPostList(newPostList);
-      return null;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
-
-  const getAllPost = async () => {
-    try {
-      const data = await instance
-        .get<
-          IApiResponse<
-            {
-              postId: number;
-              title: string;
-              imageUrl: string;
-              createDateTime: string;
-              latitude: number;
-              longitude: number;
-            }[]
-          >
-        >(`/couples/posts`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        })
-        .then((response) => response.data.data);
-      const newPostList: IThumbnailCardProps[] = data.map(
-        ({ postId, title, imageUrl, createDateTime, latitude, longitude }) => ({
-          postId: String(postId),
-          title,
-          postThumbnailPath: imageUrl,
-          createDate: createDateTime,
-          latitude: String(latitude),
-          longitude: String(longitude),
-        }),
-      );
-      setPostList(newPostList);
-      return null;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  };
-
   // 포스트 필터가 바뀔때마다 실행되는 포스트리스트 가져오는 로직
   useEffect(() => {
-    accessToken = LocalStorage.getItem('accessToken', '');
+    // ANCHOR: 필터 규칙을 적용하여 포스트들을 가져온다.
+    const getFilteredPost = async (newPostFilter: IPostFilterProps) => {
+      try {
+        const { tagIds, title: titleFilter } = newPostFilter.postFilter;
 
+        const tagIdParams = getTagIdQuery(tagIds);
+        const titleParams = getTitleQuery(titleFilter);
+        const lastPostIdParams = getLastIdQuery(lastPostId);
+
+        const mainPosts = await instance
+          .get<IApiResponse<IPostMain[]>>(
+            `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
+          )
+          .then((response) => response.data.data);
+
+        const newPostList = mainPosts.map<IThumbnailCardProps>((props) => ({
+          postId: String(props.postId),
+          title: props.title,
+          postThumbnailPath: props.imageUrl,
+          createDate: props.createDateTime,
+          latitude: String(props.latitude),
+          longitude: String(props.longitude),
+        }));
+
+        setPostList(newPostList);
+        return null;
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    };
+
+    /**
+     * ANCHOR: getAllPost와 filteredPost의 역할이 사실상 동일하므로,
+     * 해당 부분을 하나의 함수로 만드는 것이 좋을 듯 하다.
+     */
+    const getAllPost = async () => {
+      try {
+        const data = await instance
+          .get<IApiResponse<IPostMain[]>>(`/couples/posts`)
+          .then((response) => response.data.data);
+        const newPostList: IThumbnailCardProps[] = data.map(
+          ({
+            postId,
+            title,
+            imageUrl,
+            createDateTime,
+            latitude,
+            longitude,
+          }) => ({
+            postId: String(postId),
+            title,
+            postThumbnailPath: imageUrl,
+            createDate: createDateTime,
+            latitude: String(latitude),
+            longitude: String(longitude),
+          }),
+        );
+        setPostList(newPostList);
+        return null;
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    };
     if (
       postFilter?.postFilter.tagIds.length === 0 &&
       postFilter?.postFilter.title === ''
@@ -139,7 +130,7 @@ function Home() {
       setLastPostId(0);
       getFilteredPost(postFilter);
     }
-  }, [postFilter]);
+  }, [instance, lastPostId, postFilter]);
 
   return (
     <>
