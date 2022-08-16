@@ -19,6 +19,7 @@ function PostDetail() {
 
   const instance = useAxiosInstance();
   const router = useRouter();
+
   const { id } = router.query as { id: string };
 
   useEffect(() => {

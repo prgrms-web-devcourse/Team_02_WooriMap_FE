@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { useRouter } from 'next/router';
 import { useForm, useAxiosInstance } from 'hooks';
 import { PostTemplate, ImageUploader, PostWrite } from 'components';
 import { postValidation, formatDate } from 'utils';
@@ -6,9 +8,9 @@ import {
   IPostValidationProps,
   IPostFormState,
 } from 'types';
+import { ToastContext } from 'context/ToastContext';
 import { withCoupleRoute } from 'hocs';
 import { createPost } from 'apis/post';
-import { useRouter } from 'next/router';
 
 export const initialValues: IPostFormState = {
   title: '',
@@ -32,12 +34,24 @@ function PostCreate() {
   const instance = useAxiosInstance();
 
   const router = useRouter();
+  const { createToast } = useContext(ToastContext);
 
   const onSubmit = async ({ values }: { values: IPostFormState }) => {
     try {
       await createPost({ data: values, instance });
+      createToast({
+        status: 'success',
+        message: '새 포스트가 생성되었습니다.',
+        duration: 3000,
+      });
       router.push('/');
     } catch (error: unknown) {
+      createToast({
+        status: 'fail',
+        message: '에러가 발생했습니다.',
+        duration: 3000,
+      });
+
       console.error(error);
     }
   };
