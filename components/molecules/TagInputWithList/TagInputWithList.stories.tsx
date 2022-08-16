@@ -14,6 +14,7 @@ const handleChange: HandleChangeTypes = ({ name, value }) => {
 export const Default: ComponentStory<typeof TagInputWithList> = () => {
   return (
     <TagInputWithList
+      onKeyPress={() => {}}
       text="태그"
       key="태그"
       onClickButton={() => {}}

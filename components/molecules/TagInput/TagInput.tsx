@@ -8,9 +8,15 @@ interface ITagInputProps
   allTags: ITag[];
   onEnterType: (newTagName: string) => void;
   onClickButton: (e?: React.MouseEvent<HTMLImageElement>) => void;
+  onKeyPress: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-export function TagInput({ allTags, onEnterType, ...props }: ITagInputProps) {
+export function TagInput({
+  allTags,
+  onEnterType,
+  onKeyPress,
+  ...props
+}: ITagInputProps) {
   const [inputValue, setInputValue] = useState<string>('');
   const [options, setOptions] = useState<ITag[]>([]);
 
@@ -51,6 +57,7 @@ export function TagInput({ allTags, onEnterType, ...props }: ITagInputProps) {
         onKeyUp={handleComplete}
         hasOption={options.length > 0}
         autoComplete="off"
+        onKeyPress={onKeyPress}
         {...props}
       />
       {options.length > 0 && (
