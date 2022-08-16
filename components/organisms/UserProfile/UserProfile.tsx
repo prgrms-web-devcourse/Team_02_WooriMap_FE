@@ -33,7 +33,7 @@ export function UserProfile({
             startDate,
             you: { nickName: coupleNickName },
           } = response.data;
-
+          console.log(coupleNickName);
           setCoupleInfo({
             coupleNickName,
             startDate,
