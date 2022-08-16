@@ -126,28 +126,36 @@ export const ModalContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 26rem;
-  height: 14rem;
-  padding: 1rem;
-  background-color: #ffe8e8;
+  align-items: center;
+  gap: 0.5rem;
+
+  width: 25rem;
+  height: 18rem;
+  padding: 2rem 1rem;
+  border-radius: 1rem;
 `;
 
 export const ModalTitle = styled.div`
   display: flex;
   align-items: center;
-  padding: 0.5rem 0rem;
 
-  font-family: 'Noto Serif KR', serif;
-  font-size: 1.5rem;
-  font-weight: 900;
+  color: ${({ theme }) => theme.colors.alert};
+
+  font-family: 'Noto Sans KR', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+
+  opacity: 70%;
 `;
 
 export const ModalContent = styled.div`
   font-size: 0.8rem;
-  line-height: 1.7rem;
+  line-height: 1rem;
 
   white-space: pre-wrap;
   word-wrap: break-word;
+
+  text-align: center;
 `;
 
 export const ModalOptions = styled.div`
@@ -155,8 +163,31 @@ export const ModalOptions = styled.div`
   flex-direction: row-reverse;
   gap: 0.5rem;
   padding: 0.5rem 0rem;
+
+  > button {
+    width: 7rem;
+    height: 3rem;
+
+    border: none;
+    border-radius: 0.5rem;
+
+    box-shadow: ${({ theme }) => theme.boxShadow.atom};
+
+    font-size: 0.8rem;
+    line-height: 3rem;
+    text-shadow: none;
+
+    opacity: 50%;
+    transition: ${({ theme }) => theme.opacityTransition};
+    :hover {
+      opacity: 80%;
+    }
+  }
 `;
 
-export const ModalOption = styled(Button)`
-  border: none;
+export const ConfirmButton = styled(Button)`
+  background-color: ${({ theme }) => theme.colors.alert};
+  color: ${({ theme }) => theme.colors.white};
 `;
+
+export const CancelButton = styled(Button)``;
