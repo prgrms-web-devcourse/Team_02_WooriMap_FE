@@ -55,6 +55,38 @@ function Home() {
     setPostFilter(newPostFilter);
   }, []);
 
+  const getPosts = useCallback(async () => {
+    try {
+      const tagIdParams = getTagIdQuery(postFilter?.tagIds || []);
+      const titleParams = getTitleQuery(postFilter?.title || '');
+      const lastPostIdParams = getLastIdQuery(lastPostId);
+
+      const mainPosts = await instance
+        .get<IApiResponse<IPostMain[]>>(
+          `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
+        )
+        .then((response) => response.data.data);
+
+      const newPostList = mainPosts.map<IThumbnailCardProps>((props) => ({
+        postId: String(props.postId),
+        title: props.title,
+        postThumbnailPath: props.imageUrl,
+        createDate: props.createDateTime,
+        latitude: String(props.latitude),
+        longitude: String(props.longitude),
+      }));
+
+      console.log(newPostList);
+      return newPostList;
+    } catch (error) {
+      return Promise.reject(error);
+    }
+  }, [instance, lastPostId, postFilter?.tagIds, postFilter?.title]);
+
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
+
   // 포스트 필터가 바뀔때마다 실행되는 포스트리스트 가져오는 로직
   useEffect(() => {
     // ANCHOR: 필터 규칙을 적용하여 포스트들을 가져온다.
