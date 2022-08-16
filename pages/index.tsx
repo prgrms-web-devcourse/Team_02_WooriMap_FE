@@ -55,37 +55,35 @@ function Home() {
     setPostFilter(newPostFilter);
   }, []);
 
-  const getPosts = useCallback(async () => {
-    try {
-      const tagIdParams = getTagIdQuery(postFilter?.tagIds || []);
-      const titleParams = getTitleQuery(postFilter?.title || '');
-      const lastPostIdParams = getLastIdQuery(lastPostId);
-
-      const mainPosts = await instance
-        .get<IApiResponse<IPostMain[]>>(
-          `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
-        )
-        .then((response) => response.data.data);
-
-      const newPostList = mainPosts.map<IThumbnailCardProps>((props) => ({
-        postId: String(props.postId),
-        title: props.title,
-        postThumbnailPath: props.imageUrl,
-        createDate: props.createDateTime,
-        latitude: String(props.latitude),
-        longitude: String(props.longitude),
-      }));
-
-      setPostList(newPostList);
-      return newPostList;
-    } catch (error) {
-      return Promise.reject(error);
-    }
-  }, [instance, lastPostId, postFilter?.tagIds, postFilter?.title]);
-
   useEffect(() => {
-    getPosts();
-  }, [getPosts]);
+    (async () => {
+      try {
+        const tagIdParams = getTagIdQuery(postFilter?.tagIds || []);
+        const titleParams = getTitleQuery(postFilter?.title || '');
+        const lastPostIdParams = getLastIdQuery(lastPostId);
+
+        const mainPosts = await instance
+          .get<IApiResponse<IPostMain[]>>(
+            `/couples/posts?${tagIdParams}${titleParams}${lastPostIdParams}`,
+          )
+          .then((response) => response.data.data);
+
+        const newPostList = mainPosts.map<IThumbnailCardProps>((props) => ({
+          postId: String(props.postId),
+          title: props.title,
+          postThumbnailPath: props.imageUrl,
+          createDate: props.createDateTime,
+          latitude: String(props.latitude),
+          longitude: String(props.longitude),
+        }));
+
+        setPostList(newPostList);
+        return newPostList;
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    })();
+  }, [instance, lastPostId, postFilter?.tagIds, postFilter?.title]);
 
   return (
     <>
