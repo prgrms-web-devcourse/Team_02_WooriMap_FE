@@ -135,18 +135,21 @@ function TitleSearchBar({
   handleKeyWord: (keyWord: string) => void;
 }) {
   const input = useRef<HTMLInputElement>(null);
-  const onSubmit = (e: React.FormEvent<HTMLInputElement>) => {
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+  };
+  const onKeyUp = () => {
     const { value } = input.current as HTMLInputElement;
     handleKeyWord(value);
   };
+
   return (
-    <S.SearchBarForm>
+    <S.SearchBarForm onSubmit={onSubmit}>
       <input
         type="text"
         placeholder="찾고싶은 제목을 입력 해 주세요"
         ref={input}
-        onKeyUp={onSubmit}
+        onKeyUp={onKeyUp}
       />
       <button type="button">
         <Image src={searchIcon} alt="search icon" />
