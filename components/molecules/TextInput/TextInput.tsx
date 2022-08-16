@@ -15,7 +15,7 @@ export function TextInput({
   value,
   onClickButton,
   handleChange,
-  onKeyPress = () => {},
+  onKeyPress,
   ...props
 }: ITextInputProps) {
   return (
