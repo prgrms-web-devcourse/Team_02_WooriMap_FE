@@ -62,16 +62,19 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
     }
   };
 
-  const onChange = (e: ChangeEvent<HTMLInputElement>) =>
+  const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     setInputCode(e.target.value);
+    setError('');
+  };
 
-  const onClickDeleteButton = () => setInputCode('');
+  const onClickDeleteButton = () => {
+    setInputCode('');
+    setError('');
+  };
 
   const onSubmit = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
-
-  console.error(error);
 
   return (
     <S.CoupleInviteFormBackground onSubmit={onSubmit}>
@@ -106,6 +109,8 @@ export function CoupleInviteForm({ code }: ICoupleInviteFormProps) {
             커플 맺음 확인하기
           </S.InviteConfrimButton>
         </S.InviteButtonWrapper>
+
+        <S.Error>{error && error}</S.Error>
 
         <Link href="/profile">
           <S.Back>프로필 페이지로 돌아가기</S.Back>
