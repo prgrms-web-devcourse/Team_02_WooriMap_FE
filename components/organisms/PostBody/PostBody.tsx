@@ -1,7 +1,9 @@
+import Image from 'next/image';
 import { TagList, Modal } from 'components';
 import { ITag, ICoordinates } from 'types';
 import { useState } from 'react';
 import { MapMarker } from 'react-kakao-maps-sdk';
+import { modalImage } from 'public/image';
 import * as S from './PostBody.styles';
 
 interface IPostBodyProps {
@@ -86,19 +88,20 @@ export function PostBody({
       </S.PostLocation>
       <Modal isVisible={deleteConfirm} onClose={handleClickAway}>
         <S.ModalContainer>
+          <Image src={modalImage} alt="경고 이미지" width={48} height={48} />
           <S.ModalTitle>삭제 확인</S.ModalTitle>
           <S.ModalContent>
-            게시물을 삭제하면 복구하실 수 없습니다
+            게시물을 삭제하면 복구하실 수 없어요
             <br />
             정말로 삭제하시겠어요?
           </S.ModalContent>
           <S.ModalOptions>
-            <S.ModalOption size="small" onClick={handleDeleteConfirm}>
-              삭제
-            </S.ModalOption>
-            <S.ModalOption size="small" onClick={handleDeleteReject}>
+            <S.ConfirmButton size="small" onClick={handleDeleteConfirm}>
+              네, 삭제합니다
+            </S.ConfirmButton>
+            <S.CancelButton size="small" onClick={handleDeleteReject}>
               취소
-            </S.ModalOption>
+            </S.CancelButton>
           </S.ModalOptions>
         </S.ModalContainer>
       </Modal>
