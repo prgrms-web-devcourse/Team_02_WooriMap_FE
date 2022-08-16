@@ -47,43 +47,38 @@ export function SearchableMap({
   };
 
   return (
-    <>
-      {error && (
-        <div style={{ color: 'red' }}>지도만 errorProp이 Boolean 입니다!</div>
-      )}
-      <S.Container>
-        <SearchBar
-          keyword={selected.content}
-          isResultVisible={isResultVisible}
-          onChange={onChange}
-          onClick={onClickMarker()}
-          results={markers}
-        />
-        <Map
-          width="100%"
-          height="100%"
-          isMain={false}
-          onCreate={setMap}
-          center={{ ...initialMapCenter }}
-          onClick={(_t, mouseEvent) => {
-            const postion: ICoordinates = {
-              latitude: mouseEvent.latLng.getLat(),
-              longitude: mouseEvent.latLng.getLng(),
-            };
-            const content = '';
+    <S.Container>
+      <SearchBar
+        keyword={selected.content}
+        isResultVisible={isResultVisible}
+        onChange={onChange}
+        onClick={onClickMarker()}
+        results={markers}
+      />
+      <Map
+        width="100%"
+        height="100%"
+        isMain={false}
+        onCreate={setMap}
+        center={{ ...initialMapCenter }}
+        onClick={(_t, mouseEvent) => {
+          const postion: ICoordinates = {
+            latitude: mouseEvent.latLng.getLat(),
+            longitude: mouseEvent.latLng.getLng(),
+          };
+          const content = '';
 
-            onClickMarker()({
-              position: postion,
-              content,
-            });
-          }}
-        >
-          <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
-        </Map>
-        {error && (
-          <S.Error style={{ color: 'red' }}>위치를 지정 해 주세요</S.Error>
-        )}
-      </S.Container>
-    </>
+          onClickMarker()({
+            position: postion,
+            content,
+          });
+        }}
+      >
+        <MultiMarkerDrawer markers={markers} onClick={onClickMarker()} />
+      </Map>
+      {error && (
+        <S.Error style={{ color: 'red' }}>위치를 지정 해 주세요</S.Error>
+      )}
+    </S.Container>
   );
 }
