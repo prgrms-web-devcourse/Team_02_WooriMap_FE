@@ -7,6 +7,12 @@ interface IUploadAreaProps {
 }
 
 export function UploadArea({ onUploadImage }: IUploadAreaProps) {
+  const onClick = (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => {
+    if (e.target instanceof HTMLInputElement) {
+      e.target.value = '';
+    }
+  };
+
   return (
     <S.Container>
       <Image src={upload} width={174} height={174} alt="upload image" />
@@ -16,6 +22,7 @@ export function UploadArea({ onUploadImage }: IUploadAreaProps) {
           type="file"
           accept="image/*"
           onChange={onUploadImage}
+          onClick={onClick}
         />
         <p>이미지를 업로드하세요</p>
       </S.UploadArea>
