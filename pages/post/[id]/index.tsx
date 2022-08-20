@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { PostTemplate, ImageViewer, PostBody } from 'components';
+import { PostTemplate, ImageViewer, PostBody, MetaTag } from 'components';
 import { ITag, ICoordinates } from 'types';
 import { useRouter } from 'next/router';
 import { useAxiosInstance } from '@hooks/useAxiosInstance';
@@ -72,21 +72,36 @@ function PostDetail() {
   const { title, date, tagList, content, location, imageUrls } = postInfo;
 
   return (
-    <PostTemplate
-      type="detail"
-      imageSection={<ImageViewer images={imageUrls} />}
-      contentSection={
-        <PostBody
-          title={title}
-          date={date}
-          tagList={tagList}
-          content={content}
-          location={location}
-          handleEdit={handleEdit}
-          handleDelete={handleDelete}
+    <>
+      <MetaTag title={title}>
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="우리맵" />
+        <meta property="og:title" content={title || '우리맵'} />
+        <meta
+          property="og:description"
+          content={content || '우리 갔던곳, 우리맵'}
         />
-      }
-    />
+        <meta
+          property="og:image"
+          content={imageUrls[0] || 'https://i.imgur.com/ZzqdUZB.png'}
+        />
+      </MetaTag>
+      <PostTemplate
+        type="detail"
+        imageSection={<ImageViewer images={imageUrls} />}
+        contentSection={
+          <PostBody
+            title={title}
+            date={date}
+            tagList={tagList}
+            content={content}
+            location={location}
+            handleEdit={handleEdit}
+            handleDelete={handleDelete}
+          />
+        }
+      />
+    </>
   );
 }
 
