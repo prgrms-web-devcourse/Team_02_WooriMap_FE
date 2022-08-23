@@ -11,7 +11,8 @@
 
 ## 서비스 소개
 
-![logo](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/94f60f5f-7995-46d1-b131-42bbf1cbac8e/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220816%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220816T064308Z&X-Amz-Expires=86400&X-Amz-Signature=adc04fc4950db7cab6d19de30315c058fe728d6d78ea10f4c5c365d625559954&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+![Logo](https://user-images.githubusercontent.com/56826914/186185487-c31c5514-bb85-471c-9c95-64b6e954017a.png)
+
 > 우리 갔던 곳, 우리맵
 
 WooriMap은 연인들간 추억을 공유하고 모아볼 수 있는 지도 기반 SNS 플랫폼입니다.  
